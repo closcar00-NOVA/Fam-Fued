@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Family Feud - Crew Love Edition</title>
+  <title>Family Feud - Solo Arcade Pro</title>
   <style>
     :root {
       --bg-color: #0d1b2a;
       --board-bg: #1b263b;
-      --accent-gold: #FED141; /* CRXO Gold */
+      --accent-gold: #FED141;
       --text-light: #e0e1dd;
       --strike-red: #d90429;
     }
@@ -25,73 +25,65 @@
       overflow: hidden;
     }
 
-    /* HOST CONTROLS */
-    .host-panel {
+    /* SCORE, TIMER & STRIKE HUD */
+    .hud {
       width: 100%;
       background: #000;
-      padding: 15px;
+      padding: 15px 30px;
       display: flex;
-      justify-content: center;
-      gap: 20px;
+      justify-content: space-between;
       align-items: center;
-      position: relative;
-      z-index: 100;
+      box-sizing: border-box;
+      border-bottom: 2px solid var(--accent-gold);
+    }
+    
+    .hud-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
-    .host-panel input {
-      padding: 10px;
-      font-size: 16px;
-      width: 300px;
-      border: 2px solid var(--accent-gold);
-      border-radius: 4px;
-      background: #222;
-      color: #fff;
-    }
-
-    .host-panel button {
-      padding: 10px 20px;
-      font-size: 16px;
+    .score-display {
+      font-size: 24px;
       font-weight: bold;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      background: var(--accent-gold);
-      color: #000;
-      transition: background 0.2s;
+      color: var(--accent-gold);
     }
 
-    .host-panel button:hover {
-      background: #fff;
+    .timer-display {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+      background: #222;
+      padding: 5px 15px;
+      border-radius: 6px;
+      border: 2px solid #555;
+      min-width: 50px;
+      text-align: center;
+      transition: all 0.3s;
     }
 
-    .host-panel button.strike-btn {
-      background: var(--strike-red);
-      color: white;
+    .timer-display.low {
+      color: var(--strike-red);
+      border-color: var(--strike-red);
+      animation: pulse 1s infinite;
     }
 
-    /* DROPDOWN FOR SEARCH */
-    .search-container {
-      position: relative;
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 4, 41, 0.7); }
+      50% { transform: scale(1.05); box-shadow: 0 0 10px 5px rgba(217, 4, 41, 0) }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 4, 41, 0); }
     }
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: #333;
-      border: 1px solid var(--accent-gold);
-      border-top: none;
-      max-height: 200px;
-      overflow-y: auto;
-      display: none;
+
+    .strike-tracker {
+      display: flex;
+      gap: 10px;
+      font-size: 30px;
+      color: #333; 
     }
-    .dropdown.active { display: block; }
-    .dropdown-item {
-      padding: 10px;
-      cursor: pointer;
-      border-bottom: 1px solid #444;
+    .strike-tracker span.active {
+      color: var(--strike-red);
+      text-shadow: 0 0 10px var(--strike-red);
     }
-    .dropdown-item:hover { background: #444; }
 
     /* GAME BOARD */
     .game-container {
@@ -106,9 +98,9 @@
     }
 
     .question-display {
-      font-size: 28px;
+      font-size: 26px;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       padding: 20px;
       background: var(--board-bg);
       border: 4px solid var(--accent-gold);
@@ -122,16 +114,15 @@
       grid-template-columns: 1fr 1fr;
       gap: 15px;
       width: 100%;
+      margin-bottom: 30px;
     }
 
-    /* 3D FLIP TILES */
+    /* TILES */
     .tile {
       background-color: transparent;
       height: 70px;
       perspective: 1000px;
-      cursor: pointer;
     }
-
     .tile-inner {
       position: relative;
       width: 100%;
@@ -141,11 +132,8 @@
       transform-style: preserve-3d;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
-
-    .tile.flipped .tile-inner {
-      transform: rotateX(180deg);
-    }
-
+    .tile.flipped .tile-inner { transform: rotateX(180deg); }
+    
     .tile-front, .tile-back {
       position: absolute;
       width: 100%;
@@ -158,7 +146,6 @@
       border-radius: 8px;
       box-sizing: border-box;
     }
-
     .tile-front {
       background: linear-gradient(to bottom, #1b263b, #0d1b2a);
       justify-content: center;
@@ -166,36 +153,84 @@
       font-weight: bold;
       color: #778da9;
     }
-
     .tile-back {
       background: linear-gradient(to bottom, #001233, #001845);
       transform: rotateX(180deg);
       border-color: var(--accent-gold);
       padding: 0 15px;
     }
+    .tile.missed .tile-back {
+      border-color: var(--strike-red);
+      color: #999;
+    }
 
     .answer-text {
       flex: 1;
       text-align: left;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
       text-transform: uppercase;
     }
-
     .answer-points {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: bold;
       color: var(--accent-gold);
       border-left: 2px solid var(--accent-gold);
       padding-left: 15px;
-      min-width: 50px;
     }
+
+    /* PLAYER INPUT CONSOLE */
+    .player-console {
+      display: flex;
+      gap: 15px;
+      width: 100%;
+      max-width: 600px;
+    }
+    .player-console input {
+      flex: 1;
+      padding: 15px;
+      font-size: 18px;
+      border: 2px solid var(--accent-gold);
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      outline: none;
+    }
+    .player-console input:focus {
+      box-shadow: 0 0 10px rgba(254, 209, 65, 0.5);
+    }
+    .player-console button {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent-gold);
+      color: #000;
+      transition: background 0.2s;
+    }
+    .player-console button:hover { background: #fff; }
+    
+    .next-btn {
+      display: none;
+      margin-top: 20px;
+      padding: 15px 40px;
+      font-size: 20px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .next-btn.show { display: block; }
 
     /* STRIKE OVERLAY */
     .strike-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.8);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -206,36 +241,89 @@
     }
     .strike-overlay.show { opacity: 1; pointer-events: all; }
     .strike-mark {
-      font-size: 350px;
+      font-size: 400px;
       color: var(--strike-red);
       font-weight: bold;
-      text-shadow: 0 0 30px #000;
+      text-shadow: 0 0 40px #000;
       transform: scale(0.5);
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .strike-overlay.show .strike-mark { transform: scale(1); }
 
+    /* GAME OVER SCREEN */
+    .game-over-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+    .game-over-screen.show { opacity: 1; pointer-events: all; }
+    .game-over-title {
+      font-size: 60px;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .game-over-score {
+      font-size: 45px;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+    .play-again-btn {
+      padding: 15px 50px;
+      font-size: 24px;
+      background: var(--accent-gold);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .play-again-btn:hover {
+      background: #fff;
+      transform: scale(1.05);
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Host Controls -->
-  <div class="host-panel">
-    <button onclick="prevQuestion()">&#9664; Prev</button>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Type answer to search..." oninput="handleSearch()">
-      <div id="dropdown" class="dropdown"></div>
+  <!-- Heads Up Display -->
+  <div class="hud">
+    <div class="hud-section">
+      <div class="score-display">SCORE: <span id="scoreText">0</span></div>
     </div>
-    <button class="strike-btn" onclick="triggerStrike()">STRIKE ❌</button>
-    <button onclick="nextQuestion()">Next &#9654;</button>
+    <div class="timer-display" id="timerDisplay">30</div>
+    <div class="hud-section">
+      <div class="strike-tracker" id="strikeTracker">
+        <span id="strike-1">X</span>
+        <span id="strike-2">X</span>
+        <span id="strike-3">X</span>
+      </div>
+    </div>
   </div>
 
   <!-- Main Game Board -->
   <div class="game-container">
     <div class="question-display" id="questionText">Loading Question...</div>
-    <div class="board" id="board">
-      <!-- Tiles generated by JS -->
+    
+    <div class="board" id="board"></div>
+
+    <div class="player-console" id="playerConsole">
+      <input type="text" id="guessInput" placeholder="Type your guess..." onkeypress="handleEnter(event)" autocomplete="off">
+      <button onclick="submitGuess()">GUESS</button>
     </div>
+
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Round &#9654;</button>
   </div>
 
   <!-- Strike Animation -->
@@ -243,32 +331,39 @@
     <div class="strike-mark">X</div>
   </div>
 
+  <!-- Custom Game Over Screen -->
+  <div class="game-over-screen" id="gameOverScreen">
+    <div class="game-over-title">Game Over</div>
+    <div class="game-over-score">Final Score: <span id="finalScoreText">0</span></div>
+    <button class="play-again-btn" onclick="restartGame()">Play Again</button>
+  </div>
+
   <script>
-    // Injecting the provided 25 JSON items directly. 
-    // You can paste the next 75 directly into this array later.
+    // First two questions have the new 'keywords' property added for testing smart matching
     const questionBank = [
       {
         "question": "Name a reason someone might secretly check their partner's phone.",
         "answers": [
-          {"text": "Suspect cheating", "points": 45},
-          {"text": "Curiosity/Snooping", "points": 20},
-          {"text": "Looking for a password", "points": 15},
-          {"text": "Checking messages from an ex", "points": 10},
-          {"text": "To find a surprise gift", "points": 5},
-          {"text": "Checking bank/money apps", "points": 5}
+          {"text": "Suspect cheating", "points": 45, "keywords": ["cheat", "affair", "infidelity", "unfaithful", "other woman", "other man"]},
+          {"text": "Curiosity/Snooping", "points": 20, "keywords": ["nosy", "nosey", "curious", "snoop", "spy", "spying"]},
+          {"text": "Looking for a password", "points": 15, "keywords": ["passcode", "login", "pin"]},
+          {"text": "Checking messages from an ex", "points": 10, "keywords": ["ex boyfriend", "ex girlfriend", "past lover"]},
+          {"text": "To find a surprise gift", "points": 5, "keywords": ["present", "birthday", "christmas", "snooping for gifts"]},
+          {"text": "Checking bank/money apps", "points": 5, "keywords": ["finances", "cash app", "venmo", "bank account", "spending"]}
         ]
       },
       {
         "question": "Name something you might do if you wake up with a massive hangover.",
         "answers": [
-          {"text": "Drink water/Gatorade", "points": 35},
-          {"text": "Take pain meds", "points": 25},
-          {"text": "Go back to sleep", "points": 20},
-          {"text": "Eat greasy food", "points": 10},
-          {"text": "Call out sick", "points": 6},
-          {"text": "Swear off drinking", "points": 4}
+          {"text": "Drink water/Gatorade", "points": 35, "keywords": ["hydrate", "fluids", "drink powerade", "liquid"]},
+          {"text": "Take pain meds", "points": 25, "keywords": ["advil", "tylenol", "aspirin", "ibuprofen", "pills"]},
+          {"text": "Go back to sleep", "points": 20, "keywords": ["nap", "stay in bed", "rest"]},
+          {"text": "Eat greasy food", "points": 10, "keywords": ["fast food", "burger", "pizza", "mcdonalds"]},
+          {"text": "Call out sick", "points": 6, "keywords": ["call in sick", "miss work", "skip work", "stay home"]},
+          {"text": "Swear off drinking", "points": 4, "keywords": ["never drink again", "quit alcohol", "stop drinking"]}
         ]
       },
+      // You can generate the rest with keywords via Google AI Studio and paste them here
       {
         "question": "Name a place you definitely don't want your boss to catch you.",
         "answers": [
@@ -279,271 +374,47 @@
           {"text": "A strip club", "points": 8},
           {"text": "Stealing office supplies", "points": 5}
         ]
-      },
-      {
-        "question": "Name something a person might fake.",
-        "answers": [
-          {"text": "An orgasm", "points": 40},
-          {"text": "Being sick", "points": 30},
-          {"text": "A smile/Being happy", "points": 15},
-          {"text": "Liking a gift", "points": 8},
-          {"text": "Listening/Interest", "points": 4},
-          {"text": "Confidence", "points": 3}
-        ]
-      },
-      {
-        "question": "Name a reason you might pretend not to see someone you know in public.",
-        "answers": [
-          {"text": "You owe them money", "points": 35},
-          {"text": "They talk too much", "points": 25},
-          {"text": "You look like a mess", "points": 15},
-          {"text": "They are an ex", "points": 12},
-          {"text": "You're in a hurry", "points": 8},
-          {"text": "You just don't like them", "points": 5}
-        ]
-      },
-      {
-        "question": "Name a place people often have sex that isn't a bed.",
-        "answers": [
-          {"text": "Couch/Sofa", "points": 35},
-          {"text": "The shower/Tub", "points": 25},
-          {"text": "In a car", "points": 20},
-          {"text": "On the floor", "points": 10},
-          {"text": "Kitchen counter", "points": 7},
-          {"text": "Hotel balcony", "points": 3}
-        ]
-      },
-      {
-        "question": "Name something you lie about on a first date to sound better.",
-        "answers": [
-          {"text": "Your income/Job", "points": 35},
-          {"text": "Your age", "points": 25},
-          {"text": "Your hobbies/Interests", "points": 15},
-          {"text": "Body count/Past relationships", "points": 12},
-          {"text": "Living situation", "points": 8},
-          {"text": "Cooking skills", "points": 5}
-        ]
-      },
-      {
-        "question": "Name an excuse people use to leave a bad date early.",
-        "answers": [
-          {"text": "Sick/Not feeling well", "points": 40},
-          {"text": "Fake emergency call", "points": 25},
-          {"text": "Early morning tomorrow", "points": 15},
-          {"text": "Pet needs to be fed/walked", "points": 10},
-          {"text": "Friend needs help", "points": 6},
-          {"text": "Tired/Headache", "points": 4}
-        ]
-      },
-      {
-        "question": "Name a common regret after a wild night out.",
-        "answers": [
-          {"text": "Drinking too much/Hangover", "points": 40},
-          {"text": "Spending too much money", "points": 25},
-          {"text": "Hooking up with someone", "points": 15},
-          {"text": "Texting an ex", "points": 10},
-          {"text": "Posting embarrassing photos", "points": 7},
-          {"text": "Losing phone/wallet", "points": 3}
-        ]
-      },
-      {
-        "question": "Name something people do when they think no one is watching.",
-        "answers": [
-          {"text": "Pick their nose", "points": 45},
-          {"text": "Scratch inappropriate places", "points": 25},
-          {"text": "Adjust underwear", "points": 15},
-          {"text": "Talk to themselves", "points": 7},
-          {"text": "Smell their armpits", "points": 5},
-          {"text": "Fart", "points": 3}
-        ]
-      },
-      {
-        "question": "Name something you might buy at a convenience store at 2 AM.",
-        "answers": [
-          {"text": "Condoms", "points": 35},
-          {"text": "Beer/Alcohol", "points": 25},
-          {"text": "Junk food/Snacks", "points": 20},
-          {"text": "Cigarettes/Vapes", "points": 10},
-          {"text": "Pain medicine", "points": 6},
-          {"text": "Energy drinks", "points": 4}
-        ]
-      },
-      {
-        "question": "Name something that might get you kicked out of a bar.",
-        "answers": [
-          {"text": "Fighting", "points": 45},
-          {"text": "Being too drunk", "points": 25},
-          {"text": "Throwing up", "points": 15},
-          {"text": "Disrespecting the bartender", "points": 8},
-          {"text": "Not paying the tab", "points": 4},
-          {"text": "Underage/Fake ID", "points": 3}
-        ]
-      },
-      {
-        "question": "Name a sign that you're definitely getting older.",
-        "answers": [
-          {"text": "Body aches/Knee pain", "points": 35},
-          {"text": "Going to bed early", "points": 25},
-          {"text": "Gray hair", "points": 20},
-          {"text": "Hangovers last for days", "points": 10},
-          {"text": "Excited about home appliances", "points": 6},
-          {"text": "Forgetting names", "points": 4}
-        ]
-      },
-      {
-        "question": "Name a reason someone might wear sunglasses indoors.",
-        "answers": [
-          {"text": "Hungover", "points": 45},
-          {"text": "Black eye", "points": 25},
-          {"text": "They think they look cool", "points": 12},
-          {"text": "High/Red eyes", "points": 10},
-          {"text": "Eye doctor dilation", "points": 5},
-          {"text": "Hiding from someone", "points": 3}
-        ]
-      },
-      {
-        "question": "Name a profession where people are known to sleep around.",
-        "answers": [
-          {"text": "Musician/Rockstar", "points": 35},
-          {"text": "Actor/Celebrity", "points": 25},
-          {"text": "Doctor/Nurse", "points": 15},
-          {"text": "Bartender", "points": 12},
-          {"text": "Flight Attendant", "points": 8},
-          {"text": "Athlete", "points": 5}
-        ]
-      },
-      {
-        "question": "Name something a man might leave at a woman's house to mark his territory.",
-        "answers": [
-          {"text": "Hoodie/Jacket", "points": 40},
-          {"text": "Toothbrush", "points": 30},
-          {"text": "Boxers/Underwear", "points": 15},
-          {"text": "Cologne", "points": 7},
-          {"text": "Watch", "points": 5},
-          {"text": "Phone charger", "points": 3}
-        ]
-      },
-      {
-        "question": "Name a topic you should avoid bringing up at Thanksgiving dinner.",
-        "answers": [
-          {"text": "Politics", "points": 55},
-          {"text": "Religion", "points": 20},
-          {"text": "Money/Debt", "points": 10},
-          {"text": "Exes/Divorce", "points": 8},
-          {"text": "Family drama", "points": 5},
-          {"text": "Weight/Diet", "points": 2}
-        ]
-      },
-      {
-        "question": "Name something you might whisper during a movie.",
-        "answers": [
-          {"text": "What did they say?", "points": 35},
-          {"text": "I have to pee", "points": 25},
-          {"text": "Who is that?", "points": 20},
-          {"text": "Pass the popcorn", "points": 10},
-          {"text": "This movie sucks", "points": 6},
-          {"text": "I love you", "points": 4}
-        ]
-      },
-      {
-        "question": "Name something you do in the shower besides washing.",
-        "answers": [
-          {"text": "Sing", "points": 35},
-          {"text": "Pee", "points": 30},
-          {"text": "Shave", "points": 15},
-          {"text": "Cry", "points": 8},
-          {"text": "Think/Argue in your head", "points": 7},
-          {"text": "Masturbate", "points": 5}
-        ]
-      },
-      {
-        "question": "Name a piece of clothing you take off as soon as you get home.",
-        "answers": [
-          {"text": "Shoes", "points": 40},
-          {"text": "Bra", "points": 35},
-          {"text": "Pants/Jeans", "points": 15},
-          {"text": "Tie", "points": 5},
-          {"text": "Socks", "points": 3},
-          {"text": "Jacket", "points": 2}
-        ]
-      },
-      {
-        "question": "Name something people hide when guests come over.",
-        "answers": [
-          {"text": "Mess/Clutter", "points": 40},
-          {"text": "Dirty laundry", "points": 25},
-          {"text": "Valuables/Money", "points": 15},
-          {"text": "Sex toys", "points": 10},
-          {"text": "Medications", "points": 6},
-          {"text": "Bongs/Weed", "points": 4}
-        ]
-      },
-      {
-        "question": "Name a reason someone might block you on social media.",
-        "answers": [
-          {"text": "Bad breakup/Ex", "points": 45},
-          {"text": "Too annoying/Spamming", "points": 20},
-          {"text": "Creepy messages", "points": 15},
-          {"text": "Owe them money", "points": 10},
-          {"text": "Political arguments", "points": 6},
-          {"text": "They got a new partner", "points": 4}
-        ]
-      },
-      {
-        "question": "Name a bad habit you wouldn't want to admit on a first date.",
-        "answers": [
-          {"text": "Picking nose", "points": 30},
-          {"text": "Biting nails", "points": 25},
-          {"text": "Smoking", "points": 15},
-          {"text": "Being messy", "points": 12},
-          {"text": "Snoring", "points": 10},
-          {"text": "Drinking too much", "points": 8}
-        ]
-      },
-      {
-        "question": "Name a place you might go to cry in private.",
-        "answers": [
-          {"text": "The shower", "points": 40},
-          {"text": "Your car", "points": 30},
-          {"text": "Bedroom/Closet", "points": 15},
-          {"text": "Work bathroom", "points": 10},
-          {"text": "The woods/Outdoors", "points": 3},
-          {"text": "Stairwell", "points": 2}
-        ]
-      },
-      {
-        "question": "Name a warning sign that your relationship might be over.",
-        "answers": [
-          {"text": "Stop talking/communicating", "points": 35},
-          {"text": "No sex/intimacy", "points": 25},
-          {"text": "Constant fighting", "points": 20},
-          {"text": "Hiding their phone", "points": 10},
-          {"text": "Spending all time apart", "points": 6},
-          {"text": "Cheating", "points": 4}
-        ]
       }
     ];
 
     let currentIndex = 0;
+    let totalScore = 0;
+    let currentStrikes = 0;
+    let revealedTiles = 0;
+    let currentAnswers = [];
+    let roundActive = true;
+    
+    // Timer Variables
+    let roundTimer;
+    let timeLeft = 30;
 
-    // Initialize the board with the first question
     function loadQuestion(index) {
       const qData = questionBank[index];
       document.getElementById('questionText').innerText = qData.question;
       
+      // Reset Round State
+      currentStrikes = 0;
+      revealedTiles = 0;
+      roundActive = true;
+      updateStrikeUI();
+      
+      document.getElementById('nextBtn').classList.remove('show');
+      document.getElementById('playerConsole').style.display = 'flex';
+      
+      const input = document.getElementById('guessInput');
+      input.value = '';
+      input.focus();
+
       const board = document.getElementById('board');
-      board.innerHTML = ''; // Clear old tiles
+      board.innerHTML = ''; 
 
-      // Sort answers by points descending just in case they aren't
-      const sortedAnswers = [...qData.answers].sort((a, b) => b.points - a.points);
-
-      sortedAnswers.forEach((ans, i) => {
+      currentAnswers = [...qData.answers].sort((a, b) => b.points - a.points);
+      
+      currentAnswers.forEach((ans, i) => {
+        ans.revealed = false;
         const tile = document.createElement('div');
         tile.className = 'tile';
         tile.id = `tile-${i}`;
-        // Manual override click to reveal (optional backup for host)
-        tile.onclick = () => revealTile(i);
-
         tile.innerHTML = `
           <div class="tile-inner">
             <div class="tile-front">${i + 1}</div>
@@ -556,77 +427,192 @@
         board.appendChild(tile);
       });
 
-      // Clear search and dropdown
-      document.getElementById('searchInput').value = '';
-      document.getElementById('dropdown').classList.remove('active');
+      startTimer();
     }
 
-    // Dynamic Host Search
-    function handleSearch() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const dropdown = document.getElementById('dropdown');
-      dropdown.innerHTML = '';
+    function startTimer() {
+      clearInterval(roundTimer);
+      timeLeft = 30;
+      updateTimerUI();
+      
+      roundTimer = setInterval(() => {
+        if (!roundActive) {
+          clearInterval(roundTimer);
+          return;
+        }
+        
+        timeLeft--;
+        updateTimerUI();
+        
+        if (timeLeft <= 0) {
+          clearInterval(roundTimer);
+          triggerTimeOut();
+        }
+      }, 1000);
+    }
 
-      if (query.length < 2) {
-        dropdown.classList.remove('active');
-        return;
-      }
-
-      const qData = questionBank[currentIndex];
-      // Find matches where the text contains the query
-      const matches = qData.answers.map((ans, idx) => ({ ans, idx }))
-                                   .filter(item => item.ans.text.toLowerCase().includes(query));
-
-      if (matches.length > 0) {
-        dropdown.classList.add('active');
-        matches.forEach(match => {
-          const item = document.createElement('div');
-          item.className = 'dropdown-item';
-          item.innerText = `${match.ans.text} (${match.ans.points} pts) - Slot ${match.idx + 1}`;
-          item.onclick = () => {
-            revealTile(match.idx);
-            document.getElementById('searchInput').value = '';
-            dropdown.classList.remove('active');
-          };
-          dropdown.appendChild(item);
-        });
+    function updateTimerUI() {
+      const timerDisplay = document.getElementById('timerDisplay');
+      timerDisplay.innerText = timeLeft;
+      
+      if (timeLeft <= 10 && timeLeft > 0) {
+        timerDisplay.classList.add('low');
       } else {
-        dropdown.classList.remove('active');
+        timerDisplay.classList.remove('low');
       }
     }
 
-    // Flip the specific tile
-    function revealTile(index) {
-      const tile = document.getElementById(`tile-${index}`);
-      if (tile && !tile.classList.contains('flipped')) {
-        tile.classList.add('flipped');
-        // You could hook up sound effects here later
-      }
-    }
-
-    // Strike Animation
-    function triggerStrike() {
+    function triggerTimeOut() {
+      if (!roundActive) return;
+      
+      // Show big X for running out of time
       const overlay = document.getElementById('strikeOverlay');
+      const strikeMark = document.querySelector('.strike-mark');
+      strikeMark.innerText = 'TIME!';
       overlay.classList.add('show');
-      // Hide after 1.5 seconds
+      
       setTimeout(() => {
         overlay.classList.remove('show');
+        endRound(false); // End round automatically when time is up
       }, 1500);
     }
 
-    // Navigation Controls
+    function handleEnter(e) {
+      if(e.key === 'Enter') submitGuess();
+    }
+
+    function submitGuess() {
+      if (!roundActive) return;
+
+      const inputField = document.getElementById('guessInput');
+      const guess = inputField.value.trim().toLowerCase();
+      
+      if (guess.length < 2) return;
+
+      let matchFound = false;
+
+      for (let i = 0; i < currentAnswers.length; i++) {
+        let ans = currentAnswers[i];
+        
+        if (!ans.revealed) {
+          // Check main text match
+          let textMatch = ans.text.toLowerCase().includes(guess);
+          
+          // Check keyword match
+          let keywordMatch = false;
+          if (ans.keywords && Array.isArray(ans.keywords)) {
+            keywordMatch = ans.keywords.some(keyword => {
+              const kw = keyword.toLowerCase();
+              return guess.includes(kw) || kw.includes(guess);
+            });
+          }
+
+          if (textMatch || keywordMatch) {
+            revealTile(i, ans.points);
+            matchFound = true;
+            break;
+          }
+        }
+      }
+
+      if (matchFound) {
+        inputField.value = '';
+        checkRoundWin();
+      } else {
+        triggerStrike();
+      }
+    }
+
+    function revealTile(index, points) {
+      const tile = document.getElementById(`tile-${index}`);
+      if (tile && !currentAnswers[index].revealed) {
+        tile.classList.add('flipped');
+        currentAnswers[index].revealed = true;
+        revealedTiles++;
+        
+        if (points > 0) {
+          totalScore += points;
+          document.getElementById('scoreText').innerText = totalScore;
+        }
+      }
+    }
+
+    function triggerStrike() {
+      currentStrikes++;
+      updateStrikeUI();
+
+      const overlay = document.getElementById('strikeOverlay');
+      const strikeMark = document.querySelector('.strike-mark');
+      strikeMark.innerText = 'X'.repeat(currentStrikes);
+      
+      overlay.classList.add('show');
+      
+      setTimeout(() => {
+        overlay.classList.remove('show');
+        if (currentStrikes >= 3) {
+          endRound(false);
+        } else {
+          document.getElementById('guessInput').value = '';
+          document.getElementById('guessInput').focus();
+        }
+      }, 1500);
+    }
+
+    function updateStrikeUI() {
+      for(let i = 1; i <= 3; i++) {
+        const x = document.getElementById(`strike-${i}`);
+        if(i <= currentStrikes) {
+          x.classList.add('active');
+        } else {
+          x.classList.remove('active');
+        }
+      }
+    }
+
+    function checkRoundWin() {
+      if (revealedTiles === currentAnswers.length) {
+        endRound(true);
+      }
+    }
+
+    function endRound(perfect) {
+      roundActive = false;
+      clearInterval(roundTimer);
+      document.getElementById('playerConsole').style.display = 'none';
+      document.getElementById('nextBtn').classList.add('show');
+
+      // Flip remaining missed tiles
+      if (!perfect) {
+        currentAnswers.forEach((ans, i) => {
+          if (!ans.revealed) {
+            const tile = document.getElementById(`tile-${i}`);
+            tile.classList.add('missed');
+            setTimeout(() => { tile.classList.add('flipped'); }, i * 300);
+          }
+        });
+      }
+    }
+
     function nextQuestion() {
       if (currentIndex < questionBank.length - 1) {
         currentIndex++;
         loadQuestion(currentIndex);
+      } else {
+        showGameOver();
       }
     }
 
-    function prevQuestion() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        loadQuestion(currentIndex);
-      }
+    function showGameOver() {
+      document.getElementById('finalScoreText').innerText = totalScore;
+      document.getElementById('gameOverScreen').classList.add('show');
+    }
+
+    function restartGame() {
+      currentIndex = 0;
+      totalScore = 0;
+      document.getElementById('scoreText').innerText = '0';
+      document.getElementById('gameOverScreen').classList.remove('show');
+      loadQuestion(currentIndex);
     }
 
     // Load initial data
