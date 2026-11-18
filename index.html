@@ -11,6 +11,7 @@
       --accent-gold: #FED141;
       --text-light: #e0e1dd;
       --strike-red: #d90429;
+      --emerald: #00A74A;
     }
 
     body {
@@ -45,12 +46,23 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .score-display {
       font-size: 22px;
       font-weight: bold;
       color: var(--accent-gold);
+    }
+
+    .high-score-display {
+      font-size: 16px;
+      font-weight: bold;
+      color: #4caf50;
+      background: #141414;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid #2e4d30;
     }
 
     .round-display {
@@ -431,14 +443,36 @@
     .game-over-title {
       font-size: 60px;
       color: var(--accent-gold);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-transform: uppercase;
       letter-spacing: 3px;
     }
 
+    .new-high-badge {
+      display: none;
+      font-size: 22px;
+      font-weight: bold;
+      color: #000;
+      background: var(--accent-gold);
+      padding: 6px 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px rgba(254, 209, 65, 0.5);
+    }
+
+    .new-high-badge.show { display: inline-block; }
+
     .game-over-score {
       font-size: 45px;
       color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .game-over-high-score {
+      font-size: 24px;
+      color: #4caf50;
+      font-weight: bold;
       margin-bottom: 40px;
     }
   </style>
@@ -449,6 +483,7 @@
   <div class="hud">
     <div class="hud-section">
       <div class="score-display">SCORE: <span id="scoreText">0</span></div>
+      <div class="high-score-display">BEST: <span id="highScoreText">0</span></div>
       <div class="round-display" id="roundText">ROUND 1 / 50</div>
     </div>
 
@@ -472,7 +507,7 @@
   <div class="start-screen" id="startScreen">
     <h1 class="start-title">Family Feud</h1>
     <p class="start-subtitle">
-      Solo Arcade Edition &bull; 50 Rounds<br>
+      Solo Arcade Edition &bull; 50 Shuffled Rounds<br>
       Clear the board before time runs out. 3 strikes and you're out!
     </p>
     <div class="timer-selector">
@@ -506,7 +541,9 @@
   <!-- Custom Game Over Screen -->
   <div class="game-over-screen" id="gameOverScreen">
     <div class="game-over-title">Game Over</div>
+    <div class="new-high-badge" id="newHighBadge">★ NEW HIGH SCORE! ★</div>
     <div class="game-over-score">Final Score: <span id="finalScoreText">0</span></div>
+    <div class="game-over-high-score">All-Time Best: <span id="finalHighScoreText">0</span></div>
     <button class="play-again-btn" onclick="restartGame()">Play Again</button>
   </div>
 
@@ -1062,9 +1099,15 @@
       }
     ];
 
+    // Persistent High Score Key
+    const HIGH_SCORE_KEY = 'familyFeudSoloHighScore';
+
     // Game State
+    let activeQuestions = [];
     let currentIndex = 0;
     let totalScore = 0;
+    let highScore = parseInt(localStorage.getItem(HIGH_SCORE_KEY), 10) || 0;
+    let beatHighScoreThisRun = false;
     let currentStrikes = 0;
     let revealedTiles = 0;
     let currentAnswers = [];
@@ -1080,6 +1123,25 @@
     let audioCtx = null;
     let isMuted = false;
     let masterVolume = 0.5;
+
+    // Fisher-Yates Shuffle
+    function shuffleQuestions() {
+      const shuffled = [...questionBank];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+
+    function updateHighScore(score) {
+      if (score > highScore) {
+        highScore = score;
+        beatHighScoreThisRun = true;
+        localStorage.setItem(HIGH_SCORE_KEY, highScore);
+        document.getElementById('highScoreText').innerText = highScore;
+      }
+    }
 
     function initAudio() {
       if (!audioCtx) {
@@ -1131,7 +1193,7 @@
       if (isMuted || masterVolume <= 0) return;
       initAudio();
       const now = audioCtx.currentTime;
-      const freqs = [1046.50, 1318.51, 2093.00]; // C6, E6, C7 harmonic bell
+      const freqs = [1046.50, 1318.51, 2093.00];
       freqs.forEach((freq, idx) => {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
@@ -1150,7 +1212,7 @@
       });
     }
 
-    // Helper: Studio Game Show Buzzer Voice (Filtered PA Horn + Mechanical Rattle)
+    // Helper: Studio Game Show Buzzer Voice
     function triggerStudioBuzzer(startTime, duration, baseFreq = 73.42) {
       const envGain = audioCtx.createGain();
       envGain.gain.setValueAtTime(0.001, startTime);
@@ -1247,14 +1309,19 @@
     // Start Game from BEGIN Button
     function startGame() {
       initAudio();
+      activeQuestions = shuffleQuestions();
+      currentIndex = 0;
+      totalScore = 0;
+      beatHighScoreThisRun = false;
+      document.getElementById('scoreText').innerText = '0';
       document.getElementById('startScreen').classList.add('hidden');
       loadQuestion(currentIndex);
     }
 
     function loadQuestion(index) {
-      const qData = questionBank[index];
+      const qData = activeQuestions[index];
       document.getElementById('questionText').innerText = qData.question;
-      document.getElementById('roundText').innerText = `ROUND ${index + 1} / ${questionBank.length}`;
+      document.getElementById('roundText').innerText = `ROUND ${index + 1} / ${activeQuestions.length}`;
       
       // Reset Round State
       currentStrikes = 0;
@@ -1305,7 +1372,6 @@
           clearInterval(roundTimer);
           return;
         }
-        // Pause clock briefly while strike X is flashing
         if (isAnimatingStrike) return;
         
         timeLeft--;
@@ -1406,6 +1472,7 @@
         if (points > 0) {
           totalScore += points;
           document.getElementById('scoreText').innerText = totalScore;
+          updateHighScore(totalScore);
         }
       }
     }
@@ -1473,7 +1540,7 @@
     }
 
     function nextQuestion() {
-      if (currentIndex < questionBank.length - 1) {
+      if (currentIndex < activeQuestions.length - 1) {
         currentIndex++;
         loadQuestion(currentIndex);
       } else {
@@ -1482,22 +1549,35 @@
     }
 
     function showGameOver() {
+      updateHighScore(totalScore);
       document.getElementById('finalScoreText').innerText = totalScore;
+      document.getElementById('finalHighScoreText').innerText = highScore;
+
+      const badge = document.getElementById('newHighBadge');
+      if (beatHighScoreThisRun && totalScore > 0) {
+        badge.classList.add('show');
+      } else {
+        badge.classList.remove('show');
+      }
+
       document.getElementById('gameOverScreen').classList.add('show');
     }
 
     function restartGame() {
+      activeQuestions = shuffleQuestions();
       currentIndex = 0;
       totalScore = 0;
+      beatHighScoreThisRun = false;
       document.getElementById('scoreText').innerText = '0';
       document.getElementById('gameOverScreen').classList.remove('show');
       loadQuestion(currentIndex);
     }
 
-    // Set initial round counter display without starting timer
+    // Initialize HUD on page load without starting timer
     window.onload = () => {
       document.getElementById('roundText').innerText = `ROUND 1 / ${questionBank.length}`;
       document.getElementById('timerDisplay').innerText = selectedRoundTime;
+      document.getElementById('highScoreText').innerText = highScore;
     };
   </script>
 
