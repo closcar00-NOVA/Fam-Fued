@@ -22,19 +22,23 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    /* SCORE, TIMER & STRIKE HUD */
+    /* SCORE, TIMER, AUDIO & STRIKE HUD */
     .hud {
       width: 100%;
       background: #000;
-      padding: 15px 30px;
+      padding: 12px 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
       box-sizing: border-box;
       border-bottom: 2px solid var(--accent-gold);
+      position: relative;
+      z-index: 1500;
     }
     
     .hud-section {
@@ -44,9 +48,15 @@
     }
 
     .score-display {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
       color: var(--accent-gold);
+    }
+
+    .round-display {
+      font-size: 16px;
+      color: #aaa;
+      font-weight: bold;
     }
 
     .timer-display {
@@ -54,7 +64,7 @@
       font-weight: bold;
       color: #fff;
       background: #222;
-      padding: 5px 15px;
+      padding: 5px 18px;
       border-radius: 6px;
       border: 2px solid #555;
       min-width: 50px;
@@ -70,16 +80,54 @@
 
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 4, 41, 0.7); }
-      50% { transform: scale(1.05); box-shadow: 0 0 10px 5px rgba(217, 4, 41, 0) }
+      50% { transform: scale(1.05); box-shadow: 0 0 10px 5px rgba(217, 4, 41, 0); }
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 4, 41, 0); }
+    }
+
+    /* AUDIO CONTROLS */
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1a1a1a;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid #333;
+    }
+
+    .sound-toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--accent-gold);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 2px 5px;
+      line-height: 1;
+      transition: transform 0.15s;
+    }
+
+    .sound-toggle-btn:hover {
+      transform: scale(1.15);
+    }
+
+    .sound-toggle-btn.muted {
+      color: #666;
+    }
+
+    .volume-slider {
+      width: 85px;
+      cursor: pointer;
+      accent-color: var(--accent-gold);
     }
 
     .strike-tracker {
       display: flex;
       gap: 10px;
       font-size: 30px;
-      color: #333; 
+      color: #333;
+      font-weight: bold;
     }
+
     .strike-tracker span.active {
       color: var(--strike-red);
       text-shadow: 0 0 10px var(--strike-red);
@@ -95,6 +143,7 @@
       width: 100%;
       max-width: 1000px;
       padding: 20px;
+      box-sizing: border-box;
     }
 
     .question-display {
@@ -123,6 +172,7 @@
       height: 70px;
       perspective: 1000px;
     }
+
     .tile-inner {
       position: relative;
       width: 100%;
@@ -132,6 +182,7 @@
       transform-style: preserve-3d;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
+
     .tile.flipped .tile-inner { transform: rotateX(180deg); }
     
     .tile-front, .tile-back {
@@ -146,6 +197,7 @@
       border-radius: 8px;
       box-sizing: border-box;
     }
+
     .tile-front {
       background: linear-gradient(to bottom, #1b263b, #0d1b2a);
       justify-content: center;
@@ -153,12 +205,14 @@
       font-weight: bold;
       color: #778da9;
     }
+
     .tile-back {
       background: linear-gradient(to bottom, #001233, #001845);
       transform: rotateX(180deg);
       border-color: var(--accent-gold);
       padding: 0 15px;
     }
+
     .tile.missed .tile-back {
       border-color: var(--strike-red);
       color: #999;
@@ -171,12 +225,14 @@
       font-weight: bold;
       text-transform: uppercase;
     }
+
     .answer-points {
       font-size: 26px;
       font-weight: bold;
       color: var(--accent-gold);
       border-left: 2px solid var(--accent-gold);
       padding-left: 15px;
+      min-width: 40px;
     }
 
     /* PLAYER INPUT CONSOLE */
@@ -186,6 +242,7 @@
       width: 100%;
       max-width: 600px;
     }
+
     .player-console input {
       flex: 1;
       padding: 15px;
@@ -196,9 +253,11 @@
       color: #fff;
       outline: none;
     }
+
     .player-console input:focus {
       box-shadow: 0 0 10px rgba(254, 209, 65, 0.5);
     }
+
     .player-console button {
       padding: 15px 30px;
       font-size: 18px;
@@ -210,6 +269,7 @@
       color: #000;
       transition: background 0.2s;
     }
+
     .player-console button:hover { background: #fff; }
     
     .next-btn {
@@ -223,8 +283,72 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
+      transition: transform 0.15s, background 0.2s;
     }
+
+    .next-btn:hover {
+      background: #45a049;
+      transform: scale(1.03);
+    }
+
     .next-btn.show { display: block; }
+
+    /* OVERLAYS (START, STRIKE, GAME OVER) */
+    .start-screen, .game-over-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(13, 27, 42, 0.96);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1200;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: opacity 0.4s;
+    }
+
+    .start-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .start-title {
+      font-size: 56px;
+      color: var(--accent-gold);
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 4px 20px rgba(254, 209, 65, 0.3);
+    }
+
+    .start-subtitle {
+      font-size: 20px;
+      color: #bbb;
+      margin-bottom: 35px;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+
+    .begin-btn, .play-again-btn {
+      padding: 18px 60px;
+      font-size: 26px;
+      background: var(--accent-gold);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 2px;
+      box-shadow: 0 8px 25px rgba(254, 209, 65, 0.3);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .begin-btn:hover, .play-again-btn:hover {
+      background: #fff;
+      transform: scale(1.06);
+    }
 
     /* STRIKE OVERLAY */
     .strike-overlay {
@@ -234,37 +358,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      z-index: 1800;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s;
     }
+
     .strike-overlay.show { opacity: 1; pointer-events: all; }
+
     .strike-mark {
-      font-size: 400px;
+      font-size: 280px;
       color: var(--strike-red);
       font-weight: bold;
       text-shadow: 0 0 40px #000;
       transform: scale(0.5);
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .strike-overlay.show .strike-mark { transform: scale(1); }
 
     /* GAME OVER SCREEN */
     .game-over-screen {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       z-index: 2000;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.5s;
     }
+
     .game-over-screen.show { opacity: 1; pointer-events: all; }
+
     .game-over-title {
       font-size: 60px;
       color: var(--accent-gold);
@@ -272,27 +393,12 @@
       text-transform: uppercase;
       letter-spacing: 3px;
     }
+
     .game-over-score {
       font-size: 45px;
       color: #fff;
       margin-bottom: 40px;
     }
-    .play-again-btn {
-      padding: 15px 50px;
-      font-size: 24px;
-      background: var(--accent-gold);
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .play-again-btn:hover {
-      background: #fff;
-      transform: scale(1.05);
-    }
-
   </style>
 </head>
 <body>
@@ -301,9 +407,17 @@
   <div class="hud">
     <div class="hud-section">
       <div class="score-display">SCORE: <span id="scoreText">0</span></div>
+      <div class="round-display" id="roundText">ROUND 1 / 25</div>
     </div>
+
     <div class="timer-display" id="timerDisplay">30</div>
+
     <div class="hud-section">
+      <div class="audio-controls" title="Sound Controls">
+        <button id="soundToggleBtn" class="sound-toggle-btn" onclick="toggleSound()" aria-label="Toggle Sound">🔊</button>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="0.5" oninput="updateVolume(this.value)">
+      </div>
+
       <div class="strike-tracker" id="strikeTracker">
         <span id="strike-1">X</span>
         <span id="strike-2">X</span>
@@ -312,9 +426,19 @@
     </div>
   </div>
 
+  <!-- Start Screen Overlay -->
+  <div class="start-screen" id="startScreen">
+    <h1 class="start-title">Family Feud</h1>
+    <p class="start-subtitle">
+      Solo Arcade Edition<br>
+      Clear the board before time runs out. 30 seconds per round &bull; 3 strikes and you're out!
+    </p>
+    <button class="begin-btn" onclick="startGame()">BEGIN</button>
+  </div>
+
   <!-- Main Game Board -->
   <div class="game-container">
-    <div class="question-display" id="questionText">Loading Question...</div>
+    <div class="question-display" id="questionText">Ready to Play...</div>
     
     <div class="board" id="board"></div>
 
@@ -326,9 +450,9 @@
     <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Round &#9654;</button>
   </div>
 
-  <!-- Strike Animation -->
+  <!-- Strike / Time's Up Animation -->
   <div class="strike-overlay" id="strikeOverlay">
-    <div class="strike-mark">X</div>
+    <div class="strike-mark" id="strikeMark">X</div>
   </div>
 
   <!-- Custom Game Over Screen -->
@@ -339,7 +463,7 @@
   </div>
 
   <script>
-    // First two questions have the new 'keywords' property added for testing smart matching
+    // Full 25 questions bank (first two pre-loaded with smart keywords for testing)
     const questionBank = [
       {
         "question": "Name a reason someone might secretly check their partner's phone.",
@@ -363,7 +487,6 @@
           {"text": "Swear off drinking", "points": 4, "keywords": ["never drink again", "quit alcohol", "stop drinking"]}
         ]
       },
-      // You can generate the rest with keywords via Google AI Studio and paste them here
       {
         "question": "Name a place you definitely don't want your boss to catch you.",
         "answers": [
@@ -374,28 +497,415 @@
           {"text": "A strip club", "points": 8},
           {"text": "Stealing office supplies", "points": 5}
         ]
+      },
+      {
+        "question": "Name something a person might fake.",
+        "answers": [
+          {"text": "An orgasm", "points": 40},
+          {"text": "Being sick", "points": 30},
+          {"text": "A smile/Being happy", "points": 15},
+          {"text": "Liking a gift", "points": 8},
+          {"text": "Listening/Interest", "points": 4},
+          {"text": "Confidence", "points": 3}
+        ]
+      },
+      {
+        "question": "Name a reason you might pretend not to see someone you know in public.",
+        "answers": [
+          {"text": "You owe them money", "points": 35},
+          {"text": "They talk too much", "points": 25},
+          {"text": "You look like a mess", "points": 15},
+          {"text": "They are an ex", "points": 12},
+          {"text": "You're in a hurry", "points": 8},
+          {"text": "You just don't like them", "points": 5}
+        ]
+      },
+      {
+        "question": "Name a place people often have sex that isn't a bed.",
+        "answers": [
+          {"text": "Couch/Sofa", "points": 35},
+          {"text": "The shower/Tub", "points": 25},
+          {"text": "In a car", "points": 20},
+          {"text": "On the floor", "points": 10},
+          {"text": "Kitchen counter", "points": 7},
+          {"text": "Hotel balcony", "points": 3}
+        ]
+      },
+      {
+        "question": "Name something you lie about on a first date to sound better.",
+        "answers": [
+          {"text": "Your income/Job", "points": 35},
+          {"text": "Your age", "points": 25},
+          {"text": "Your hobbies/Interests", "points": 15},
+          {"text": "Body count/Past relationships", "points": 12},
+          {"text": "Living situation", "points": 8},
+          {"text": "Cooking skills", "points": 5}
+        ]
+      },
+      {
+        "question": "Name an excuse people use to leave a bad date early.",
+        "answers": [
+          {"text": "Sick/Not feeling well", "points": 40},
+          {"text": "Fake emergency call", "points": 25},
+          {"text": "Early morning tomorrow", "points": 15},
+          {"text": "Pet needs to be fed/walked", "points": 10},
+          {"text": "Friend needs help", "points": 6},
+          {"text": "Tired/Headache", "points": 4}
+        ]
+      },
+      {
+        "question": "Name a common regret after a wild night out.",
+        "answers": [
+          {"text": "Drinking too much/Hangover", "points": 40},
+          {"text": "Spending too much money", "points": 25},
+          {"text": "Hooking up with someone", "points": 15},
+          {"text": "Texting an ex", "points": 10},
+          {"text": "Posting embarrassing photos", "points": 7},
+          {"text": "Losing phone/wallet", "points": 3}
+        ]
+      },
+      {
+        "question": "Name something people do when they think no one is watching.",
+        "answers": [
+          {"text": "Pick their nose", "points": 45},
+          {"text": "Scratch inappropriate places", "points": 25},
+          {"text": "Adjust underwear", "points": 15},
+          {"text": "Talk to themselves", "points": 7},
+          {"text": "Smell their armpits", "points": 5},
+          {"text": "Fart", "points": 3}
+        ]
+      },
+      {
+        "question": "Name something you might buy at a convenience store at 2 AM.",
+        "answers": [
+          {"text": "Condoms", "points": 35},
+          {"text": "Beer/Alcohol", "points": 25},
+          {"text": "Junk food/Snacks", "points": 20},
+          {"text": "Cigarettes/Vapes", "points": 10},
+          {"text": "Pain medicine", "points": 6},
+          {"text": "Energy drinks", "points": 4}
+        ]
+      },
+      {
+        "question": "Name something that might get you kicked out of a bar.",
+        "answers": [
+          {"text": "Fighting", "points": 45},
+          {"text": "Being too drunk", "points": 25},
+          {"text": "Throwing up", "points": 15},
+          {"text": "Disrespecting the bartender", "points": 8},
+          {"text": "Not paying the tab", "points": 4},
+          {"text": "Underage/Fake ID", "points": 3}
+        ]
+      },
+      {
+        "question": "Name a sign that you're definitely getting older.",
+        "answers": [
+          {"text": "Body aches/Knee pain", "points": 35},
+          {"text": "Going to bed early", "points": 25},
+          {"text": "Gray hair", "points": 20},
+          {"text": "Hangovers last for days", "points": 10},
+          {"text": "Excited about home appliances", "points": 6},
+          {"text": "Forgetting names", "points": 4}
+        ]
+      },
+      {
+        "question": "Name a reason someone might wear sunglasses indoors.",
+        "answers": [
+          {"text": "Hungover", "points": 45},
+          {"text": "Black eye", "points": 25},
+          {"text": "They think they look cool", "points": 12},
+          {"text": "High/Red eyes", "points": 10},
+          {"text": "Eye doctor dilation", "points": 5},
+          {"text": "Hiding from someone", "points": 3}
+        ]
+      },
+      {
+        "question": "Name a profession where people are known to sleep around.",
+        "answers": [
+          {"text": "Musician/Rockstar", "points": 35},
+          {"text": "Actor/Celebrity", "points": 25},
+          {"text": "Doctor/Nurse", "points": 15},
+          {"text": "Bartender", "points": 12},
+          {"text": "Flight Attendant", "points": 8},
+          {"text": "Athlete", "points": 5}
+        ]
+      },
+      {
+        "question": "Name something a man might leave at a woman's house to mark his territory.",
+        "answers": [
+          {"text": "Hoodie/Jacket", "points": 40},
+          {"text": "Toothbrush", "points": 30},
+          {"text": "Boxers/Underwear", "points": 15},
+          {"text": "Cologne", "points": 7},
+          {"text": "Watch", "points": 5},
+          {"text": "Phone charger", "points": 3}
+        ]
+      },
+      {
+        "question": "Name a topic you should avoid bringing up at Thanksgiving dinner.",
+        "answers": [
+          {"text": "Politics", "points": 55},
+          {"text": "Religion", "points": 20},
+          {"text": "Money/Debt", "points": 10},
+          {"text": "Exes/Divorce", "points": 8},
+          {"text": "Family drama", "points": 5},
+          {"text": "Weight/Diet", "points": 2}
+        ]
+      },
+      {
+        "question": "Name something you might whisper during a movie.",
+        "answers": [
+          {"text": "What did they say?", "points": 35},
+          {"text": "I have to pee", "points": 25},
+          {"text": "Who is that?", "points": 20},
+          {"text": "Pass the popcorn", "points": 10},
+          {"text": "This movie sucks", "points": 6},
+          {"text": "I love you", "points": 4}
+        ]
+      },
+      {
+        "question": "Name something you do in the shower besides washing.",
+        "answers": [
+          {"text": "Sing", "points": 35},
+          {"text": "Pee", "points": 30},
+          {"text": "Shave", "points": 15},
+          {"text": "Cry", "points": 8},
+          {"text": "Think/Argue in your head", "points": 7},
+          {"text": "Masturbate", "points": 5}
+        ]
+      },
+      {
+        "question": "Name a piece of clothing you take off as soon as you get home.",
+        "answers": [
+          {"text": "Shoes", "points": 40},
+          {"text": "Bra", "points": 35},
+          {"text": "Pants/Jeans", "points": 15},
+          {"text": "Tie", "points": 5},
+          {"text": "Socks", "points": 3},
+          {"text": "Jacket", "points": 2}
+        ]
+      },
+      {
+        "question": "Name something people hide when guests come over.",
+        "answers": [
+          {"text": "Mess/Clutter", "points": 40},
+          {"text": "Dirty laundry", "points": 25},
+          {"text": "Valuables/Money", "points": 15},
+          {"text": "Sex toys", "points": 10},
+          {"text": "Medications", "points": 6},
+          {"text": "Bongs/Weed", "points": 4}
+        ]
+      },
+      {
+        "question": "Name a reason someone might block you on social media.",
+        "answers": [
+          {"text": "Bad breakup/Ex", "points": 45},
+          {"text": "Too annoying/Spamming", "points": 20},
+          {"text": "Creepy messages", "points": 15},
+          {"text": "Owe them money", "points": 10},
+          {"text": "Political arguments", "points": 6},
+          {"text": "They got a new partner", "points": 4}
+        ]
+      },
+      {
+        "question": "Name a bad habit you wouldn't want to admit on a first date.",
+        "answers": [
+          {"text": "Picking nose", "points": 30},
+          {"text": "Biting nails", "points": 25},
+          {"text": "Smoking", "points": 15},
+          {"text": "Being messy", "points": 12},
+          {"text": "Snoring", "points": 10},
+          {"text": "Drinking too much", "points": 8}
+        ]
+      },
+      {
+        "question": "Name a place you might go to cry in private.",
+        "answers": [
+          {"text": "The shower", "points": 40},
+          {"text": "Your car", "points": 30},
+          {"text": "Bedroom/Closet", "points": 15},
+          {"text": "Work bathroom", "points": 10},
+          {"text": "The woods/Outdoors", "points": 3},
+          {"text": "Stairwell", "points": 2}
+        ]
+      },
+      {
+        "question": "Name a warning sign that your relationship might be over.",
+        "answers": [
+          {"text": "Stop talking/communicating", "points": 35},
+          {"text": "No sex/intimacy", "points": 25},
+          {"text": "Constant fighting", "points": 20},
+          {"text": "Hiding their phone", "points": 10},
+          {"text": "Spending all time apart", "points": 6},
+          {"text": "Cheating", "points": 4}
+        ]
       }
     ];
 
+    // Game State
     let currentIndex = 0;
     let totalScore = 0;
     let currentStrikes = 0;
     let revealedTiles = 0;
     let currentAnswers = [];
-    let roundActive = true;
+    let roundActive = false;
+    let isAnimatingStrike = false;
     
-    // Timer Variables
+    // Timer State
     let roundTimer;
     let timeLeft = 30;
+
+    // Audio State (Web Audio API)
+    let audioCtx = null;
+    let isMuted = false;
+    let masterVolume = 0.5;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleSound() {
+      isMuted = !isMuted;
+      const btn = document.getElementById('soundToggleBtn');
+      if (isMuted) {
+        btn.innerText = '🔇';
+        btn.classList.add('muted');
+      } else {
+        btn.innerText = '🔊';
+        btn.classList.remove('muted');
+        initAudio();
+      }
+    }
+
+    function updateVolume(val) {
+      masterVolume = parseFloat(val);
+      const btn = document.getElementById('soundToggleBtn');
+      if (masterVolume === 0) {
+        isMuted = true;
+        btn.innerText = '🔇';
+        btn.classList.add('muted');
+      } else if (isMuted) {
+        isMuted = false;
+        btn.innerText = '🔊';
+        btn.classList.remove('muted');
+      }
+    }
+
+    // 1. Correct Answer "Ding!"
+    function playCorrectSound() {
+      if (isMuted || masterVolume <= 0) return;
+      initAudio();
+      const now = audioCtx.currentTime;
+      const freqs = [1046.50, 1318.51, 2093.00]; // C6, E6, C7 harmonic bell
+      freqs.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = idx === 0 ? 'triangle' : 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+
+        const vol = (idx === 0 ? 0.35 : 0.18) * masterVolume;
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.exponentialRampToValueAtTime(vol, now + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.7);
+      });
+    }
+
+    // 2. Wrong Answer Strike "BZZT!"
+    function playWrongSound() {
+      if (isMuted || masterVolume <= 0) return;
+      initAudio();
+      const now = audioCtx.currentTime;
+      const freqs = [110, 117, 165]; // Classic harsh buzzer cluster
+      freqs.forEach(freq => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, now);
+
+        const vol = 0.18 * masterVolume;
+        gain.gain.setValueAtTime(vol, now);
+        gain.gain.setValueAtTime(vol, now + 0.35);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.52);
+      });
+    }
+
+    // 3. Time's Up Horn
+    function playTimeUpSound() {
+      if (isMuted || masterVolume <= 0) return;
+      initAudio();
+      const now = audioCtx.currentTime;
+      const freqs = [98, 104, 147]; // Deeper, descending horn
+      freqs.forEach(freq => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, now);
+        osc.frequency.linearRampToValueAtTime(freq * 0.82, now + 0.9);
+
+        const vol = 0.2 * masterVolume;
+        gain.gain.setValueAtTime(vol, now);
+        gain.gain.setValueAtTime(vol, now + 0.75);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.0);
+      });
+    }
+
+    // 4. Subtle Countdown Tick (last 5 seconds)
+    function playTickSound() {
+      if (isMuted || masterVolume <= 0) return;
+      initAudio();
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, now);
+
+      gain.gain.setValueAtTime(0.12 * masterVolume, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.07);
+    }
+
+    // Start Game from BEGIN Button
+    function startGame() {
+      initAudio();
+      document.getElementById('startScreen').classList.add('hidden');
+      loadQuestion(currentIndex);
+    }
 
     function loadQuestion(index) {
       const qData = questionBank[index];
       document.getElementById('questionText').innerText = qData.question;
+      document.getElementById('roundText').innerText = `ROUND ${index + 1} / ${questionBank.length}`;
       
       // Reset Round State
       currentStrikes = 0;
       revealedTiles = 0;
       roundActive = true;
+      isAnimatingStrike = false;
       updateStrikeUI();
       
       document.getElementById('nextBtn').classList.remove('show');
@@ -440,9 +950,15 @@
           clearInterval(roundTimer);
           return;
         }
+        // Pause clock briefly while strike X is flashing
+        if (isAnimatingStrike) return;
         
         timeLeft--;
         updateTimerUI();
+
+        if (timeLeft <= 5 && timeLeft > 0) {
+          playTickSound();
+        }
         
         if (timeLeft <= 0) {
           clearInterval(roundTimer);
@@ -464,25 +980,27 @@
 
     function triggerTimeOut() {
       if (!roundActive) return;
+      roundActive = false;
+      playTimeUpSound();
       
-      // Show big X for running out of time
       const overlay = document.getElementById('strikeOverlay');
-      const strikeMark = document.querySelector('.strike-mark');
+      const strikeMark = document.getElementById('strikeMark');
       strikeMark.innerText = 'TIME!';
+      strikeMark.style.fontSize = '180px';
       overlay.classList.add('show');
       
       setTimeout(() => {
         overlay.classList.remove('show');
-        endRound(false); // End round automatically when time is up
-      }, 1500);
+        endRound(false);
+      }, 1600);
     }
 
     function handleEnter(e) {
-      if(e.key === 'Enter') submitGuess();
+      if (e.key === 'Enter') submitGuess();
     }
 
     function submitGuess() {
-      if (!roundActive) return;
+      if (!roundActive || isAnimatingStrike) return;
 
       const inputField = document.getElementById('guessInput');
       const guess = inputField.value.trim().toLowerCase();
@@ -495,10 +1013,8 @@
         let ans = currentAnswers[i];
         
         if (!ans.revealed) {
-          // Check main text match
           let textMatch = ans.text.toLowerCase().includes(guess);
           
-          // Check keyword match
           let keywordMatch = false;
           if (ans.keywords && Array.isArray(ans.keywords)) {
             keywordMatch = ans.keywords.some(keyword => {
@@ -516,6 +1032,7 @@
       }
 
       if (matchFound) {
+        playCorrectSound();
         inputField.value = '';
         checkRoundWin();
       } else {
@@ -538,30 +1055,34 @@
     }
 
     function triggerStrike() {
+      isAnimatingStrike = true;
       currentStrikes++;
       updateStrikeUI();
+      playWrongSound();
 
       const overlay = document.getElementById('strikeOverlay');
-      const strikeMark = document.querySelector('.strike-mark');
+      const strikeMark = document.getElementById('strikeMark');
       strikeMark.innerText = 'X'.repeat(currentStrikes);
+      strikeMark.style.fontSize = '280px';
       
       overlay.classList.add('show');
       
       setTimeout(() => {
         overlay.classList.remove('show');
+        isAnimatingStrike = false;
         if (currentStrikes >= 3) {
           endRound(false);
         } else {
           document.getElementById('guessInput').value = '';
           document.getElementById('guessInput').focus();
         }
-      }, 1500);
+      }, 1300);
     }
 
     function updateStrikeUI() {
-      for(let i = 1; i <= 3; i++) {
+      for (let i = 1; i <= 3; i++) {
         const x = document.getElementById(`strike-${i}`);
-        if(i <= currentStrikes) {
+        if (i <= currentStrikes) {
           x.classList.add('active');
         } else {
           x.classList.remove('active');
@@ -583,11 +1104,13 @@
 
       // Flip remaining missed tiles
       if (!perfect) {
+        let delayStep = 0;
         currentAnswers.forEach((ans, i) => {
           if (!ans.revealed) {
             const tile = document.getElementById(`tile-${i}`);
             tile.classList.add('missed');
-            setTimeout(() => { tile.classList.add('flipped'); }, i * 300);
+            setTimeout(() => { tile.classList.add('flipped'); }, delayStep * 300);
+            delayStep++;
           }
         });
       }
@@ -615,8 +1138,10 @@
       loadQuestion(currentIndex);
     }
 
-    // Load initial data
-    window.onload = () => loadQuestion(currentIndex);
+    // Set initial round counter display without starting timer
+    window.onload = () => {
+      document.getElementById('roundText').innerText = `ROUND 1 / ${questionBank.length}`;
+    };
   </script>
 
 </body>
