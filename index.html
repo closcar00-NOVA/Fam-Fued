@@ -221,7 +221,7 @@
     .answer-text {
       flex: 1;
       text-align: left;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: bold;
       text-transform: uppercase;
     }
@@ -326,9 +326,51 @@
     .start-subtitle {
       font-size: 20px;
       color: #bbb;
-      margin-bottom: 35px;
-      max-width: 500px;
+      margin-bottom: 25px;
+      max-width: 520px;
       line-height: 1.5;
+    }
+
+    /* TIMER SELECTOR ON START SCREEN */
+    .timer-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 35px;
+      background: #1b263b;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1px solid #415a77;
+    }
+
+    .timer-selector-label {
+      font-size: 16px;
+      color: #ccc;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    .time-opt-btn {
+      padding: 8px 16px;
+      font-size: 15px;
+      font-weight: bold;
+      background: #0d1b2a;
+      color: #aaa;
+      border: 2px solid #415a77;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .time-opt-btn:hover {
+      border-color: var(--accent-gold);
+      color: #fff;
+    }
+
+    .time-opt-btn.selected {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
     }
 
     .begin-btn, .play-again-btn {
@@ -407,10 +449,10 @@
   <div class="hud">
     <div class="hud-section">
       <div class="score-display">SCORE: <span id="scoreText">0</span></div>
-      <div class="round-display" id="roundText">ROUND 1 / 25</div>
+      <div class="round-display" id="roundText">ROUND 1 / 50</div>
     </div>
 
-    <div class="timer-display" id="timerDisplay">30</div>
+    <div class="timer-display" id="timerDisplay">60</div>
 
     <div class="hud-section">
       <div class="audio-controls" title="Sound Controls">
@@ -430,9 +472,15 @@
   <div class="start-screen" id="startScreen">
     <h1 class="start-title">Family Feud</h1>
     <p class="start-subtitle">
-      Solo Arcade Edition<br>
-      Clear the board before time runs out. 30 seconds per round &bull; 3 strikes and you're out!
+      Solo Arcade Edition &bull; 50 Rounds<br>
+      Clear the board before time runs out. 3 strikes and you're out!
     </p>
+    <div class="timer-selector">
+      <span class="timer-selector-label">Round Timer:</span>
+      <button class="time-opt-btn" onclick="setRoundDuration(45, this)">45s</button>
+      <button class="time-opt-btn selected" onclick="setRoundDuration(60, this)">60s</button>
+      <button class="time-opt-btn" onclick="setRoundDuration(90, this)">90s</button>
+    </div>
     <button class="begin-btn" onclick="startGame()">BEGIN</button>
   </div>
 
@@ -463,7 +511,7 @@
   </div>
 
   <script>
-    // Full 25 questions bank (first two pre-loaded with smart keywords for testing)
+    // Full 50-question bank
     const questionBank = [
       {
         "question": "Name a reason someone might secretly check their partner's phone.",
@@ -739,6 +787,278 @@
           {"text": "Spending all time apart", "points": 6},
           {"text": "Cheating", "points": 4}
         ]
+      },
+      {
+        "question": "Name something you might delete from your search history before letting someone use your phone.",
+        "answers": [
+          {"text": "Porn/Adult sites", "points": 45},
+          {"text": "Embarrassing medical symptoms", "points": 20},
+          {"text": "Ex's social media", "points": 15},
+          {"text": "Stupid/Basic questions", "points": 10},
+          {"text": "Surprise gift ideas", "points": 6},
+          {"text": "Job hunting", "points": 4}
+        ]
+      },
+      {
+        "question": "Name a reason someone might walk out of a bedroom looking disappointed.",
+        "answers": [
+          {"text": "Bad sex", "points": 42},
+          {"text": "Partner fell asleep", "points": 22},
+          {"text": "Outfit doesn't fit", "points": 16},
+          {"text": "Couldn't find what they needed", "points": 12},
+          {"text": "Had an argument", "points": 8}
+        ]
+      },
+      {
+        "question": "Name something you might find under a hotel bed that you wish you hadn't.",
+        "answers": [
+          {"text": "Used condom", "points": 38},
+          {"text": "Dirty underwear", "points": 24},
+          {"text": "Old food/Trash", "points": 15},
+          {"text": "Sex toy", "points": 11},
+          {"text": "Drugs/Paraphernalia", "points": 7},
+          {"text": "Dead bug/Mouse", "points": 5}
+        ]
+      },
+      {
+        "question": "Name something you never want to hear right before hooking up.",
+        "answers": [
+          {"text": "The wrong name", "points": 35},
+          {"text": "I have an STI/rash", "points": 25},
+          {"text": "I forgot protection", "points": 15},
+          {"text": "Let me call my ex/mom", "points": 10},
+          {"text": "Make it quick", "points": 9},
+          {"text": "Are we filming this?", "points": 6}
+        ]
+      },
+      {
+        "question": "Name something people lie about to their doctor.",
+        "answers": [
+          {"text": "How much they drink", "points": 35},
+          {"text": "Their weight", "points": 20},
+          {"text": "Exercise habits", "points": 15},
+          {"text": "Smoking/Drug use", "points": 12},
+          {"text": "Their diet", "points": 10},
+          {"text": "Number of sexual partners", "points": 8}
+        ]
+      },
+      {
+        "question": "Name a place where you would be mortified to run into your ex.",
+        "answers": [
+          {"text": "On a date with someone new", "points": 32},
+          {"text": "Grocery store in pajamas", "points": 24},
+          {"text": "The gym looking sweaty", "points": 18},
+          {"text": "Doctor's office/Clinic", "points": 12},
+          {"text": "A hotel lobby", "points": 8},
+          {"text": "A strip club", "points": 6}
+        ]
+      },
+      {
+        "question": "Name something people do in the car when they think no one can see them.",
+        "answers": [
+          {"text": "Pick their nose", "points": 40},
+          {"text": "Sing at the top of their lungs", "points": 25},
+          {"text": "Curse/Yell at drivers", "points": 14},
+          {"text": "Change clothes/Adjust bra", "points": 10},
+          {"text": "Talk to themselves", "points": 6},
+          {"text": "Eat messy food", "points": 5}
+        ]
+      },
+      {
+        "question": "Name an item you would be embarrassed for airport security to pull out of your bag.",
+        "answers": [
+          {"text": "Sex toy/Vibrator", "points": 46},
+          {"text": "Dirty underwear", "points": 20},
+          {"text": "Condoms/Lube", "points": 14},
+          {"text": "Weed/Drugs", "points": 10},
+          {"text": "Embarrassing medication", "points": 6},
+          {"text": "Handcuffs", "points": 4}
+        ]
+      },
+      {
+        "question": "Name a reason you might ghost someone after a first date.",
+        "answers": [
+          {"text": "No chemistry/Boring", "points": 30},
+          {"text": "Creepy/Major red flags", "points": 24},
+          {"text": "Bad breath/Hygiene", "points": 16},
+          {"text": "Talked about their ex", "points": 12},
+          {"text": "Rude to the server", "points": 10},
+          {"text": "Looked nothing like their photos", "points": 8}
+        ]
+      },
+      {
+        "question": "Name something people do at work when they're supposed to be working.",
+        "answers": [
+          {"text": "Scroll social media", "points": 35},
+          {"text": "Online shopping", "points": 24},
+          {"text": "Hide in the bathroom", "points": 16},
+          {"text": "Apply for other jobs", "points": 12},
+          {"text": "Gossip with coworkers", "points": 8},
+          {"text": "Take a nap", "points": 5}
+        ]
+      },
+      {
+        "question": "Name a sign that your neighbor is having a wild night.",
+        "answers": [
+          {"text": "Loud music", "points": 35},
+          {"text": "Loud moaning/Bed banging", "points": 30},
+          {"text": "Police showing up", "points": 15},
+          {"text": "Lots of cars parked outside", "points": 10},
+          {"text": "Smell of weed", "points": 6},
+          {"text": "Breaking glass", "points": 4}
+        ]
+      },
+      {
+        "question": "Name something you definitely shouldn't say to a cop who just pulled you over.",
+        "answers": [
+          {"text": "Do you know who I am?", "points": 30},
+          {"text": "I'm not even drunk", "points": 26},
+          {"text": "Don't you have real criminals to catch?", "points": 18},
+          {"text": "I pay your salary", "points": 12},
+          {"text": "What seems to be the officer, problem?", "points": 8},
+          {"text": "Don't check the trunk", "points": 6}
+        ]
+      },
+      {
+        "question": "Name a reason a couple might get into a fight on vacation.",
+        "answers": [
+          {"text": "Spending too much money", "points": 30},
+          {"text": "Getting lost/Directions", "points": 24},
+          {"text": "Running late/Missing a flight", "points": 18},
+          {"text": "Drinking too much", "points": 12},
+          {"text": "Deciding where to eat", "points": 10},
+          {"text": "Checking out someone else", "points": 6}
+        ]
+      },
+      {
+        "question": "Name something someone might pack 'just in case' they spend the night with a date.",
+        "answers": [
+          {"text": "Toothbrush", "points": 30},
+          {"text": "Extra underwear", "points": 25},
+          {"text": "Deodorant/Makeup", "points": 18},
+          {"text": "Condoms", "points": 14},
+          {"text": "Phone charger", "points": 8},
+          {"text": "Change of clothes", "points": 5}
+        ]
+      },
+      {
+        "question": "Name a guilty pleasure people are embarrassed to admit they enjoy.",
+        "answers": [
+          {"text": "Trashy reality TV", "points": 35},
+          {"text": "Fast food/Junk food", "points": 24},
+          {"text": "Cheesy pop music", "points": 15},
+          {"text": "Stalking people online", "points": 12},
+          {"text": "Popping pimples", "points": 8},
+          {"text": "Spicy romance novels", "points": 6}
+        ]
+      },
+      {
+        "question": "Name something you would panic about accidentally sending to the wrong person.",
+        "answers": [
+          {"text": "Nude photo", "points": 42},
+          {"text": "Talking trash about them", "points": 30},
+          {"text": "A drunk text", "points": 14},
+          {"text": "I love you", "points": 8},
+          {"text": "Bank/Password info", "points": 6}
+        ]
+      },
+      {
+        "question": "Name a reason someone might sneak out of a house at 5 AM.",
+        "answers": [
+          {"text": "Regrettable one-night stand", "points": 45},
+          {"text": "Having an affair", "points": 25},
+          {"text": "Going to work early", "points": 14},
+          {"text": "Avoiding roommates/parents", "points": 10},
+          {"text": "They stole something", "points": 6}
+        ]
+      },
+      {
+        "question": "Name a sound you never want to hear coming from the bathroom stall next to you.",
+        "answers": [
+          {"text": "Explosive farting/Diarrhea", "points": 40},
+          {"text": "Vomiting", "points": 24},
+          {"text": "Someone talking on the phone", "points": 14},
+          {"text": "Moaning/Sex sounds", "points": 10},
+          {"text": "Crying", "points": 7},
+          {"text": "Asking for toilet paper", "points": 5}
+        ]
+      },
+      {
+        "question": "Name something that instantly ruins the mood in the bedroom.",
+        "answers": [
+          {"text": "Phone ringing/Texting", "points": 28},
+          {"text": "Kid or pet walking in", "points": 24},
+          {"text": "Farting", "points": 20},
+          {"text": "Bad breath/Body odor", "points": 12},
+          {"text": "Saying the wrong name", "points": 10},
+          {"text": "Getting a leg cramp", "points": 6}
+        ]
+      },
+      {
+        "question": "Name a reason someone might suddenly start working out and dressing way better.",
+        "answers": [
+          {"text": "Just got dumped/Single", "points": 40},
+          {"text": "Cheating/New crush", "points": 25},
+          {"text": "Upcoming wedding/Reunion", "points": 15},
+          {"text": "New Year's resolution", "points": 10},
+          {"text": "Doctor's warning", "points": 6},
+          {"text": "New job", "points": 4}
+        ]
+      },
+      {
+        "question": "Name something people routinely steal from hotel rooms.",
+        "answers": [
+          {"text": "Towels/Bathrobe", "points": 35},
+          {"text": "Shampoo/Toiletries", "points": 30},
+          {"text": "Pens/Notepads", "points": 14},
+          {"text": "Coffee/Tea packets", "points": 10},
+          {"text": "Pillows", "points": 6},
+          {"text": "Coat hangers", "points": 5}
+        ]
+      },
+      {
+        "question": "Name a classic lie people tell when calling in sick to work.",
+        "answers": [
+          {"text": "Food poisoning/Stomach bug", "points": 35},
+          {"text": "Migraine/Headache", "points": 24},
+          {"text": "Family emergency", "points": 16},
+          {"text": "Fever/Flu", "points": 12},
+          {"text": "Car trouble", "points": 8},
+          {"text": "Doctor's appointment", "points": 5}
+        ]
+      },
+      {
+        "question": "Name something on a dating app profile that is an instant red flag.",
+        "answers": [
+          {"text": "Holding a dead fish", "points": 28},
+          {"text": "Only group photos", "points": 20},
+          {"text": "Shirtless bathroom selfies", "points": 18},
+          {"text": "Bashing their ex/No drama", "points": 15},
+          {"text": "Empty bio", "points": 10},
+          {"text": "Married/Looking for a third", "points": 9}
+        ]
+      },
+      {
+        "question": "Name something people do right after a bad breakup.",
+        "answers": [
+          {"text": "Drink/Go out partying", "points": 28},
+          {"text": "Eat ice cream/Junk food", "points": 22},
+          {"text": "Rebound hookup", "points": 18},
+          {"text": "Change their hair/Look", "points": 12},
+          {"text": "Cry to sad music", "points": 10},
+          {"text": "Hit the gym", "points": 6},
+          {"text": "Stalk their ex online", "points": 4}
+        ]
+      },
+      {
+        "question": "Name a reason you might pretend your phone battery died.",
+        "answers": [
+          {"text": "Avoiding a clingy date/ex", "points": 35},
+          {"text": "Ignoring your boss/work", "points": 25},
+          {"text": "Late/Flaking on plans", "points": 18},
+          {"text": "Didn't want to talk to parents", "points": 12},
+          {"text": "Out somewhere you shouldn't be", "points": 10}
+        ]
       }
     ];
 
@@ -753,7 +1073,8 @@
     
     // Timer State
     let roundTimer;
-    let timeLeft = 30;
+    let selectedRoundTime = 60;
+    let timeLeft = selectedRoundTime;
 
     // Audio State (Web Audio API)
     let audioCtx = null;
@@ -797,6 +1118,14 @@
       }
     }
 
+    function setRoundDuration(seconds, btnEl) {
+      selectedRoundTime = seconds;
+      timeLeft = seconds;
+      document.getElementById('timerDisplay').innerText = seconds;
+      document.querySelectorAll('.time-opt-btn').forEach(b => b.classList.remove('selected'));
+      btnEl.classList.add('selected');
+    }
+
     // 1. Correct Answer "Ding!"
     function playCorrectSound() {
       if (isMuted || masterVolume <= 0) return;
@@ -821,53 +1150,84 @@
       });
     }
 
-    // 2. Wrong Answer Strike "BZZT!"
+    // Helper: Studio Game Show Buzzer Voice (Filtered PA Horn + Mechanical Rattle)
+    function triggerStudioBuzzer(startTime, duration, baseFreq = 73.42) {
+      // Master envelope for this blast
+      const envGain = audioCtx.createGain();
+      envGain.gain.setValueAtTime(0.001, startTime);
+      envGain.gain.linearRampToValueAtTime(0.55 * masterVolume, startTime + 0.018);
+      envGain.gain.setValueAtTime(0.52 * masterVolume, startTime + duration - 0.06);
+      envGain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+
+      // Subtle mechanical buzzer rattle (32 Hz amplitude modulation)
+      const rattleGain = audioCtx.createGain();
+      rattleGain.gain.setValueAtTime(0.85, startTime);
+      const lfo = audioCtx.createOscillator();
+      const lfoDepth = audioCtx.createGain();
+      lfo.type = 'sine';
+      lfo.frequency.setValueAtTime(32, startTime);
+      lfoDepth.gain.setValueAtTime(0.18, startTime);
+      lfo.connect(lfoDepth);
+      lfoDepth.connect(rattleGain.gain);
+
+      // Studio PA Horn EQ: warm low-pass + nasal midrange resonance
+      const lowpass = audioCtx.createBiquadFilter();
+      lowpass.type = 'lowpass';
+      lowpass.frequency.setValueAtTime(950, startTime);
+      lowpass.Q.setValueAtTime(1.2, startTime);
+
+      const nasalPeak = audioCtx.createBiquadFilter();
+      nasalPeak.type = 'peaking';
+      nasalPeak.frequency.setValueAtTime(380, startTime);
+      nasalPeak.Q.setValueAtTime(2.2, startTime);
+      nasalPeak.gain.setValueAtTime(7, startTime);
+
+      // Chain: oscillators -> nasalPeak -> lowpass -> rattleGain -> envGain -> destination
+      nasalPeak.connect(lowpass);
+      lowpass.connect(rattleGain);
+      rattleGain.connect(envGain);
+      envGain.connect(audioCtx.destination);
+
+      // Layered brassy/buzzer harmonics (slight dissonance gives the authentic TV "ENH!")
+      const partials = [
+        { mult: 1.0,  type: 'sawtooth', gain: 0.45 },
+        { mult: 2.0,  type: 'sawtooth', gain: 0.35 },
+        { mult: 2.06, type: 'triangle', gain: 0.30 },
+        { mult: 3.0,  type: 'sawtooth', gain: 0.22 },
+        { mult: 4.12, type: 'triangle', gain: 0.15 }
+      ];
+
+      partials.forEach(p => {
+        const osc = audioCtx.createOscillator();
+        const pGain = audioCtx.createGain();
+        osc.type = p.type;
+        osc.frequency.setValueAtTime(baseFreq * p.mult, startTime);
+        pGain.gain.setValueAtTime(p.gain, startTime);
+        osc.connect(pGain);
+        pGain.connect(nasalPeak);
+        osc.start(startTime);
+        osc.stop(startTime + duration + 0.02);
+      });
+
+      lfo.start(startTime);
+      lfo.stop(startTime + duration + 0.02);
+    }
+
+    // 2. Wrong Answer Strike ("ENH!")
     function playWrongSound() {
       if (isMuted || masterVolume <= 0) return;
       initAudio();
       const now = audioCtx.currentTime;
-      const freqs = [110, 117, 165]; // Classic harsh buzzer cluster
-      freqs.forEach(freq => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(freq, now);
-
-        const vol = 0.18 * masterVolume;
-        gain.gain.setValueAtTime(vol, now);
-        gain.gain.setValueAtTime(vol, now + 0.35);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 0.52);
-      });
+      triggerStudioBuzzer(now, 0.58, 73.42);
     }
 
-    // 3. Time's Up Horn
+    // 3. Time's Up Double Buzzer ("ENH! ENHHHH!")
     function playTimeUpSound() {
       if (isMuted || masterVolume <= 0) return;
       initAudio();
       const now = audioCtx.currentTime;
-      const freqs = [98, 104, 147]; // Deeper, descending horn
-      freqs.forEach(freq => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(freq, now);
-        osc.frequency.linearRampToValueAtTime(freq * 0.82, now + 0.9);
-
-        const vol = 0.2 * masterVolume;
-        gain.gain.setValueAtTime(vol, now);
-        gain.gain.setValueAtTime(vol, now + 0.75);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 1.0);
-      });
+      triggerStudioBuzzer(now, 0.25, 65.41);
+      triggerStudioBuzzer(now + 0.30, 0.72, 65.41);
     }
 
     // 4. Subtle Countdown Tick (last 5 seconds)
@@ -942,7 +1302,7 @@
 
     function startTimer() {
       clearInterval(roundTimer);
-      timeLeft = 30;
+      timeLeft = selectedRoundTime;
       updateTimerUI();
       
       roundTimer = setInterval(() => {
@@ -1141,6 +1501,7 @@
     // Set initial round counter display without starting timer
     window.onload = () => {
       document.getElementById('roundText').innerText = `ROUND 1 / ${questionBank.length}`;
+      document.getElementById('timerDisplay').innerText = selectedRoundTime;
     };
   </script>
 
