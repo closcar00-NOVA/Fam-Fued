@@ -729,6 +729,78 @@
       margin-left: 8px;
     }
 
+    /* MANUAL ANSWER BAR INSIDE HOST CHEAT SHEET */
+    .manual-answer-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      flex-wrap: wrap;
+    }
+
+    .manual-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #94a3b8;
+    }
+
+    .manual-answer-bar input[type="text"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 9px 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      outline: none;
+    }
+
+    .manual-answer-bar input[type="number"] {
+      width: 78px;
+      padding: 9px 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.65);
+      color: var(--accent-gold);
+      outline: none;
+    }
+
+    .manual-answer-bar input:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .manual-flip-btn {
+      padding: 9px 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent-gold);
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.2s;
+    }
+
+    .manual-flip-btn:hover {
+      background: #fff;
+      transform: scale(1.03);
+    }
+
     .next-btn {
       display: none;
       margin-top: 16px;
@@ -1219,13 +1291,20 @@
         </div>
       </div>
 
-      <!-- Private Host Answer Cheat Sheet -->
+      <!-- Private Host Answer Cheat Sheet + Manual Answer Override -->
       <div class="host-cheatsheet">
         <div class="cheatsheet-header">
           <span>Host Answer Key (Hidden from TV Screen — Click to Reveal)</span>
           <span id="tvStatusBadge" style="color: #94a3b8;">TV Screen: Not Connected</span>
         </div>
         <div class="cheatsheet-grid" id="cheatsheetGrid"></div>
+
+        <div class="manual-answer-bar">
+          <span class="manual-label">Manual Override:</span>
+          <input type="text" id="manualAnswerInput" placeholder="Type custom accepted answer..." onkeypress="handleManualEnter(event)" autocomplete="off">
+          <input type="number" id="manualPointsInput" value="10" min="0" max="100" title="Points">
+          <button class="manual-flip-btn" onclick="submitManualAnswer()">+ Flip</button>
+        </div>
       </div>
     </div>
 
@@ -2504,11 +2583,11 @@
         board.dataset.roundKey = `${state.roundNum}-${state.question}`;
         board.innerHTML = '';
         for (let i = 0; i < 8; i++) {
+          const tile = document.createElement('div');
+          tile.id = `tv-tile-${i}`;
           if (i < state.answers.length) {
             const ans = state.answers[i];
-            const tile = document.createElement('div');
             tile.className = `tile ${ans.revealed ? 'flipped' : ''} ${ans.missed ? 'missed' : ''}`;
-            tile.id = `tv-tile-${i}`;
             tile.innerHTML = `
               <div class="tile-inner">
                 <div class="tile-front"><div class="tile-number-badge">${i + 1}</div></div>
@@ -2518,18 +2597,30 @@
                 </div>
               </div>
             `;
-            board.appendChild(tile);
           } else {
-            const blank = document.createElement('div');
-            blank.className = 'tile blank-tile';
-            blank.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
-            board.appendChild(blank);
+            tile.className = 'tile blank-tile';
+            tile.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
           }
+          board.appendChild(tile);
         }
       } else {
         state.answers.forEach((ans, i) => {
           const tile = document.getElementById(`tv-tile-${i}`);
           if (tile) {
+            // Convert blank tile to active tile if a Manual Answer was added
+            if (tile.classList.contains('blank-tile')) {
+              tile.classList.remove('blank-tile');
+              tile.innerHTML = `
+                <div class="tile-inner">
+                  <div class="tile-front"><div class="tile-number-badge">${i + 1}</div></div>
+                  <div class="tile-back">
+                    <span class="answer-text">${ans.text}</span>
+                    <span class="answer-points">${ans.points}</span>
+                  </div>
+                </div>
+              `;
+              void tile.offsetWidth; // trigger reflow for smooth 3D flip
+            }
             if (ans.missed) tile.classList.add('missed');
             if (ans.revealed) tile.classList.add('flipped');
           }
@@ -2817,7 +2908,6 @@
         activePlayerIndex = 0;
         roundBank = 0;
 
-        // Host HUD layout: compact timer on left, active team banner in center
         document.getElementById('soloScoreWrap').style.display = 'none';
         document.getElementById('soloHighWrap').style.display = 'none';
         document.getElementById('timerDisplay').style.display = 'none';
@@ -2833,7 +2923,6 @@
         beatHighScoreThisRun = false;
         document.getElementById('scoreText').innerText = '0';
 
-        // Solo HUD layout: big timer in center
         document.getElementById('soloScoreWrap').style.display = 'block';
         document.getElementById('soloHighWrap').style.display = 'block';
         document.getElementById('timerDisplay').style.display = 'block';
@@ -2866,7 +2955,6 @@
         container.appendChild(card);
       });
 
-      // Update center Active Team Banner
       if (players[activePlayerIndex]) {
         document.getElementById('activeTeamName').innerText = players[activePlayerIndex].name;
       }
@@ -2911,6 +2999,57 @@
       });
     }
 
+    // --- MANUAL OVERRIDE ANSWER (HOST MODE) ---
+    function handleManualEnter(e) {
+      if (e.key === 'Enter') submitManualAnswer();
+    }
+
+    function submitManualAnswer() {
+      if (gameMode !== 'host') return;
+      const textInput = document.getElementById('manualAnswerInput');
+      const ptsInput = document.getElementById('manualPointsInput');
+      const customText = textInput.value.trim();
+      const customPoints = Math.max(0, parseInt(ptsInput.value, 10) || 0);
+
+      if (!customText) return;
+
+      if (currentAnswers.length < 8) {
+        const slotIndex = currentAnswers.length;
+        const newAns = { text: customText, points: customPoints, revealed: true, missed: false };
+        currentAnswers.push(newAns);
+        revealedTiles++;
+
+        const tile = document.getElementById(`tile-${slotIndex}`);
+        if (tile) {
+          tile.classList.remove('blank-tile');
+          tile.innerHTML = `
+            <div class="tile-inner">
+              <div class="tile-front"><div class="tile-number-badge">${slotIndex + 1}</div></div>
+              <div class="tile-back">
+                <span class="answer-text">${newAns.text}</span>
+                <span class="answer-points">${newAns.points}</span>
+              </div>
+            </div>
+          `;
+          void tile.offsetWidth; // trigger reflow for flip animation
+          tile.classList.add('flipped');
+        }
+      }
+
+      if (customPoints > 0) {
+        roundBank += customPoints;
+        updateRoundBankUI();
+      }
+
+      playCorrectSound();
+      renderHostCheatsheet();
+      broadcastState();
+
+      textInput.value = '';
+      ptsInput.value = '10';
+      textInput.focus();
+    }
+
     function loadQuestion(index) {
       const qData = activeQuestions[index];
       document.getElementById('questionText').innerText = qData.question;
@@ -2935,6 +3074,8 @@
         const hostInput = document.getElementById('hostSearchInput');
         hostInput.value = '';
         document.getElementById('hostDropdown').classList.remove('active');
+        document.getElementById('manualAnswerInput').value = '';
+        document.getElementById('manualPointsInput').value = '10';
         hostInput.focus();
       }
 
@@ -2944,13 +3085,13 @@
       currentAnswers = [...qData.answers].sort((a, b) => b.points - a.points).slice(0, 8);
       
       for (let i = 0; i < 8; i++) {
+        const tile = document.createElement('div');
+        tile.id = `tile-${i}`;
         if (i < currentAnswers.length) {
           const ans = currentAnswers[i];
           ans.revealed = false;
           ans.missed = false;
-          const tile = document.createElement('div');
           tile.className = `tile ${gameMode === 'host' ? 'host-clickable' : ''}`;
-          tile.id = `tile-${i}`;
 
           if (gameMode === 'host') {
             tile.onclick = () => {
@@ -2970,13 +3111,11 @@
               </div>
             </div>
           `;
-          board.appendChild(tile);
         } else {
-          const blank = document.createElement('div');
-          blank.className = 'tile blank-tile';
-          blank.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
-          board.appendChild(blank);
+          tile.className = 'tile blank-tile';
+          tile.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
         }
+        board.appendChild(tile);
       }
 
       if (gameMode === 'host') renderHostCheatsheet();
