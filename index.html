@@ -16,15 +16,12 @@
       --neon-white-glow: 0 0 14px rgba(255, 255, 255, 0.25);
       --accent-amber: #FFAE00;
       --accent-gold: #FED141;
-      --amber-glow: 0 0 18px rgba(255, 174, 0, 0.65), inset 0 0 10px rgba(255, 174, 0, 0.35);
       --text-light: #f0f4f8;
       --strike-red: #e60026;
       --emerald: #00A74A;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -111,11 +108,11 @@
 
     /* CLASSIC BLUE LED TIMER DISPLAY */
     .timer-display {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 900;
       color: #fff;
       background: radial-gradient(circle at center, #1e60d5 0%, #0d3380 100%);
-      padding: 6px 24px;
+      padding: 6px 22px;
       border-radius: 8px;
       border: 2px solid var(--neon-white);
       box-shadow: 0 0 14px rgba(30, 96, 213, 0.7), inset 0 0 8px rgba(255, 255, 255, 0.25);
@@ -183,18 +180,53 @@
       text-shadow: 0 0 14px var(--strike-red);
     }
 
-    /* HOST PLAYER SCORECARDS */
-    .player-scorecards {
+    /* HOST PLAYER SCORECARDS & ROUND BANK */
+    .host-scoreboard-bar {
       display: none;
       width: 100%;
       max-width: 1040px;
-      padding: 16px 20px 0 20px;
+      padding: 14px 20px 0 20px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
       gap: 14px;
     }
 
-    .player-scorecards.show { display: flex; }
+    .host-scoreboard-bar.show { display: flex; }
+
+    .round-bank-box {
+      background: radial-gradient(circle at center, #2068e8 0%, #0b2d75 100%);
+      border: 3px solid var(--accent-amber);
+      border-radius: 12px;
+      padding: 8px 26px;
+      text-align: center;
+      box-shadow: 0 0 22px rgba(255, 174, 0, 0.55), inset 0 0 12px rgba(255, 255, 255, 0.25);
+      min-width: 150px;
+    }
+
+    .round-bank-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-gold);
+      margin-bottom: 2px;
+    }
+
+    .round-bank-value {
+      font-size: 34px;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+      line-height: 1.1;
+    }
+
+    .player-scorecards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
     .scorecard {
       background: var(--glass-bg);
@@ -203,17 +235,21 @@
       border: 1.5px solid rgba(255, 255, 255, 0.35);
       border-radius: 10px;
       padding: 10px 22px;
-      min-width: 145px;
+      min-width: 140px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
       user-select: none;
     }
 
+    .tv-mode .scorecard { cursor: default; }
+
     .scorecard:hover {
       border-color: var(--neon-white);
       transform: translateY(-2px);
     }
+
+    .tv-mode .scorecard:hover { transform: none; }
 
     .scorecard.active {
       border: 2px solid var(--accent-gold);
@@ -231,9 +267,7 @@
       margin-bottom: 4px;
     }
 
-    .scorecard.active .scorecard-name {
-      color: var(--accent-gold);
-    }
+    .scorecard.active .scorecard-name { color: var(--accent-gold); }
 
     .scorecard-points {
       font-size: 28px;
@@ -251,7 +285,7 @@
       justify-content: center;
       width: 100%;
       max-width: 1040px;
-      padding: 18px 20px 28px 20px;
+      padding: 16px 20px 28px 20px;
     }
 
     .question-display {
@@ -260,7 +294,7 @@
       line-height: 1.45;
       letter-spacing: 0.05em;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       padding: 16px 26px;
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
@@ -282,7 +316,7 @@
         0 0 28px rgba(255, 174, 0, 0.55),
         0 18px 40px rgba(0, 0, 0, 0.8),
         inset 0 0 18px rgba(255, 174, 0, 0.35);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     /* 8-SLOT SYMMETRICAL GRID: 1-4 LEFT COLUMN, 5-8 RIGHT COLUMN */
@@ -302,9 +336,7 @@
       perspective: 1000px;
     }
 
-    .tile.host-clickable {
-      cursor: pointer;
-    }
+    .tile.host-clickable { cursor: pointer; }
 
     .tile-inner {
       position: relative;
@@ -333,7 +365,6 @@
         0 4px 10px rgba(0, 0, 0, 0.6);
     }
 
-    /* CLASSIC ELECTRIC BLUE FRONT TILE */
     .tile-front {
       background: linear-gradient(180deg, #4f8ef7 0%, #1d5bc6 48%, #103b8c 100%);
       justify-content: center;
@@ -344,7 +375,6 @@
       filter: brightness(1.12);
     }
 
-    /* CLASSIC DARK OVAL NUMBER BADGE */
     .tile-number-badge {
       width: 58px;
       height: 44px;
@@ -362,14 +392,12 @@
       letter-spacing: 0;
     }
 
-    /* BLANK BLUE TILE FOR UNUSED SLOTS */
     .tile.blank-tile .tile-front {
       background: linear-gradient(180deg, #3b72cc 0%, #1749a3 50%, #0d2f73 100%);
       opacity: 0.82;
       cursor: default;
     }
 
-    /* REVEALED ANSWER BACK TILE */
     .tile-back {
       background: linear-gradient(180deg, #1b4ea8 0%, #0a255e 52%, #051538 100%);
       transform: rotateX(180deg);
@@ -396,9 +424,7 @@
       line-height: 1.2;
     }
 
-    .tile.missed .answer-text {
-      color: #cbd5e1;
-    }
+    .tile.missed .answer-text { color: #cbd5e1; }
 
     .answer-points {
       height: 100%;
@@ -448,7 +474,6 @@
       background: rgba(0, 0, 0, 0.65);
       color: #fff;
       outline: none;
-      transition: border-color 0.2s;
     }
 
     .player-console input:focus {
@@ -468,17 +493,22 @@
       border-radius: 8px;
       background: var(--accent-gold);
       color: #000;
-      transition: all 0.2s;
     }
 
-    .player-console button:hover {
-      background: #fff;
-      transform: translateY(-1px);
-    }
+    .player-console button:hover { background: #fff; }
 
-    /* HOST COMMAND BAR */
-    .host-console {
+    /* HOST DASHBOARD (LAPTOP VIEW ONLY) */
+    .host-dashboard {
       display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .host-dashboard.show { display: flex; }
+
+    .host-console {
+      display: flex;
       width: 100%;
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
@@ -490,20 +520,18 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
-
-    .host-console.show { display: flex; }
 
     .host-search-wrap {
       position: relative;
       flex: 1;
-      min-width: 240px;
+      min-width: 220px;
     }
 
     .host-search-wrap input {
       width: 100%;
-      padding: 12px 14px;
+      padding: 11px 14px;
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
       font-weight: 600;
@@ -515,9 +543,7 @@
       outline: none;
     }
 
-    .host-search-wrap input:focus {
-      border-color: var(--accent-gold);
-    }
+    .host-search-wrap input:focus { border-color: var(--accent-gold); }
 
     .host-dropdown {
       position: absolute;
@@ -537,13 +563,13 @@
     .host-dropdown.active { display: block; }
 
     .host-dropdown-item {
-      padding: 12px 14px;
+      padding: 11px 14px;
       cursor: pointer;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
     }
 
@@ -554,29 +580,94 @@
 
     .host-btn-group {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .host-btn {
-      padding: 12px 16px;
+      padding: 11px 14px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.15s, filter 0.2s;
+      transition: transform 0.15s, filter 0.2s, opacity 0.2s;
     }
 
     .host-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
+    .host-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
     .host-btn.strike { background: var(--strike-red); color: #fff; border-color: #ff6b81; }
     .host-btn.clear-x { background: rgba(255, 255, 255, 0.12); color: #fff; }
+    .host-btn.award { background: var(--accent-gold); color: #000; border-color: #fff; }
     .host-btn.reveal { background: #1d4ed8; color: #fff; }
+    .host-btn.tv-launch { background: #6d28d9; color: #fff; border-color: #c4b5fd; }
     .host-btn.next { background: var(--emerald); color: #fff; }
-    
+
+    /* HOST PRIVATE ANSWER CHEAT SHEET */
+    .host-cheatsheet {
+      background: rgba(4, 9, 20, 0.92);
+      border: 1.5px solid rgba(254, 209, 65, 0.65);
+      border-radius: 12px;
+      padding: 12px 16px;
+      width: 100%;
+    }
+
+    .cheatsheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+    }
+
+    .cheatsheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+    }
+
+    .cheat-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+
+    .cheat-btn:hover:not(:disabled) {
+      border-color: var(--accent-gold);
+      background: rgba(254, 209, 65, 0.14);
+    }
+
+    .cheat-btn.revealed {
+      opacity: 0.4;
+      text-decoration: line-through;
+      border-color: #00A74A;
+      cursor: default;
+    }
+
+    .cheat-pts {
+      color: var(--accent-gold);
+      font-weight: 900;
+      margin-left: 8px;
+    }
+
     .next-btn {
       display: none;
       margin-top: 16px;
@@ -592,14 +683,12 @@
       cursor: pointer;
       font-weight: 800;
       box-shadow: var(--neon-white-glow);
-      transition: transform 0.15s, filter 0.2s;
     }
 
-    .next-btn:hover { filter: brightness(1.1); transform: scale(1.03); }
     .next-btn.show { display: block; }
 
-    /* OVERLAYS (START, STRIKE, GAME OVER) */
-    .start-screen, .game-over-screen {
+    /* OVERLAYS (START, TV WAITING, STRIKE, GAME OVER) */
+    .start-screen, .game-over-screen, .tv-waiting-screen {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(5, 10, 22, 0.88);
@@ -616,10 +705,17 @@
       transition: opacity 0.4s;
     }
 
-    .start-screen.hidden {
+    .start-screen.hidden, .tv-waiting-screen.hidden {
       opacity: 0;
       pointer-events: none;
     }
+
+    .tv-waiting-screen {
+      display: none;
+      z-index: 1600;
+    }
+
+    .tv-waiting-screen.active { display: flex; }
 
     .start-title {
       font-size: 50px;
@@ -641,7 +737,6 @@
       text-transform: uppercase;
     }
 
-    /* SETUP PANEL ON START SCREEN */
     .setup-panel {
       background: var(--glass-bg-strong);
       border: 1.5px solid var(--neon-white);
@@ -672,11 +767,7 @@
       letter-spacing: 0.12em;
     }
 
-    .btn-group {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .opt-btn {
       padding: 8px 14px;
@@ -693,11 +784,7 @@
       transition: all 0.2s;
     }
 
-    .opt-btn:hover {
-      border-color: var(--neon-white);
-      color: #fff;
-    }
-
+    .opt-btn:hover { border-color: var(--neon-white); color: #fff; }
     .opt-btn.selected {
       background: var(--accent-gold);
       color: #000;
@@ -705,7 +792,6 @@
       box-shadow: 0 0 12px rgba(254, 209, 65, 0.45);
     }
 
-    /* HOST ROSTER SETUP */
     .roster-box {
       display: none;
       flex-direction: column;
@@ -737,10 +823,7 @@
       cursor: pointer;
     }
 
-    .add-player-btn:hover {
-      background: var(--accent-gold);
-      color: #000;
-    }
+    .add-player-btn:hover { background: var(--accent-gold); color: #000; }
 
     .roster-list {
       display: grid;
@@ -748,11 +831,7 @@
       gap: 10px;
     }
 
-    .roster-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .roster-item { display: flex; align-items: center; gap: 6px; }
 
     .roster-item input {
       flex: 1;
@@ -780,10 +859,7 @@
       font-weight: 800;
     }
 
-    .remove-player-btn:hover {
-      background: var(--strike-red);
-      color: #fff;
-    }
+    .remove-player-btn:hover { background: var(--strike-red); color: #fff; }
 
     .begin-btn, .play-again-btn {
       padding: 16px 60px;
@@ -801,10 +877,7 @@
       transition: transform 0.2s, background 0.2s;
     }
 
-    .begin-btn:hover, .play-again-btn:hover {
-      background: #fff;
-      transform: scale(1.05);
-    }
+    .begin-btn:hover, .play-again-btn:hover { background: #fff; transform: scale(1.05); }
 
     /* STRIKE OVERLAY */
     .strike-overlay {
@@ -931,9 +1004,15 @@
       font-weight: 700;
     }
 
-    .menu-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
+    .menu-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+
+    /* TV CONTESTANT VIEW CLEANUP */
+    body.tv-mode .audio-controls,
+    body.tv-mode .player-console,
+    body.tv-mode .host-dashboard,
+    body.tv-mode .next-btn,
+    body.tv-mode .game-over-actions {
+      display: none !important;
     }
 
     @media (max-width: 720px) {
@@ -942,9 +1021,7 @@
         grid-template-rows: auto;
         grid-auto-flow: row;
       }
-      .roster-list {
-        grid-template-columns: 1fr;
-      }
+      .roster-list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -973,6 +1050,13 @@
         <span id="strike-3">X</span>
       </div>
     </div>
+  </div>
+
+  <!-- TV Mode Waiting Screen -->
+  <div class="tv-waiting-screen" id="tvWaitingScreen">
+    <h1 class="start-title">Family Feud</h1>
+    <p class="start-subtitle">Contestant TV Display &bull; Connected to Host</p>
+    <p style="color: var(--accent-gold); font-weight: 700; letter-spacing: 0.12em;">WAITING FOR HOST TO START ROUND...</p>
   </div>
 
   <!-- Start Screen Overlay -->
@@ -1015,11 +1099,11 @@
         </div>
       </div>
 
-      <!-- Host Player Roster -->
+      <!-- Host Team Roster -->
       <div class="roster-box" id="rosterBox">
         <div class="roster-header">
-          <span class="setup-label">Players (Auto-Rotates Each Round):</span>
-          <button class="add-player-btn" onclick="addPlayerInput()">+ Add Player</button>
+          <span class="setup-label">Teams / Players (Classic Round Bank):</span>
+          <button class="add-player-btn" onclick="addPlayerInput()">+ Add Team</button>
         </div>
         <div class="roster-list" id="rosterList"></div>
       </div>
@@ -1028,8 +1112,14 @@
     <button class="begin-btn" onclick="startGame()">BEGIN</button>
   </div>
 
-  <!-- Host Mode Player Scorecards -->
-  <div class="player-scorecards" id="playerScorecards"></div>
+  <!-- Host Mode Round Bank + Team Scorecards -->
+  <div class="host-scoreboard-bar" id="hostScoreboardBar">
+    <div class="round-bank-box">
+      <div class="round-bank-label">Round Bank</div>
+      <div class="round-bank-value" id="roundBankText">0</div>
+    </div>
+    <div class="player-scorecards" id="playerScorecards"></div>
+  </div>
 
   <!-- Main Game Board -->
   <div class="game-container">
@@ -1045,17 +1135,30 @@
       <button onclick="submitGuess()">GUESS</button>
     </div>
 
-    <!-- Host Command Bar -->
-    <div class="host-console" id="hostConsole">
-      <div class="host-search-wrap">
-        <div id="hostDropdown" class="host-dropdown"></div>
-        <input type="text" id="hostSearchInput" placeholder="Host search: type answer or synonym..." oninput="handleHostSearch()" autocomplete="off">
+    <!-- Host Dashboard (Command Bar + Private Answer Cheat Sheet) -->
+    <div class="host-dashboard" id="hostDashboard">
+      <div class="host-console">
+        <div class="host-search-wrap">
+          <div id="hostDropdown" class="host-dropdown"></div>
+          <input type="text" id="hostSearchInput" placeholder="Host search: type answer or synonym..." oninput="handleHostSearch()" autocomplete="off">
+        </div>
+        <div class="host-btn-group">
+          <button class="host-btn award" id="awardBankBtn" onclick="awardRoundBank()" disabled>Award Bank (0) &rarr; Team 1</button>
+          <button class="host-btn strike" onclick="triggerHostStrike()">STRIKE ❌</button>
+          <button class="host-btn clear-x" onclick="clearHostStrikes()">Clear X</button>
+          <button class="host-btn reveal" onclick="revealAllHost()">Reveal All</button>
+          <button class="host-btn tv-launch" onclick="launchTVScreen()">📺 Launch TV</button>
+          <button class="host-btn next" onclick="nextQuestion()">Next &#9654;</button>
+        </div>
       </div>
-      <div class="host-btn-group">
-        <button class="host-btn strike" onclick="triggerHostStrike()">STRIKE ❌</button>
-        <button class="host-btn clear-x" onclick="clearHostStrikes()">Clear X</button>
-        <button class="host-btn reveal" onclick="revealAllHost()">Reveal All</button>
-        <button class="host-btn next" onclick="nextQuestion()">Next &#9654;</button>
+
+      <!-- Private Host Answer Cheat Sheet -->
+      <div class="host-cheatsheet">
+        <div class="cheatsheet-header">
+          <span>Host Answer Key (Hidden from TV Screen — Click to Reveal)</span>
+          <span id="tvStatusBadge" style="color: #94a3b8;">TV Screen: Not Connected</span>
+        </div>
+        <div class="cheatsheet-grid" id="cheatsheetGrid"></div>
       </div>
     </div>
 
@@ -2191,6 +2294,10 @@
 
     const HIGH_SCORE_KEY = 'familyFeudSoloHighScore';
 
+    // Dual-Window Sync (BroadcastChannel API)
+    const isTVView = new URLSearchParams(window.location.search).get('view') === 'tv';
+    const syncChannel = new BroadcastChannel('family_feud_live_sync');
+
     // Game Configuration & State
     let gameMode = 'solo'; // 'solo' | 'host'
     let selectedRoundLength = 10;
@@ -2204,9 +2311,10 @@
     let beatHighScoreThisRun = false;
 
     // Host State
-    let rosterNames = ['Player 1', 'Player 2'];
+    let rosterNames = ['Team 1', 'Team 2'];
     let players = [];
     let activePlayerIndex = 0;
+    let roundBank = 0;
 
     // Round State
     let currentStrikes = 0;
@@ -2216,11 +2324,163 @@
     let isAnimatingStrike = false;
     let roundTimer;
     let timeLeft = selectedRoundTime;
+    let isGameOver = false;
 
     // Audio State
     let audioCtx = null;
     let isMuted = false;
     let masterVolume = 0.5;
+
+    // --- DUAL-WINDOW SYNC LOGIC ---
+    function launchTVScreen() {
+      const baseUrl = window.location.href.split('?')[0];
+      window.open(`${baseUrl}?view=tv`, 'FamilyFeudTV', 'width=1280,height=720');
+    }
+
+    function broadcastState() {
+      if (isTVView || gameMode !== 'host') return;
+      syncChannel.postMessage({
+        type: 'SYNC_STATE',
+        payload: {
+          question: activeQuestions[currentIndex] ? activeQuestions[currentIndex].question : '',
+          roundNum: currentIndex + 1,
+          totalRounds: activeQuestions.length,
+          timeLeft: selectedRoundTime === 0 ? 'OFF' : timeLeft,
+          isLowTime: selectedRoundTime > 0 && timeLeft <= 10 && timeLeft > 0,
+          strikes: currentStrikes,
+          roundBank: roundBank,
+          players: players,
+          activePlayerIndex: activePlayerIndex,
+          answers: currentAnswers.map(a => ({
+            text: a.text,
+            points: a.points,
+            revealed: !!a.revealed,
+            missed: !!a.missed
+          })),
+          isGameOver: isGameOver
+        }
+      });
+    }
+
+    syncChannel.onmessage = (event) => {
+      const msg = event.data;
+      if (!msg) return;
+
+      if (!isTVView && msg.type === 'TV_READY') {
+        const badge = document.getElementById('tvStatusBadge');
+        if (badge) {
+          badge.innerText = 'TV Screen: Connected ●';
+          badge.style.color = '#6ee787';
+        }
+        if (gameMode === 'host' && activeQuestions.length > 0) {
+          broadcastState();
+        }
+      }
+
+      if (isTVView) {
+        if (msg.type === 'SYNC_STATE') {
+          renderTVState(msg.payload);
+        } else if (msg.type === 'STRIKE_ANIM') {
+          const overlay = document.getElementById('strikeOverlay');
+          const strikeMark = document.getElementById('strikeMark');
+          strikeMark.innerText = msg.text;
+          strikeMark.style.fontSize = msg.fontSize;
+          overlay.classList.add('show');
+          setTimeout(() => overlay.classList.remove('show'), msg.duration || 1200);
+        }
+      }
+    };
+
+    function renderTVState(state) {
+      document.getElementById('tvWaitingScreen').classList.add('hidden');
+      document.getElementById('modeBadge').innerText = 'LIVE BOARD';
+      document.getElementById('soloScoreWrap').style.display = 'none';
+      document.getElementById('soloHighWrap').style.display = 'none';
+      document.getElementById('hostScoreboardBar').classList.add('show');
+
+      document.getElementById('roundText').innerText = `ROUND ${state.roundNum} / ${state.totalRounds}`;
+      document.getElementById('questionText').innerText = state.question;
+      document.getElementById('roundBankText').innerText = state.roundBank;
+
+      // Timer
+      const timerDisplay = document.getElementById('timerDisplay');
+      timerDisplay.innerText = state.timeLeft;
+      if (state.isLowTime) timerDisplay.classList.add('low');
+      else timerDisplay.classList.remove('low');
+
+      // Strikes
+      for (let i = 1; i <= 3; i++) {
+        const x = document.getElementById(`strike-${i}`);
+        if (i <= state.strikes) x.classList.add('active');
+        else x.classList.remove('active');
+      }
+
+      // Team Scorecards
+      const scContainer = document.getElementById('playerScorecards');
+      scContainer.innerHTML = state.players.map((p, idx) => `
+        <div class="scorecard ${idx === state.activePlayerIndex ? 'active' : ''}">
+          <div class="scorecard-name">${p.name}</div>
+          <div class="scorecard-points">${p.score}</div>
+        </div>
+      `).join('');
+
+      // 8-Slot Board (re-render only if question changed, else update flips smoothly)
+      const board = document.getElementById('board');
+      if (board.dataset.roundKey !== `${state.roundNum}-${state.question}`) {
+        board.dataset.roundKey = `${state.roundNum}-${state.question}`;
+        board.innerHTML = '';
+        for (let i = 0; i < 8; i++) {
+          if (i < state.answers.length) {
+            const ans = state.answers[i];
+            const tile = document.createElement('div');
+            tile.className = `tile ${ans.revealed ? 'flipped' : ''} ${ans.missed ? 'missed' : ''}`;
+            tile.id = `tv-tile-${i}`;
+            tile.innerHTML = `
+              <div class="tile-inner">
+                <div class="tile-front"><div class="tile-number-badge">${i + 1}</div></div>
+                <div class="tile-back">
+                  <span class="answer-text">${ans.text}</span>
+                  <span class="answer-points">${ans.points}</span>
+                </div>
+              </div>
+            `;
+            board.appendChild(tile);
+          } else {
+            const blank = document.createElement('div');
+            blank.className = 'tile blank-tile';
+            blank.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
+            board.appendChild(blank);
+          }
+        }
+      } else {
+        state.answers.forEach((ans, i) => {
+          const tile = document.getElementById(`tv-tile-${i}`);
+          if (tile) {
+            if (ans.missed) tile.classList.add('missed');
+            if (ans.revealed) tile.classList.add('flipped');
+          }
+        });
+      }
+
+      // Game Over Leaderboard
+      const goScreen = document.getElementById('gameOverScreen');
+      if (state.isGameOver) {
+        document.getElementById('gameOverTitle').innerText = 'Final Standings';
+        document.getElementById('soloResultsWrap').style.display = 'none';
+        const hostBoard = document.getElementById('hostLeaderboard');
+        hostBoard.classList.add('show');
+        const sorted = [...state.players].sort((a, b) => b.score - a.score);
+        hostBoard.innerHTML = sorted.map((p, idx) => `
+          <div class="leaderboard-row ${idx === 0 ? 'winner' : ''}">
+            <span>${idx === 0 ? '🏆 ' : `#${idx + 1} `}${p.name}</span>
+            <span>${p.score} pts</span>
+          </div>
+        `).join('');
+        goScreen.classList.add('show');
+      } else {
+        goScreen.classList.remove('show');
+      }
+    }
 
     // --- SETUP SCREEN CONTROLS ---
     function setGameMode(mode, btnEl) {
@@ -2260,20 +2520,18 @@
         const div = document.createElement('div');
         div.className = 'roster-item';
         div.innerHTML = `
-          <input type="text" value="${name}" placeholder="Player ${idx + 1}" oninput="updateRosterName(${idx}, this.value)">
+          <input type="text" value="${name}" placeholder="Team ${idx + 1}" oninput="updateRosterName(${idx}, this.value)">
           ${rosterNames.length > 2 ? `<button class="remove-player-btn" onclick="removePlayerInput(${idx})">&times;</button>` : ''}
         `;
         list.appendChild(div);
       });
     }
 
-    function updateRosterName(idx, val) {
-      rosterNames[idx] = val;
-    }
+    function updateRosterName(idx, val) { rosterNames[idx] = val; }
 
     function addPlayerInput() {
       if (rosterNames.length >= 6) return;
-      rosterNames.push(`Player ${rosterNames.length + 1}`);
+      rosterNames.push(`Team ${rosterNames.length + 1}`);
       renderRosterInputs();
     }
 
@@ -2304,13 +2562,12 @@
 
     // --- AUDIO ENGINE ---
     function initAudio() {
+      if (isTVView) return;
       if (!audioCtx) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         audioCtx = new AudioContext();
       }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
     }
 
     function toggleSound() {
@@ -2341,7 +2598,7 @@
     }
 
     function playCorrectSound() {
-      if (isMuted || masterVolume <= 0) return;
+      if (isTVView || isMuted || masterVolume <= 0) return;
       initAudio();
       const now = audioCtx.currentTime;
       const freqs = [1046.50, 1318.51, 2093.00];
@@ -2350,16 +2607,33 @@
         const gain = audioCtx.createGain();
         osc.type = idx === 0 ? 'triangle' : 'sine';
         osc.frequency.setValueAtTime(freq, now);
-
         const vol = (idx === 0 ? 0.35 : 0.18) * masterVolume;
         gain.gain.setValueAtTime(0.001, now);
         gain.gain.exponentialRampToValueAtTime(vol, now + 0.015);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
-
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start(now);
         osc.stop(now + 0.7);
+      });
+    }
+
+    function playAwardSound() {
+      if (isTVView || isMuted || masterVolume <= 0) return;
+      initAudio();
+      const now = audioCtx.currentTime;
+      [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + i * 0.07);
+        gain.gain.setValueAtTime(0.001, now + i * 0.07);
+        gain.gain.exponentialRampToValueAtTime(0.28 * masterVolume, now + i * 0.07 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.45);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now + i * 0.07);
+        osc.stop(now + i * 0.07 + 0.5);
       });
     }
 
@@ -2421,13 +2695,13 @@
     }
 
     function playWrongSound() {
-      if (isMuted || masterVolume <= 0) return;
+      if (isTVView || isMuted || masterVolume <= 0) return;
       initAudio();
       triggerStudioBuzzer(audioCtx.currentTime, 0.58, 73.42);
     }
 
     function playTimeUpSound() {
-      if (isMuted || masterVolume <= 0) return;
+      if (isTVView || isMuted || masterVolume <= 0) return;
       initAudio();
       const now = audioCtx.currentTime;
       triggerStudioBuzzer(now, 0.25, 65.41);
@@ -2435,17 +2709,15 @@
     }
 
     function playTickSound() {
-      if (isMuted || masterVolume <= 0) return;
+      if (isTVView || isMuted || masterVolume <= 0) return;
       initAudio();
       const now = audioCtx.currentTime;
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = 'sine';
       osc.frequency.setValueAtTime(800, now);
-
       gain.gain.setValueAtTime(0.12 * masterVolume, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start(now);
@@ -2457,20 +2729,22 @@
       initAudio();
       activeQuestions = shuffleQuestions();
       currentIndex = 0;
+      isGameOver = false;
 
       document.getElementById('modeBadge').innerText = gameMode === 'host' ? 'HOST MODE' : 'SOLO';
 
       if (gameMode === 'host') {
         players = rosterNames.map((name, i) => ({
-          name: name.trim() || `Player ${i + 1}`,
+          name: name.trim() || `Team ${i + 1}`,
           score: 0
         }));
         activePlayerIndex = 0;
+        roundBank = 0;
         document.getElementById('soloScoreWrap').style.display = 'none';
         document.getElementById('soloHighWrap').style.display = 'none';
-        document.getElementById('playerScorecards').classList.add('show');
+        document.getElementById('hostScoreboardBar').classList.add('show');
         document.getElementById('playerConsole').style.display = 'none';
-        document.getElementById('hostConsole').classList.add('show');
+        document.getElementById('hostDashboard').classList.add('show');
         renderScorecards();
       } else {
         totalScore = 0;
@@ -2478,8 +2752,8 @@
         document.getElementById('scoreText').innerText = '0';
         document.getElementById('soloScoreWrap').style.display = 'block';
         document.getElementById('soloHighWrap').style.display = 'block';
-        document.getElementById('playerScorecards').classList.remove('show');
-        document.getElementById('hostConsole').classList.remove('show');
+        document.getElementById('hostScoreboardBar').classList.remove('show');
+        document.getElementById('hostDashboard').classList.remove('show');
       }
 
       document.getElementById('startScreen').classList.add('hidden');
@@ -2495,12 +2769,51 @@
         card.onclick = () => {
           activePlayerIndex = idx;
           renderScorecards();
+          broadcastState();
         };
         card.innerHTML = `
           <div class="scorecard-name">${p.name}</div>
           <div class="scorecard-points">${p.score}</div>
         `;
         container.appendChild(card);
+      });
+      updateRoundBankUI();
+    }
+
+    function updateRoundBankUI() {
+      document.getElementById('roundBankText').innerText = roundBank;
+      const awardBtn = document.getElementById('awardBankBtn');
+      if (awardBtn && players[activePlayerIndex]) {
+        awardBtn.innerHTML = `Award Bank (${roundBank}) &rarr; ${players[activePlayerIndex].name}`;
+        awardBtn.disabled = roundBank <= 0;
+      }
+    }
+
+    function awardRoundBank() {
+      if (gameMode !== 'host' || roundBank <= 0 || !players[activePlayerIndex]) return;
+      players[activePlayerIndex].score += roundBank;
+      roundBank = 0;
+      playAwardSound();
+      renderScorecards();
+      broadcastState();
+    }
+
+    function renderHostCheatsheet() {
+      const grid = document.getElementById('cheatsheetGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      currentAnswers.forEach((ans, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `cheat-btn ${ans.revealed ? 'revealed' : ''}`;
+        btn.disabled = !!ans.revealed;
+        btn.innerHTML = `<span>#${idx + 1} ${ans.text}</span><span class="cheat-pts">${ans.points}</span>`;
+        btn.onclick = () => {
+          if (!ans.revealed) {
+            revealTile(idx, ans.points, true);
+            playCorrectSound();
+          }
+        };
+        grid.appendChild(btn);
       });
     }
 
@@ -2511,9 +2824,11 @@
       
       currentStrikes = 0;
       revealedTiles = 0;
+      roundBank = 0;
       roundActive = true;
       isAnimatingStrike = false;
       updateStrikeUI();
+      if (gameMode === 'host') updateRoundBankUI();
       
       document.getElementById('nextBtn').classList.remove('show');
 
@@ -2534,11 +2849,11 @@
 
       currentAnswers = [...qData.answers].sort((a, b) => b.points - a.points).slice(0, 8);
       
-      // Render 8-slot symmetrical board (1-4 left column, 5-8 right column)
       for (let i = 0; i < 8; i++) {
         if (i < currentAnswers.length) {
           const ans = currentAnswers[i];
           ans.revealed = false;
+          ans.missed = false;
           const tile = document.createElement('div');
           tile.className = `tile ${gameMode === 'host' ? 'host-clickable' : ''}`;
           tile.id = `tile-${i}`;
@@ -2554,9 +2869,7 @@
 
           tile.innerHTML = `
             <div class="tile-inner">
-              <div class="tile-front">
-                <div class="tile-number-badge">${i + 1}</div>
-              </div>
+              <div class="tile-front"><div class="tile-number-badge">${i + 1}</div></div>
               <div class="tile-back">
                 <span class="answer-text">${ans.text}</span>
                 <span class="answer-points">${ans.points}</span>
@@ -2565,19 +2878,16 @@
           `;
           board.appendChild(tile);
         } else {
-          // Blank blue tile for unused slots
           const blank = document.createElement('div');
           blank.className = 'tile blank-tile';
-          blank.innerHTML = `
-            <div class="tile-inner">
-              <div class="tile-front"></div>
-            </div>
-          `;
+          blank.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
           board.appendChild(blank);
         }
       }
 
+      if (gameMode === 'host') renderHostCheatsheet();
       startTimer();
+      broadcastState();
     }
 
     // --- TIMER ---
@@ -2603,10 +2913,9 @@
         
         timeLeft--;
         updateTimerUI();
+        broadcastState();
 
-        if (timeLeft <= 5 && timeLeft > 0) {
-          playTickSound();
-        }
+        if (timeLeft <= 5 && timeLeft > 0) playTickSound();
         
         if (timeLeft <= 0) {
           clearInterval(roundTimer);
@@ -2618,11 +2927,8 @@
     function updateTimerUI() {
       const timerDisplay = document.getElementById('timerDisplay');
       timerDisplay.innerText = timeLeft;
-      if (timeLeft <= 10 && timeLeft > 0) {
-        timerDisplay.classList.add('low');
-      } else {
-        timerDisplay.classList.remove('low');
-      }
+      if (timeLeft <= 10 && timeLeft > 0) timerDisplay.classList.add('low');
+      else timerDisplay.classList.remove('low');
     }
 
     function triggerTimeOut() {
@@ -2635,19 +2941,19 @@
       strikeMark.innerText = 'TIME!';
       strikeMark.style.fontSize = '160px';
       overlay.classList.add('show');
+
+      if (gameMode === 'host') {
+        syncChannel.postMessage({ type: 'STRIKE_ANIM', text: 'TIME!', fontSize: '160px', duration: 1600 });
+      }
       
       setTimeout(() => {
         overlay.classList.remove('show');
-        if (gameMode === 'solo') {
-          endRound(false);
-        }
+        if (gameMode === 'solo') endRound(false);
       }, 1600);
     }
 
     // --- SOLO GUESSING ---
-    function handleEnter(e) {
-      if (e.key === 'Enter') submitGuess();
-    }
+    function handleEnter(e) { if (e.key === 'Enter') submitGuess(); }
 
     function submitGuess() {
       if (!roundActive || isAnimatingStrike || gameMode !== 'solo') return;
@@ -2735,12 +3041,16 @@
       currentStrikes = Math.min(currentStrikes + 1, 3);
       updateStrikeUI();
       playWrongSound();
+      broadcastState();
 
+      const xText = 'X'.repeat(currentStrikes);
       const overlay = document.getElementById('strikeOverlay');
       const strikeMark = document.getElementById('strikeMark');
-      strikeMark.innerText = 'X'.repeat(currentStrikes);
+      strikeMark.innerText = xText;
       strikeMark.style.fontSize = '260px';
       overlay.classList.add('show');
+
+      syncChannel.postMessage({ type: 'STRIKE_ANIM', text: xText, fontSize: '260px', duration: 1200 });
 
       setTimeout(() => {
         overlay.classList.remove('show');
@@ -2751,6 +3061,7 @@
     function clearHostStrikes() {
       currentStrikes = 0;
       updateStrikeUI();
+      broadcastState();
     }
 
     function revealAllHost() {
@@ -2762,10 +3073,16 @@
           const tile = document.getElementById(`tile-${i}`);
           tile.classList.add('missed');
           ans.revealed = true;
-          setTimeout(() => { tile.classList.add('flipped'); }, delayStep * 250);
+          ans.missed = true;
+          setTimeout(() => {
+            tile.classList.add('flipped');
+            broadcastState();
+          }, delayStep * 250);
           delayStep++;
         }
       });
+      renderHostCheatsheet();
+      broadcastState();
     }
 
     // --- SHARED TILE & STRIKE LOGIC ---
@@ -2782,9 +3099,15 @@
             document.getElementById('scoreText').innerText = totalScore;
             updateHighScore(totalScore);
           } else {
-            players[activePlayerIndex].score += points;
-            renderScorecards();
+            // Classic Round Bank: add to pot until Host clicks "Award Bank"
+            roundBank += points;
+            updateRoundBankUI();
           }
+        }
+
+        if (gameMode === 'host') {
+          renderHostCheatsheet();
+          broadcastState();
         }
       }
     }
@@ -2816,18 +3139,13 @@
     function updateStrikeUI() {
       for (let i = 1; i <= 3; i++) {
         const x = document.getElementById(`strike-${i}`);
-        if (i <= currentStrikes) {
-          x.classList.add('active');
-        } else {
-          x.classList.remove('active');
-        }
+        if (i <= currentStrikes) x.classList.add('active');
+        else x.classList.remove('active');
       }
     }
 
     function checkRoundWin() {
-      if (revealedTiles === currentAnswers.length) {
-        endRound(true);
-      }
+      if (revealedTiles === currentAnswers.length) endRound(true);
     }
 
     function endRound(perfect) {
@@ -2853,7 +3171,6 @@
       clearInterval(roundTimer);
       if (currentIndex < activeQuestions.length - 1) {
         currentIndex++;
-        // Auto-rotate to next player in Host Mode
         if (gameMode === 'host' && players.length > 0) {
           activePlayerIndex = (activePlayerIndex + 1) % players.length;
           renderScorecards();
@@ -2866,6 +3183,7 @@
 
     function showGameOver() {
       clearInterval(roundTimer);
+      isGameOver = true;
       const soloWrap = document.getElementById('soloResultsWrap');
       const hostBoard = document.getElementById('hostLeaderboard');
 
@@ -2874,16 +3192,12 @@
         document.getElementById('gameOverTitle').innerText = 'Game Over';
         soloWrap.style.display = 'block';
         hostBoard.classList.remove('show');
-
         document.getElementById('finalScoreText').innerText = totalScore;
         document.getElementById('finalHighScoreText').innerText = highScore;
 
         const badge = document.getElementById('newHighBadge');
-        if (beatHighScoreThisRun && totalScore > 0) {
-          badge.classList.add('show');
-        } else {
-          badge.classList.remove('show');
-        }
+        if (beatHighScoreThisRun && totalScore > 0) badge.classList.add('show');
+        else badge.classList.remove('show');
       } else {
         document.getElementById('gameOverTitle').innerText = 'Final Standings';
         soloWrap.style.display = 'none';
@@ -2896,6 +3210,7 @@
             <span>${p.score} pts</span>
           </div>
         `).join('');
+        broadcastState();
       }
 
       document.getElementById('gameOverScreen').classList.add('show');
@@ -2908,15 +3223,23 @@
 
     function returnToMenu() {
       clearInterval(roundTimer);
+      isGameOver = false;
       document.getElementById('gameOverScreen').classList.remove('show');
       document.getElementById('startScreen').classList.remove('hidden');
     }
 
-    // Initialize HUD on page load
+    // Initialize on page load
     window.onload = () => {
-      document.getElementById('roundText').innerText = `ROUND 1 / ${selectedRoundLength}`;
-      document.getElementById('timerDisplay').innerText = selectedRoundTime;
-      document.getElementById('highScoreText').innerText = highScore;
+      if (isTVView) {
+        document.body.classList.add('tv-mode');
+        document.getElementById('startScreen').classList.add('hidden');
+        document.getElementById('tvWaitingScreen').classList.add('active');
+        syncChannel.postMessage({ type: 'TV_READY' });
+      } else {
+        document.getElementById('roundText').innerText = `ROUND 1 / ${selectedRoundLength}`;
+        document.getElementById('timerDisplay').innerText = selectedRoundTime;
+        document.getElementById('highScoreText').innerText = highScore;
+      }
     };
   </script>
 
