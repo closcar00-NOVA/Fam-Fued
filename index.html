@@ -49,12 +49,12 @@
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      padding: 10px 28px;
+      padding: 8px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       border-bottom: 1.5px solid var(--neon-white);
       box-shadow: var(--neon-white-glow);
       position: relative;
@@ -80,7 +80,7 @@
       font-weight: 700;
       color: #6ee787;
       background: rgba(0, 0, 0, 0.5);
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 6px;
       border: 1px solid rgba(110, 231, 135, 0.5);
       letter-spacing: 0.1em;
@@ -91,7 +91,7 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 6px;
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
@@ -115,7 +115,7 @@
       text-transform: uppercase;
       color: #e2e8f0;
       background: radial-gradient(circle at center, #1b4ea8 0%, #0b2661 100%);
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 6px;
       border: 1px solid var(--neon-white);
       box-shadow: 0 0 8px rgba(30, 96, 213, 0.5);
@@ -137,7 +137,7 @@
       font-weight: 900;
       color: #fff;
       background: radial-gradient(circle at center, #1e60d5 0%, #0d3380 100%);
-      padding: 6px 22px;
+      padding: 5px 22px;
       border-radius: 8px;
       border: 2px solid var(--neon-white);
       box-shadow: 0 0 14px rgba(30, 96, 213, 0.7), inset 0 0 8px rgba(255, 255, 255, 0.25);
@@ -160,11 +160,11 @@
       align-items: center;
       justify-content: center;
       background: radial-gradient(circle at center, #1e60d5 0%, #0c2e75 100%);
-      padding: 5px 28px;
+      padding: 4px 26px;
       border-radius: 8px;
       border: 2px solid var(--accent-gold);
       box-shadow: 0 0 18px rgba(254, 209, 65, 0.45), inset 0 0 10px rgba(255, 255, 255, 0.2);
-      min-width: 190px;
+      min-width: 185px;
       text-align: center;
     }
 
@@ -177,11 +177,11 @@
       letter-spacing: 0.2em;
       color: var(--accent-gold);
       line-height: 1.1;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .active-team-name {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -202,7 +202,7 @@
       align-items: center;
       gap: 10px;
       background: rgba(0, 0, 0, 0.55);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 8px;
       border: 1px solid var(--neon-white);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
@@ -212,7 +212,7 @@
       background: transparent;
       border: none;
       color: var(--accent-gold);
-      font-size: 18px;
+      font-size: 17px;
       cursor: pointer;
       padding: 2px 4px;
       line-height: 1;
@@ -223,15 +223,15 @@
     .sound-toggle-btn.muted { color: #666; }
 
     .volume-slider {
-      width: 85px;
+      width: 80px;
       cursor: pointer;
       accent-color: var(--accent-gold);
     }
 
     .strike-tracker {
       display: flex;
-      gap: 10px;
-      font-size: 28px;
+      gap: 8px;
+      font-size: 26px;
       color: rgba(255, 255, 255, 0.18);
       font-weight: 900;
     }
@@ -246,11 +246,11 @@
       display: none;
       width: 100%;
       max-width: 1040px;
-      padding: 14px 20px 0 20px;
+      padding: 10px 20px 0 20px;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
     }
 
     .host-scoreboard-bar.show { display: flex; }
@@ -258,35 +258,35 @@
     .round-bank-box {
       background: radial-gradient(circle at center, #2068e8 0%, #0b2d75 100%);
       border: 3px solid var(--accent-amber);
-      border-radius: 12px;
-      padding: 8px 26px;
+      border-radius: 10px;
+      padding: 6px 22px;
       text-align: center;
-      box-shadow: 0 0 22px rgba(255, 174, 0, 0.55), inset 0 0 12px rgba(255, 255, 255, 0.25);
-      min-width: 150px;
+      box-shadow: 0 0 20px rgba(255, 174, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.25);
+      min-width: 140px;
     }
 
     .round-bank-label {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--accent-gold);
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .round-bank-value {
-      font-size: 34px;
+      font-size: 30px;
       font-weight: 900;
       color: #ffffff;
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-      line-height: 1.1;
+      line-height: 1.05;
     }
 
     .player-scorecards {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .scorecard {
@@ -295,8 +295,8 @@
       -webkit-backdrop-filter: blur(8px);
       border: 1.5px solid rgba(255, 255, 255, 0.35);
       border-radius: 10px;
-      padding: 10px 22px;
-      min-width: 140px;
+      padding: 7px 20px;
+      min-width: 130px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -315,26 +315,27 @@
     .scorecard.active {
       border: 2px solid var(--accent-gold);
       background: rgba(10, 32, 82, 0.88);
-      box-shadow: 0 0 20px rgba(254, 209, 65, 0.45);
-      transform: translateY(-3px);
+      box-shadow: 0 0 18px rgba(254, 209, 65, 0.45);
+      transform: translateY(-2px);
     }
 
     .scorecard-name {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: #cbd5e1;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .scorecard.active .scorecard-name { color: var(--accent-gold); }
 
     .scorecard-points {
-      font-size: 28px;
+      font-size: 25px;
       font-weight: 900;
       color: #fff;
       letter-spacing: 0.06em;
+      line-height: 1.1;
     }
 
     /* GAME CONTAINER */
@@ -346,23 +347,23 @@
       justify-content: center;
       width: 100%;
       max-width: 1040px;
-      padding: 16px 20px 28px 20px;
+      padding: 12px 20px 16px 20px;
     }
 
     .question-display {
-      font-size: 21px;
+      font-size: 19px;
       font-weight: 700;
-      line-height: 1.45;
+      line-height: 1.38;
       letter-spacing: 0.05em;
       text-align: center;
-      margin-bottom: 18px;
-      padding: 16px 26px;
+      margin-bottom: 12px;
+      padding: 12px 22px;
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1.5px solid var(--neon-white);
       border-radius: 12px;
-      box-shadow: var(--neon-white-glow), 0 12px 28px rgba(0, 0, 0, 0.6);
+      box-shadow: var(--neon-white-glow), 0 10px 24px rgba(0, 0, 0, 0.6);
       width: 96%;
     }
 
@@ -370,30 +371,30 @@
     .board-frame {
       width: 100%;
       background: #02050c;
-      padding: 16px;
-      border-radius: 22px;
+      padding: 12px;
+      border-radius: 20px;
       border: 4px solid var(--accent-amber);
       box-shadow:
-        0 0 28px rgba(255, 174, 0, 0.55),
-        0 18px 40px rgba(0, 0, 0, 0.8),
-        inset 0 0 18px rgba(255, 174, 0, 0.35);
-      margin-bottom: 20px;
+        0 0 26px rgba(255, 174, 0, 0.55),
+        0 14px 34px rgba(0, 0, 0, 0.8),
+        inset 0 0 16px rgba(255, 174, 0, 0.35);
+      margin-bottom: 12px;
     }
 
     /* 8-SLOT SYMMETRICAL GRID: 1-4 LEFT COLUMN, 5-8 RIGHT COLUMN */
     .board {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(4, 72px);
+      grid-template-rows: repeat(4, 62px);
       grid-auto-flow: column;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
     }
 
     /* TILES */
     .tile {
       background-color: transparent;
-      height: 72px;
+      height: 62px;
       perspective: 1000px;
     }
 
@@ -437,8 +438,8 @@
     }
 
     .tile-number-badge {
-      width: 58px;
-      height: 44px;
+      width: 52px;
+      height: 38px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #244894 0%, #081738 80%);
       border: 2px solid rgba(255, 255, 255, 0.75);
@@ -446,7 +447,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
+      font-size: 23px;
       font-weight: 900;
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -475,8 +476,8 @@
     .answer-text {
       flex: 1;
       text-align: left;
-      padding: 0 16px;
-      font-size: 16px;
+      padding: 0 14px;
+      font-size: 15px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -489,13 +490,13 @@
 
     .answer-points {
       height: 100%;
-      min-width: 68px;
+      min-width: 64px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(180deg, #2e6ce0 0%, #103785 100%);
       border-left: 2.5px solid #dce8ff;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -558,12 +559,12 @@
 
     .player-console button:hover { background: #fff; }
 
-    /* HOST DASHBOARD (LAPTOP VIEW ONLY) */
+    /* HOST DASHBOARD (COMPACT VERTICAL LAYOUT) */
     .host-dashboard {
       display: none;
       width: 100%;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
     }
 
     .host-dashboard.show { display: flex; }
@@ -576,12 +577,12 @@
       -webkit-backdrop-filter: blur(10px);
       border: 1.5px solid var(--neon-white);
       box-shadow: var(--neon-white-glow);
-      border-radius: 12px;
-      padding: 14px 18px;
+      border-radius: 10px;
+      padding: 9px 14px;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
     }
 
     .host-search-wrap {
@@ -592,13 +593,13 @@
 
     .host-search-wrap input {
       width: 100%;
-      padding: 11px 14px;
+      padding: 8px 12px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.05em;
       border: 1.5px solid var(--neon-white);
-      border-radius: 8px;
+      border-radius: 6px;
       background: rgba(0, 0, 0, 0.72);
       color: #fff;
       outline: none;
@@ -615,7 +616,7 @@
       border: 1.5px solid var(--accent-gold);
       border-bottom: none;
       border-radius: 8px 8px 0 0;
-      max-height: 220px;
+      max-height: 200px;
       overflow-y: auto;
       display: none;
       z-index: 1600;
@@ -624,7 +625,7 @@
     .host-dropdown.active { display: block; }
 
     .host-dropdown-item {
-      padding: 11px 14px;
+      padding: 9px 12px;
       cursor: pointer;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       display: flex;
@@ -641,19 +642,19 @@
 
     .host-btn-group {
       display: flex;
-      gap: 8px;
+      gap: 7px;
       flex-wrap: wrap;
     }
 
     .host-btn {
-      padding: 11px 14px;
+      padding: 7px 12px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
       transition: transform 0.15s, filter 0.2s, opacity 0.2s;
     }
@@ -671,8 +672,8 @@
     .host-cheatsheet {
       background: rgba(4, 9, 20, 0.92);
       border: 1.5px solid rgba(254, 209, 65, 0.65);
-      border-radius: 12px;
-      padding: 12px 16px;
+      border-radius: 10px;
+      padding: 9px 14px;
       width: 100%;
     }
 
@@ -680,8 +681,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
-      font-size: 12px;
+      margin-bottom: 7px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -690,21 +691,21 @@
 
     .cheatsheet-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 6px;
     }
 
     .cheat-btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 9px 12px;
+      padding: 6px 10px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 6px;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       cursor: pointer;
       text-align: left;
@@ -733,15 +734,15 @@
     .manual-answer-bar {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 12px;
-      padding-top: 12px;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 8px;
       border-top: 1px solid rgba(255, 255, 255, 0.16);
       flex-wrap: wrap;
     }
 
     .manual-label {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -751,9 +752,9 @@
     .manual-answer-bar input[type="text"] {
       flex: 1;
       min-width: 200px;
-      padding: 9px 12px;
+      padding: 6px 10px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.05em;
       border: 1px solid rgba(255, 255, 255, 0.35);
@@ -764,10 +765,10 @@
     }
 
     .manual-answer-bar input[type="number"] {
-      width: 78px;
-      padding: 9px 10px;
+      width: 68px;
+      padding: 6px 8px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.35);
@@ -782,9 +783,9 @@
     }
 
     .manual-flip-btn {
-      padding: 9px 18px;
+      padding: 6px 14px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -803,10 +804,10 @@
 
     .next-btn {
       display: none;
-      margin-top: 16px;
-      padding: 15px 42px;
+      margin-top: 14px;
+      padding: 14px 40px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       background: var(--emerald);
@@ -1291,7 +1292,7 @@
         </div>
       </div>
 
-      <!-- Private Host Answer Cheat Sheet + Manual Answer Override -->
+      <!-- Private Host Answer Cheat Sheet + Manual Overwrite Bar -->
       <div class="host-cheatsheet">
         <div class="cheatsheet-header">
           <span>Host Answer Key (Hidden from TV Screen — Click to Reveal)</span>
@@ -1301,7 +1302,7 @@
 
         <div class="manual-answer-bar">
           <span class="manual-label">Manual Override:</span>
-          <input type="text" id="manualAnswerInput" placeholder="Type custom accepted answer..." onkeypress="handleManualEnter(event)" autocomplete="off">
+          <input type="text" id="manualAnswerInput" placeholder="Custom answer (overwrites matching/closest unrevealed slot)..." onkeypress="handleManualEnter(event)" autocomplete="off">
           <input type="number" id="manualPointsInput" value="10" min="0" max="100" title="Points">
           <button class="manual-flip-btn" onclick="submitManualAnswer()">+ Flip</button>
         </div>
@@ -2544,7 +2545,6 @@
       document.getElementById('soloHighWrap').style.display = 'none';
       document.getElementById('hostScoreboardBar').classList.add('show');
 
-      // Show compact timer on left & active team banner in center
       document.getElementById('timerDisplay').style.display = 'none';
       const compactTimer = document.getElementById('compactTimer');
       compactTimer.classList.add('show');
@@ -2561,14 +2561,12 @@
       document.getElementById('questionText').innerText = state.question;
       document.getElementById('roundBankText').innerText = state.roundBank;
 
-      // Strikes
       for (let i = 1; i <= 3; i++) {
         const x = document.getElementById(`strike-${i}`);
         if (i <= state.strikes) x.classList.add('active');
         else x.classList.remove('active');
       }
 
-      // Team Scorecards
       const scContainer = document.getElementById('playerScorecards');
       scContainer.innerHTML = state.players.map((p, idx) => `
         <div class="scorecard ${idx === state.activePlayerIndex ? 'active' : ''}">
@@ -2577,7 +2575,6 @@
         </div>
       `).join('');
 
-      // 8-Slot Board
       const board = document.getElementById('board');
       if (board.dataset.roundKey !== `${state.roundNum}-${state.question}`) {
         board.dataset.roundKey = `${state.roundNum}-${state.question}`;
@@ -2607,27 +2604,16 @@
         state.answers.forEach((ans, i) => {
           const tile = document.getElementById(`tv-tile-${i}`);
           if (tile) {
-            // Convert blank tile to active tile if a Manual Answer was added
-            if (tile.classList.contains('blank-tile')) {
-              tile.classList.remove('blank-tile');
-              tile.innerHTML = `
-                <div class="tile-inner">
-                  <div class="tile-front"><div class="tile-number-badge">${i + 1}</div></div>
-                  <div class="tile-back">
-                    <span class="answer-text">${ans.text}</span>
-                    <span class="answer-points">${ans.points}</span>
-                  </div>
-                </div>
-              `;
-              void tile.offsetWidth; // trigger reflow for smooth 3D flip
-            }
+            const textEl = tile.querySelector('.answer-text');
+            const ptsEl = tile.querySelector('.answer-points');
+            if (textEl && textEl.innerText !== ans.text) textEl.innerText = ans.text;
+            if (ptsEl && ptsEl.innerText !== String(ans.points)) ptsEl.innerText = ans.points;
             if (ans.missed) tile.classList.add('missed');
             if (ans.revealed) tile.classList.add('flipped');
           }
         });
       }
 
-      // Game Over Leaderboard
       const goScreen = document.getElementById('gameOverScreen');
       if (state.isGameOver) {
         document.getElementById('gameOverTitle').innerText = 'Final Standings';
@@ -2999,7 +2985,7 @@
       });
     }
 
-    // --- MANUAL OVERRIDE ANSWER (HOST MODE) ---
+    // --- MANUAL OVERRIDE (OVERWRITES MATCHING OR CLOSEST UNREVEALED SLOT) ---
     function handleManualEnter(e) {
       if (e.key === 'Enter') submitManualAnswer();
     }
@@ -3013,25 +2999,33 @@
 
       if (!customText) return;
 
-      if (currentAnswers.length < 8) {
-        const slotIndex = currentAnswers.length;
-        const newAns = { text: customText, points: customPoints, revealed: true, missed: false };
-        currentAnswers.push(newAns);
+      // Find best unrevealed slot: exact point match first, else closest point value (tie-breaker: lowest-ranked slot)
+      let targetIndex = -1;
+      let minDiff = Infinity;
+
+      for (let i = currentAnswers.length - 1; i >= 0; i--) {
+        if (!currentAnswers[i].revealed) {
+          const diff = Math.abs(currentAnswers[i].points - customPoints);
+          if (diff < minDiff) {
+            minDiff = diff;
+            targetIndex = i;
+          }
+        }
+      }
+
+      if (targetIndex !== -1) {
+        currentAnswers[targetIndex].text = customText;
+        currentAnswers[targetIndex].points = customPoints;
+        currentAnswers[targetIndex].revealed = true;
+        currentAnswers[targetIndex].missed = false;
         revealedTiles++;
 
-        const tile = document.getElementById(`tile-${slotIndex}`);
+        const tile = document.getElementById(`tile-${targetIndex}`);
         if (tile) {
-          tile.classList.remove('blank-tile');
-          tile.innerHTML = `
-            <div class="tile-inner">
-              <div class="tile-front"><div class="tile-number-badge">${slotIndex + 1}</div></div>
-              <div class="tile-back">
-                <span class="answer-text">${newAns.text}</span>
-                <span class="answer-points">${newAns.points}</span>
-              </div>
-            </div>
-          `;
-          void tile.offsetWidth; // trigger reflow for flip animation
+          const textEl = tile.querySelector('.answer-text');
+          const ptsEl = tile.querySelector('.answer-points');
+          if (textEl) textEl.innerText = customText;
+          if (ptsEl) ptsEl.innerText = customPoints;
           tile.classList.add('flipped');
         }
       }
