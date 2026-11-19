@@ -49,12 +49,12 @@
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      padding: 12px 28px;
+      padding: 10px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 14px;
       border-bottom: 1.5px solid var(--neon-white);
       box-shadow: var(--neon-white-glow);
       position: relative;
@@ -64,7 +64,7 @@
     .hud-section {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
@@ -106,7 +106,32 @@
       letter-spacing: 0.12em;
     }
 
-    /* CLASSIC BLUE LED TIMER DISPLAY */
+    /* COMPACT LEFT-SIDE TIMER FOR HOST & TV MODES */
+    .compact-timer {
+      display: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e2e8f0;
+      background: radial-gradient(circle at center, #1b4ea8 0%, #0b2661 100%);
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--neon-white);
+      box-shadow: 0 0 8px rgba(30, 96, 213, 0.5);
+      transition: all 0.25s;
+    }
+
+    .compact-timer.show { display: inline-flex; align-items: center; gap: 5px; }
+
+    .compact-timer.low {
+      background: radial-gradient(circle at center, #c1121f 0%, #6a040f 100%);
+      border-color: #ff4d6d;
+      color: #fff;
+      animation: pulse 1s infinite;
+    }
+
+    /* CENTER SLOT: SOLO TIMER OR HOST ACTIVE TEAM BANNER */
     .timer-display {
       font-size: 26px;
       font-weight: 900;
@@ -127,6 +152,42 @@
       color: #fff;
       border-color: #ff4d6d;
       animation: pulse 1s infinite;
+    }
+
+    .active-team-banner {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #1e60d5 0%, #0c2e75 100%);
+      padding: 5px 28px;
+      border-radius: 8px;
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 0 18px rgba(254, 209, 65, 0.45), inset 0 0 10px rgba(255, 255, 255, 0.2);
+      min-width: 190px;
+      text-align: center;
+    }
+
+    .active-team-banner.show { display: flex; }
+
+    .active-team-label {
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent-gold);
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .active-team-name {
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+      line-height: 1.1;
     }
 
     @keyframes pulse {
@@ -1034,9 +1095,15 @@
       <div class="score-display" id="soloScoreWrap">SCORE: <span id="scoreText">0</span></div>
       <div class="high-score-display" id="soloHighWrap">BEST: <span id="highScoreText">0</span></div>
       <div class="round-display" id="roundText">ROUND 1 / 10</div>
+      <div class="compact-timer" id="compactTimer">TIMER: <span id="compactTimerVal">60</span></div>
     </div>
 
+    <!-- Center Slot: Solo Timer OR Host Active Team Banner -->
     <div class="timer-display" id="timerDisplay">60</div>
+    <div class="active-team-banner" id="activeTeamBanner">
+      <span class="active-team-label">Active Team</span>
+      <span class="active-team-name" id="activeTeamName">TEAM 1</span>
+    </div>
 
     <div class="hud-section">
       <div class="audio-controls" title="Sound Controls">
@@ -2398,15 +2465,22 @@
       document.getElementById('soloHighWrap').style.display = 'none';
       document.getElementById('hostScoreboardBar').classList.add('show');
 
+      // Show compact timer on left & active team banner in center
+      document.getElementById('timerDisplay').style.display = 'none';
+      const compactTimer = document.getElementById('compactTimer');
+      compactTimer.classList.add('show');
+      document.getElementById('compactTimerVal').innerText = state.timeLeft;
+      if (state.isLowTime) compactTimer.classList.add('low');
+      else compactTimer.classList.remove('low');
+
+      const activeBanner = document.getElementById('activeTeamBanner');
+      activeBanner.classList.add('show');
+      const activeTeam = state.players[state.activePlayerIndex];
+      document.getElementById('activeTeamName').innerText = activeTeam ? activeTeam.name : '';
+
       document.getElementById('roundText').innerText = `ROUND ${state.roundNum} / ${state.totalRounds}`;
       document.getElementById('questionText').innerText = state.question;
       document.getElementById('roundBankText').innerText = state.roundBank;
-
-      // Timer
-      const timerDisplay = document.getElementById('timerDisplay');
-      timerDisplay.innerText = state.timeLeft;
-      if (state.isLowTime) timerDisplay.classList.add('low');
-      else timerDisplay.classList.remove('low');
 
       // Strikes
       for (let i = 1; i <= 3; i++) {
@@ -2424,7 +2498,7 @@
         </div>
       `).join('');
 
-      // 8-Slot Board (re-render only if question changed, else update flips smoothly)
+      // 8-Slot Board
       const board = document.getElementById('board');
       if (board.dataset.roundKey !== `${state.roundNum}-${state.question}`) {
         board.dataset.roundKey = `${state.roundNum}-${state.question}`;
@@ -2508,7 +2582,9 @@
     function setRoundDuration(seconds, btnEl) {
       selectedRoundTime = seconds;
       timeLeft = seconds;
-      document.getElementById('timerDisplay').innerText = seconds === 0 ? 'OFF' : seconds;
+      const label = seconds === 0 ? 'OFF' : seconds;
+      document.getElementById('timerDisplay').innerText = label;
+      document.getElementById('compactTimerVal').innerText = label;
       btnEl.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
       btnEl.classList.add('selected');
     }
@@ -2740,8 +2816,14 @@
         }));
         activePlayerIndex = 0;
         roundBank = 0;
+
+        // Host HUD layout: compact timer on left, active team banner in center
         document.getElementById('soloScoreWrap').style.display = 'none';
         document.getElementById('soloHighWrap').style.display = 'none';
+        document.getElementById('timerDisplay').style.display = 'none';
+        document.getElementById('compactTimer').classList.add('show');
+        document.getElementById('activeTeamBanner').classList.add('show');
+
         document.getElementById('hostScoreboardBar').classList.add('show');
         document.getElementById('playerConsole').style.display = 'none';
         document.getElementById('hostDashboard').classList.add('show');
@@ -2750,8 +2832,14 @@
         totalScore = 0;
         beatHighScoreThisRun = false;
         document.getElementById('scoreText').innerText = '0';
+
+        // Solo HUD layout: big timer in center
         document.getElementById('soloScoreWrap').style.display = 'block';
         document.getElementById('soloHighWrap').style.display = 'block';
+        document.getElementById('timerDisplay').style.display = 'block';
+        document.getElementById('compactTimer').classList.remove('show');
+        document.getElementById('activeTeamBanner').classList.remove('show');
+
         document.getElementById('hostScoreboardBar').classList.remove('show');
         document.getElementById('hostDashboard').classList.remove('show');
       }
@@ -2777,6 +2865,12 @@
         `;
         container.appendChild(card);
       });
+
+      // Update center Active Team Banner
+      if (players[activePlayerIndex]) {
+        document.getElementById('activeTeamName').innerText = players[activePlayerIndex].name;
+      }
+
       updateRoundBankUI();
     }
 
@@ -2894,10 +2988,14 @@
     function startTimer() {
       clearInterval(roundTimer);
       const timerDisplay = document.getElementById('timerDisplay');
+      const compactTimer = document.getElementById('compactTimer');
+      const compactVal = document.getElementById('compactTimerVal');
 
       if (selectedRoundTime === 0) {
         timerDisplay.innerText = 'OFF';
+        compactVal.innerText = 'OFF';
         timerDisplay.classList.remove('low');
+        compactTimer.classList.remove('low');
         return;
       }
 
@@ -2926,9 +3024,19 @@
 
     function updateTimerUI() {
       const timerDisplay = document.getElementById('timerDisplay');
+      const compactTimer = document.getElementById('compactTimer');
+      const compactVal = document.getElementById('compactTimerVal');
+
       timerDisplay.innerText = timeLeft;
-      if (timeLeft <= 10 && timeLeft > 0) timerDisplay.classList.add('low');
-      else timerDisplay.classList.remove('low');
+      compactVal.innerText = timeLeft;
+
+      if (timeLeft <= 10 && timeLeft > 0) {
+        timerDisplay.classList.add('low');
+        compactTimer.classList.add('low');
+      } else {
+        timerDisplay.classList.remove('low');
+        compactTimer.classList.remove('low');
+      }
     }
 
     function triggerTimeOut() {
@@ -3099,7 +3207,6 @@
             document.getElementById('scoreText').innerText = totalScore;
             updateHighScore(totalScore);
           } else {
-            // Classic Round Bank: add to pot until Host clicks "Award Bank"
             roundBank += points;
             updateRoundBankUI();
           }
@@ -3237,7 +3344,9 @@
         syncChannel.postMessage({ type: 'TV_READY' });
       } else {
         document.getElementById('roundText').innerText = `ROUND 1 / ${selectedRoundLength}`;
-        document.getElementById('timerDisplay').innerText = selectedRoundTime;
+        const label = selectedRoundTime === 0 ? 'OFF' : selectedRoundTime;
+        document.getElementById('timerDisplay').innerText = label;
+        document.getElementById('compactTimerVal').innerText = label;
         document.getElementById('highScoreText').innerText = highScore;
       }
     };
