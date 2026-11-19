@@ -271,7 +271,7 @@
       width: 96%;
     }
 
-    /* CLASSIC FAMILY FEUD BOARD HOUSING (STYLE.JPG REFERENCE) */
+    /* CLASSIC FAMILY FEUD BOARD HOUSING */
     .board-frame {
       width: 100%;
       background: #02050c;
@@ -649,7 +649,7 @@
       border-radius: 14px;
       padding: 22px 26px;
       width: 100%;
-      max-width: 580px;
+      max-width: 600px;
       margin-bottom: 26px;
       display: flex;
       flex-direction: column;
@@ -679,7 +679,7 @@
     }
 
     .opt-btn {
-      padding: 8px 15px;
+      padding: 8px 14px;
       font-family: 'Montserrat', sans-serif;
       font-size: 13px;
       font-weight: 700;
@@ -979,7 +979,7 @@
   <div class="start-screen" id="startScreen">
     <h1 class="start-title">Family Feud</h1>
     <p class="start-subtitle">
-      50 Shuffled Questions &bull; Solo Arcade or Live Host Mode
+      100 Shuffled Questions &bull; Solo Arcade or Live Host Mode
     </p>
 
     <div class="setup-panel">
@@ -999,7 +999,8 @@
           <button class="opt-btn" onclick="setRoundLength(5, this)">5</button>
           <button class="opt-btn selected" onclick="setRoundLength(10, this)">10</button>
           <button class="opt-btn" onclick="setRoundLength(25, this)">25</button>
-          <button class="opt-btn" onclick="setRoundLength(50, this)">All (50)</button>
+          <button class="opt-btn" onclick="setRoundLength(50, this)">50</button>
+          <button class="opt-btn" onclick="setRoundLength(100, this)">All (100)</button>
         </div>
       </div>
 
@@ -1087,7 +1088,7 @@
   </div>
 
   <script>
-    // Full 50-question bank with synonyms
+    // Complete 100-question bank (1-50 Adult-themed + 51-100 Everyday Classics)
     const questionBank = [
       {
         "question": "Name a reason someone might secretly check their partner's phone.",
@@ -1634,6 +1635,556 @@
           {"text": "Late/Flaking on plans", "points": 18, "synonyms": ["late", "flaking", "bail", "cancel", "staying home", "lazy", "asleep"]},
           {"text": "Didn't want to talk to parents", "points": 12, "synonyms": ["mom", "dad", "parents", "family", "partner", "spouse"]},
           {"text": "Out somewhere you shouldn't be", "points": 10, "synonyms": ["cheating", "sneaking out", "bar", "partying", "hiding", "location", "trouble"]}
+        ]
+      },
+      {
+        "question": "Name something people always forget to pack for a trip.",
+        "answers": [
+          {"text": "Toothbrush/Toothpaste", "points": 32, "synonyms": ["toothbrush", "toothpaste", "dental", "floss"]},
+          {"text": "Phone charger", "points": 26, "synonyms": ["charger", "cord", "cable", "power bank", "plug"]},
+          {"text": "Underwear/Socks", "points": 16, "synonyms": ["underwear", "socks", "panties", "boxers", "undies"]},
+          {"text": "Deodorant/Toiletries", "points": 12, "synonyms": ["deodorant", "shampoo", "razor", "lotion", "soap", "toiletries"]},
+          {"text": "Medications", "points": 8, "synonyms": ["meds", "pills", "prescriptions", "vitamins", "medicine"]},
+          {"text": "Sunglasses/Sunscreen", "points": 6, "synonyms": ["sunglasses", "sunscreen", "hat", "glasses", "swimsuit"]}
+        ]
+      },
+      {
+        "question": "Name a food that tastes just as good—or better—as leftovers.",
+        "answers": [
+          {"text": "Pizza", "points": 38, "synonyms": ["pizza", "cold pizza", "slice"]},
+          {"text": "Pasta/Lasagna", "points": 24, "synonyms": ["pasta", "lasagna", "spaghetti", "mac and cheese", "noodles", "ziti"]},
+          {"text": "Chili/Soup", "points": 16, "synonyms": ["chili", "soup", "stew", "gumbo", "curry"]},
+          {"text": "Chinese takeout", "points": 10, "synonyms": ["chinese", "takeout", "fried rice", "lo mein", "asian food"]},
+          {"text": "Thanksgiving turkey/Ham", "points": 7, "synonyms": ["turkey", "ham", "thanksgiving", "stuffing", "roast"]},
+          {"text": "Meatloaf/Casserole", "points": 5, "synonyms": ["meatloaf", "casserole", "pot roast", "bbq", "pulled pork"]}
+        ]
+      },
+      {
+        "question": "Name a chore people put off for as long as possible.",
+        "answers": [
+          {"text": "Folding/Putting away laundry", "points": 35, "synonyms": ["laundry", "folding clothes", "washing clothes", "ironing"]},
+          {"text": "Washing dishes", "points": 25, "synonyms": ["dishes", "dishwasher", "pots and pans", "kitchen"]},
+          {"text": "Cleaning the bathroom", "points": 18, "synonyms": ["bathroom", "toilet", "shower", "tub", "scrubbing"]},
+          {"text": "Vacuuming/Mopping", "points": 10, "synonyms": ["vacuum", "mop", "sweep", "floors", "dusting"]},
+          {"text": "Taking out the trash", "points": 7, "synonyms": ["trash", "garbage", "recycling", "bins"]},
+          {"text": "Mowing the lawn", "points": 5, "synonyms": ["lawn", "grass", "yard work", "weeding", "raking"]}
+        ]
+      },
+      {
+        "question": "Name something you might lose in your house every single week.",
+        "answers": [
+          {"text": "Keys", "points": 36, "synonyms": ["keys", "car keys", "house keys", "keychain"]},
+          {"text": "Phone", "points": 26, "synonyms": ["phone", "cell phone", "iphone", "smartphone"]},
+          {"text": "TV remote", "points": 18, "synonyms": ["remote", "clicker", "controller", "tv remote"]},
+          {"text": "Glasses/Sunglasses", "points": 10, "synonyms": ["glasses", "reading glasses", "sunglasses", "specs"]},
+          {"text": "Wallet/Purse", "points": 6, "synonyms": ["wallet", "purse", "bag", "credit card", "id"]},
+          {"text": "Lip balm/Chapstick", "points": 4, "synonyms": ["chapstick", "lip balm", "airpods", "headphones", "hair tie"]}
+        ]
+      },
+      {
+        "question": "Name a reason someone might be late for work.",
+        "answers": [
+          {"text": "Heavy traffic", "points": 38, "synonyms": ["traffic", "accident", "jam", "construction", "commute"]},
+          {"text": "Overslept/Alarm didn't go off", "points": 28, "synonyms": ["overslept", "alarm", "slept in", "snooze", "woke up late"]},
+          {"text": "Car trouble", "points": 14, "synonyms": ["car", "flat tire", "battery", "gas", "breakdown"]},
+          {"text": "Getting kids ready", "points": 9, "synonyms": ["kids", "school", "daycare", "drop off", "children"]},
+          {"text": "Bad weather", "points": 6, "synonyms": ["weather", "snow", "rain", "ice", "storm"]},
+          {"text": "Stopped for coffee/breakfast", "points": 5, "synonyms": ["coffee", "starbucks", "dunkin", "breakfast", "drive thru"]}
+        ]
+      },
+      {
+        "question": "Name something people do in an elevator to avoid making eye contact.",
+        "answers": [
+          {"text": "Look at their phone", "points": 46, "synonyms": ["phone", "text", "scroll", "check phone", "email"]},
+          {"text": "Stare at the floor numbers", "points": 28, "synonyms": ["numbers", "buttons", "light", "ceiling", "watch numbers"]},
+          {"text": "Look at the floor/Shoes", "points": 12, "synonyms": ["floor", "shoes", "down", "feet", "ground"]},
+          {"text": "Face the doors silently", "points": 8, "synonyms": ["stare at door", "look straight", "doors", "wall"]},
+          {"text": "Check their watch", "points": 4, "synonyms": ["watch", "time", "wrist"]},
+          {"text": "Look in the mirror", "points": 2, "synonyms": ["mirror", "fix hair", "check reflection"]}
+        ]
+      },
+      {
+        "question": "Name a classic pizza topping.",
+        "answers": [
+          {"text": "Pepperoni", "points": 45, "synonyms": ["pepperoni", "pep"]},
+          {"text": "Extra cheese", "points": 20, "synonyms": ["cheese", "mozzarella", "parmesan"]},
+          {"text": "Sausage", "points": 14, "synonyms": ["sausage", "italian sausage", "meat"]},
+          {"text": "Mushrooms", "points": 10, "synonyms": ["mushrooms", "shrooms"]},
+          {"text": "Onions/Peppers", "points": 6, "synonyms": ["onions", "peppers", "green peppers", "veggies", "bell peppers"]},
+          {"text": "Bacon/Ham", "points": 5, "synonyms": ["bacon", "ham", "pineapple", "olives", "basil"]}
+        ]
+      },
+      {
+        "question": "Name something you buy at the grocery store that almost always goes bad before you finish it.",
+        "answers": [
+          {"text": "Salad/Spinach", "points": 34, "synonyms": ["salad", "lettuce", "spinach", "greens", "bagged salad", "spring mix"]},
+          {"text": "Bananas", "points": 22, "synonyms": ["bananas", "banana"]},
+          {"text": "Bread", "points": 16, "synonyms": ["bread", "bagels", "buns", "rolls", "loaf"]},
+          {"text": "Milk", "points": 12, "synonyms": ["milk", "dairy", "cream", "yogurt"]},
+          {"text": "Berries/Fruit", "points": 10, "synonyms": ["strawberries", "berries", "blueberries", "raspberries", "fruit", "avocados"]},
+          {"text": "Fresh herbs/Cilantro", "points": 6, "synonyms": ["cilantro", "herbs", "parsley", "basil", "produce", "veggies"]}
+        ]
+      },
+      {
+        "question": "Name a place where you have to be completely quiet.",
+        "answers": [
+          {"text": "Library", "points": 42, "synonyms": ["library", "study room"]},
+          {"text": "Movie theater", "points": 24, "synonyms": ["movie", "theater", "cinema", "movies"]},
+          {"text": "Church/Place of worship", "points": 16, "synonyms": ["church", "mosque", "temple", "synagogue", "funeral"]},
+          {"text": "Hospital/Doctor's office", "points": 9, "synonyms": ["hospital", "clinic", "waiting room", "icu"]},
+          {"text": "Museum/Art gallery", "points": 5, "synonyms": ["museum", "gallery", "courtroom", "court"]},
+          {"text": "Golf course", "points": 4, "synonyms": ["golf", "tennis", "spa", "classroom", "exam"]}
+        ]
+      },
+      {
+        "question": "Name something people do when they can't fall asleep at night.",
+        "answers": [
+          {"text": "Scroll on their phone", "points": 38, "synonyms": ["phone", "social media", "tiktok", "instagram", "read phone", "youtube"]},
+          {"text": "Watch TV", "points": 22, "synonyms": ["tv", "netflix", "movie", "show", "television"]},
+          {"text": "Toss and turn", "points": 15, "synonyms": ["toss and turn", "flip pillow", "overthink", "stare at ceiling", "count sheep"]},
+          {"text": "Read a book", "points": 10, "synonyms": ["read", "book", "kindle", "magazine"]},
+          {"text": "Get a snack/Drink", "points": 8, "synonyms": ["eat", "snack", "water", "tea", "warm milk", "kitchen"]},
+          {"text": "Take melatonin/Sleep aid", "points": 7, "synonyms": ["melatonin", "medicine", "nyquil", "zzzquil", "pills", "music", "podcast"]}
+        ]
+      },
+      {
+        "question": "Name a type of weather that makes people want to stay inside.",
+        "answers": [
+          {"text": "Heavy rain/Thunderstorm", "points": 38, "synonyms": ["rain", "storm", "thunderstorm", "pouring", "downpour", "lightning"]},
+          {"text": "Snowstorm/Blizzard", "points": 30, "synonyms": ["snow", "blizzard", "snowstorm", "freezing", "ice", "sleet"]},
+          {"text": "Extreme heat/Humidity", "points": 14, "synonyms": ["hot", "heat", "heatwave", "humid", "humidity", "scorching"]},
+          {"text": "Hurricane/Tornado", "points": 10, "synonyms": ["hurricane", "tornado", "cyclone", "typhoon", "high winds"]},
+          {"text": "Freezing cold", "points": 5, "synonyms": ["cold", "freezing", "chilly", "wind chill", "frost"]},
+          {"text": "Hail", "points": 3, "synonyms": ["hail", "fog", "wind", "windy"]}
+        ]
+      },
+      {
+        "question": "Name something you might find at the bottom of a purse or backpack.",
+        "answers": [
+          {"text": "Loose change/Coins", "points": 30, "synonyms": ["coins", "change", "pennies", "money", "quarters"]},
+          {"text": "Old receipts", "points": 24, "synonyms": ["receipts", "paper", "trash", "wrappers", "tissues"]},
+          {"text": "Gum/Mints", "points": 16, "synonyms": ["gum", "mints", "candy", "crumbs", "snacks"]},
+          {"text": "Pens/Pencils", "points": 12, "synonyms": ["pen", "pencil", "marker", "chapstick", "lip gloss"]},
+          {"text": "Hair ties/Bobby pins", "points": 10, "synonyms": ["hair tie", "scrunchie", "bobby pin", "comb", "brush"]},
+          {"text": "Keys/Earbuds", "points": 8, "synonyms": ["keys", "airpods", "headphones", "charger", "sunglasses"]}
+        ]
+      },
+      {
+        "question": "Name a reason a dog might bark at nothing.",
+        "answers": [
+          {"text": "Delivery driver/Mailman", "points": 34, "synonyms": ["mailman", "amazon", "ups", "fedex", "delivery", "doorbell", "knock"]},
+          {"text": "Squirrel/Animal outside", "points": 26, "synonyms": ["squirrel", "bird", "cat", "deer", "rabbit", "animal", "other dog"]},
+          {"text": "Heard a noise/Car door", "points": 18, "synonyms": ["noise", "sound", "car", "neighbor", "wind", "thunder"]},
+          {"text": "Ghosts/Spirits", "points": 10, "synonyms": ["ghost", "ghosts", "spirit", "haunted", "shadow"]},
+          {"text": "Wants attention/Food", "points": 7, "synonyms": ["attention", "hungry", "food", "treat", "play", "bored"]},
+          {"text": "Saw their own reflection", "points": 5, "synonyms": ["reflection", "mirror", "window", "leaf", "bug"]}
+        ]
+      },
+      {
+        "question": "Name something people do right after waking up in the morning.",
+        "answers": [
+          {"text": "Check their phone", "points": 36, "synonyms": ["phone", "texts", "social media", "alarm", "scroll", "check time"]},
+          {"text": "Use the bathroom", "points": 26, "synonyms": ["pee", "bathroom", "toilet", "restroom"]},
+          {"text": "Make/Drink coffee", "points": 16, "synonyms": ["coffee", "tea", "caffeine", "water", "drink"]},
+          {"text": "Brush their teeth", "points": 10, "synonyms": ["brush teeth", "wash face", "shower"]},
+          {"text": "Hit snooze", "points": 7, "synonyms": ["snooze", "go back to sleep", "stretch", "yawn"]},
+          {"text": "Let the dog out/Feed pets", "points": 5, "synonyms": ["dog", "pet", "cat", "feed", "make bed"]}
+        ]
+      },
+      {
+        "question": "Name a movie snack besides popcorn.",
+        "answers": [
+          {"text": "Candy/M&Ms", "points": 40, "synonyms": ["candy", "mms", "skittles", "sour patch", "raisinets", "junior mints", "chocolate", "twizzlers"]},
+          {"text": "Nachos", "points": 22, "synonyms": ["nachos", "chips and cheese"]},
+          {"text": "Soft pretzel", "points": 14, "synonyms": ["pretzel", "pretzel bites"]},
+          {"text": "Hot dog", "points": 10, "synonyms": ["hot dog", "corndog", "pizza"]},
+          {"text": "Soda/ICEE", "points": 8, "synonyms": ["soda", "slushie", "icee", "drink", "coke"]},
+          {"text": "Ice cream/Dippin' Dots", "points": 6, "synonyms": ["ice cream", "dippin dots", "chicken tenders", "fries"]}
+        ]
+      },
+      {
+        "question": "Name something that always seems to break right when you need it most.",
+        "answers": [
+          {"text": "Car", "points": 32, "synonyms": ["car", "vehicle", "truck", "battery", "tire"]},
+          {"text": "Phone/Charger", "points": 24, "synonyms": ["phone", "charger", "screen", "laptop", "computer"]},
+          {"text": "Printer", "points": 18, "synonyms": ["printer", "ink", "copier", "wifi", "internet"]},
+          {"text": "Air conditioning/Heater", "points": 12, "synonyms": ["ac", "air conditioner", "heat", "furnace", "hvac"]},
+          {"text": "Zipper/Shoelace", "points": 8, "synonyms": ["zipper", "shoelace", "button", "heel", "clothes"]},
+          {"text": "Coffee maker/Appliance", "points": 6, "synonyms": ["coffee maker", "fridge", "washer", "dishwasher", "umbrella"]}
+        ]
+      },
+      {
+        "question": "Name a reason you might honk your car horn.",
+        "answers": [
+          {"text": "Green light/Not moving", "points": 42, "synonyms": ["green light", "texting", "not going", "stopped", "red light", "pay attention"]},
+          {"text": "Someone cut you off", "points": 28, "synonyms": ["cut off", "merging", "swerving", "bad driver", "almost hit"]},
+          {"text": "Saying hello/Goodbye", "points": 12, "synonyms": ["hi", "hello", "goodbye", "wave", "friend", "arrived", "outside"]},
+          {"text": "Pedestrian/Animal in road", "points": 8, "synonyms": ["deer", "animal", "person", "pedestrian", "crossing"]},
+          {"text": "Going too slow", "points": 6, "synonyms": ["slow", "speed up", "left lane", "blocking"]},
+          {"text": "Accidentally hit it", "points": 4, "synonyms": ["accident", "mistake", "leaning", "celebrating"]}
+        ]
+      },
+      {
+        "question": "Name something people collect.",
+        "answers": [
+          {"text": "Coins/Currency", "points": 28, "synonyms": ["coins", "money", "quarters", "pennies", "bills"]},
+          {"text": "Trading cards/Sports cards", "points": 24, "synonyms": ["cards", "baseball cards", "pokemon", "sports cards", "trading cards"]},
+          {"text": "Shoes/Sneakers", "points": 18, "synonyms": ["shoes", "sneakers", "jordans", "kicks"]},
+          {"text": "Stamps", "points": 12, "synonyms": ["stamps", "postage"]},
+          {"text": "Vinyl records/Books", "points": 10, "synonyms": ["records", "vinyl", "books", "comics", "comic books"]},
+          {"text": "Magnets/Souvenirs", "points": 8, "synonyms": ["magnets", "shot glasses", "souvenirs", "funko pops", "watches", "toys"]}
+        ]
+      },
+      {
+        "question": "Name a household item people borrow and never give back.",
+        "answers": [
+          {"text": "Tools", "points": 32, "synonyms": ["tools", "hammer", "drill", "screwdriver", "wrench", "ladder"]},
+          {"text": "Tupperware/Food containers", "points": 26, "synonyms": ["tupperware", "containers", "bowls", "dishes", "pans"]},
+          {"text": "Phone charger", "points": 16, "synonyms": ["charger", "cord", "cable"]},
+          {"text": "Pens/Lighters", "points": 12, "synonyms": ["pen", "lighter", "scissors", "tape"]},
+          {"text": "Clothes/Hoodies", "points": 8, "synonyms": ["clothes", "hoodie", "jacket", "shirt", "umbrella"]},
+          {"text": "Books/Movies", "points": 6, "synonyms": ["book", "dvd", "video game", "sugar", "eggs"]}
+        ]
+      },
+      {
+        "question": "Name something you might do while waiting in a long line.",
+        "answers": [
+          {"text": "Look at your phone", "points": 50, "synonyms": ["phone", "text", "scroll", "games", "social media", "tiktok"]},
+          {"text": "People watch", "points": 16, "synonyms": ["people watch", "look around", "stare", "eavesdrop"]},
+          {"text": "Listen to music/Podcast", "points": 12, "synonyms": ["music", "podcast", "headphones", "airpods"]},
+          {"text": "Sigh/Complain", "points": 10, "synonyms": ["complain", "sigh", "tap foot", "check watch", "annoyed"]},
+          {"text": "Chat with someone", "points": 7, "synonyms": ["talk", "chat", "small talk", "call someone"]},
+          {"text": "Read/Browse impulse items", "points": 5, "synonyms": ["read", "magazines", "shop", "candy", "stretch"]}
+        ]
+      },
+      {
+        "question": "Name a food people love to dip in ranch dressing.",
+        "answers": [
+          {"text": "Chicken wings/Tenders", "points": 36, "synonyms": ["wings", "chicken", "tenders", "nuggets", "buffalo wings"]},
+          {"text": "Pizza", "points": 24, "synonyms": ["pizza", "crust"]},
+          {"text": "Carrots/Celery", "points": 18, "synonyms": ["carrots", "celery", "veggies", "vegetables", "broccoli", "cucumbers"]},
+          {"text": "French fries", "points": 12, "synonyms": ["fries", "french fries", "tater tots", "onion rings"]},
+          {"text": "Mozzarella sticks", "points": 6, "synonyms": ["mozzarella sticks", "cheese sticks", "jalapeno poppers", "fried pickles"]},
+          {"text": "Chips/Pretzels", "points": 4, "synonyms": ["chips", "pretzels", "breadsticks", "salad"]}
+        ]
+      },
+      {
+        "question": "Name something people check before leaving the house.",
+        "answers": [
+          {"text": "Keys/Wallet/Phone", "points": 38, "synonyms": ["keys", "wallet", "phone", "pockets", "purse"]},
+          {"text": "Doors are locked", "points": 22, "synonyms": ["locks", "door", "locked", "garage", "windows"]},
+          {"text": "Stove/Oven is off", "points": 16, "synonyms": ["stove", "oven", "appliances", "iron", "curling iron"]},
+          {"text": "Lights are off", "points": 10, "synonyms": ["lights", "tv", "thermostat", "ac"]},
+          {"text": "The weather", "points": 8, "synonyms": ["weather", "forecast", "rain", "temperature"]},
+          {"text": "Their reflection/Outfit", "points": 6, "synonyms": ["mirror", "hair", "outfit", "teeth", "zipper", "pets"]}
+        ]
+      },
+      {
+        "question": "Name a classic board game that can start a family argument.",
+        "answers": [
+          {"text": "Monopoly", "points": 52, "synonyms": ["monopoly"]},
+          {"text": "Uno", "points": 18, "synonyms": ["uno", "cards"]},
+          {"text": "Scrabble", "points": 10, "synonyms": ["scrabble", "words"]},
+          {"text": "Sorry!/Trouble", "points": 8, "synonyms": ["sorry", "trouble", "parcheesi"]},
+          {"text": "Risk", "points": 7, "synonyms": ["risk", "catan", "settlers of catan"]},
+          {"text": "Clue/Life", "points": 5, "synonyms": ["clue", "life", "pictionary", "taboo", "spades"]}
+        ]
+      },
+      {
+        "question": "Name something you might see at a backyard barbecue.",
+        "answers": [
+          {"text": "Grill/Smoker", "points": 34, "synonyms": ["grill", "bbq", "smoker", "charcoal", "propane"]},
+          {"text": "Burgers/Hot dogs", "points": 26, "synonyms": ["burgers", "hot dogs", "ribs", "chicken", "steaks", "food"]},
+          {"text": "Cooler of drinks/Beer", "points": 16, "synonyms": ["cooler", "beer", "drinks", "ice", "soda", "alcohol"]},
+          {"text": "Lawn chairs/Picnic table", "points": 10, "synonyms": ["chairs", "table", "patio", "tent", "umbrella"]},
+          {"text": "Cornhole/Lawn games", "points": 8, "synonyms": ["cornhole", "games", "horseshoes", "pool", "music", "speaker"]},
+          {"text": "Bugs/Mosquitoes", "points": 6, "synonyms": ["bugs", "flies", "mosquitoes", "citronella", "smoke", "dogs"]}
+        ]
+      },
+      {
+        "question": "Name a reason someone might return an item to a store.",
+        "answers": [
+          {"text": "Wrong size/Doesn't fit", "points": 40, "synonyms": ["size", "doesnt fit", "too small", "too big", "tight", "loose"]},
+          {"text": "Broken/Defective", "points": 26, "synonyms": ["broken", "damaged", "defective", "doesnt work", "ripped", "stained"]},
+          {"text": "Changed their mind", "points": 14, "synonyms": ["changed mind", "didnt like it", "regret", "impulsive", "buyers remorse"]},
+          {"text": "Unwanted gift/Duplicate", "points": 10, "synonyms": ["gift", "duplicate", "already have it", "ugly"]},
+          {"text": "Found it cheaper elsewhere", "points": 6, "synonyms": ["cheaper", "price", "too expensive", "sale"]},
+          {"text": "Missing parts", "points": 4, "synonyms": ["missing", "wrong color", "wrong item", "expired"]}
+        ]
+      },
+      {
+        "question": "Name something you might keep in the glove compartment of your car.",
+        "answers": [
+          {"text": "Registration/Insurance", "points": 40, "synonyms": ["registration", "insurance", "papers", "documents", "manual", "owners manual"]},
+          {"text": "Napkins/Tissues", "points": 22, "synonyms": ["napkins", "tissues", "kleenex", "fast food napkins", "wipes"]},
+          {"text": "Flashlight/Tools", "points": 14, "synonyms": ["flashlight", "tire gauge", "tools", "knife", "first aid"]},
+          {"text": "Sunglasses", "points": 10, "synonyms": ["sunglasses", "glasses", "shades"]},
+          {"text": "Pen/Notepad", "points": 8, "synonyms": ["pen", "pencil", "paper", "receipts"]},
+          {"text": "Phone charger/Cords", "points": 6, "synonyms": ["charger", "cord", "cable", "gum", "mints", "change"]}
+        ]
+      },
+      {
+        "question": "Name a popular ice cream flavor.",
+        "answers": [
+          {"text": "Chocolate", "points": 32, "synonyms": ["chocolate", "fudge", "brownie"]},
+          {"text": "Vanilla", "points": 28, "synonyms": ["vanilla", "french vanilla"]},
+          {"text": "Strawberry", "points": 14, "synonyms": ["strawberry", "berry"]},
+          {"text": "Mint chocolate chip", "points": 11, "synonyms": ["mint", "mint chip", "mint chocolate"]},
+          {"text": "Cookies and cream", "points": 9, "synonyms": ["oreo", "cookies and cream", "cookie dough"]},
+          {"text": "Butter pecan/Rocky road", "points": 6, "synonyms": ["butter pecan", "rocky road", "pistachio", "neapolitan", "coffee"]}
+        ]
+      },
+      {
+        "question": "Name something people do on a rainy Sunday afternoon.",
+        "answers": [
+          {"text": "Watch movies/Netflix", "points": 40, "synonyms": ["movies", "tv", "netflix", "binge watch", "couch", "shows"]},
+          {"text": "Take a nap/Sleep", "points": 24, "synonyms": ["nap", "sleep", "stay in bed", "relax", "rest"]},
+          {"text": "Read a book", "points": 12, "synonyms": ["read", "book", "magazine"]},
+          {"text": "Play video games/Board games", "points": 10, "synonyms": ["video games", "gaming", "board games", "puzzles", "cards"]},
+          {"text": "Cook/Bake", "points": 8, "synonyms": ["cook", "bake", "soup", "meal prep", "eat"]},
+          {"text": "Clean/Do laundry", "points": 6, "synonyms": ["clean", "laundry", "chores", "organize"]}
+        ]
+      },
+      {
+        "question": "Name a famous superhero.",
+        "answers": [
+          {"text": "Superman", "points": 30, "synonyms": ["superman", "clark kent"]},
+          {"text": "Batman", "points": 28, "synonyms": ["batman", "bruce wayne"]},
+          {"text": "Spider-Man", "points": 20, "synonyms": ["spiderman", "spider-man", "peter parker"]},
+          {"text": "Iron Man", "points": 10, "synonyms": ["iron man", "ironman", "tony stark"]},
+          {"text": "Wonder Woman", "points": 7, "synonyms": ["wonder woman", "diana"]},
+          {"text": "Captain America/Hulk", "points": 5, "synonyms": ["captain america", "hulk", "thor", "flash", "wolverine", "deadpool"]}
+        ]
+      },
+      {
+        "question": "Name something you might see in a dentist's waiting room.",
+        "answers": [
+          {"text": "Old magazines", "points": 38, "synonyms": ["magazines", "books", "newspapers", "reading"]},
+          {"text": "TV", "points": 22, "synonyms": ["tv", "television", "screen"]},
+          {"text": "Fish tank/Aquarium", "points": 16, "synonyms": ["fish tank", "aquarium", "fish"]},
+          {"text": "Kids' toys/Play area", "points": 10, "synonyms": ["toys", "kids area", "blocks", "bead maze"]},
+          {"text": "Posters of teeth", "points": 8, "synonyms": ["posters", "teeth", "diagrams", "brochures", "flyers"]},
+          {"text": "Receptionist/Clipboards", "points": 6, "synonyms": ["receptionist", "front desk", "clipboard", "forms", "chairs", "hand sanitizer"]}
+        ]
+      },
+      {
+        "question": "Name a common New Year's resolution.",
+        "answers": [
+          {"text": "Lose weight/Exercise", "points": 44, "synonyms": ["lose weight", "gym", "work out", "exercise", "diet", "get in shape", "fitness"]},
+          {"text": "Save money/Budget", "points": 22, "synonyms": ["save money", "money", "budget", "pay off debt", "finances"]},
+          {"text": "Eat healthier", "points": 14, "synonyms": ["eat healthy", "healthy", "cook more", "cut sugar", "drink water"]},
+          {"text": "Quit smoking/Drinking", "points": 10, "synonyms": ["quit smoking", "stop drinking", "dry january", "vaping", "less alcohol"]},
+          {"text": "Travel more", "points": 5, "synonyms": ["travel", "vacation", "trips"]},
+          {"text": "Read more/Learn a skill", "points": 5, "synonyms": ["read", "books", "learn", "hobby", "less screen time", "be organized"]}
+        ]
+      },
+      {
+        "question": "Name something people put on a hot dog.",
+        "answers": [
+          {"text": "Mustard", "points": 36, "synonyms": ["mustard", "yellow mustard", "spicy mustard"]},
+          {"text": "Ketchup", "points": 30, "synonyms": ["ketchup", "catsup"]},
+          {"text": "Relish", "points": 14, "synonyms": ["relish", "pickles"]},
+          {"text": "Onions", "points": 9, "synonyms": ["onions", "chopped onions"]},
+          {"text": "Chili/Cheese", "points": 7, "synonyms": ["chili", "cheese", "chili cheese"]},
+          {"text": "Sauerkraut", "points": 4, "synonyms": ["sauerkraut", "kraut", "jalapenos", "bacon", "mayo"]}
+        ]
+      },
+      {
+        "question": "Name a sound that is guaranteed to wake you up from a deep sleep.",
+        "answers": [
+          {"text": "Alarm clock/Phone", "points": 36, "synonyms": ["alarm", "phone", "ringtone", "text", "call"]},
+          {"text": "Dog barking/Pet throwing up", "points": 22, "synonyms": ["dog", "barking", "cat", "pet", "throwing up", "puking"]},
+          {"text": "Smoke detector/Siren", "points": 16, "synonyms": ["smoke alarm", "fire alarm", "siren", "beep", "chirp"]},
+          {"text": "Baby/Kid crying", "points": 12, "synonyms": ["baby", "crying", "kid", "child"]},
+          {"text": "Thunder/Storm", "points": 8, "synonyms": ["thunder", "lightning", "storm", "rain"]},
+          {"text": "Glass breaking/Loud bang", "points": 6, "synonyms": ["glass", "bang", "crash", "doorbell", "knocking", "snoring"]}
+        ]
+      },
+      {
+        "question": "Name something you might bring to the beach.",
+        "answers": [
+          {"text": "Towel", "points": 32, "synonyms": ["towel", "beach towel", "blanket"]},
+          {"text": "Sunscreen", "points": 26, "synonyms": ["sunscreen", "sunblock", "lotion", "spf"]},
+          {"text": "Umbrella/Tent", "points": 14, "synonyms": ["umbrella", "tent", "shade", "canopy"]},
+          {"text": "Cooler/Drinks", "points": 12, "synonyms": ["cooler", "drinks", "water", "snacks", "food", "beer"]},
+          {"text": "Beach chair", "points": 10, "synonyms": ["chair", "chairs", "lounge chair"]},
+          {"text": "Sunglasses/Hat", "points": 6, "synonyms": ["sunglasses", "hat", "flip flops", "book", "speaker", "toys"]}
+        ]
+      },
+      {
+        "question": "Name a reason someone might get a speeding ticket.",
+        "answers": [
+          {"text": "Running late", "points": 42, "synonyms": ["late", "late for work", "rushing", "in a hurry", "overslept"]},
+          {"text": "Not paying attention", "points": 20, "synonyms": ["not paying attention", "distracted", "missed sign", "speed trap", "music"]},
+          {"text": "Bathroom emergency", "points": 16, "synonyms": ["bathroom", "pee", "poop", "stomach", "restroom"]},
+          {"text": "Medical/Family emergency", "points": 12, "synonyms": ["emergency", "hospital", "baby", "labor", "sick"]},
+          {"text": "Showing off/New car", "points": 6, "synonyms": ["showing off", "fast car", "racing", "sports car"]},
+          {"text": "Going with the flow of traffic", "points": 4, "synonyms": ["traffic", "passing", "highway", "downhill"]}
+        ]
+      },
+      {
+        "question": "Name something people do at a wedding reception.",
+        "answers": [
+          {"text": "Dance", "points": 38, "synonyms": ["dance", "dancing", "cha cha slide", "first dance"]},
+          {"text": "Drink/Hit the open bar", "points": 26, "synonyms": ["drink", "open bar", "alcohol", "champagne", "toast", "get drunk"]},
+          {"text": "Eat dinner/Cake", "points": 18, "synonyms": ["eat", "food", "cake", "dinner", "buffet"]},
+          {"text": "Take photos", "points": 8, "synonyms": ["photos", "pictures", "photo booth", "selfies"]},
+          {"text": "Give speeches/Toasts", "points": 6, "synonyms": ["speech", "toast", "best man", "cry"]},
+          {"text": "Catch the bouquet/Garter", "points": 4, "synonyms": ["bouquet", "garter", "mingle", "talk", "chat"]}
+        ]
+      },
+      {
+        "question": "Name a common phobia or fear.",
+        "answers": [
+          {"text": "Spiders/Bugs", "points": 32, "synonyms": ["spiders", "bugs", "insects", "arachnophobia", "roaches"]},
+          {"text": "Heights", "points": 26, "synonyms": ["heights", "falling", "high places"]},
+          {"text": "Snakes", "points": 16, "synonyms": ["snakes", "reptiles"]},
+          {"text": "Public speaking", "points": 10, "synonyms": ["public speaking", "crowds", "stage fright", "speeches"]},
+          {"text": "Tight spaces/Claustrophobia", "points": 9, "synonyms": ["claustrophobia", "tight spaces", "small spaces", "elevators"]},
+          {"text": "Flying/Needles", "points": 7, "synonyms": ["flying", "airplanes", "needles", "shots", "clowns", "dark", "water", "sharks"]}
+        ]
+      },
+      {
+        "question": "Name something you might find in a junk drawer.",
+        "answers": [
+          {"text": "Batteries", "points": 30, "synonyms": ["batteries", "aa", "aaa"]},
+          {"text": "Pens/Markers", "points": 22, "synonyms": ["pens", "pencils", "markers", "sharpie"]},
+          {"text": "Tape/Rubber bands", "points": 18, "synonyms": ["tape", "rubber bands", "paperclips", "glue", "super glue"]},
+          {"text": "Random keys", "points": 12, "synonyms": ["keys", "spare keys"]},
+          {"text": "Scissors/Screwdriver", "points": 10, "synonyms": ["scissors", "tools", "screwdriver", "allen wrench", "measuring tape"]},
+          {"text": "Takeout menus/Coupons", "points": 8, "synonyms": ["menus", "coupons", "receipts", "sauce packets", "cords", "chargers", "matches"]}
+        ]
+      },
+      {
+        "question": "Name a classic breakfast food.",
+        "answers": [
+          {"text": "Eggs", "points": 34, "synonyms": ["eggs", "scrambled", "omelet", "fried eggs"]},
+          {"text": "Bacon/Sausage", "points": 28, "synonyms": ["bacon", "sausage", "ham"]},
+          {"text": "Pancakes/Waffles", "points": 18, "synonyms": ["pancakes", "waffles", "french toast"]},
+          {"text": "Toast/Bagel", "points": 9, "synonyms": ["toast", "bagel", "english muffin", "bread"]},
+          {"text": "Cereal/Oatmeal", "points": 6, "synonyms": ["cereal", "oatmeal", "granola"]},
+          {"text": "Hash browns/Home fries", "points": 5, "synonyms": ["hash browns", "potatoes", "home fries", "grits", "fruit"]}
+        ]
+      },
+      {
+        "question": "Name something people do when they get stuck in traffic.",
+        "answers": [
+          {"text": "Listen to music/Sing", "points": 34, "synonyms": ["music", "radio", "sing", "podcast", "audiobook"]},
+          {"text": "Check their phone/Text", "points": 24, "synonyms": ["phone", "text", "scroll", "gps", "maps", "waze", "call"]},
+          {"text": "Yell/Curse/Road rage", "points": 18, "synonyms": ["yell", "curse", "swear", "road rage", "honk", "complain"]},
+          {"text": "Eat/Drink", "points": 10, "synonyms": ["eat", "snack", "coffee", "drink"]},
+          {"text": "Look at other drivers", "points": 8, "synonyms": ["people watch", "stare", "look around", "change lanes"]},
+          {"text": "Fix hair/Put on makeup", "points": 6, "synonyms": ["makeup", "hair", "mirror", "pick nose", "daydream"]}
+        ]
+      },
+      {
+        "question": "Name a popular fast-food restaurant.",
+        "answers": [
+          {"text": "McDonald's", "points": 42, "synonyms": ["mcdonalds", "mickey ds"]},
+          {"text": "Chick-fil-A", "points": 20, "synonyms": ["chickfila", "chick-fil-a", "chick fil a"]},
+          {"text": "Wendy's", "points": 12, "synonyms": ["wendys"]},
+          {"text": "Burger King", "points": 10, "synonyms": ["burger king", "bk"]},
+          {"text": "Taco Bell", "points": 9, "synonyms": ["taco bell"]},
+          {"text": "Subway/KFC", "points": 7, "synonyms": ["subway", "kfc", "popeyes", "chipotle", "in-n-out", "five guys", "sonic"]}
+        ]
+      },
+      {
+        "question": "Name something you might buy at a hardware store.",
+        "answers": [
+          {"text": "Tools/Hammer/Drill", "points": 32, "synonyms": ["tools", "hammer", "drill", "screwdriver", "wrench", "saw"]},
+          {"text": "Paint/Brushes", "points": 24, "synonyms": ["paint", "brushes", "rollers", "primer", "stain"]},
+          {"text": "Nails/Screws", "points": 18, "synonyms": ["nails", "screws", "bolts", "nuts", "hardware"]},
+          {"text": "Lumber/Wood", "points": 12, "synonyms": ["wood", "lumber", "plywood", "2x4"]},
+          {"text": "Lightbulbs/Batteries", "points": 8, "synonyms": ["lightbulbs", "bulbs", "batteries", "extension cord", "tape"]},
+          {"text": "Plants/Garden supplies", "points": 6, "synonyms": ["plants", "soil", "mulch", "flowers", "lawnmower", "hose"]}
+        ]
+      },
+      {
+        "question": "Name a reason someone might cancel plans at the last minute.",
+        "answers": [
+          {"text": "Sick/Not feeling well", "points": 38, "synonyms": ["sick", "ill", "headache", "migraine", "stomach", "covid"]},
+          {"text": "Too tired/Lazy", "points": 24, "synonyms": ["tired", "exhausted", "lazy", "dont feel like it", "want to stay home", "introvert"]},
+          {"text": "Work/Stuck at the office", "points": 14, "synonyms": ["work", "boss", "overtime", "meeting", "deadline"]},
+          {"text": "Family/Kid emergency", "points": 10, "synonyms": ["emergency", "family", "kids", "babysitter", "pet"]},
+          {"text": "Bad weather", "points": 8, "synonyms": ["weather", "rain", "snow", "storm"]},
+          {"text": "Car trouble/Broke", "points": 6, "synonyms": ["car", "flat tire", "no money", "broke", "traffic", "forgot"]}
+        ]
+      },
+      {
+        "question": "Name something you might hear at a sports stadium.",
+        "answers": [
+          {"text": "Cheering/Booing", "points": 38, "synonyms": ["cheering", "booing", "screaming", "yelling", "crowd", "roar"]},
+          {"text": "Music/Organ/Chants", "points": 20, "synonyms": ["music", "organ", "chants", "defense", "national anthem", "songs"]},
+          {"text": "Vendors yelling (Beer/Peanuts)", "points": 16, "synonyms": ["vendors", "beer", "hot dogs", "peanuts", "popcorn", "cold beer"]},
+          {"text": "Ref's whistle/Buzzer", "points": 12, "synonyms": ["whistle", "buzzer", "horn", "referee"]},
+          {"text": "Announcer/Commentator", "points": 8, "synonyms": ["announcer", "pa", "speaker", "play by play"]},
+          {"text": "Cursing/Trash talk", "points": 6, "synonyms": ["cursing", "swearing", "trash talk", "heckling", "you suck"]}
+        ]
+      },
+      {
+        "question": "Name a fruit that is commonly put in a smoothie.",
+        "answers": [
+          {"text": "Banana", "points": 34, "synonyms": ["banana", "bananas"]},
+          {"text": "Strawberry", "points": 30, "synonyms": ["strawberry", "strawberries"]},
+          {"text": "Blueberry", "points": 14, "synonyms": ["blueberry", "blueberries", "berries"]},
+          {"text": "Mango", "points": 10, "synonyms": ["mango", "mangoes"]},
+          {"text": "Pineapple", "points": 7, "synonyms": ["pineapple"]},
+          {"text": "Raspberry/Peach", "points": 5, "synonyms": ["raspberry", "peach", "avocado", "apple", "orange", "acai"]}
+        ]
+      },
+      {
+        "question": "Name something people do to cool down on a hot summer day.",
+        "answers": [
+          {"text": "Go swimming/Pool", "points": 38, "synonyms": ["swim", "swimming", "pool", "beach", "ocean", "lake", "sprinkler"]},
+          {"text": "Turn on the AC/Fan", "points": 26, "synonyms": ["ac", "air conditioning", "fan", "stay inside"]},
+          {"text": "Drink cold water/Beverage", "points": 16, "synonyms": ["water", "cold drink", "lemonade", "iced tea", "beer", "iced coffee"]},
+          {"text": "Eat ice cream/Popsicle", "points": 10, "synonyms": ["ice cream", "popsicle", "italian ice", "slushie", "snow cone"]},
+          {"text": "Take a cold shower", "points": 6, "synonyms": ["shower", "cold shower", "bath"]},
+          {"text": "Sit in the shade", "points": 4, "synonyms": ["shade", "tree", "wet towel", "wear shorts"]}
+        ]
+      },
+      {
+        "question": "Name a classic cartoon character.",
+        "answers": [
+          {"text": "Mickey Mouse", "points": 32, "synonyms": ["mickey", "mickey mouse", "minnie"]},
+          {"text": "Bugs Bunny", "points": 26, "synonyms": ["bugs", "bugs bunny", "looney tunes"]},
+          {"text": "SpongeBob SquarePants", "points": 18, "synonyms": ["spongebob", "patrick"]},
+          {"text": "Scooby-Doo", "points": 10, "synonyms": ["scooby", "scooby doo", "shaggy"]},
+          {"text": "Tom and Jerry", "points": 8, "synonyms": ["tom", "jerry", "tom and jerry"]},
+          {"text": "Homer Simpson/Donald Duck", "points": 6, "synonyms": ["homer", "bart", "simpsons", "donald duck", "daffy duck", "popeye", "flintstones"]}
+        ]
+      },
+      {
+        "question": "Name something you might find in a hotel room besides a bed.",
+        "answers": [
+          {"text": "TV/Remote", "points": 32, "synonyms": ["tv", "television", "remote"]},
+          {"text": "Coffee maker/Mini fridge", "points": 22, "synonyms": ["coffee maker", "fridge", "mini fridge", "microwave", "ice bucket"]},
+          {"text": "Towels/Toiletries", "points": 18, "synonyms": ["towels", "shampoo", "soap", "hair dryer", "robe"]},
+          {"text": "Desk/Lamp/Phone", "points": 12, "synonyms": ["desk", "chair", "lamp", "phone", "alarm clock"]},
+          {"text": "Bible/Notepad", "points": 9, "synonyms": ["bible", "book", "notepad", "pen", "menu"]},
+          {"text": "Iron/Ironing board", "points": 7, "synonyms": ["iron", "ironing board", "safe", "hangers", "closet", "mirror"]}
+        ]
+      },
+      {
+        "question": "Name a reason someone might stay up past midnight.",
+        "answers": [
+          {"text": "Watching TV/Bingeing a show", "points": 30, "synonyms": ["tv", "netflix", "movie", "show", "binge"]},
+          {"text": "Partying/Out with friends", "points": 24, "synonyms": ["party", "bar", "club", "friends", "drinking", "new years"]},
+          {"text": "Scrolling on their phone", "points": 18, "synonyms": ["phone", "tiktok", "social media", "youtube", "scrolling"]},
+          {"text": "Playing video games", "points": 12, "synonyms": ["video games", "gaming", "xbox", "playstation", "pc"]},
+          {"text": "Working/Studying", "points": 10, "synonyms": ["work", "studying", "homework", "cramming", "night shift"]},
+          {"text": "Insomnia/Can't sleep", "points": 6, "synonyms": ["insomnia", "cant sleep", "overthinking", "stress", "baby", "crying"]}
+        ]
+      },
+      {
+        "question": "Name something people do right before taking a group photo.",
+        "answers": [
+          {"text": "Say 'Cheese!'", "points": 34, "synonyms": ["cheese", "say cheese", "smile"]},
+          {"text": "Fix their hair/Clothes", "points": 24, "synonyms": ["hair", "fix hair", "clothes", "outfit", "makeup", "glasses"]},
+          {"text": "Squeeze in/Squish together", "points": 18, "synonyms": ["squeeze", "move closer", "huddle", "put arms around", "tall in back"]},
+          {"text": "Pose/Suck in their stomach", "points": 10, "synonyms": ["pose", "suck in", "peace sign", "duck face", "angle"]},
+          {"text": "Put down their drinks", "points": 8, "synonyms": ["drinks", "hide drinks", "put down cups", "put away bags"]},
+          {"text": "Ask who is taking it/Timer", "points": 6, "synonyms": ["timer", "countdown", "1 2 3", "ask stranger", "flash"]}
         ]
       }
     ];
