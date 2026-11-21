@@ -7,6 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Firebase Compat SDKs for Cloud Autosave -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <style>
     :root {
       --bg-fallback: #060b16;
@@ -49,7 +53,7 @@
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      padding: 8px 28px;
+      padding: 8px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -64,8 +68,29 @@
     .hud-section {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
+    }
+
+    .menu-hud-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border: 1px solid var(--neon-white);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .menu-hud-btn:hover {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
     }
 
     .score-display {
@@ -87,11 +112,11 @@
     }
 
     .mode-badge {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      padding: 5px 12px;
+      padding: 5px 10px;
       border-radius: 6px;
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
@@ -100,22 +125,34 @@
     }
 
     .round-display {
-      font-size: 14px;
+      font-size: 13px;
       color: #cbd5e1;
       font-weight: 700;
       letter-spacing: 0.12em;
     }
 
+    .save-status-pill {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6ee787;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .save-status-pill.show { opacity: 1; }
+
     /* COMPACT LEFT-SIDE TIMER FOR HOST & TV MODES */
     .compact-timer {
       display: none;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #e2e8f0;
       background: radial-gradient(circle at center, #1b4ea8 0%, #0b2661 100%);
-      padding: 5px 12px;
+      padding: 5px 10px;
       border-radius: 6px;
       border: 1px solid var(--neon-white);
       box-shadow: 0 0 8px rgba(30, 96, 213, 0.5);
@@ -778,9 +815,7 @@
       outline: none;
     }
 
-    .manual-answer-bar input:focus {
-      border-color: var(--accent-gold);
-    }
+    .manual-answer-bar input:focus { border-color: var(--accent-gold); }
 
     .manual-flip-btn {
       padding: 6px 14px;
@@ -797,10 +832,7 @@
       transition: transform 0.15s, background 0.2s;
     }
 
-    .manual-flip-btn:hover {
-      background: #fff;
-      transform: scale(1.03);
-    }
+    .manual-flip-btn:hover { background: #fff; transform: scale(1.03); }
 
     .next-btn {
       display: none;
@@ -825,19 +857,21 @@
     .start-screen, .game-over-screen, .tv-waiting-screen {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(5, 10, 22, 0.88);
+      background: rgba(5, 10, 22, 0.90);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       z-index: 1200;
       text-align: center;
-      padding: 20px;
+      padding: 36px 20px;
       overflow-y: auto;
       transition: opacity 0.4s;
     }
+
+    .game-over-screen, .tv-waiting-screen { justify-content: center; }
 
     .start-screen.hidden, .tv-waiting-screen.hidden {
       opacity: 0;
@@ -852,20 +886,20 @@
     .tv-waiting-screen.active { display: flex; }
 
     .start-title {
-      font-size: 50px;
+      font-size: 46px;
       font-weight: 900;
       color: var(--accent-gold);
-      margin: 0 0 8px 0;
+      margin: 0 0 6px 0;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       text-shadow: 0 0 28px rgba(254, 209, 65, 0.45);
     }
 
     .start-subtitle {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: #cbd5e1;
-      margin: 0 0 24px 0;
+      margin: 0 0 20px 0;
       max-width: 560px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -876,13 +910,13 @@
       border: 1.5px solid var(--neon-white);
       box-shadow: var(--neon-white-glow), 0 18px 40px rgba(0, 0, 0, 0.7);
       border-radius: 14px;
-      padding: 22px 26px;
+      padding: 18px 24px;
       width: 100%;
-      max-width: 600px;
-      margin-bottom: 26px;
+      max-width: 620px;
+      margin-bottom: 18px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 14px;
     }
 
     .setup-row {
@@ -894,7 +928,7 @@
     }
 
     .setup-label {
-      font-size: 13px;
+      font-size: 12px;
       color: #e2e8f0;
       font-weight: 700;
       text-transform: uppercase;
@@ -904,9 +938,9 @@
     .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .opt-btn {
-      padding: 8px 14px;
+      padding: 7px 13px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -929,9 +963,9 @@
     .roster-box {
       display: none;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 16px;
+      padding-top: 12px;
       text-align: left;
     }
 
@@ -947,10 +981,10 @@
       background: rgba(254, 209, 65, 0.15);
       color: var(--accent-gold);
       border: 1px solid var(--accent-gold);
-      padding: 6px 12px;
+      padding: 5px 11px;
       border-radius: 6px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -962,20 +996,20 @@
     .roster-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
     }
 
     .roster-item { display: flex; align-items: center; gap: 6px; }
 
     .roster-item input {
       flex: 1;
-      padding: 9px 11px;
+      padding: 8px 10px;
       border-radius: 6px;
       border: 1px solid rgba(255, 255, 255, 0.4);
       background: rgba(0, 0, 0, 0.65);
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.05em;
       outline: none;
@@ -988,17 +1022,26 @@
       border: 1px solid rgba(255, 100, 100, 0.5);
       color: #ff6b81;
       border-radius: 6px;
-      padding: 7px 10px;
+      padding: 6px 9px;
       cursor: pointer;
       font-weight: 800;
     }
 
     .remove-player-btn:hover { background: var(--strike-red); color: #fff; }
 
+    .start-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
     .begin-btn, .play-again-btn {
-      padding: 16px 60px;
+      padding: 14px 52px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       background: var(--accent-gold);
       color: #000;
@@ -1012,6 +1055,150 @@
     }
 
     .begin-btn:hover, .play-again-btn:hover { background: #fff; transform: scale(1.05); }
+
+    .clear-form-btn {
+      padding: 14px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .clear-form-btn:hover {
+      border-color: var(--neon-white);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* SAVED GAMES PANEL ON START SCREEN */
+    .saved-games-panel {
+      width: 100%;
+      max-width: 620px;
+      background: var(--glass-bg-strong);
+      border: 1.5px solid rgba(255, 255, 255, 0.55);
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-align: left;
+    }
+
+    .saved-games-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .saved-games-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-gold);
+    }
+
+    .cloud-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+    }
+
+    .cloud-badge.online { color: #6ee787; }
+
+    .saved-games-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .saved-empty {
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .saved-game-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+    }
+
+    .saved-game-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .saved-game-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .saved-game-meta {
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .saved-game-actions {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .resume-btn {
+      padding: 6px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--emerald);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .resume-btn:hover { filter: brightness(1.15); }
+
+    .delete-save-btn {
+      padding: 6px 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(230, 0, 38, 0.2);
+      color: #ff6b81;
+      border: 1px solid rgba(230, 0, 38, 0.5);
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .delete-save-btn:hover { background: var(--strike-red); color: #fff; }
 
     /* STRIKE OVERLAY */
     .strike-overlay {
@@ -1141,6 +1328,8 @@
     .menu-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
 
     /* TV CONTESTANT VIEW CLEANUP */
+    body.tv-mode .menu-hud-btn,
+    body.tv-mode .save-status-pill,
     body.tv-mode .audio-controls,
     body.tv-mode .player-console,
     body.tv-mode .host-dashboard,
@@ -1164,11 +1353,13 @@
   <!-- Heads Up Display -->
   <div class="hud">
     <div class="hud-section">
+      <button class="menu-hud-btn" onclick="returnToMenuFromGame()" title="Save & Return to Menu">&#9776; Menu</button>
       <div class="mode-badge" id="modeBadge">SOLO</div>
       <div class="score-display" id="soloScoreWrap">SCORE: <span id="scoreText">0</span></div>
       <div class="high-score-display" id="soloHighWrap">BEST: <span id="highScoreText">0</span></div>
       <div class="round-display" id="roundText">ROUND 1 / 10</div>
       <div class="compact-timer" id="compactTimer">TIMER: <span id="compactTimerVal">60</span></div>
+      <span class="save-status-pill" id="saveStatusPill">☁ Saved</span>
     </div>
 
     <!-- Center Slot: Solo Timer OR Host Active Team Banner -->
@@ -1219,12 +1410,12 @@
       <!-- Round Length -->
       <div class="setup-row">
         <span class="setup-label">Round Length:</span>
-        <div class="btn-group">
-          <button class="opt-btn" onclick="setRoundLength(5, this)">5</button>
-          <button class="opt-btn selected" onclick="setRoundLength(10, this)">10</button>
-          <button class="opt-btn" onclick="setRoundLength(25, this)">25</button>
-          <button class="opt-btn" onclick="setRoundLength(50, this)">50</button>
-          <button class="opt-btn" onclick="setRoundLength(100, this)">All (100)</button>
+        <div class="btn-group" id="roundLenGroup">
+          <button class="opt-btn" data-val="5" onclick="setRoundLength(5, this)">5</button>
+          <button class="opt-btn selected" data-val="10" onclick="setRoundLength(10, this)">10</button>
+          <button class="opt-btn" data-val="25" onclick="setRoundLength(25, this)">25</button>
+          <button class="opt-btn" data-val="50" onclick="setRoundLength(50, this)">50</button>
+          <button class="opt-btn" data-val="100" onclick="setRoundLength(100, this)">All (100)</button>
         </div>
       </div>
 
@@ -1232,10 +1423,10 @@
       <div class="setup-row">
         <span class="setup-label">Round Timer:</span>
         <div class="btn-group" id="timerBtnGroup">
-          <button class="opt-btn" onclick="setRoundDuration(45, this)">45s</button>
-          <button class="opt-btn selected" onclick="setRoundDuration(60, this)">60s</button>
-          <button class="opt-btn" onclick="setRoundDuration(90, this)">90s</button>
-          <button class="opt-btn" onclick="setRoundDuration(0, this)">Off</button>
+          <button class="opt-btn" data-val="45" onclick="setRoundDuration(45, this)">45s</button>
+          <button class="opt-btn selected" data-val="60" onclick="setRoundDuration(60, this)">60s</button>
+          <button class="opt-btn" data-val="90" onclick="setRoundDuration(90, this)">90s</button>
+          <button class="opt-btn" data-val="0" onclick="setRoundDuration(0, this)">Off</button>
         </div>
       </div>
 
@@ -1249,7 +1440,21 @@
       </div>
     </div>
 
-    <button class="begin-btn" onclick="startGame()">BEGIN</button>
+    <div class="start-actions">
+      <button class="begin-btn" onclick="startGame()">BEGIN NEW GAME</button>
+      <button class="clear-form-btn" onclick="resetSetupForm()">Clear / Reset Form</button>
+    </div>
+
+    <!-- Cloud & Local Saved Games Panel -->
+    <div class="saved-games-panel">
+      <div class="saved-games-header">
+        <span class="saved-games-title">Saved Games (Auto-Saved)</span>
+        <span class="cloud-badge" id="cloudStatusBadge">Connecting to Cloud...</span>
+      </div>
+      <div class="saved-games-list" id="savedGamesList">
+        <div class="saved-empty">No saved games yet. Start a game to auto-save.</div>
+      </div>
+    </div>
   </div>
 
   <!-- Host Mode Round Bank + Team Scorecards -->
@@ -1338,6 +1543,22 @@
   </div>
 
   <script>
+    // --- FIREBASE CLOUD CONFIGURATION ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyCSWZMLtsbybfGo0ZUaH7UhLVHcokgkhcA",
+      authDomain: "vegas-pro-6256c.firebaseapp.com",
+      projectId: "vegas-pro-6256c",
+      storageBucket: "vegas-pro-6256c.firebasestorage.app",
+      messagingSenderId: "943834106696",
+      appId: "1:943834106696:web:24169c1adf1d83a815017d"
+    };
+
+    let db = null;
+    let cloudReady = false;
+    const SAVES_COLLECTION = 'family_feud_saves';
+    const LOCAL_SAVES_KEY = 'familyFeudSavedGames';
+    const HIGH_SCORE_KEY = 'familyFeudSoloHighScore';
+
     // Complete 100-question bank (1-50 Adult-themed + 51-100 Everyday Classics)
     const questionBank = [
       {
@@ -2439,17 +2660,16 @@
       }
     ];
 
-    const HIGH_SCORE_KEY = 'familyFeudSoloHighScore';
-
     // Dual-Window Sync (BroadcastChannel API)
     const isTVView = new URLSearchParams(window.location.search).get('view') === 'tv';
     const syncChannel = new BroadcastChannel('family_feud_live_sync');
 
     // Game Configuration & State
+    let currentSessionId = null;
     let gameMode = 'solo'; // 'solo' | 'host'
     let selectedRoundLength = 10;
     let selectedRoundTime = 60; // 0 = Untimed
-    let activeQuestions = [];
+    let activeQuestionIndices = [];
     let currentIndex = 0;
 
     // Solo State
@@ -2473,10 +2693,270 @@
     let timeLeft = selectedRoundTime;
     let isGameOver = false;
 
+    // Saved Games Cache
+    let savedGamesCache = [];
+    let saveIndicatorTimeout = null;
+
     // Audio State
     let audioCtx = null;
     let isMuted = false;
     let masterVolume = 0.5;
+
+    // --- CLOUD & LOCAL STORAGE ENGINE ---
+    async function initCloudSync() {
+      if (isTVView) return;
+      const badge = document.getElementById('cloudStatusBadge');
+      try {
+        if (!firebase.apps.length) {
+          firebase.initializeApp(firebaseConfig);
+        }
+        await firebase.auth().signInAnonymously();
+        db = firebase.firestore();
+        cloudReady = true;
+        if (badge) {
+          badge.innerText = '☁ Cloud Synced';
+          badge.classList.add('online');
+        }
+      } catch (err) {
+        console.warn('Cloud sync unavailable, using local storage:', err);
+        cloudReady = false;
+        if (badge) {
+          badge.innerText = '💾 Local Storage Only';
+          badge.classList.remove('online');
+        }
+      }
+      await loadSavedGames();
+    }
+
+    function getLocalSaves() {
+      try {
+        return JSON.parse(localStorage.getItem(LOCAL_SAVES_KEY) || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function setLocalSaves(list) {
+      try {
+        localStorage.setItem(LOCAL_SAVES_KEY, JSON.stringify(list));
+      } catch (e) {
+        console.warn('Local save failed:', e);
+      }
+    }
+
+    function flashSavedIndicator() {
+      const pill = document.getElementById('saveStatusPill');
+      if (!pill) return;
+      pill.innerText = cloudReady ? '☁ Saved' : '💾 Saved';
+      pill.classList.add('show');
+      clearTimeout(saveIndicatorTimeout);
+      saveIndicatorTimeout = setTimeout(() => pill.classList.remove('show'), 1800);
+    }
+
+    async function saveCurrentGame() {
+      if (isTVView || !currentSessionId || activeQuestionIndices.length === 0) return;
+
+      const sessionName = gameMode === 'host'
+        ? players.map(p => p.name).join(' vs ')
+        : `Solo Arcade (${selectedRoundLength} Rds)`;
+
+      const snapshot = {
+        id: currentSessionId,
+        name: sessionName,
+        gameMode,
+        selectedRoundLength,
+        selectedRoundTime,
+        activeQuestionIndices,
+        currentIndex,
+        totalScore,
+        players,
+        activePlayerIndex,
+        roundBank,
+        currentStrikes,
+        revealedTiles,
+        timeLeft,
+        isGameOver,
+        currentAnswers: currentAnswers.map(a => ({
+          text: a.text,
+          points: a.points,
+          synonyms: a.synonyms || [],
+          revealed: !!a.revealed,
+          missed: !!a.missed
+        })),
+        updatedAt: Date.now()
+      };
+
+      // 1. Always save locally first for instant reliability
+      const localList = getLocalSaves().filter(s => s.id !== snapshot.id);
+      localList.unshift(snapshot);
+      setLocalSaves(localList.slice(0, 15));
+
+      // 2. Sync to Firebase Firestore
+      if (cloudReady && db) {
+        try {
+          await db.collection(SAVES_COLLECTION).doc(snapshot.id).set(snapshot);
+        } catch (err) {
+          console.warn('Firestore autosave error:', err);
+        }
+      }
+
+      flashSavedIndicator();
+    }
+
+    async function loadSavedGames() {
+      const localMap = new Map();
+      getLocalSaves().forEach(s => localMap.set(s.id, s));
+
+      if (cloudReady && db) {
+        try {
+          const snap = await db.collection(SAVES_COLLECTION).orderBy('updatedAt', 'desc').limit(15).get();
+          snap.forEach(doc => {
+            const data = doc.data();
+            const existing = localMap.get(data.id);
+            if (!existing || (data.updatedAt || 0) >= (existing.updatedAt || 0)) {
+              localMap.set(data.id, data);
+            }
+          });
+        } catch (err) {
+          console.warn('Firestore load error:', err);
+        }
+      }
+
+      savedGamesCache = Array.from(localMap.values()).sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+      setLocalSaves(savedGamesCache.slice(0, 15));
+      renderSavedGames();
+    }
+
+    function renderSavedGames() {
+      const listEl = document.getElementById('savedGamesList');
+      if (!listEl) return;
+
+      if (savedGamesCache.length === 0) {
+        listEl.innerHTML = `<div class="saved-empty">No saved games yet. Start a game to auto-save.</div>`;
+        return;
+      }
+
+      listEl.innerHTML = savedGamesCache.map(s => {
+        const modeLabel = s.gameMode === 'host' ? 'HOST' : 'SOLO';
+        const scoreSummary = s.gameMode === 'host'
+          ? (s.players || []).map(p => `${p.name}: ${p.score}`).join(' • ')
+          : `Score: ${s.totalScore || 0}`;
+        const timeStr = s.updatedAt ? new Date(s.updatedAt).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : '';
+        const roundStatus = s.isGameOver ? 'Finished' : `Round ${(s.currentIndex || 0) + 1} / ${(s.activeQuestionIndices || []).length}`;
+        return `
+          <div class="saved-game-item">
+            <div class="saved-game-info">
+              <div class="saved-game-name">[${modeLabel}] ${s.name}</div>
+              <div class="saved-game-meta">${roundStatus} &bull; ${scoreSummary} &bull; ${timeStr}</div>
+            </div>
+            <div class="saved-game-actions">
+              <button class="resume-btn" onclick="resumeSavedGame('${s.id}')">Resume</button>
+              <button class="delete-save-btn" onclick="deleteSavedGame('${s.id}')" title="Delete Save">&times;</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function resumeSavedGame(id) {
+      const save = savedGamesCache.find(s => s.id === id);
+      if (!save) return;
+
+      initAudio();
+      currentSessionId = save.id;
+      gameMode = save.gameMode || 'solo';
+      selectedRoundLength = save.selectedRoundLength || 10;
+      selectedRoundTime = save.selectedRoundTime !== undefined ? save.selectedRoundTime : 60;
+      activeQuestionIndices = save.activeQuestionIndices || shuffleQuestionIndices();
+      currentIndex = save.currentIndex || 0;
+      totalScore = save.totalScore || 0;
+      players = save.players ? save.players.map(p => ({ ...p })) : [];
+      activePlayerIndex = save.activePlayerIndex || 0;
+      roundBank = save.roundBank || 0;
+      currentStrikes = save.currentStrikes || 0;
+      revealedTiles = save.revealedTiles || 0;
+      timeLeft = save.timeLeft !== undefined ? save.timeLeft : selectedRoundTime;
+      isGameOver = !!save.isGameOver;
+      beatHighScoreThisRun = false;
+
+      applyModeLayout();
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('gameOverScreen').classList.remove('show');
+
+      if (isGameOver) {
+        showGameOver(true);
+        return;
+      }
+
+      // Restore current board state directly
+      const qData = questionBank[activeQuestionIndices[currentIndex]];
+      document.getElementById('questionText').innerText = qData.question;
+      document.getElementById('roundText').innerText = `ROUND ${currentIndex + 1} / ${activeQuestionIndices.length}`;
+      roundActive = true;
+      isAnimatingStrike = false;
+      updateStrikeUI();
+
+      if (gameMode === 'host') {
+        renderScorecards();
+        document.getElementById('hostSearchInput').value = '';
+        document.getElementById('hostDropdown').classList.remove('active');
+        document.getElementById('manualAnswerInput').value = '';
+        document.getElementById('manualPointsInput').value = '10';
+      } else {
+        document.getElementById('scoreText').innerText = totalScore;
+        document.getElementById('playerConsole').style.display = 'flex';
+        document.getElementById('guessInput').value = '';
+        document.getElementById('guessInput').focus();
+      }
+
+      document.getElementById('nextBtn').classList.remove('show');
+
+      currentAnswers = (save.currentAnswers && save.currentAnswers.length > 0)
+        ? save.currentAnswers.map(a => ({ ...a }))
+        : [...qData.answers].sort((a, b) => b.points - a.points).slice(0, 8).map(a => ({ ...a, revealed: false, missed: false }));
+
+      renderBoardTiles();
+      if (gameMode === 'host') renderHostCheatsheet();
+      startTimer(true);
+      broadcastState();
+    }
+
+    async function deleteSavedGame(id) {
+      savedGamesCache = savedGamesCache.filter(s => s.id !== id);
+      setLocalSaves(savedGamesCache);
+      renderSavedGames();
+
+      if (cloudReady && db) {
+        try {
+          await db.collection(SAVES_COLLECTION).doc(id).delete();
+        } catch (err) {
+          console.warn('Firestore delete error:', err);
+        }
+      }
+    }
+
+    function resetSetupForm() {
+      gameMode = 'solo';
+      selectedRoundLength = 10;
+      selectedRoundTime = 60;
+      rosterNames = ['Team 1', 'Team 2'];
+
+      document.getElementById('modeSoloBtn').classList.add('selected');
+      document.getElementById('modeHostBtn').classList.remove('selected');
+      document.getElementById('rosterBox').classList.remove('show');
+
+      document.querySelectorAll('#roundLenGroup .opt-btn').forEach(b => {
+        b.classList.toggle('selected', parseInt(b.dataset.val, 10) === 10);
+      });
+      document.querySelectorAll('#timerBtnGroup .opt-btn').forEach(b => {
+        b.classList.toggle('selected', parseInt(b.dataset.val, 10) === 60);
+      });
+
+      document.getElementById('roundText').innerText = `ROUND 1 / 10`;
+      document.getElementById('timerDisplay').innerText = '60';
+      document.getElementById('compactTimerVal').innerText = '60';
+      renderRosterInputs();
+    }
 
     // --- DUAL-WINDOW SYNC LOGIC ---
     function launchTVScreen() {
@@ -2486,12 +2966,13 @@
 
     function broadcastState() {
       if (isTVView || gameMode !== 'host') return;
+      const qObj = questionBank[activeQuestionIndices[currentIndex]];
       syncChannel.postMessage({
         type: 'SYNC_STATE',
         payload: {
-          question: activeQuestions[currentIndex] ? activeQuestions[currentIndex].question : '',
+          question: qObj ? qObj.question : '',
           roundNum: currentIndex + 1,
-          totalRounds: activeQuestions.length,
+          totalRounds: activeQuestionIndices.length,
           timeLeft: selectedRoundTime === 0 ? 'OFF' : timeLeft,
           isLowTime: selectedRoundTime > 0 && timeLeft <= 10 && timeLeft > 0,
           strikes: currentStrikes,
@@ -2519,7 +3000,7 @@
           badge.innerText = 'TV Screen: Connected ●';
           badge.style.color = '#6ee787';
         }
-        if (gameMode === 'host' && activeQuestions.length > 0) {
+        if (gameMode === 'host' && activeQuestionIndices.length > 0) {
           broadcastState();
         }
       }
@@ -2695,13 +3176,13 @@
     }
 
     // --- SHUFFLE & HIGH SCORE ---
-    function shuffleQuestions() {
-      const shuffled = [...questionBank];
-      for (let i = shuffled.length - 1; i > 0; i--) {
+    function shuffleQuestionIndices() {
+      const indices = questionBank.map((_, i) => i);
+      for (let i = indices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        [indices[i], indices[j]] = [indices[j], indices[i]];
       }
-      return shuffled.slice(0, Math.min(selectedRoundLength, shuffled.length));
+      return indices.slice(0, Math.min(selectedRoundLength, indices.length));
     }
 
     function updateHighScore(score) {
@@ -2878,13 +3359,34 @@
     }
 
     // --- GAME LIFECYCLE ---
+    function applyModeLayout() {
+      document.getElementById('modeBadge').innerText = gameMode === 'host' ? 'HOST MODE' : 'SOLO';
+      if (gameMode === 'host') {
+        document.getElementById('soloScoreWrap').style.display = 'none';
+        document.getElementById('soloHighWrap').style.display = 'none';
+        document.getElementById('timerDisplay').style.display = 'none';
+        document.getElementById('compactTimer').classList.add('show');
+        document.getElementById('activeTeamBanner').classList.add('show');
+        document.getElementById('hostScoreboardBar').classList.add('show');
+        document.getElementById('playerConsole').style.display = 'none';
+        document.getElementById('hostDashboard').classList.add('show');
+      } else {
+        document.getElementById('soloScoreWrap').style.display = 'block';
+        document.getElementById('soloHighWrap').style.display = 'block';
+        document.getElementById('timerDisplay').style.display = 'block';
+        document.getElementById('compactTimer').classList.remove('show');
+        document.getElementById('activeTeamBanner').classList.remove('show');
+        document.getElementById('hostScoreboardBar').classList.remove('show');
+        document.getElementById('hostDashboard').classList.remove('show');
+      }
+    }
+
     function startGame() {
       initAudio();
-      activeQuestions = shuffleQuestions();
+      currentSessionId = `ff_${Date.now()}`;
+      activeQuestionIndices = shuffleQuestionIndices();
       currentIndex = 0;
       isGameOver = false;
-
-      document.getElementById('modeBadge').innerText = gameMode === 'host' ? 'HOST MODE' : 'SOLO';
 
       if (gameMode === 'host') {
         players = rosterNames.map((name, i) => ({
@@ -2893,30 +3395,13 @@
         }));
         activePlayerIndex = 0;
         roundBank = 0;
-
-        document.getElementById('soloScoreWrap').style.display = 'none';
-        document.getElementById('soloHighWrap').style.display = 'none';
-        document.getElementById('timerDisplay').style.display = 'none';
-        document.getElementById('compactTimer').classList.add('show');
-        document.getElementById('activeTeamBanner').classList.add('show');
-
-        document.getElementById('hostScoreboardBar').classList.add('show');
-        document.getElementById('playerConsole').style.display = 'none';
-        document.getElementById('hostDashboard').classList.add('show');
+        applyModeLayout();
         renderScorecards();
       } else {
         totalScore = 0;
         beatHighScoreThisRun = false;
         document.getElementById('scoreText').innerText = '0';
-
-        document.getElementById('soloScoreWrap').style.display = 'block';
-        document.getElementById('soloHighWrap').style.display = 'block';
-        document.getElementById('timerDisplay').style.display = 'block';
-        document.getElementById('compactTimer').classList.remove('show');
-        document.getElementById('activeTeamBanner').classList.remove('show');
-
-        document.getElementById('hostScoreboardBar').classList.remove('show');
-        document.getElementById('hostDashboard').classList.remove('show');
+        applyModeLayout();
       }
 
       document.getElementById('startScreen').classList.add('hidden');
@@ -2933,6 +3418,7 @@
           activePlayerIndex = idx;
           renderScorecards();
           broadcastState();
+          saveCurrentGame();
         };
         card.innerHTML = `
           <div class="scorecard-name">${p.name}</div>
@@ -2964,6 +3450,7 @@
       playAwardSound();
       renderScorecards();
       broadcastState();
+      saveCurrentGame();
     }
 
     function renderHostCheatsheet() {
@@ -2985,6 +3472,42 @@
       });
     }
 
+    function renderBoardTiles() {
+      const board = document.getElementById('board');
+      board.innerHTML = '';
+      for (let i = 0; i < 8; i++) {
+        const tile = document.createElement('div');
+        tile.id = `tile-${i}`;
+        if (i < currentAnswers.length) {
+          const ans = currentAnswers[i];
+          tile.className = `tile ${gameMode === 'host' ? 'host-clickable' : ''} ${ans.revealed ? 'flipped' : ''} ${ans.missed ? 'missed' : ''}`;
+
+          if (gameMode === 'host') {
+            tile.onclick = () => {
+              if (!ans.revealed) {
+                revealTile(i, ans.points, true);
+                playCorrectSound();
+              }
+            };
+          }
+
+          tile.innerHTML = `
+            <div class="tile-inner">
+              <div class="tile-front"><div class="tile-number-badge">${i + 1}</div></div>
+              <div class="tile-back">
+                <span class="answer-text">${ans.text}</span>
+                <span class="answer-points">${ans.points}</span>
+              </div>
+            </div>
+          `;
+        } else {
+          tile.className = 'tile blank-tile';
+          tile.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
+        }
+        board.appendChild(tile);
+      }
+    }
+
     // --- MANUAL OVERRIDE (OVERWRITES MATCHING OR CLOSEST UNREVEALED SLOT) ---
     function handleManualEnter(e) {
       if (e.key === 'Enter') submitManualAnswer();
@@ -2999,7 +3522,6 @@
 
       if (!customText) return;
 
-      // Find best unrevealed slot: exact point match first, else closest point value (tie-breaker: lowest-ranked slot)
       let targetIndex = -1;
       let minDiff = Infinity;
 
@@ -3038,6 +3560,7 @@
       playCorrectSound();
       renderHostCheatsheet();
       broadcastState();
+      saveCurrentGame();
 
       textInput.value = '';
       ptsInput.value = '10';
@@ -3045,9 +3568,9 @@
     }
 
     function loadQuestion(index) {
-      const qData = activeQuestions[index];
+      const qData = questionBank[activeQuestionIndices[index]];
       document.getElementById('questionText').innerText = qData.question;
-      document.getElementById('roundText').innerText = `ROUND ${index + 1} / ${activeQuestions.length}`;
+      document.getElementById('roundText').innerText = `ROUND ${index + 1} / ${activeQuestionIndices.length}`;
       
       currentStrikes = 0;
       revealedTiles = 0;
@@ -3073,52 +3596,20 @@
         hostInput.focus();
       }
 
-      const board = document.getElementById('board');
-      board.innerHTML = ''; 
+      currentAnswers = [...qData.answers]
+        .sort((a, b) => b.points - a.points)
+        .slice(0, 8)
+        .map(a => ({ ...a, revealed: false, missed: false }));
 
-      currentAnswers = [...qData.answers].sort((a, b) => b.points - a.points).slice(0, 8);
-      
-      for (let i = 0; i < 8; i++) {
-        const tile = document.createElement('div');
-        tile.id = `tile-${i}`;
-        if (i < currentAnswers.length) {
-          const ans = currentAnswers[i];
-          ans.revealed = false;
-          ans.missed = false;
-          tile.className = `tile ${gameMode === 'host' ? 'host-clickable' : ''}`;
-
-          if (gameMode === 'host') {
-            tile.onclick = () => {
-              if (!ans.revealed) {
-                revealTile(i, ans.points, true);
-                playCorrectSound();
-              }
-            };
-          }
-
-          tile.innerHTML = `
-            <div class="tile-inner">
-              <div class="tile-front"><div class="tile-number-badge">${i + 1}</div></div>
-              <div class="tile-back">
-                <span class="answer-text">${ans.text}</span>
-                <span class="answer-points">${ans.points}</span>
-              </div>
-            </div>
-          `;
-        } else {
-          tile.className = 'tile blank-tile';
-          tile.innerHTML = `<div class="tile-inner"><div class="tile-front"></div></div>`;
-        }
-        board.appendChild(tile);
-      }
-
+      renderBoardTiles();
       if (gameMode === 'host') renderHostCheatsheet();
-      startTimer();
+      startTimer(false);
       broadcastState();
+      saveCurrentGame();
     }
 
     // --- TIMER ---
-    function startTimer() {
+    function startTimer(preserveTimeLeft = false) {
       clearInterval(roundTimer);
       const timerDisplay = document.getElementById('timerDisplay');
       const compactTimer = document.getElementById('compactTimer');
@@ -3132,7 +3623,9 @@
         return;
       }
 
-      timeLeft = selectedRoundTime;
+      if (!preserveTimeLeft || timeLeft <= 0) {
+        timeLeft = selectedRoundTime;
+      }
       updateTimerUI();
       
       roundTimer = setInterval(() => {
@@ -3283,6 +3776,7 @@
       updateStrikeUI();
       playWrongSound();
       broadcastState();
+      saveCurrentGame();
 
       const xText = 'X'.repeat(currentStrikes);
       const overlay = document.getElementById('strikeOverlay');
@@ -3303,6 +3797,7 @@
       currentStrikes = 0;
       updateStrikeUI();
       broadcastState();
+      saveCurrentGame();
     }
 
     function revealAllHost() {
@@ -3324,6 +3819,7 @@
       });
       renderHostCheatsheet();
       broadcastState();
+      saveCurrentGame();
     }
 
     // --- SHARED TILE & STRIKE LOGIC ---
@@ -3349,6 +3845,7 @@
           renderHostCheatsheet();
           broadcastState();
         }
+        saveCurrentGame();
       }
     }
 
@@ -3357,6 +3854,7 @@
       currentStrikes++;
       updateStrikeUI();
       playWrongSound();
+      saveCurrentGame();
 
       const overlay = document.getElementById('strikeOverlay');
       const strikeMark = document.getElementById('strikeMark');
@@ -3400,16 +3898,19 @@
           if (!ans.revealed) {
             const tile = document.getElementById(`tile-${i}`);
             tile.classList.add('missed');
+            ans.revealed = true;
+            ans.missed = true;
             setTimeout(() => { tile.classList.add('flipped'); }, delayStep * 300);
             delayStep++;
           }
         });
       }
+      saveCurrentGame();
     }
 
     function nextQuestion() {
       clearInterval(roundTimer);
-      if (currentIndex < activeQuestions.length - 1) {
+      if (currentIndex < activeQuestionIndices.length - 1) {
         currentIndex++;
         if (gameMode === 'host' && players.length > 0) {
           activePlayerIndex = (activePlayerIndex + 1) % players.length;
@@ -3421,7 +3922,7 @@
       }
     }
 
-    function showGameOver() {
+    function showGameOver(fromResume = false) {
       clearInterval(roundTimer);
       isGameOver = true;
       const soloWrap = document.getElementById('soloResultsWrap');
@@ -3453,6 +3954,7 @@
         broadcastState();
       }
 
+      if (!fromResume) saveCurrentGame();
       document.getElementById('gameOverScreen').classList.add('show');
     }
 
@@ -3461,9 +3963,19 @@
       startGame();
     }
 
-    function returnToMenu() {
+    async function returnToMenuFromGame() {
+      clearInterval(roundTimer);
+      roundActive = false;
+      await saveCurrentGame();
+      await loadSavedGames();
+      document.getElementById('gameOverScreen').classList.remove('show');
+      document.getElementById('startScreen').classList.remove('hidden');
+    }
+
+    async function returnToMenu() {
       clearInterval(roundTimer);
       isGameOver = false;
+      await loadSavedGames();
       document.getElementById('gameOverScreen').classList.remove('show');
       document.getElementById('startScreen').classList.remove('hidden');
     }
@@ -3481,6 +3993,7 @@
         document.getElementById('timerDisplay').innerText = label;
         document.getElementById('compactTimerVal').innerText = label;
         document.getElementById('highScoreText').innerText = highScore;
+        initCloudSync();
       }
     };
   </script>
