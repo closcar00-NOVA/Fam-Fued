@@ -634,15 +634,53 @@
       letter-spacing: 0.14em;
       color: var(--accent-gold);
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      padding-bottom: 6px;
+      padding-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 6px;
     }
 
+    /* CLICKABLE LAUNCH TV / STATUS PILL */
+    .tv-status-pill {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.15s, filter 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .tv-status-pill:hover {
+      transform: scale(1.04);
+      filter: brightness(1.15);
+    }
+
+    .tv-status-pill.offline {
+      background: rgba(230, 0, 38, 0.28);
+      color: #ff6b81;
+      border: 1.5px solid #ff4d6d;
+      box-shadow: 0 0 10px rgba(230, 0, 38, 0.35);
+    }
+
+    .tv-status-pill.connected {
+      background: rgba(0, 167, 74, 0.28);
+      color: #6ee787;
+      border: 1.5px solid #00A74A;
+      box-shadow: 0 0 10px rgba(0, 167, 74, 0.4);
+    }
+
+    /* HOST SEARCH INSIDE COLUMN 2 WITH THICK WHITE DIVIDER */
     .host-search-wrap {
       position: relative;
       width: 100%;
+      padding-bottom: 12px;
+      margin-bottom: 2px;
+      border-bottom: 3px solid rgba(255, 255, 255, 0.92);
     }
 
     .host-search-wrap input {
@@ -661,10 +699,9 @@
 
     .host-search-wrap input:focus { border-color: var(--accent-gold); }
 
-    /* Dropdown opens DOWNWARD inside Column 1 */
     .host-dropdown {
       position: absolute;
-      top: 100%;
+      top: calc(100% - 10px);
       left: 0;
       width: 100%;
       background: rgba(8, 16, 34, 0.98);
@@ -699,13 +736,13 @@
     .host-btn-group {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
       width: 100%;
     }
 
     .host-btn {
       width: 100%;
-      padding: 10px 12px;
+      padding: 11px 12px;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
       font-weight: 800;
@@ -724,7 +761,6 @@
     .host-btn.clear-x { background: rgba(255, 255, 255, 0.12); color: #fff; }
     .host-btn.award { background: var(--accent-gold); color: #000; border-color: #fff; }
     .host-btn.reveal { background: #1d4ed8; color: #fff; }
-    .host-btn.tv-launch { background: #6d28d9; color: #fff; border-color: #c4b5fd; }
     .host-btn.next { background: var(--emerald); color: #fff; }
 
     /* HOST PRIVATE ANSWER CHEAT SHEET (COLUMN 2) */
@@ -797,22 +833,22 @@
       flex-shrink: 0;
     }
 
-    /* MANUAL OVERRIDE INSIDE COLUMN 2 */
+    /* MANUAL OVERRIDE INSIDE COLUMN 2 WITH THICK LIGHT BLUE DIVIDER & LIGHT ORANGE LABEL */
     .manual-answer-bar {
       display: flex;
       flex-direction: column;
       gap: 7px;
-      margin-top: 4px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      margin-top: 6px;
+      padding-top: 12px;
+      border-top: 3px solid #38bdf8;
     }
 
     .manual-label {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #94a3b8;
+      color: #ffb347;
     }
 
     .manual-answer-bar input[type="text"] {
@@ -876,7 +912,7 @@
       body.host-layout:not(.tv-mode) .game-container {
         max-width: 1540px;
         display: grid;
-        grid-template-columns: minmax(0, 1.85fr) minmax(220px, 0.72fr) minmax(270px, 0.93fr);
+        grid-template-columns: minmax(0, 1.85fr) minmax(230px, 0.74fr) minmax(275px, 0.94fr);
         gap: 16px;
         align-items: start;
         padding-top: 16px;
@@ -892,7 +928,7 @@
       body.host-layout:not(.tv-mode) .game-container {
         max-width: 1160px;
         display: grid;
-        grid-template-columns: minmax(0, 1.65fr) minmax(270px, 1fr);
+        grid-template-columns: minmax(0, 1.65fr) minmax(275px, 1fr);
         gap: 14px;
         align-items: start;
       }
@@ -936,7 +972,7 @@
       align-items: center;
       z-index: 1200;
       text-align: center;
-      padding: 90px 20px 36px 20px; /* <-- Clears the top HUD bar */
+      padding: 90px 20px 36px 20px;
       overflow-y: auto;
       transition: opacity 0.4s;
     }
@@ -1555,34 +1591,35 @@
       <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Round &#9654;</button>
     </div>
 
-    <!-- Host Dashboard: Column 1 (Controls) & Column 2 (Answer Key + Manual Override) -->
+    <!-- Host Dashboard: Column 1 (Controls) & Column 2 (Search + Answer Key + Manual Override) -->
     <div class="host-dashboard" id="hostDashboard">
-      <!-- Column 1: Search & Action Controls -->
+      <!-- Column 1: Host Controls + Embedded Launch TV Status Pill -->
       <div class="host-console">
         <div class="panel-section-title">
           <span>Host Controls</span>
-          <span id="tvStatusBadge" style="color: #94a3b8; font-size: 10px;">TV: Offline</span>
-        </div>
-        <div class="host-search-wrap">
-          <input type="text" id="hostSearchInput" placeholder="Search answer or synonym..." oninput="handleHostSearch()" autocomplete="off">
-          <div id="hostDropdown" class="host-dropdown"></div>
+          <button id="tvStatusBtn" class="tv-status-pill offline" onclick="launchTVScreen()" title="Click to Launch Contestant TV Screen">📺 TV: OFFLINE</button>
         </div>
         <div class="host-btn-group">
-          <button class="host-btn award" id="awardBankBtn" onclick="awardRoundBank()" disabled>Award Bank (0) &rarr; Team 1</button>
           <button class="host-btn strike" onclick="triggerHostStrike()">STRIKE ❌</button>
           <button class="host-btn clear-x" onclick="clearHostStrikes()">Clear X</button>
           <button class="host-btn reveal" onclick="revealAllHost()">Reveal All</button>
-          <button class="host-btn tv-launch" onclick="launchTVScreen()">📺 Launch TV</button>
+          <button class="host-btn award" id="awardBankBtn" onclick="awardRoundBank()" disabled>Award Bank (0) &rarr; Team 1</button>
           <button class="host-btn next" onclick="nextQuestion()">Next Round &#9654;</button>
         </div>
       </div>
 
-      <!-- Column 2: Private Host Answer Key + Manual Override -->
+      <!-- Column 2: Search + Private Host Answer Key + Manual Override -->
       <div class="host-cheatsheet">
         <div class="cheatsheet-header">
           <span>Host Answer Key</span>
           <span style="color: #94a3b8; font-size: 10px;">Click to Flip</span>
         </div>
+
+        <div class="host-search-wrap">
+          <input type="text" id="hostSearchInput" placeholder="Search answer or synonym..." oninput="handleHostSearch()" autocomplete="off">
+          <div id="hostDropdown" class="host-dropdown"></div>
+        </div>
+
         <div class="cheatsheet-grid" id="cheatsheetGrid"></div>
 
         <div class="manual-answer-bar">
@@ -3041,6 +3078,20 @@
       window.open(`${baseUrl}?view=tv`, 'FamilyFeudTV', 'width=1280,height=720');
     }
 
+    function setTVStatusUI(isConnected) {
+      const btn = document.getElementById('tvStatusBtn');
+      if (!btn) return;
+      if (isConnected) {
+        btn.classList.remove('offline');
+        btn.classList.add('connected');
+        btn.innerText = '📺 TV: CONNECTED ●';
+      } else {
+        btn.classList.remove('connected');
+        btn.classList.add('offline');
+        btn.innerText = '📺 TV: OFFLINE';
+      }
+    }
+
     function broadcastState() {
       if (isTVView || gameMode !== 'host') return;
       const qObj = questionBank[activeQuestionIndices[currentIndex]];
@@ -3071,14 +3122,14 @@
       const msg = event.data;
       if (!msg) return;
 
-      if (!isTVView && msg.type === 'TV_READY') {
-        const badge = document.getElementById('tvStatusBadge');
-        if (badge) {
-          badge.innerText = 'TV: Connected ●';
-          badge.style.color = '#6ee787';
-        }
-        if (gameMode === 'host' && activeQuestionIndices.length > 0) {
-          broadcastState();
+      if (!isTVView) {
+        if (msg.type === 'TV_READY') {
+          setTVStatusUI(true);
+          if (gameMode === 'host' && activeQuestionIndices.length > 0) {
+            broadcastState();
+          }
+        } else if (msg.type === 'TV_CLOSED') {
+          setTVStatusUI(false);
         }
       }
 
@@ -4066,6 +4117,9 @@
         document.getElementById('startScreen').classList.add('hidden');
         document.getElementById('tvWaitingScreen').classList.add('active');
         syncChannel.postMessage({ type: 'TV_READY' });
+        window.addEventListener('beforeunload', () => {
+          syncChannel.postMessage({ type: 'TV_CLOSED' });
+        });
       } else {
         document.getElementById('roundText').innerText = `ROUND 1 / ${selectedRoundLength}`;
         const label = selectedRoundTime === 0 ? 'OFF' : selectedRoundTime;
