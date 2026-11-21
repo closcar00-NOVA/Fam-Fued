@@ -687,7 +687,7 @@
       width: 100%;
       padding: 9px 12px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.05em;
       border: 1.5px solid var(--neon-white);
@@ -718,13 +718,13 @@
     .host-dropdown.active { display: block; }
 
     .host-dropdown-item {
-      padding: 9px 12px;
+      padding: 10px 12px;
       cursor: pointer;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
     }
 
@@ -744,7 +744,7 @@
       width: 100%;
       padding: 11px 12px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -794,21 +794,22 @@
     .cheatsheet-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 6px;
+      gap: 7px;
     }
 
     .cheat-btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 10px;
+      padding: 9px 12px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 6px;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 15px;
       font-weight: 700;
+      line-height: 1.25;
       cursor: pointer;
       text-align: left;
       transition: all 0.15s;
@@ -828,8 +829,9 @@
 
     .cheat-pts {
       color: var(--accent-gold);
+      font-size: 16px;
       font-weight: 900;
-      margin-left: 8px;
+      margin-left: 10px;
       flex-shrink: 0;
     }
 
@@ -855,7 +857,7 @@
       width: 100%;
       padding: 8px 10px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.05em;
       border: 1px solid rgba(255, 255, 255, 0.35);
@@ -875,7 +877,7 @@
       width: 74px;
       padding: 8px 8px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.35);
@@ -891,7 +893,7 @@
       flex: 1;
       padding: 8px 14px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -910,16 +912,37 @@
     /* ======================================================= */
     @media (min-width: 1180px) {
       body.host-layout:not(.tv-mode) .game-container {
-        max-width: 1540px;
+        max-width: 1560px;
         display: grid;
-        grid-template-columns: minmax(0, 1.85fr) minmax(230px, 0.74fr) minmax(275px, 0.94fr);
+        grid-template-columns: minmax(0, 1.78fr) minmax(225px, 0.72fr) minmax(300px, 1.04fr);
         gap: 16px;
-        align-items: start;
+        align-items: stretch;
         padding-top: 16px;
+      }
+
+      /* Keep the game board at its natural height while Host Controls matches Answer Key */
+      body.host-layout:not(.tv-mode) .board-column {
+        align-self: start;
       }
 
       body.host-layout:not(.tv-mode) .host-dashboard.show {
         display: contents;
+      }
+
+      body.host-layout:not(.tv-mode) .host-console {
+        height: 100%;
+      }
+
+      body.host-layout:not(.tv-mode) .host-console .host-btn-group {
+        flex: 1;
+        gap: 10px;
+      }
+
+      body.host-layout:not(.tv-mode) .host-console .host-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
@@ -928,7 +951,7 @@
       body.host-layout:not(.tv-mode) .game-container {
         max-width: 1160px;
         display: grid;
-        grid-template-columns: minmax(0, 1.65fr) minmax(275px, 1fr);
+        grid-template-columns: minmax(0, 1.6fr) minmax(290px, 1fr);
         gap: 14px;
         align-items: start;
       }
