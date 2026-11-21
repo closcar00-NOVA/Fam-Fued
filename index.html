@@ -282,7 +282,7 @@
     .host-scoreboard-bar {
       display: none;
       width: 100%;
-      max-width: 1040px;
+      max-width: 1520px;
       padding: 10px 20px 0 20px;
       justify-content: center;
       align-items: center;
@@ -375,7 +375,7 @@
       line-height: 1.1;
     }
 
-    /* GAME CONTAINER */
+    /* GAME CONTAINER (CENTERED FOR SOLO & TV MODE) */
     .game-container {
       flex: 1;
       display: flex;
@@ -384,7 +384,14 @@
       justify-content: center;
       width: 100%;
       max-width: 1040px;
-      padding: 12px 20px 16px 20px;
+      padding: 14px 20px 20px 20px;
+    }
+
+    .board-column {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .question-display {
@@ -401,7 +408,7 @@
       border: 1.5px solid var(--neon-white);
       border-radius: 12px;
       box-shadow: var(--neon-white-glow), 0 10px 24px rgba(0, 0, 0, 0.6);
-      width: 96%;
+      width: 100%;
     }
 
     /* CLASSIC FAMILY FEUD BOARD HOUSING */
@@ -422,7 +429,7 @@
     .board {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(4, 62px);
+      grid-template-rows: repeat(4, 66px);
       grid-auto-flow: column;
       gap: 10px;
       width: 100%;
@@ -431,7 +438,7 @@
     /* TILES */
     .tile {
       background-color: transparent;
-      height: 62px;
+      height: 66px;
       perspective: 1000px;
     }
 
@@ -513,11 +520,11 @@
     .answer-text {
       flex: 1;
       text-align: left;
-      padding: 0 14px;
-      font-size: 15px;
+      padding: 0 12px;
+      font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
       line-height: 1.2;
@@ -527,13 +534,13 @@
 
     .answer-points {
       height: 100%;
-      min-width: 64px;
+      min-width: 58px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(180deg, #2e6ce0 0%, #103785 100%);
       border-left: 2.5px solid #dce8ff;
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 900;
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -596,43 +603,53 @@
 
     .player-console button:hover { background: #fff; }
 
-    /* HOST DASHBOARD (COMPACT VERTICAL LAYOUT) */
+    /* HOST DASHBOARD BASE STYLES */
     .host-dashboard {
       display: none;
       width: 100%;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
     }
 
     .host-dashboard.show { display: flex; }
 
     .host-console {
       display: flex;
+      flex-direction: column;
       width: 100%;
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1.5px solid var(--neon-white);
       box-shadow: var(--neon-white-glow);
-      border-radius: 10px;
-      padding: 9px 14px;
-      flex-wrap: wrap;
-      align-items: center;
+      border-radius: 12px;
+      padding: 12px 14px;
+      gap: 10px;
+    }
+
+    .panel-section-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-gold);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 6px;
+      display: flex;
       justify-content: space-between;
-      gap: 8px;
+      align-items: center;
     }
 
     .host-search-wrap {
       position: relative;
-      flex: 1;
-      min-width: 220px;
+      width: 100%;
     }
 
     .host-search-wrap input {
       width: 100%;
-      padding: 8px 12px;
+      padding: 9px 12px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.05em;
       border: 1.5px solid var(--neon-white);
@@ -644,19 +661,21 @@
 
     .host-search-wrap input:focus { border-color: var(--accent-gold); }
 
+    /* Dropdown opens DOWNWARD inside Column 1 */
     .host-dropdown {
       position: absolute;
-      bottom: 100%;
+      top: 100%;
       left: 0;
       width: 100%;
-      background: rgba(8, 16, 34, 0.96);
+      background: rgba(8, 16, 34, 0.98);
       border: 1.5px solid var(--accent-gold);
-      border-bottom: none;
-      border-radius: 8px 8px 0 0;
-      max-height: 200px;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      max-height: 220px;
       overflow-y: auto;
       display: none;
       z-index: 1600;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8);
     }
 
     .host-dropdown.active { display: block; }
@@ -668,7 +687,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
     }
 
@@ -679,24 +698,27 @@
 
     .host-btn-group {
       display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
     }
 
     .host-btn {
-      padding: 7px 12px;
+      width: 100%;
+      padding: 10px 12px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 6px;
+      border-radius: 7px;
       cursor: pointer;
       transition: transform 0.15s, filter 0.2s, opacity 0.2s;
+      text-align: center;
     }
 
-    .host-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
+    .host-btn:hover { transform: scale(1.02); filter: brightness(1.1); }
     .host-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
     .host-btn.strike { background: var(--strike-red); color: #fff; border-color: #ff6b81; }
     .host-btn.clear-x { background: rgba(255, 255, 255, 0.12); color: #fff; }
@@ -705,30 +727,37 @@
     .host-btn.tv-launch { background: #6d28d9; color: #fff; border-color: #c4b5fd; }
     .host-btn.next { background: var(--emerald); color: #fff; }
 
-    /* HOST PRIVATE ANSWER CHEAT SHEET */
+    /* HOST PRIVATE ANSWER CHEAT SHEET (COLUMN 2) */
     .host-cheatsheet {
       background: rgba(4, 9, 20, 0.92);
-      border: 1.5px solid rgba(254, 209, 65, 0.65);
-      border-radius: 10px;
-      padding: 9px 14px;
+      border: 1.5px solid rgba(254, 209, 65, 0.7);
+      box-shadow: 0 0 16px rgba(254, 209, 65, 0.18);
+      border-radius: 12px;
+      padding: 12px 14px;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .cheatsheet-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 7px;
+      flex-wrap: wrap;
+      gap: 6px;
       font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--accent-gold);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 6px;
     }
 
     .cheatsheet-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      grid-template-columns: 1fr;
       gap: 6px;
     }
 
@@ -736,13 +765,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 10px;
+      padding: 8px 10px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 6px;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       text-align: left;
@@ -765,17 +794,17 @@
       color: var(--accent-gold);
       font-weight: 900;
       margin-left: 8px;
+      flex-shrink: 0;
     }
 
-    /* MANUAL ANSWER BAR INSIDE HOST CHEAT SHEET */
+    /* MANUAL OVERRIDE INSIDE COLUMN 2 */
     .manual-answer-bar {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.16);
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
     }
 
     .manual-label {
@@ -787,9 +816,8 @@
     }
 
     .manual-answer-bar input[type="text"] {
-      flex: 1;
-      min-width: 200px;
-      padding: 6px 10px;
+      width: 100%;
+      padding: 8px 10px;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
       font-weight: 600;
@@ -801,9 +829,15 @@
       outline: none;
     }
 
+    .manual-pts-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
     .manual-answer-bar input[type="number"] {
-      width: 68px;
-      padding: 6px 8px;
+      width: 74px;
+      padding: 8px 8px;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
       font-weight: 800;
@@ -818,7 +852,8 @@
     .manual-answer-bar input:focus { border-color: var(--accent-gold); }
 
     .manual-flip-btn {
-      padding: 6px 14px;
+      flex: 1;
+      padding: 8px 14px;
       font-family: 'Montserrat', sans-serif;
       font-size: 11px;
       font-weight: 800;
@@ -832,7 +867,42 @@
       transition: transform 0.15s, background 0.2s;
     }
 
-    .manual-flip-btn:hover { background: #fff; transform: scale(1.03); }
+    .manual-flip-btn:hover { background: #fff; transform: scale(1.02); }
+
+    /* ======================================================= */
+    /* 3-COLUMN HOST LAYOUT (HOST SCREEN ONLY — TV UNTOUCHED)  */
+    /* ======================================================= */
+    @media (min-width: 1180px) {
+      body.host-layout:not(.tv-mode) .game-container {
+        max-width: 1540px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.85fr) minmax(220px, 0.72fr) minmax(270px, 0.93fr);
+        gap: 16px;
+        align-items: start;
+        padding-top: 16px;
+      }
+
+      body.host-layout:not(.tv-mode) .host-dashboard.show {
+        display: contents;
+      }
+    }
+
+    /* 2-COLUMN SIDEBAR FALLBACK ON MEDIUM LAPTOPS (860px - 1179px) */
+    @media (min-width: 860px) and (max-width: 1179px) {
+      body.host-layout:not(.tv-mode) .game-container {
+        max-width: 1160px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.65fr) minmax(270px, 1fr);
+        gap: 14px;
+        align-items: start;
+      }
+
+      body.host-layout:not(.tv-mode) .host-dashboard.show {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
 
     .next-btn {
       display: none;
@@ -1327,7 +1397,7 @@
 
     .menu-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
 
-    /* TV CONTESTANT VIEW CLEANUP */
+    /* TV CONTESTANT VIEW CLEANUP (ALWAYS CENTERED) */
     body.tv-mode .menu-hud-btn,
     body.tv-mode .save-status-pill,
     body.tv-mode .audio-controls,
@@ -1466,26 +1536,36 @@
     <div class="player-scorecards" id="playerScorecards"></div>
   </div>
 
-  <!-- Main Game Board -->
+  <!-- Main Game Area (Centered in Solo/TV, 3-Column Grid in Host Mode) -->
   <div class="game-container">
-    <div class="question-display" id="questionText">Ready to Play...</div>
-    
-    <div class="board-frame">
-      <div class="board" id="board"></div>
+    <!-- Left Column: Question + 8-Slot Board -->
+    <div class="board-column">
+      <div class="question-display" id="questionText">Ready to Play...</div>
+      
+      <div class="board-frame">
+        <div class="board" id="board"></div>
+      </div>
+
+      <!-- Solo Player Input Console -->
+      <div class="player-console" id="playerConsole">
+        <input type="text" id="guessInput" placeholder="Type your guess..." onkeypress="handleEnter(event)" autocomplete="off">
+        <button onclick="submitGuess()">GUESS</button>
+      </div>
+
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Round &#9654;</button>
     </div>
 
-    <!-- Solo Player Input Console -->
-    <div class="player-console" id="playerConsole">
-      <input type="text" id="guessInput" placeholder="Type your guess..." onkeypress="handleEnter(event)" autocomplete="off">
-      <button onclick="submitGuess()">GUESS</button>
-    </div>
-
-    <!-- Host Dashboard (Command Bar + Private Answer Cheat Sheet) -->
+    <!-- Host Dashboard: Column 1 (Controls) & Column 2 (Answer Key + Manual Override) -->
     <div class="host-dashboard" id="hostDashboard">
+      <!-- Column 1: Search & Action Controls -->
       <div class="host-console">
+        <div class="panel-section-title">
+          <span>Host Controls</span>
+          <span id="tvStatusBadge" style="color: #94a3b8; font-size: 10px;">TV: Offline</span>
+        </div>
         <div class="host-search-wrap">
+          <input type="text" id="hostSearchInput" placeholder="Search answer or synonym..." oninput="handleHostSearch()" autocomplete="off">
           <div id="hostDropdown" class="host-dropdown"></div>
-          <input type="text" id="hostSearchInput" placeholder="Host search: type answer or synonym..." oninput="handleHostSearch()" autocomplete="off">
         </div>
         <div class="host-btn-group">
           <button class="host-btn award" id="awardBankBtn" onclick="awardRoundBank()" disabled>Award Bank (0) &rarr; Team 1</button>
@@ -1493,28 +1573,28 @@
           <button class="host-btn clear-x" onclick="clearHostStrikes()">Clear X</button>
           <button class="host-btn reveal" onclick="revealAllHost()">Reveal All</button>
           <button class="host-btn tv-launch" onclick="launchTVScreen()">📺 Launch TV</button>
-          <button class="host-btn next" onclick="nextQuestion()">Next &#9654;</button>
+          <button class="host-btn next" onclick="nextQuestion()">Next Round &#9654;</button>
         </div>
       </div>
 
-      <!-- Private Host Answer Cheat Sheet + Manual Overwrite Bar -->
+      <!-- Column 2: Private Host Answer Key + Manual Override -->
       <div class="host-cheatsheet">
         <div class="cheatsheet-header">
-          <span>Host Answer Key (Hidden from TV Screen — Click to Reveal)</span>
-          <span id="tvStatusBadge" style="color: #94a3b8;">TV Screen: Not Connected</span>
+          <span>Host Answer Key</span>
+          <span style="color: #94a3b8; font-size: 10px;">Click to Flip</span>
         </div>
         <div class="cheatsheet-grid" id="cheatsheetGrid"></div>
 
         <div class="manual-answer-bar">
-          <span class="manual-label">Manual Override:</span>
-          <input type="text" id="manualAnswerInput" placeholder="Custom answer (overwrites matching/closest unrevealed slot)..." onkeypress="handleManualEnter(event)" autocomplete="off">
-          <input type="number" id="manualPointsInput" value="10" min="0" max="100" title="Points">
-          <button class="manual-flip-btn" onclick="submitManualAnswer()">+ Flip</button>
+          <span class="manual-label">Manual Override (Overwrites Slot):</span>
+          <input type="text" id="manualAnswerInput" placeholder="Type custom answer..." onkeypress="handleManualEnter(event)" autocomplete="off">
+          <div class="manual-pts-row">
+            <input type="number" id="manualPointsInput" value="10" min="0" max="100" title="Points">
+            <button class="manual-flip-btn" onclick="submitManualAnswer()">+ Flip</button>
+          </div>
         </div>
       </div>
     </div>
-
-    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Round &#9654;</button>
   </div>
 
   <!-- Strike / Time's Up Animation -->
@@ -2786,12 +2866,10 @@
         updatedAt: Date.now()
       };
 
-      // 1. Always save locally first for instant reliability
       const localList = getLocalSaves().filter(s => s.id !== snapshot.id);
       localList.unshift(snapshot);
       setLocalSaves(localList.slice(0, 15));
 
-      // 2. Sync to Firebase Firestore
       if (cloudReady && db) {
         try {
           await db.collection(SAVES_COLLECTION).doc(snapshot.id).set(snapshot);
@@ -2888,7 +2966,6 @@
         return;
       }
 
-      // Restore current board state directly
       const qData = questionBank[activeQuestionIndices[currentIndex]];
       document.getElementById('questionText').innerText = qData.question;
       document.getElementById('roundText').innerText = `ROUND ${currentIndex + 1} / ${activeQuestionIndices.length}`;
@@ -2997,7 +3074,7 @@
       if (!isTVView && msg.type === 'TV_READY') {
         const badge = document.getElementById('tvStatusBadge');
         if (badge) {
-          badge.innerText = 'TV Screen: Connected ●';
+          badge.innerText = 'TV: Connected ●';
           badge.style.color = '#6ee787';
         }
         if (gameMode === 'host' && activeQuestionIndices.length > 0) {
@@ -3361,6 +3438,8 @@
     // --- GAME LIFECYCLE ---
     function applyModeLayout() {
       document.getElementById('modeBadge').innerText = gameMode === 'host' ? 'HOST MODE' : 'SOLO';
+      document.body.classList.toggle('host-layout', gameMode === 'host' && !isTVView);
+
       if (gameMode === 'host') {
         document.getElementById('soloScoreWrap').style.display = 'none';
         document.getElementById('soloHighWrap').style.display = 'none';
