@@ -2097,4 +2097,4 @@ const questionBank = [
       {"text": "Good alcohol/Coffee maker", "points": 7, "synonyms": ["alcohol", "wine", "whiskey", "espresso", "coffee", "socks", "kitchen gadget"]}
     ]
   }
-]:
+];
