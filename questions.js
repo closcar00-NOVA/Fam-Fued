@@ -1916,5 +1916,186 @@ const questionBank = [
       {"text": "He visits every house in one night", "points": 8, "synonyms": ["one night", "flying reindeer", "sleigh", "north pole", "elves", "fast"]},
       {"text": "Mall Santa is his 'helper'", "points": 6, "synonyms": ["mall santa", "helper", "real santa", "he made the toys", "go to sleep"]}
     ]
+  },
+  {
+    "question": "Name something you see in almost every Hallmark Christmas movie.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Big-city girl moves to a small town", "points": 32, "synonyms": ["small town", "big city", "moves home", "hometown", "city girl"]},
+      {"text": "Snowfall at the exact right moment", "points": 24, "synonyms": ["snow", "snowing", "fake snow", "blizzard", "white christmas"]},
+      {"text": "Saving a local bakery/Tree farm", "points": 18, "synonyms": ["bakery", "tree farm", "inn", "small business", "saving the town", "festival"]},
+      {"text": "A handsome single dad/Lumberjack", "points": 12, "synonyms": ["single dad", "widower", "lumberjack", "flannel", "prince", "childhood crush"]},
+      {"text": "Hot cocoa/Tree decorating montage", "points": 8, "synonyms": ["hot cocoa", "hot chocolate", "decorating", "baking cookies", "ice skating"]},
+      {"text": "A misunderstanding right before the kiss", "points": 6, "synonyms": ["kiss", "misunderstanding", "breakup", "mistletoe", "happy ending", "workaholic boyfriend"]}
+    ]
+  },
+  {
+    "question": "Name something people leave out for Santa on Christmas Eve.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Cookies", "points": 44, "synonyms": ["cookies", "chocolate chip", "sugar cookies"]},
+      {"text": "Milk", "points": 32, "synonyms": ["milk", "glass of milk", "almond milk"]},
+      {"text": "Carrots (for the reindeer)", "points": 12, "synonyms": ["carrots", "reindeer food", "apples", "celery", "oats"]},
+      {"text": "Beer/Whiskey/Alcohol", "points": 6, "synonyms": ["beer", "whiskey", "bourbon", "brandy", "wine", "eggnog", "shot"]},
+      {"text": "A thank-you note/Wish list", "points": 4, "synonyms": ["note", "letter", "card", "list", "drawing"]},
+      {"text": "Mince pies/Candy", "points": 2, "synonyms": ["pie", "candy", "brownies", "cake", "water"]}
+    ]
+  },
+  {
+    "question": "Name a reason someone might stay up past midnight on Christmas Eve.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Wrapping last-minute presents", "points": 36, "synonyms": ["wrapping", "wrap gifts", "presents", "gifts", "tape"]},
+      {"text": "Putting out Santa's gifts/Eating the cookies", "points": 24, "synonyms": ["santa", "playing santa", "stuffing stockings", "eating cookies", "elf on the shelf"]},
+      {"text": "Assembling kids' toys", "points": 16, "synonyms": ["assembling", "building toys", "bike", "dollhouse", "instructions", "batteries"]},
+      {"text": "Midnight Mass/Church service", "points": 10, "synonyms": ["church", "midnight mass", "mass", "service", "candlelight"]},
+      {"text": "Too excited to sleep", "points": 8, "synonyms": ["excited", "cant sleep", "kids", "waiting for santa"]},
+      {"text": "Drinking/Hanging out with family", "points": 6, "synonyms": ["drinking", "family", "movies", "games", "talking", "party"]}
+    ]
+  },
+  {
+    "question": "Name something people always say on New Year's Day.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "'Happy New Year!'", "points": 38, "synonyms": ["happy new year", "new year"]},
+      {"text": "'I'm never drinking again'", "points": 24, "synonyms": ["never drinking again", "hungover", "hangover", "headache", "too much to drink"]},
+      {"text": "'New year, new me'", "points": 16, "synonyms": ["new year new me", "new me", "fresh start", "resolutions", "gym"]},
+      {"text": "'I haven't showered/seen you since last year'", "points": 10, "synonyms": ["since last year", "dad joke", "last year"]},
+      {"text": "'I can't believe it's already [New Year]'", "points": 7, "synonyms": ["went by fast", "already", "time flies", "2027"]},
+      {"text": "'What day is it?'", "points": 5, "synonyms": ["what day is it", "date", "confused", "sleepy", "tired"]}
+    ]
+  },
+  {
+    "question": "Name a classic White Elephant or Secret Santa gift everyone fights over.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Alcohol/Bottle of liquor or wine", "points": 34, "synonyms": ["alcohol", "wine", "liquor", "tequila", "whiskey", "booze", "beer"]},
+      {"text": "Gift cards/Cash", "points": 24, "synonyms": ["gift card", "gift cards", "cash", "money", "amazon", "starbucks"]},
+      {"text": "Cozy blanket/Heated throw", "points": 16, "synonyms": ["blanket", "throw", "heated blanket", "snuggie", "robe"]},
+      {"text": "Tech gadget/Speaker/AirTag", "points": 12, "synonyms": ["speaker", "bluetooth", "airtag", "charger", "headphones", "tech", "gadget"]},
+      {"text": "Coffee maker/Air fryer/Mug warmer", "points": 8, "synonyms": ["coffee", "air fryer", "mug warmer", "yeti", "stanley", "tumbler"]},
+      {"text": "Lottery scratch-offs/Board game", "points": 6, "synonyms": ["lottery", "scratch offs", "board game", "card game", "candles", "funny gag gift"]}
+    ]
+  },
+  {
+    "question": "Name something people do on Black Friday.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Shop online from the couch", "points": 36, "synonyms": ["online shopping", "amazon", "cyber monday", "laptop", "phone", "couch"]},
+      {"text": "Wake up early/Wait in long lines", "points": 24, "synonyms": ["wake up early", "lines", "camp out", "crowds", "mall", "walmart", "target", "best buy"]},
+      {"text": "Fight over TVs/Deals", "points": 16, "synonyms": ["fight", "argue", "tv", "deals", "trample", "chaos", "brawl"]},
+      {"text": "Eat Thanksgiving leftovers", "points": 12, "synonyms": ["leftovers", "eat", "turkey", "sandwich"]},
+      {"text": "Sleep in/Stay home", "points": 7, "synonyms": ["sleep", "stay home", "avoid crowds", "relax"]},
+      {"text": "Put up Christmas decorations", "points": 5, "synonyms": ["decorate", "christmas tree", "lights", "music"]}
+    ]
+  },
+  {
+    "question": "Name a popular New Year's Eve tradition.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Watching the ball drop", "points": 36, "synonyms": ["ball drop", "times square", "countdown", "tv", "ryan seacrest"]},
+      {"text": "Kissing someone at midnight", "points": 24, "synonyms": ["kiss", "kissing", "midnight kiss", "smooch"]},
+      {"text": "Drinking champagne/Toasting", "points": 18, "synonyms": ["champagne", "toast", "drinking", "popping bottles", "prosecco"]},
+      {"text": "Setting off fireworks/Noisemakers", "points": 10, "synonyms": ["fireworks", "sparklers", "noisemakers", "confetti", "pots and pans"]},
+      {"text": "Going to a party/Bar", "points": 7, "synonyms": ["party", "club", "bar", "dressing up", "sparkly outfit"]},
+      {"text": "Eating lucky foods (Black-eyed peas/Grapes)", "points": 5, "synonyms": ["grapes", "black eyed peas", "cabbage", "pork", "12 grapes", "auld lang syne"]}
+    ]
+  },
+  {
+    "question": "Name a reason someone might still have their Christmas tree up in February.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Pure laziness/Procrastination", "points": 44, "synonyms": ["lazy", "laziness", "procrastinating", "too much work", "dont feel like it"]},
+      {"text": "They love the cozy lights/Vibe", "points": 22, "synonyms": ["lights", "cozy", "pretty", "vibe", "mood lighting", "cheer"]},
+      {"text": "Turned it into a Valentine's/Holiday tree", "points": 14, "synonyms": ["valentines", "mardi gras", "st patricks", "all year tree", "holiday tree"]},
+      {"text": "Too busy/Traveling", "points": 10, "synonyms": ["busy", "no time", "traveling", "work", "forgot"]},
+      {"text": "Nowhere to store it", "points": 6, "synonyms": ["storage", "no box", "basement", "attic", "heavy"]},
+      {"text": "Waiting for someone else to do it", "points": 4, "synonyms": ["spouse", "husband", "wife", "roommate", "someone else"]}
+    ]
+  },
+  {
+    "question": "Name something that gets kids super hyped up during Christmas.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Opening presents/Toys", "points": 42, "synonyms": ["presents", "gifts", "toys", "opening gifts", "santa"]},
+      {"text": "Candy/Cookies/Sugar", "points": 24, "synonyms": ["sugar", "candy", "cookies", "chocolate", "hot cocoa", "gingerbread"]},
+      {"text": "Snow/Snow days", "points": 14, "synonyms": ["snow", "sledding", "snowman", "snowball fight", "snow day"]},
+      {"text": "No school/Winter break", "points": 10, "synonyms": ["no school", "winter break", "vacation", "staying up late"]},
+      {"text": "Elf on the Shelf", "points": 6, "synonyms": ["elf", "elf on the shelf", "advent calendar"]},
+      {"text": "Christmas lights/Seeing Santa", "points": 4, "synonyms": ["lights", "mall santa", "cousins", "family", "music"]}
+    ]
+  },
+  {
+    "question": "Name a classic Thanksgiving side dish.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Mashed potatoes (and gravy)", "points": 36, "synonyms": ["mashed potatoes", "potatoes", "gravy"]},
+      {"text": "Stuffing/Dressing", "points": 26, "synonyms": ["stuffing", "dressing"]},
+      {"text": "Mac and cheese", "points": 14, "synonyms": ["mac and cheese", "macaroni", "baked mac"]},
+      {"text": "Green bean casserole", "points": 10, "synonyms": ["green beans", "green bean casserole", "veggies"]},
+      {"text": "Sweet potatoes/Yams", "points": 8, "synonyms": ["sweet potatoes", "yams", "marshmallows", "sweet potato casserole"]},
+      {"text": "Cranberry sauce/Dinner rolls", "points": 6, "synonyms": ["cranberry", "cranberry sauce", "rolls", "biscuits", "corn", "cornbread"]}
+    ]
+  },
+  {
+    "question": "Name something you see in every neighborhood during December.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Christmas lights on houses", "points": 42, "synonyms": ["lights", "christmas lights", "icicle lights", "lit up houses"]},
+      {"text": "Inflatable yard decorations", "points": 22, "synonyms": ["inflatables", "blow ups", "giant santa", "snowman", "reindeer"]},
+      {"text": "Wreaths on front doors", "points": 14, "synonyms": ["wreath", "wreaths", "garland", "bows"]},
+      {"text": "Amazon/Delivery trucks nonstop", "points": 10, "synonyms": ["amazon", "ups", "fedex", "delivery", "boxes", "packages"]},
+      {"text": "Christmas trees in front windows", "points": 7, "synonyms": ["trees", "christmas tree", "window", "nativity"]},
+      {"text": "Cars with reindeer antlers/Red noses", "points": 5, "synonyms": ["antlers", "car", "red nose", "snowmen", "carolers"]}
+    ]
+  },
+  {
+    "question": "Name a reason someone might cry during the holidays.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Missing a loved one who passed away", "points": 34, "synonyms": ["missing someone", "grief", "passed away", "deceased", "empty chair", "memories"]},
+      {"text": "Family fight/Drama", "points": 24, "synonyms": ["fight", "family", "drama", "arguing", "in laws", "yelling"]},
+      {"text": "Overwhelmed/Stressed out", "points": 18, "synonyms": ["stress", "overwhelmed", "tired", "cooking", "hosting", "burnout"]},
+      {"text": "Touched by a thoughtful gift", "points": 10, "synonyms": ["happy tears", "thoughtful gift", "sweet gift", "surprise", "proposal"]},
+      {"text": "Being lonely/Away from home", "points": 8, "synonyms": ["lonely", "alone", "homesick", "breakup", "single"]},
+      {"text": "Looking at their bank account", "points": 6, "synonyms": ["broke", "money", "bank account", "credit card", "bills", "sad movie"]}
+    ]
+  },
+  {
+    "question": "Name something people wear on Christmas morning.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Matching family pajamas", "points": 44, "synonyms": ["pajamas", "pjs", "matching pajamas", "onesie", "flannel"]},
+      {"text": "Slippers/Fuzzy socks", "points": 22, "synonyms": ["slippers", "socks", "fuzzy socks", "house shoes"]},
+      {"text": "Bathrobe", "points": 14, "synonyms": ["robe", "bathrobe"]},
+      {"text": "Ugly Christmas sweater", "points": 10, "synonyms": ["ugly sweater", "sweater", "christmas shirt"]},
+      {"text": "Santa hat/Reindeer antlers", "points": 6, "synonyms": ["santa hat", "antlers", "headband", "hat"]},
+      {"text": "Sweatpants/Hoodie", "points": 4, "synonyms": ["sweatpants", "sweats", "hoodie", "loungewear", "bedhead"]}
+    ]
+  },
+  {
+    "question": "Name an item people always run out of while wrapping Christmas gifts.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Scotch tape", "points": 44, "synonyms": ["tape", "scotch tape", "clear tape"]},
+      {"text": "Wrapping paper", "points": 28, "synonyms": ["wrapping paper", "paper", "gift wrap"]},
+      {"text": "Gift tags/Labels", "points": 12, "synonyms": ["tags", "labels", "to and from", "stickers", "cards"]},
+      {"text": "Gift bags/Tissue paper", "points": 8, "synonyms": ["gift bags", "bags", "tissue paper", "boxes"]},
+      {"text": "Bows/Ribbon", "points": 5, "synonyms": ["bows", "ribbon", "bow"]},
+      {"text": "Patience/Scissors", "points": 3, "synonyms": ["patience", "scissors", "time", "pens"]}
+    ]
+  },
+  {
+    "question": "Name something adults secretly hope to get for Christmas.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Cash/Gift cards", "points": 38, "synonyms": ["cash", "money", "gift cards", "visa card", "check"]},
+      {"text": "Paid bills/Rent/Debt relief", "points": 20, "synonyms": ["bills paid", "rent", "mortgage", "debt", "student loans", "car payment"]},
+      {"text": "A vacation/Weekend getaway", "points": 14, "synonyms": ["vacation", "trip", "flight", "hotel", "cruise", "spa day"]},
+      {"text": "Sleep/Peace and quiet", "points": 12, "synonyms": ["sleep", "nap", "peace and quiet", "time off", "alone time", "babysitter"]},
+      {"text": "Nice tech/Electronics", "points": 9, "synonyms": ["tech", "tv", "headphones", "airpods", "ipad", "ps5", "switch"]},
+      {"text": "Good alcohol/Coffee maker", "points": 7, "synonyms": ["alcohol", "wine", "whiskey", "espresso", "coffee", "socks", "kitchen gadget"]}
+    ]
   }
+];
 ];
