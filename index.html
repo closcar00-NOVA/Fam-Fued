@@ -736,13 +736,13 @@
     .host-btn-group {
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 8px;
       width: 100%;
     }
 
     .host-btn {
       width: 100%;
-      padding: 11px 12px;
+      padding: 9px 12px;
       font-family: 'Montserrat', sans-serif;
       font-size: 13px;
       font-weight: 800;
@@ -917,6 +917,7 @@
         grid-template-columns: minmax(0, 1.78fr) minmax(225px, 0.72fr) minmax(300px, 1.04fr);
         gap: 16px;
         align-items: stretch;
+        align-content: start;
         padding-top: 16px;
       }
 
@@ -928,13 +929,9 @@
         display: contents;
       }
 
-      body.host-layout:not(.tv-mode) .host-console {
-        height: 100%;
-      }
-
       body.host-layout:not(.tv-mode) .host-console .host-btn-group {
         flex: 1;
-        gap: 10px;
+        gap: 8px;
       }
 
       body.host-layout:not(.tv-mode) .host-console .host-btn {
@@ -942,6 +939,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 8px 10px;
       }
     }
 
@@ -953,6 +951,7 @@
         grid-template-columns: minmax(0, 1.6fr) minmax(290px, 1fr);
         gap: 14px;
         align-items: start;
+        align-content: start;
       }
 
       body.host-layout:not(.tv-mode) .host-dashboard.show {
