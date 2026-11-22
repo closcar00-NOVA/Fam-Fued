@@ -1,7 +1,8 @@
-// Complete 100-question bank (1-50 Adult-themed + 51-100 Everyday Classics)
+// Complete 160-question bank (1-50 Adult, 51-100 Everyday Classics, 101-125 Hypotheticals & Chaos, 126-150 Modern Life & Pet Peeves, 151-160 Christmas & Holidays)
 const questionBank = [
   {
     "question": "Name a reason someone might secretly check their partner's phone.",
+    "category": "Adult",
     "answers": [
       {"text": "Suspect cheating", "points": 45, "synonyms": ["cheating", "affair", "unfaithful", "infidelity", "sneaking around", "lying", "trust issues"]},
       {"text": "Curiosity/Snooping", "points": 20, "synonyms": ["curious", "snooping", "nosy", "bored", "just looking", "peeking"]},
@@ -13,6 +14,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might do if you wake up with a massive hangover.",
+    "category": "Adult",
     "answers": [
       {"text": "Drink water/Gatorade", "points": 35, "synonyms": ["water", "hydrate", "gatorade", "electrolytes", "pedialyte", "liquid iv", "chug water"]},
       {"text": "Take pain meds", "points": 25, "synonyms": ["advil", "tylenol", "ibuprofen", "aspirin", "medicine", "pills", "painkillers"]},
@@ -24,6 +26,7 @@ const questionBank = [
   },
   {
     "question": "Name a place you definitely don't want your boss to catch you.",
+    "category": "Adult",
     "answers": [
       {"text": "At a bar/club", "points": 35, "synonyms": ["bar", "club", "pub", "nightclub", "drinking", "happy hour", "party"]},
       {"text": "In bed/Sleeping", "points": 25, "synonyms": ["bed", "sleeping", "napping", "asleep", "bedroom", "passed out"]},
@@ -35,6 +38,7 @@ const questionBank = [
   },
   {
     "question": "Name something a person might fake.",
+    "category": "Adult",
     "answers": [
       {"text": "An orgasm", "points": 40, "synonyms": ["orgasm", "climax", "finishing", "cumming", "pleasure", "sex"]},
       {"text": "Being sick", "points": 30, "synonyms": ["sick", "illness", "fever", "headache", "calling out", "flu", "cough"]},
@@ -46,6 +50,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason you might pretend not to see someone you know in public.",
+    "category": "Adult",
     "answers": [
       {"text": "You owe them money", "points": 35, "synonyms": ["owe money", "debt", "borrowed money", "unpaid", "cash"]},
       {"text": "They talk too much", "points": 25, "synonyms": ["annoying", "talkative", "chatty", "boring", "long conversation", "stuck talking"]},
@@ -57,6 +62,7 @@ const questionBank = [
   },
   {
     "question": "Name a place people often have sex that isn't a bed.",
+    "category": "Adult",
     "answers": [
       {"text": "Couch/Sofa", "points": 35, "synonyms": ["couch", "sofa", "living room", "futon", "loveseat"]},
       {"text": "The shower/Tub", "points": 25, "synonyms": ["shower", "bathtub", "tub", "bathroom", "hot tub", "jacuzzi"]},
@@ -68,6 +74,7 @@ const questionBank = [
   },
   {
     "question": "Name something you lie about on a first date to sound better.",
+    "category": "Adult",
     "answers": [
       {"text": "Your income/Job", "points": 35, "synonyms": ["money", "salary", "job", "career", "income", "wealth", "how much you make"]},
       {"text": "Your age", "points": 25, "synonyms": ["age", "how old", "birthday", "older", "younger"]},
@@ -79,6 +86,7 @@ const questionBank = [
   },
   {
     "question": "Name an excuse people use to leave a bad date early.",
+    "category": "Adult",
     "answers": [
       {"text": "Sick/Not feeling well", "points": 40, "synonyms": ["sick", "stomach ache", "nauseous", "ill", "not feeling good", "throwing up"]},
       {"text": "Fake emergency call", "points": 25, "synonyms": ["emergency", "family emergency", "fake call", "phone call", "urgent"]},
@@ -90,6 +98,7 @@ const questionBank = [
   },
   {
     "question": "Name a common regret after a wild night out.",
+    "category": "Adult",
     "answers": [
       {"text": "Drinking too much/Hangover", "points": 40, "synonyms": ["drinking", "too much alcohol", "hangover", "shots", "getting wasted", "blacking out"]},
       {"text": "Spending too much money", "points": 25, "synonyms": ["money", "tab", "expensive", "broke", "bank account", "buying rounds"]},
@@ -101,6 +110,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do when they think no one is watching.",
+    "category": "Adult",
     "answers": [
       {"text": "Pick their nose", "points": 45, "synonyms": ["pick nose", "boogers", "digging for gold", "nose"]},
       {"text": "Scratch inappropriate places", "points": 25, "synonyms": ["scratch", "scratch butt", "scratch balls", "crotch", "itch", "private parts"]},
@@ -112,6 +122,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might buy at a convenience store at 2 AM.",
+    "category": "Adult",
     "answers": [
       {"text": "Condoms", "points": 35, "synonyms": ["condoms", "protection", "trojans", "rubbers", "plan b", "lube"]},
       {"text": "Beer/Alcohol", "points": 25, "synonyms": ["beer", "alcohol", "booze", "liquor", "wine", "seltzer", "drinks"]},
@@ -123,6 +134,7 @@ const questionBank = [
   },
   {
     "question": "Name something that might get you kicked out of a bar.",
+    "category": "Adult",
     "answers": [
       {"text": "Fighting", "points": 45, "synonyms": ["fight", "brawl", "punching", "arguing", "starting trouble", "violence"]},
       {"text": "Being too drunk", "points": 25, "synonyms": ["drunk", "wasted", "passed out", "sloppy", "falling over", "intoxicated"]},
@@ -134,6 +146,7 @@ const questionBank = [
   },
   {
     "question": "Name a sign that you're definitely getting older.",
+    "category": "Adult",
     "answers": [
       {"text": "Body aches/Knee pain", "points": 35, "synonyms": ["back pain", "knee pain", "joint pain", "aches", "sore", "creaking", "groaning"]},
       {"text": "Going to bed early", "points": 25, "synonyms": ["bed early", "tired", "sleepy", "staying in", "naps", "9pm"]},
@@ -145,6 +158,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might wear sunglasses indoors.",
+    "category": "Adult",
     "answers": [
       {"text": "Hungover", "points": 45, "synonyms": ["hangover", "drunk", "rough night", "migraine", "headache", "tired"]},
       {"text": "Black eye", "points": 25, "synonyms": ["bruise", "punch", "eye injury", "pink eye", "swollen eye", "crying"]},
@@ -156,6 +170,7 @@ const questionBank = [
   },
   {
     "question": "Name a profession where people are known to sleep around.",
+    "category": "Adult",
     "answers": [
       {"text": "Musician/Rockstar", "points": 35, "synonyms": ["musician", "rockstar", "singer", "rapper", "dj", "band"]},
       {"text": "Actor/Celebrity", "points": 25, "synonyms": ["actor", "actress", "celebrity", "movie star", "hollywood", "model"]},
@@ -167,6 +182,7 @@ const questionBank = [
   },
   {
     "question": "Name something a man might leave at a woman's house to mark his territory.",
+    "category": "Adult",
     "answers": [
       {"text": "Hoodie/Jacket", "points": 40, "synonyms": ["hoodie", "sweatshirt", "jacket", "shirt", "t-shirt", "clothes"]},
       {"text": "Toothbrush", "points": 30, "synonyms": ["toothbrush", "toiletries", "razor", "deodorant"]},
@@ -178,6 +194,7 @@ const questionBank = [
   },
   {
     "question": "Name a topic you should avoid bringing up at Thanksgiving dinner.",
+    "category": "Adult",
     "answers": [
       {"text": "Politics", "points": 55, "synonyms": ["politics", "president", "election", "government", "voting", "trump", "biden"]},
       {"text": "Religion", "points": 20, "synonyms": ["religion", "church", "god", "faith", "atheism"]},
@@ -189,6 +206,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might whisper during a movie.",
+    "category": "Adult",
     "answers": [
       {"text": "What did they say?", "points": 35, "synonyms": ["what did they say", "huh", "what happened", "didnt hear", "repeat that"]},
       {"text": "I have to pee", "points": 25, "synonyms": ["pee", "bathroom", "restroom", "hold my seat", "brb"]},
@@ -200,6 +218,7 @@ const questionBank = [
   },
   {
     "question": "Name something you do in the shower besides washing.",
+    "category": "Adult",
     "answers": [
       {"text": "Sing", "points": 35, "synonyms": ["sing", "singing", "concert", "music", "dance"]},
       {"text": "Pee", "points": 30, "synonyms": ["pee", "urinate", "go to the bathroom", "piss"]},
@@ -211,6 +230,7 @@ const questionBank = [
   },
   {
     "question": "Name a piece of clothing you take off as soon as you get home.",
+    "category": "Adult",
     "answers": [
       {"text": "Shoes", "points": 40, "synonyms": ["shoes", "heels", "boots", "sneakers", "footwear"]},
       {"text": "Bra", "points": 35, "synonyms": ["bra", "brassiere", "underwire"]},
@@ -222,6 +242,7 @@ const questionBank = [
   },
   {
     "question": "Name something people hide when guests come over.",
+    "category": "Adult",
     "answers": [
       {"text": "Mess/Clutter", "points": 40, "synonyms": ["mess", "clutter", "junk", "trash", "dishes", "mail", "stuff"]},
       {"text": "Dirty laundry", "points": 25, "synonyms": ["laundry", "dirty clothes", "underwear", "hamper", "clothes"]},
@@ -233,6 +254,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might block you on social media.",
+    "category": "Adult",
     "answers": [
       {"text": "Bad breakup/Ex", "points": 45, "synonyms": ["ex", "breakup", "broke up", "dumped", "heartbreak", "cheated"]},
       {"text": "Too annoying/Spamming", "points": 20, "synonyms": ["annoying", "spam", "posting too much", "mlm", "selling", "drama"]},
@@ -244,6 +266,7 @@ const questionBank = [
   },
   {
     "question": "Name a bad habit you wouldn't want to admit on a first date.",
+    "category": "Adult",
     "answers": [
       {"text": "Picking nose", "points": 30, "synonyms": ["pick nose", "boogers", "nose picking"]},
       {"text": "Biting nails", "points": 25, "synonyms": ["bite nails", "nail biting", "chewing nails", "picking skin"]},
@@ -255,6 +278,7 @@ const questionBank = [
   },
   {
     "question": "Name a place you might go to cry in private.",
+    "category": "Adult",
     "answers": [
       {"text": "The shower", "points": 40, "synonyms": ["shower", "bathtub", "tub", "bathroom"]},
       {"text": "Your car", "points": 30, "synonyms": ["car", "truck", "parking lot", "driving"]},
@@ -266,6 +290,7 @@ const questionBank = [
   },
   {
     "question": "Name a warning sign that your relationship might be over.",
+    "category": "Adult",
     "answers": [
       {"text": "Stop talking/communicating", "points": 35, "synonyms": ["no communication", "not talking", "silent treatment", "ignoring", "distant", "cold"]},
       {"text": "No sex/intimacy", "points": 25, "synonyms": ["no sex", "dead bedroom", "no intimacy", "no affection", "not kissing", "no touch"]},
@@ -277,6 +302,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might delete from your search history before letting someone use your phone.",
+    "category": "Adult",
     "answers": [
       {"text": "Porn/Adult sites", "points": 45, "synonyms": ["porn", "pornhub", "xxx", "nsfw", "adult", "sex", "onlyfans", "videos"]},
       {"text": "Embarrassing medical symptoms", "points": 20, "synonyms": ["medical", "webmd", "symptoms", "rash", "std", "sti", "health", "doctor", "sick"]},
@@ -288,6 +314,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might walk out of a bedroom looking disappointed.",
+    "category": "Adult",
     "answers": [
       {"text": "Bad sex", "points": 42, "synonyms": ["sex", "bad in bed", "finished too fast", "whiskey dick", "didnt finish", "no orgasm", "small"]},
       {"text": "Partner fell asleep", "points": 22, "synonyms": ["asleep", "sleeping", "passed out", "tired", "snoring", "rejected", "not in the mood"]},
@@ -298,6 +325,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might find under a hotel bed that you wish you hadn't.",
+    "category": "Adult",
     "answers": [
       {"text": "Used condom", "points": 38, "synonyms": ["condom", "rubber", "wrapper", "protection", "used"]},
       {"text": "Dirty underwear", "points": 24, "synonyms": ["underwear", "panties", "boxers", "bra", "thong", "socks", "clothes"]},
@@ -309,6 +337,7 @@ const questionBank = [
   },
   {
     "question": "Name something you never want to hear right before hooking up.",
+    "category": "Adult",
     "answers": [
       {"text": "The wrong name", "points": 35, "synonyms": ["wrong name", "ex name", "someone elses name", "different name"]},
       {"text": "I have an STI/rash", "points": 25, "synonyms": ["std", "sti", "herpes", "rash", "burning", "itching", "infection", "disease"]},
@@ -320,6 +349,7 @@ const questionBank = [
   },
   {
     "question": "Name something people lie about to their doctor.",
+    "category": "Adult",
     "answers": [
       {"text": "How much they drink", "points": 35, "synonyms": ["drinking", "alcohol", "beer", "wine", "liquor", "booze"]},
       {"text": "Their weight", "points": 20, "synonyms": ["weight", "pounds", "heavy", "scale"]},
@@ -331,6 +361,7 @@ const questionBank = [
   },
   {
     "question": "Name a place where you would be mortified to run into your ex.",
+    "category": "Adult",
     "answers": [
       {"text": "On a date with someone new", "points": 32, "synonyms": ["date", "restaurant", "dinner", "new partner", "new girlfriend", "new boyfriend"]},
       {"text": "Grocery store in pajamas", "points": 24, "synonyms": ["grocery store", "walmart", "target", "supermarket", "pajamas", "sweatpants", "looking rough"]},
@@ -342,6 +373,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do in the car when they think no one can see them.",
+    "category": "Adult",
     "answers": [
       {"text": "Pick their nose", "points": 40, "synonyms": ["pick nose", "boogers", "nose"]},
       {"text": "Sing at the top of their lungs", "points": 25, "synonyms": ["sing", "singing", "jamming", "dancing", "concert", "rap"]},
@@ -353,6 +385,7 @@ const questionBank = [
   },
   {
     "question": "Name an item you would be embarrassed for airport security to pull out of your bag.",
+    "category": "Adult",
     "answers": [
       {"text": "Sex toy/Vibrator", "points": 46, "synonyms": ["vibrator", "dildo", "sex toy", "adult toy", "toy", "butt plug"]},
       {"text": "Dirty underwear", "points": 20, "synonyms": ["underwear", "panties", "boxers", "lingerie", "thong", "dirty clothes", "laundry"]},
@@ -364,6 +397,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason you might ghost someone after a first date.",
+    "category": "Adult",
     "answers": [
       {"text": "No chemistry/Boring", "points": 30, "synonyms": ["boring", "no spark", "no vibe", "no connection", "awkward", "not interested", "dull"]},
       {"text": "Creepy/Major red flags", "points": 24, "synonyms": ["creepy", "weird", "crazy", "red flags", "clingy", "pushy", "handsy", "scary"]},
@@ -375,6 +409,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do at work when they're supposed to be working.",
+    "category": "Adult",
     "answers": [
       {"text": "Scroll social media", "points": 35, "synonyms": ["phone", "social media", "tiktok", "instagram", "reddit", "texting", "youtube", "scroll"]},
       {"text": "Online shopping", "points": 24, "synonyms": ["shopping", "amazon", "buying stuff", "browsing", "ebay"]},
@@ -386,6 +421,7 @@ const questionBank = [
   },
   {
     "question": "Name a sign that your neighbor is having a wild night.",
+    "category": "Adult",
     "answers": [
       {"text": "Loud music", "points": 35, "synonyms": ["music", "bass", "party", "shouting", "yelling", "screaming", "noise"]},
       {"text": "Loud moaning/Bed banging", "points": 30, "synonyms": ["sex", "moaning", "bed banging", "headboard", "screaming", "creaking", "walls shaking"]},
@@ -397,6 +433,7 @@ const questionBank = [
   },
   {
     "question": "Name something you definitely shouldn't say to a cop who just pulled you over.",
+    "category": "Adult",
     "answers": [
       {"text": "Do you know who I am?", "points": 30, "synonyms": ["who i am", "famous", "important", "my dad", "lawyer"]},
       {"text": "I'm not even drunk", "points": 26, "synonyms": ["drunk", "had a few", "two beers", "drinking", "high", "weed", "sober"]},
@@ -408,6 +445,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason a couple might get into a fight on vacation.",
+    "category": "Adult",
     "answers": [
       {"text": "Spending too much money", "points": 30, "synonyms": ["money", "budget", "expensive", "spending", "cost", "bills"]},
       {"text": "Getting lost/Directions", "points": 24, "synonyms": ["lost", "directions", "gps", "driving", "map", "navigation", "traffic"]},
@@ -419,6 +457,7 @@ const questionBank = [
   },
   {
     "question": "Name something someone might pack 'just in case' they spend the night with a date.",
+    "category": "Adult",
     "answers": [
       {"text": "Toothbrush", "points": 30, "synonyms": ["toothbrush", "toothpaste", "mouthwash", "mints"]},
       {"text": "Extra underwear", "points": 25, "synonyms": ["underwear", "panties", "boxers", "lingerie", "clean underwear"]},
@@ -430,6 +469,7 @@ const questionBank = [
   },
   {
     "question": "Name a guilty pleasure people are embarrassed to admit they enjoy.",
+    "category": "Adult",
     "answers": [
       {"text": "Trashy reality TV", "points": 35, "synonyms": ["reality tv", "bachelor", "kardashians", "love island", "housewives", "trash tv", "drama"]},
       {"text": "Fast food/Junk food", "points": 24, "synonyms": ["fast food", "mcdonalds", "taco bell", "junk food", "ice cream", "candy", "chocolate", "eating"]},
@@ -441,6 +481,7 @@ const questionBank = [
   },
   {
     "question": "Name something you would panic about accidentally sending to the wrong person.",
+    "category": "Adult",
     "answers": [
       {"text": "Nude photo", "points": 42, "synonyms": ["nude", "nudes", "naked", "dick pic", "sexy photo", "boobs", "explicit", "picture"]},
       {"text": "Talking trash about them", "points": 30, "synonyms": ["gossip", "trash talk", "screenshot", "talking bad", "complaining", "insult", "mean text"]},
@@ -451,6 +492,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might sneak out of a house at 5 AM.",
+    "category": "Adult",
     "answers": [
       {"text": "Regrettable one-night stand", "points": 45, "synonyms": ["one night stand", "hookup", "walk of shame", "regret", "bad sex", "ugly", "tinder"]},
       {"text": "Having an affair", "points": 25, "synonyms": ["cheating", "affair", "married", "spouse coming home", "side piece", "secret"]},
@@ -461,6 +503,7 @@ const questionBank = [
   },
   {
     "question": "Name a sound you never want to hear coming from the bathroom stall next to you.",
+    "category": "Adult",
     "answers": [
       {"text": "Explosive farting/Diarrhea", "points": 40, "synonyms": ["fart", "farting", "diarrhea", "poop", "plop", "splash", "explosion", "gas"]},
       {"text": "Vomiting", "points": 24, "synonyms": ["puking", "throwing up", "barfing", "gagging", "retching", "vomit"]},
@@ -472,6 +515,7 @@ const questionBank = [
   },
   {
     "question": "Name something that instantly ruins the mood in the bedroom.",
+    "category": "Adult",
     "answers": [
       {"text": "Phone ringing/Texting", "points": 28, "synonyms": ["phone", "ringing", "texting", "alarm", "notification", "call", "mom calling"]},
       {"text": "Kid or pet walking in", "points": 24, "synonyms": ["kids", "baby", "crying", "dog", "cat", "pet", "roommate", "parents", "knocking"]},
@@ -483,6 +527,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might suddenly start working out and dressing way better.",
+    "category": "Adult",
     "answers": [
       {"text": "Just got dumped/Single", "points": 40, "synonyms": ["breakup", "dumped", "single", "divorce", "revenge body", "dating again", "ex"]},
       {"text": "Cheating/New crush", "points": 25, "synonyms": ["cheating", "affair", "crush", "new partner", "impress someone", "coworker", "dating"]},
@@ -494,6 +539,7 @@ const questionBank = [
   },
   {
     "question": "Name something people routinely steal from hotel rooms.",
+    "category": "Adult",
     "answers": [
       {"text": "Towels/Bathrobe", "points": 35, "synonyms": ["towels", "robe", "bathrobe", "washcloth", "slippers"]},
       {"text": "Shampoo/Toiletries", "points": 30, "synonyms": ["shampoo", "conditioner", "soap", "lotion", "toiletries", "shower cap"]},
@@ -505,6 +551,7 @@ const questionBank = [
   },
   {
     "question": "Name a classic lie people tell when calling in sick to work.",
+    "category": "Adult",
     "answers": [
       {"text": "Food poisoning/Stomach bug", "points": 35, "synonyms": ["food poisoning", "stomach", "diarrhea", "throwing up", "puking", "nausea", "upset stomach"]},
       {"text": "Migraine/Headache", "points": 24, "synonyms": ["migraine", "headache", "dizzy", "hungover"]},
@@ -516,6 +563,7 @@ const questionBank = [
   },
   {
     "question": "Name something on a dating app profile that is an instant red flag.",
+    "category": "Adult",
     "answers": [
       {"text": "Holding a dead fish", "points": 28, "synonyms": ["fish", "fishing", "hunting", "dead animal", "deer"]},
       {"text": "Only group photos", "points": 20, "synonyms": ["group photos", "friends", "cant tell who", "sunglasses", "filters", "snapchat"]},
@@ -527,6 +575,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do right after a bad breakup.",
+    "category": "Adult",
     "answers": [
       {"text": "Drink/Go out partying", "points": 28, "synonyms": ["drink", "alcohol", "bar", "club", "party", "wine", "get drunk"]},
       {"text": "Eat ice cream/Junk food", "points": 22, "synonyms": ["eat", "ice cream", "pizza", "chocolate", "junk food", "comfort food", "binge"]},
@@ -539,6 +588,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason you might pretend your phone battery died.",
+    "category": "Adult",
     "answers": [
       {"text": "Avoiding a clingy date/ex", "points": 35, "synonyms": ["ex", "date", "annoying person", "ignoring someone", "dont want to talk", "clingy", "ghosting"]},
       {"text": "Ignoring your boss/work", "points": 25, "synonyms": ["boss", "work", "coworker", "weekend", "day off", "shift"]},
@@ -549,6 +599,7 @@ const questionBank = [
   },
   {
     "question": "Name something people always forget to pack for a trip.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Toothbrush/Toothpaste", "points": 32, "synonyms": ["toothbrush", "toothpaste", "dental", "floss"]},
       {"text": "Phone charger", "points": 26, "synonyms": ["charger", "cord", "cable", "power bank", "plug"]},
@@ -560,6 +611,7 @@ const questionBank = [
   },
   {
     "question": "Name a food that tastes just as good—or better—as leftovers.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Pizza", "points": 38, "synonyms": ["pizza", "cold pizza", "slice"]},
       {"text": "Pasta/Lasagna", "points": 24, "synonyms": ["pasta", "lasagna", "spaghetti", "mac and cheese", "noodles", "ziti"]},
@@ -571,6 +623,7 @@ const questionBank = [
   },
   {
     "question": "Name a chore people put off for as long as possible.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Folding/Putting away laundry", "points": 35, "synonyms": ["laundry", "folding clothes", "washing clothes", "ironing"]},
       {"text": "Washing dishes", "points": 25, "synonyms": ["dishes", "dishwasher", "pots and pans", "kitchen"]},
@@ -582,6 +635,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might lose in your house every single week.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Keys", "points": 36, "synonyms": ["keys", "car keys", "house keys", "keychain"]},
       {"text": "Phone", "points": 26, "synonyms": ["phone", "cell phone", "iphone", "smartphone"]},
@@ -593,6 +647,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might be late for work.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Heavy traffic", "points": 38, "synonyms": ["traffic", "accident", "jam", "construction", "commute"]},
       {"text": "Overslept/Alarm didn't go off", "points": 28, "synonyms": ["overslept", "alarm", "slept in", "snooze", "woke up late"]},
@@ -604,6 +659,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do in an elevator to avoid making eye contact.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Look at their phone", "points": 46, "synonyms": ["phone", "text", "scroll", "check phone", "email"]},
       {"text": "Stare at the floor numbers", "points": 28, "synonyms": ["numbers", "buttons", "light", "ceiling", "watch numbers"]},
@@ -615,6 +671,7 @@ const questionBank = [
   },
   {
     "question": "Name a classic pizza topping.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Pepperoni", "points": 45, "synonyms": ["pepperoni", "pep"]},
       {"text": "Extra cheese", "points": 20, "synonyms": ["cheese", "mozzarella", "parmesan"]},
@@ -626,6 +683,7 @@ const questionBank = [
   },
   {
     "question": "Name something you buy at the grocery store that almost always goes bad before you finish it.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Salad/Spinach", "points": 34, "synonyms": ["salad", "lettuce", "spinach", "greens", "bagged salad", "spring mix"]},
       {"text": "Bananas", "points": 22, "synonyms": ["bananas", "banana"]},
@@ -637,6 +695,7 @@ const questionBank = [
   },
   {
     "question": "Name a place where you have to be completely quiet.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Library", "points": 42, "synonyms": ["library", "study room"]},
       {"text": "Movie theater", "points": 24, "synonyms": ["movie", "theater", "cinema", "movies"]},
@@ -648,6 +707,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do when they can't fall asleep at night.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Scroll on their phone", "points": 38, "synonyms": ["phone", "social media", "tiktok", "instagram", "read phone", "youtube"]},
       {"text": "Watch TV", "points": 22, "synonyms": ["tv", "netflix", "movie", "show", "television"]},
@@ -659,6 +719,7 @@ const questionBank = [
   },
   {
     "question": "Name a type of weather that makes people want to stay inside.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Heavy rain/Thunderstorm", "points": 38, "synonyms": ["rain", "storm", "thunderstorm", "pouring", "downpour", "lightning"]},
       {"text": "Snowstorm/Blizzard", "points": 30, "synonyms": ["snow", "blizzard", "snowstorm", "freezing", "ice", "sleet"]},
@@ -670,6 +731,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might find at the bottom of a purse or backpack.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Loose change/Coins", "points": 30, "synonyms": ["coins", "change", "pennies", "money", "quarters"]},
       {"text": "Old receipts", "points": 24, "synonyms": ["receipts", "paper", "trash", "wrappers", "tissues"]},
@@ -681,6 +743,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason a dog might bark at nothing.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Delivery driver/Mailman", "points": 34, "synonyms": ["mailman", "amazon", "ups", "fedex", "delivery", "doorbell", "knock"]},
       {"text": "Squirrel/Animal outside", "points": 26, "synonyms": ["squirrel", "bird", "cat", "deer", "rabbit", "animal", "other dog"]},
@@ -692,6 +755,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do right after waking up in the morning.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Check their phone", "points": 36, "synonyms": ["phone", "texts", "social media", "alarm", "scroll", "check time"]},
       {"text": "Use the bathroom", "points": 26, "synonyms": ["pee", "bathroom", "toilet", "restroom"]},
@@ -703,6 +767,7 @@ const questionBank = [
   },
   {
     "question": "Name a movie snack besides popcorn.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Candy/M&Ms", "points": 40, "synonyms": ["candy", "mms", "skittles", "sour patch", "raisinets", "junior mints", "chocolate", "twizzlers"]},
       {"text": "Nachos", "points": 22, "synonyms": ["nachos", "chips and cheese"]},
@@ -714,6 +779,7 @@ const questionBank = [
   },
   {
     "question": "Name something that always seems to break right when you need it most.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Car", "points": 32, "synonyms": ["car", "vehicle", "truck", "battery", "tire"]},
       {"text": "Phone/Charger", "points": 24, "synonyms": ["phone", "charger", "screen", "laptop", "computer"]},
@@ -725,6 +791,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason you might honk your car horn.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Green light/Not moving", "points": 42, "synonyms": ["green light", "texting", "not going", "stopped", "red light", "pay attention"]},
       {"text": "Someone cut you off", "points": 28, "synonyms": ["cut off", "merging", "swerving", "bad driver", "almost hit"]},
@@ -736,6 +803,7 @@ const questionBank = [
   },
   {
     "question": "Name something people collect.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Coins/Currency", "points": 28, "synonyms": ["coins", "money", "quarters", "pennies", "bills"]},
       {"text": "Trading cards/Sports cards", "points": 24, "synonyms": ["cards", "baseball cards", "pokemon", "sports cards", "trading cards"]},
@@ -747,6 +815,7 @@ const questionBank = [
   },
   {
     "question": "Name a household item people borrow and never give back.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Tools", "points": 32, "synonyms": ["tools", "hammer", "drill", "screwdriver", "wrench", "ladder"]},
       {"text": "Tupperware/Food containers", "points": 26, "synonyms": ["tupperware", "containers", "bowls", "dishes", "pans"]},
@@ -758,6 +827,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might do while waiting in a long line.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Look at your phone", "points": 50, "synonyms": ["phone", "text", "scroll", "games", "social media", "tiktok"]},
       {"text": "People watch", "points": 16, "synonyms": ["people watch", "look around", "stare", "eavesdrop"]},
@@ -769,6 +839,7 @@ const questionBank = [
   },
   {
     "question": "Name a food people love to dip in ranch dressing.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Chicken wings/Tenders", "points": 36, "synonyms": ["wings", "chicken", "tenders", "nuggets", "buffalo wings"]},
       {"text": "Pizza", "points": 24, "synonyms": ["pizza", "crust"]},
@@ -780,6 +851,7 @@ const questionBank = [
   },
   {
     "question": "Name something people check before leaving the house.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Keys/Wallet/Phone", "points": 38, "synonyms": ["keys", "wallet", "phone", "pockets", "purse"]},
       {"text": "Doors are locked", "points": 22, "synonyms": ["locks", "door", "locked", "garage", "windows"]},
@@ -791,6 +863,7 @@ const questionBank = [
   },
   {
     "question": "Name a classic board game that can start a family argument.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Monopoly", "points": 52, "synonyms": ["monopoly"]},
       {"text": "Uno", "points": 18, "synonyms": ["uno", "cards"]},
@@ -802,6 +875,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might see at a backyard barbecue.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Grill/Smoker", "points": 34, "synonyms": ["grill", "bbq", "smoker", "charcoal", "propane"]},
       {"text": "Burgers/Hot dogs", "points": 26, "synonyms": ["burgers", "hot dogs", "ribs", "chicken", "steaks", "food"]},
@@ -813,6 +887,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might return an item to a store.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Wrong size/Doesn't fit", "points": 40, "synonyms": ["size", "doesnt fit", "too small", "too big", "tight", "loose"]},
       {"text": "Broken/Defective", "points": 26, "synonyms": ["broken", "damaged", "defective", "doesnt work", "ripped", "stained"]},
@@ -824,6 +899,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might keep in the glove compartment of your car.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Registration/Insurance", "points": 40, "synonyms": ["registration", "insurance", "papers", "documents", "manual", "owners manual"]},
       {"text": "Napkins/Tissues", "points": 22, "synonyms": ["napkins", "tissues", "kleenex", "fast food napkins", "wipes"]},
@@ -835,6 +911,7 @@ const questionBank = [
   },
   {
     "question": "Name a popular ice cream flavor.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Chocolate", "points": 32, "synonyms": ["chocolate", "fudge", "brownie"]},
       {"text": "Vanilla", "points": 28, "synonyms": ["vanilla", "french vanilla"]},
@@ -846,6 +923,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do on a rainy Sunday afternoon.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Watch movies/Netflix", "points": 40, "synonyms": ["movies", "tv", "netflix", "binge watch", "couch", "shows"]},
       {"text": "Take a nap/Sleep", "points": 24, "synonyms": ["nap", "sleep", "stay in bed", "relax", "rest"]},
@@ -857,6 +935,7 @@ const questionBank = [
   },
   {
     "question": "Name a famous superhero.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Superman", "points": 30, "synonyms": ["superman", "clark kent"]},
       {"text": "Batman", "points": 28, "synonyms": ["batman", "bruce wayne"]},
@@ -868,6 +947,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might see in a dentist's waiting room.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Old magazines", "points": 38, "synonyms": ["magazines", "books", "newspapers", "reading"]},
       {"text": "TV", "points": 22, "synonyms": ["tv", "television", "screen"]},
@@ -879,6 +959,7 @@ const questionBank = [
   },
   {
     "question": "Name a common New Year's resolution.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Lose weight/Exercise", "points": 44, "synonyms": ["lose weight", "gym", "work out", "exercise", "diet", "get in shape", "fitness"]},
       {"text": "Save money/Budget", "points": 22, "synonyms": ["save money", "money", "budget", "pay off debt", "finances"]},
@@ -890,6 +971,7 @@ const questionBank = [
   },
   {
     "question": "Name something people put on a hot dog.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Mustard", "points": 36, "synonyms": ["mustard", "yellow mustard", "spicy mustard"]},
       {"text": "Ketchup", "points": 30, "synonyms": ["ketchup", "catsup"]},
@@ -901,6 +983,7 @@ const questionBank = [
   },
   {
     "question": "Name a sound that is guaranteed to wake you up from a deep sleep.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Alarm clock/Phone", "points": 36, "synonyms": ["alarm", "phone", "ringtone", "text", "call"]},
       {"text": "Dog barking/Pet throwing up", "points": 22, "synonyms": ["dog", "barking", "cat", "pet", "throwing up", "puking"]},
@@ -912,6 +995,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might bring to the beach.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Towel", "points": 32, "synonyms": ["towel", "beach towel", "blanket"]},
       {"text": "Sunscreen", "points": 26, "synonyms": ["sunscreen", "sunblock", "lotion", "spf"]},
@@ -923,6 +1007,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might get a speeding ticket.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Running late", "points": 42, "synonyms": ["late", "late for work", "rushing", "in a hurry", "overslept"]},
       {"text": "Not paying attention", "points": 20, "synonyms": ["not paying attention", "distracted", "missed sign", "speed trap", "music"]},
@@ -934,6 +1019,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do at a wedding reception.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Dance", "points": 38, "synonyms": ["dance", "dancing", "cha cha slide", "first dance"]},
       {"text": "Drink/Hit the open bar", "points": 26, "synonyms": ["drink", "open bar", "alcohol", "champagne", "toast", "get drunk"]},
@@ -945,6 +1031,7 @@ const questionBank = [
   },
   {
     "question": "Name a common phobia or fear.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Spiders/Bugs", "points": 32, "synonyms": ["spiders", "bugs", "insects", "arachnophobia", "roaches"]},
       {"text": "Heights", "points": 26, "synonyms": ["heights", "falling", "high places"]},
@@ -956,6 +1043,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might find in a junk drawer.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Batteries", "points": 30, "synonyms": ["batteries", "aa", "aaa"]},
       {"text": "Pens/Markers", "points": 22, "synonyms": ["pens", "pencils", "markers", "sharpie"]},
@@ -967,6 +1055,7 @@ const questionBank = [
   },
   {
     "question": "Name a classic breakfast food.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Eggs", "points": 34, "synonyms": ["eggs", "scrambled", "omelet", "fried eggs"]},
       {"text": "Bacon/Sausage", "points": 28, "synonyms": ["bacon", "sausage", "ham"]},
@@ -978,6 +1067,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do when they get stuck in traffic.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Listen to music/Sing", "points": 34, "synonyms": ["music", "radio", "sing", "podcast", "audiobook"]},
       {"text": "Check their phone/Text", "points": 24, "synonyms": ["phone", "text", "scroll", "gps", "maps", "waze", "call"]},
@@ -989,6 +1079,7 @@ const questionBank = [
   },
   {
     "question": "Name a popular fast-food restaurant.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "McDonald's", "points": 42, "synonyms": ["mcdonalds", "mickey ds"]},
       {"text": "Chick-fil-A", "points": 20, "synonyms": ["chickfila", "chick-fil-a", "chick fil a"]},
@@ -1000,6 +1091,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might buy at a hardware store.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Tools/Hammer/Drill", "points": 32, "synonyms": ["tools", "hammer", "drill", "screwdriver", "wrench", "saw"]},
       {"text": "Paint/Brushes", "points": 24, "synonyms": ["paint", "brushes", "rollers", "primer", "stain"]},
@@ -1011,6 +1103,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might cancel plans at the last minute.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Sick/Not feeling well", "points": 38, "synonyms": ["sick", "ill", "headache", "migraine", "stomach", "covid"]},
       {"text": "Too tired/Lazy", "points": 24, "synonyms": ["tired", "exhausted", "lazy", "dont feel like it", "want to stay home", "introvert"]},
@@ -1022,6 +1115,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might hear at a sports stadium.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Cheering/Booing", "points": 38, "synonyms": ["cheering", "booing", "screaming", "yelling", "crowd", "roar"]},
       {"text": "Music/Organ/Chants", "points": 20, "synonyms": ["music", "organ", "chants", "defense", "national anthem", "songs"]},
@@ -1033,6 +1127,7 @@ const questionBank = [
   },
   {
     "question": "Name a fruit that is commonly put in a smoothie.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Banana", "points": 34, "synonyms": ["banana", "bananas"]},
       {"text": "Strawberry", "points": 30, "synonyms": ["strawberry", "strawberries"]},
@@ -1044,6 +1139,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do to cool down on a hot summer day.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Go swimming/Pool", "points": 38, "synonyms": ["swim", "swimming", "pool", "beach", "ocean", "lake", "sprinkler"]},
       {"text": "Turn on the AC/Fan", "points": 26, "synonyms": ["ac", "air conditioning", "fan", "stay inside"]},
@@ -1055,6 +1151,7 @@ const questionBank = [
   },
   {
     "question": "Name a classic cartoon character.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Mickey Mouse", "points": 32, "synonyms": ["mickey", "mickey mouse", "minnie"]},
       {"text": "Bugs Bunny", "points": 26, "synonyms": ["bugs", "bugs bunny", "looney tunes"]},
@@ -1066,6 +1163,7 @@ const questionBank = [
   },
   {
     "question": "Name something you might find in a hotel room besides a bed.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "TV/Remote", "points": 32, "synonyms": ["tv", "television", "remote"]},
       {"text": "Coffee maker/Mini fridge", "points": 22, "synonyms": ["coffee maker", "fridge", "mini fridge", "microwave", "ice bucket"]},
@@ -1077,6 +1175,7 @@ const questionBank = [
   },
   {
     "question": "Name a reason someone might stay up past midnight.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Watching TV/Bingeing a show", "points": 30, "synonyms": ["tv", "netflix", "movie", "show", "binge"]},
       {"text": "Partying/Out with friends", "points": 24, "synonyms": ["party", "bar", "club", "friends", "drinking", "new years"]},
@@ -1088,6 +1187,7 @@ const questionBank = [
   },
   {
     "question": "Name something people do right before taking a group photo.",
+    "category": "Everyday Classics",
     "answers": [
       {"text": "Say 'Cheese!'", "points": 34, "synonyms": ["cheese", "say cheese", "smile"]},
       {"text": "Fix their hair/Clothes", "points": 24, "synonyms": ["hair", "fix hair", "clothes", "outfit", "makeup", "glasses"]},
@@ -1095,6 +1195,726 @@ const questionBank = [
       {"text": "Pose/Suck in their stomach", "points": 10, "synonyms": ["pose", "suck in", "peace sign", "duck face", "angle"]},
       {"text": "Put down their drinks", "points": 8, "synonyms": ["drinks", "hide drinks", "put down cups", "put away bags"]},
       {"text": "Ask who is taking it/Timer", "points": 6, "synonyms": ["timer", "countdown", "1 2 3", "ask stranger", "flash"]}
+    ]
+  },
+  {
+    "question": "Name the first thing people would buy if they won $10 million.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "A house/Mansion", "points": 38, "synonyms": ["house", "mansion", "home", "real estate", "property", "estate", "villa"]},
+      {"text": "A new car/Sports car", "points": 24, "synonyms": ["car", "sports car", "lambo", "ferrari", "truck", "vehicle", "luxury car", "dream car"]},
+      {"text": "Pay off debt/Bills", "points": 16, "synonyms": ["debt", "bills", "student loans", "mortgage", "loans", "credit cards", "pay off"]},
+      {"text": "A vacation/Trip", "points": 10, "synonyms": ["vacation", "trip", "travel", "flight", "island", "cruise", "yacht", "jet"]},
+      {"text": "Investments/Stocks", "points": 7, "synonyms": ["stocks", "invest", "investments", "savings", "crypto", "business", "gold"]},
+      {"text": "Gifts for family", "points": 5, "synonyms": ["family", "mom", "parents", "gifts", "charity", "donate", "help family"]}
+    ]
+  },
+  {
+    "question": "Name something you'd grab first if a zombie apocalypse started right now.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Weapon/Gun/Bat", "points": 36, "synonyms": ["gun", "weapon", "knife", "bat", "baseball bat", "sword", "machete", "axe", "rifle"]},
+      {"text": "Food/Water", "points": 24, "synonyms": ["food", "water", "snacks", "canned food", "supplies", "groceries"]},
+      {"text": "Phone/Charger", "points": 16, "synonyms": ["phone", "cell phone", "charger", "power bank", "radio"]},
+      {"text": "Car keys/Vehicle", "points": 12, "synonyms": ["keys", "car", "truck", "gas", "vehicle"]},
+      {"text": "Family/Pets", "points": 7, "synonyms": ["family", "dog", "cat", "pet", "kids", "partner", "wife", "husband"]},
+      {"text": "First aid kit/Meds", "points": 5, "synonyms": ["first aid", "meds", "medicine", "backpack", "flashlight", "clothes", "shoes"]}
+    ]
+  },
+  {
+    "question": "Name a superpower people would definitely abuse.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Invisibility", "points": 35, "synonyms": ["invisible", "invisibility", "turn invisible", "unseen"]},
+      {"text": "Mind reading", "points": 25, "synonyms": ["read minds", "mind reading", "telepathy", "thoughts"]},
+      {"text": "Stopping/Controlling time", "points": 18, "synonyms": ["stop time", "freeze time", "time travel", "control time", "pause time"]},
+      {"text": "Teleportation", "points": 10, "synonyms": ["teleport", "teleportation", "blink", "instant travel"]},
+      {"text": "Mind control", "points": 7, "synonyms": ["mind control", "hypnosis", "persuasion", "control people"]},
+      {"text": "X-ray vision", "points": 5, "synonyms": ["x-ray", "xray", "see through walls", "see through clothes", "flying", "super strength"]}
+    ]
+  },
+  {
+    "question": "Name something you'd do if you were invisible for 24 hours.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Rob a bank/Steal money", "points": 34, "synonyms": ["rob a bank", "steal", "money", "cash", "bank", "free stuff", "shoplift"]},
+      {"text": "Spy/Eavesdrop on people", "points": 24, "synonyms": ["spy", "eavesdrop", "listen", "follow", "stalk", "snoop", "secrets"]},
+      {"text": "Sneak onto a plane/Event", "points": 16, "synonyms": ["plane", "travel", "concert", "movie", "vip", "backstage", "area 51", "white house"]},
+      {"text": "Prank/Scare people", "points": 12, "synonyms": ["prank", "scare", "haunt", "ghost", "mess with people", "trip people"]},
+      {"text": "Sneak into a celebrity's house", "points": 8, "synonyms": ["celebrity", "mansion", "famous", "crush", "ex"]},
+      {"text": "Walk around naked", "points": 6, "synonyms": ["naked", "nude", "no clothes", "streak", "sleep", "skip work"]}
+    ]
+  },
+  {
+    "question": "Name a celebrity or historical figure people would want to have dinner with.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Barack Obama", "points": 28, "synonyms": ["obama", "barack obama", "michelle obama", "president"]},
+      {"text": "Jesus/Religious figure", "points": 22, "synonyms": ["jesus", "god", "buddha", "moses"]},
+      {"text": "Taylor Swift/Beyoncé", "points": 18, "synonyms": ["taylor swift", "beyonce", "rihanna", "drake", "michael jackson", "elvis"]},
+      {"text": "Albert Einstein", "points": 14, "synonyms": ["einstein", "albert einstein", "tesla", "newton", "da vinci"]},
+      {"text": "Michael Jordan/LeBron", "points": 10, "synonyms": ["michael jordan", "jordan", "lebron", "kobe", "tom brady", "muhammad ali"]},
+      {"text": "Marilyn Monroe/MLK Jr.", "points": 8, "synonyms": ["marilyn monroe", "mlk", "martin luther king", "lincoln", "abraham lincoln", "oprah", "keanu reeves"]}
+    ]
+  },
+  {
+    "question": "Name something you'd bring if you were stranded on a deserted island.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Knife/Machete", "points": 32, "synonyms": ["knife", "pocket knife", "machete", "axe", "tools", "swiss army knife"]},
+      {"text": "Lighter/Matches", "points": 24, "synonyms": ["lighter", "matches", "fire", "flint", "fire starter"]},
+      {"text": "Water/Water filter", "points": 18, "synonyms": ["water", "filter", "lifestraw", "bottle", "food"]},
+      {"text": "Phone/Satellite phone", "points": 12, "synonyms": ["phone", "satellite phone", "radio", "gps", "flare gun"]},
+      {"text": "Boat/Raft", "points": 8, "synonyms": ["boat", "raft", "kayak", "yacht", "helicopter"]},
+      {"text": "Tent/Blanket/Tarp", "points": 6, "synonyms": ["tent", "blanket", "tarp", "rope", "sunscreen", "book", "music", "alcohol"]}
+    ]
+  },
+  {
+    "question": "Name a rule you'd make if you were President for a day.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "4-day workweek/Extra holiday", "points": 34, "synonyms": ["4 day workweek", "four day", "holiday", "no work", "longer weekend", "day off", "fridays off"]},
+      {"text": "No taxes/Lower taxes", "points": 24, "synonyms": ["no taxes", "taxes", "lower taxes", "free money", "stimulus"]},
+      {"text": "Free healthcare/College", "points": 16, "synonyms": ["healthcare", "free college", "cancel student debt", "education", "free food"]},
+      {"text": "Lower gas/Grocery prices", "points": 12, "synonyms": ["gas prices", "groceries", "inflation", "rent", "cheaper housing"]},
+      {"text": "Free naps/Later start times", "points": 8, "synonyms": ["naps", "sleep", "no daylight saving", "start work later"]},
+      {"text": "Harsher penalties for bad drivers", "points": 6, "synonyms": ["bad drivers", "traffic", "speed limits", "no speed limit", "legalize weed"]}
+    ]
+  },
+  {
+    "question": "Name something people would do if they knew the world was ending tomorrow.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Spend time with family", "points": 36, "synonyms": ["family", "loved ones", "friends", "call mom", "hug", "say goodbye", "i love you"]},
+      {"text": "Eat/Drink everything", "points": 22, "synonyms": ["eat", "drink", "party", "get drunk", "feast", "junk food", "alcohol"]},
+      {"text": "Have sex", "points": 16, "synonyms": ["sex", "hook up", "orgy", "make love", "sleep with crush"]},
+      {"text": "Spend all their money", "points": 12, "synonyms": ["spend money", "max out cards", "shopping", "buy", "steal", "rob"]},
+      {"text": "Pray/Confess secrets", "points": 8, "synonyms": ["pray", "church", "god", "confess", "secrets", "apologize"]},
+      {"text": "Quit their job/Travel", "points": 6, "synonyms": ["quit job", "skip work", "travel", "bucket list", "skydiving", "cry"]}
+    ]
+  },
+  {
+    "question": "Name a place you'd go if you could teleport anywhere right now.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "A tropical beach/Hawaii", "points": 38, "synonyms": ["beach", "hawaii", "caribbean", "bahamas", "maldives", "jamaica", "bora bora", "island"]},
+      {"text": "Italy/Europe", "points": 24, "synonyms": ["italy", "paris", "france", "europe", "greece", "rome", "london", "spain"]},
+      {"text": "Japan/Tokyo", "points": 14, "synonyms": ["japan", "tokyo", "asia", "thailand", "bali"]},
+      {"text": "Home/My bed", "points": 10, "synonyms": ["home", "bed", "couch", "house", "family"]},
+      {"text": "Las Vegas/New York", "points": 8, "synonyms": ["vegas", "las vegas", "new york", "nyc", "miami", "disney"]},
+      {"text": "Inside a bank vault", "points": 6, "synonyms": ["bank", "vault", "moon", "space", "mars", "area 51"]}
+    ]
+  },
+  {
+    "question": "Name something you'd tell your 18-year-old self if you had a time machine.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Buy Bitcoin/Invest early", "points": 36, "synonyms": ["bitcoin", "crypto", "invest", "apple", "amazon", "stocks", "lottery numbers", "save money"]},
+      {"text": "Don't date that ex", "points": 24, "synonyms": ["ex", "dump them", "dont date", "stay single", "heartbreak", "red flags"]},
+      {"text": "Stop caring what people think", "points": 16, "synonyms": ["dont care", "confidence", "be yourself", "relax", "enjoy life", "have fun"]},
+      {"text": "Take care of your health/Back", "points": 10, "synonyms": ["health", "work out", "sunscreen", "floss", "sleep", "drink less", "back"]},
+      {"text": "Pick a different major/Career", "points": 8, "synonyms": ["college", "major", "job", "career", "study", "work harder"]},
+      {"text": "Spend more time with family", "points": 6, "synonyms": ["family", "parents", "grandparents", "travel", "take risks"]}
+    ]
+  },
+  {
+    "question": "Name an animal you'd least want to be locked in a room with.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Bear", "points": 30, "synonyms": ["bear", "grizzly", "polar bear"]},
+      {"text": "Lion/Tiger", "points": 26, "synonyms": ["lion", "tiger", "panther", "big cat", "leopard"]},
+      {"text": "Venomous snake", "points": 18, "synonyms": ["snake", "cobra", "rattlesnake", "python", "anaconda"]},
+      {"text": "Skunk", "points": 12, "synonyms": ["skunk", "stinky"]},
+      {"text": "Alligator/Crocodile", "points": 8, "synonyms": ["alligator", "gator", "crocodile", "croc", "hippo"]},
+      {"text": "Spider/Swarm of bees", "points": 6, "synonyms": ["spider", "tarantula", "bees", "wasps", "hornet", "gorilla", "chimp", "shark"]}
+    ]
+  },
+  {
+    "question": "Name something people would do if they suddenly woke up as a billionaire.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Quit their job", "points": 40, "synonyms": ["quit", "quit job", "resign", "walk out", "retire", "call boss"]},
+      {"text": "Buy a mansion/Island", "points": 22, "synonyms": ["mansion", "house", "island", "private jet", "yacht", "penthouse"]},
+      {"text": "Travel the world", "points": 14, "synonyms": ["travel", "vacation", "first class", "fly", "trip"]},
+      {"text": "Take care of family/Friends", "points": 12, "synonyms": ["family", "parents", "friends", "pay off", "give money", "charity"]},
+      {"text": "Hire a chef/Staff", "points": 7, "synonyms": ["chef", "maid", "driver", "assistant", "security", "lawyer", "accountant"]},
+      {"text": "Go back to sleep", "points": 5, "synonyms": ["sleep", "nap", "relax", "disappear", "change number"]}
+    ]
+  },
+  {
+    "question": "Name a skill you'd instantly download into your brain Matrix-style.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Speaking every language", "points": 36, "synonyms": ["languages", "spanish", "french", "fluent", "bilingual", "multilingual"]},
+      {"text": "Martial arts/Kung Fu", "points": 22, "synonyms": ["kung fu", "karate", "martial arts", "fighting", "jiu jitsu", "boxing", "self defense"]},
+      {"text": "Playing an instrument", "points": 16, "synonyms": ["piano", "guitar", "music", "instrument", "drums", "singing"]},
+      {"text": "Coding/Hacking", "points": 12, "synonyms": ["coding", "programming", "hacking", "computers", "tech", "math", "finance"]},
+      {"text": "Cooking like a master chef", "points": 8, "synonyms": ["cooking", "chef", "baking", "culinary"]},
+      {"text": "Flying a plane/Helicopter", "points": 6, "synonyms": ["fly", "pilot", "plane", "helicopter", "driving", "dancing", "surgery"]}
+    ]
+  },
+  {
+    "question": "Name something you'd do if you found a briefcase full of cash on the street.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Take it/Run home", "points": 42, "synonyms": ["keep it", "take it", "grab it", "run", "hide it", "mine"]},
+      {"text": "Look around for cameras", "points": 24, "synonyms": ["cameras", "prank", "look around", "trap", "check", "paranoia", "cartel"]},
+      {"text": "Turn it in to the police", "points": 14, "synonyms": ["police", "cops", "turn it in", "return it", "lost and found"]},
+      {"text": "Check for a tracker", "points": 10, "synonyms": ["tracker", "gps", "airtag", "dye pack", "fake money", "counterfeit"]},
+      {"text": "Leave it alone/Walk away", "points": 6, "synonyms": ["leave it", "walk away", "ignore it", "nothing", "dont touch"]},
+      {"text": "Count it/Spend it slowly", "points": 4, "synonyms": ["count it", "spend it", "buy groceries", "cash", "split it"]}
+    ]
+  },
+  {
+    "question": "Name a movie or TV universe people would love to live in.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Harry Potter", "points": 36, "synonyms": ["harry potter", "hogwarts", "wizarding world", "magic"]},
+      {"text": "Star Wars", "points": 22, "synonyms": ["star wars", "jedi", "galaxy"]},
+      {"text": "Marvel/Avengers", "points": 16, "synonyms": ["marvel", "mcu", "avengers", "superheroes", "dc"]},
+      {"text": "Pokemon", "points": 12, "synonyms": ["pokemon", "anime", "naruto", "dragon ball"]},
+      {"text": "Lord of the Rings", "points": 8, "synonyms": ["lord of the rings", "lotr", "middle earth", "shire", "hobbit"]},
+      {"text": "Friends/Disney", "points": 6, "synonyms": ["friends", "disney", "pixar", "avatar", "pandora", "star trek", "bridgerton"]}
+    ]
+  },
+  {
+    "question": "Name something you'd ask a genie for with your first wish.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Unlimited money/Wealth", "points": 42, "synonyms": ["money", "rich", "billionaire", "wealth", "cash", "unlimited money"]},
+      {"text": "More wishes", "points": 24, "synonyms": ["more wishes", "infinite wishes", "unlimited wishes", "extra wishes"]},
+      {"text": "Perfect health/Long life", "points": 14, "synonyms": ["health", "immortality", "cure", "healthy", "never get sick", "live forever"]},
+      {"text": "World peace", "points": 8, "synonyms": ["world peace", "peace", "end hunger", "no war"]},
+      {"text": "True love/Happiness", "points": 7, "synonyms": ["love", "soulmate", "happiness", "happy", "family"]},
+      {"text": "Superpowers/Good looks", "points": 5, "synonyms": ["superpowers", "fly", "attractive", "skinny", "fit", "youth"]}
+    ]
+  },
+  {
+    "question": "Name a reason you'd immediately walk out of a haunted house.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Someone touches/Grabs you", "points": 34, "synonyms": ["touched", "grabbed", "hands on me", "chased", "actor"]},
+      {"text": "Chainsaw/Clown", "points": 24, "synonyms": ["chainsaw", "clown", "clowns", "mask", "killer"]},
+      {"text": "Pitch black/Can't see", "points": 16, "synonyms": ["dark", "pitch black", "cant see", "strobe lights", "fog", "tight space"]},
+      {"text": "Real ghost/Cold spot", "points": 12, "synonyms": ["real ghost", "ghost", "spirit", "door slams", "whisper", "haunted"]},
+      {"text": "Too loud/Jump scares", "points": 8, "synonyms": ["jump scare", "loud", "screaming", "heart attack", "scared"]},
+      {"text": "Peed my pants/Crying", "points": 6, "synonyms": ["peed", "pissed", "crying", "panic attack", "bugs", "spiders"]}
+    ]
+  },
+  {
+    "question": "Name something people would do if the internet permanently shut down tomorrow.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Panic/Freak out", "points": 32, "synonyms": ["panic", "freak out", "cry", "lose their minds", "riot", "chaos"]},
+      {"text": "Go outside/Touch grass", "points": 24, "synonyms": ["go outside", "walk", "nature", "park", "touch grass", "exercise"]},
+      {"text": "Read books/Board games", "points": 16, "synonyms": ["read", "books", "board games", "cards", "puzzles", "library"]},
+      {"text": "Actually talk to people", "points": 14, "synonyms": ["talk", "socialize", "hang out", "visit friends", "call", "conversation"]},
+      {"text": "Withdraw cash from the bank", "points": 8, "synonyms": ["bank", "cash", "atm", "money", "stock up", "groceries"]},
+      {"text": "Restart the router anyway", "points": 6, "synonyms": ["restart router", "unplug", "check wifi", "watch dvds", "sleep"]}
+    ]
+  },
+  {
+    "question": "Name a job you'd never do, even for $1 million a year.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Sewer/Porta-potty cleaner", "points": 30, "synonyms": ["sewer", "porta potty", "poop", "plumber", "janitor", "trash", "garbage"]},
+      {"text": "Skyscraper window washer/Tower climber", "points": 24, "synonyms": ["window washer", "heights", "tower climber", "construction", "roofer"]},
+      {"text": "Deep-sea diver/Miner", "points": 16, "synonyms": ["diver", "underwater", "submarine", "miner", "coal miner", "oil rig"]},
+      {"text": "Surgeon/Mortician", "points": 12, "synonyms": ["surgeon", "doctor", "mortician", "coroner", "embalmer", "crime scene"]},
+      {"text": "Politician/President", "points": 10, "synonyms": ["politician", "president", "cop", "police", "prison guard", "soldier"]},
+      {"text": "Exterminator/Snake handler", "points": 8, "synonyms": ["exterminator", "bugs", "spiders", "snake", "zoo", "alligator", "teacher"]}
+    ]
+  },
+  {
+    "question": "Name something you'd do if you accidentally broke an expensive item in a store.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Walk away/Run out", "points": 38, "synonyms": ["walk away", "run", "leave", "flee", "bolt", "act natural", "pretend it wasnt me"]},
+      {"text": "Put it back on the shelf", "points": 24, "synonyms": ["put it back", "hide it", "shelf", "fix it", "cover it up"]},
+      {"text": "Tell an employee/Apologize", "points": 18, "synonyms": ["tell someone", "employee", "manager", "apologize", "own up", "honest"]},
+      {"text": "Offer to pay for it", "points": 10, "synonyms": ["pay", "buy it", "pay for it"]},
+      {"text": "Blame someone else/Kid", "points": 6, "synonyms": ["blame", "kid", "friend", "was already broken"]},
+      {"text": "Freeze in panic", "points": 4, "synonyms": ["freeze", "panic", "cry", "stare", "look around"]}
+    ]
+  },
+  {
+    "question": "Name a person you'd call first if you got arrested.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Mom/Parents", "points": 38, "synonyms": ["mom", "dad", "parents", "mother", "father"]},
+      {"text": "Spouse/Partner", "points": 24, "synonyms": ["wife", "husband", "fiance", "fiancee", "girlfriend", "boyfriend", "partner"]},
+      {"text": "Best friend", "points": 18, "synonyms": ["best friend", "friend", "bro", "homie", "buddy"]},
+      {"text": "A lawyer", "points": 10, "synonyms": ["lawyer", "attorney", "saul"]},
+      {"text": "Sibling (Brother/Sister)", "points": 6, "synonyms": ["brother", "sister", "sibling"]},
+      {"text": "Bail bondsman/Boss", "points": 4, "synonyms": ["bail", "bondsman", "boss", "rich uncle", "nobody"]}
+    ]
+  },
+  {
+    "question": "Name something you'd do if you swapped bodies with your partner for a day.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Check out their body/Naked", "points": 38, "synonyms": ["naked", "mirror", "boobs", "penis", "body", "touch", "pee standing up", "sex"]},
+      {"text": "Read their texts/Phone", "points": 22, "synonyms": ["phone", "texts", "messages", "dms", "search history", "snoop"]},
+      {"text": "Go to their job", "points": 16, "synonyms": ["work", "job", "office", "coworkers", "boss"]},
+      {"text": "Go shopping/Spend money", "points": 10, "synonyms": ["shop", "spend money", "buy stuff", "clothes", "try on clothes"]},
+      {"text": "Eat whatever they want/Work out", "points": 8, "synonyms": ["eat", "gym", "work out", "lift weights", "sleep"]},
+      {"text": "Talk to their friends/Family", "points": 6, "synonyms": ["friends", "family", "mom", "gossip", "prank"]}
+    ]
+  },
+  {
+    "question": "Name a place you'd hide if you were playing hide-and-seek for $100,000.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "In the woods/Forest", "points": 32, "synonyms": ["woods", "forest", "trees", "bushes", "mountains", "outside"]},
+      {"text": "Attic/Crawlspace", "points": 24, "synonyms": ["attic", "crawlspace", "basement", "ceiling", "vents", "roof"]},
+      {"text": "Closet/Under a bed", "points": 16, "synonyms": ["closet", "under bed", "laundry pile", "cabinet", "pantry"]},
+      {"text": "Trunk of a car", "points": 12, "synonyms": ["car", "trunk", "garage", "shed", "dumpster"]},
+      {"text": "A hotel/Another state", "points": 10, "synonyms": ["hotel", "airport", "another city", "another state", "friends house", "walmart"]},
+      {"text": "In plain sight/Disguise", "points": 6, "synonyms": ["disguise", "plain sight", "crowd", "mall", "library"]}
+    ]
+  },
+  {
+    "question": "Name something you'd immediately quit doing if you never had to work again.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Setting an alarm clock", "points": 36, "synonyms": ["alarm", "waking up early", "alarm clock", "mornings", "6am"]},
+      {"text": "Checking emails/Slack", "points": 22, "synonyms": ["email", "emails", "slack", "teams", "zoom", "meetings", "linkedin"]},
+      {"text": "Commuting/Sitting in traffic", "points": 16, "synonyms": ["traffic", "commute", "driving", "rush hour", "train"]},
+      {"text": "Cleaning/Chores", "points": 12, "synonyms": ["cleaning", "laundry", "dishes", "chores", "cooking", "grocery shopping"]},
+      {"text": "Wearing business clothes", "points": 8, "synonyms": ["suits", "ties", "heels", "dress clothes", "uniform", "ironing", "pants"]},
+      {"text": "Being nice to annoying people", "points": 6, "synonyms": ["fake nice", "small talk", "customers", "boss", "budgeting"]}
+    ]
+  },
+  {
+    "question": "Name a wild animal people wish they could keep as a pet.",
+    "category": "Hypotheticals & Chaos",
+    "answers": [
+      {"text": "Lion/Tiger", "points": 32, "synonyms": ["lion", "tiger", "cheetah", "panther", "big cat", "cub"]},
+      {"text": "Monkey/Chimpanzee", "points": 24, "synonyms": ["monkey", "chimp", "ape", "gorilla", "lemur"]},
+      {"text": "Bear/Panda", "points": 18, "synonyms": ["bear", "panda", "red panda", "koala", "grizzly"]},
+      {"text": "Wolf/Fox", "points": 12, "synonyms": ["wolf", "fox", "coyote"]},
+      {"text": "Raccoon/Otter", "points": 8, "synonyms": ["raccoon", "otter", "squirrel", "capybara", "sloth", "penguin"]},
+      {"text": "Elephant/Dolphin", "points": 6, "synonyms": ["elephant", "dolphin", "giraffe", "kangaroo", "deer", "owl"]}
+    ]
+  },
+  {
+    "question": "Name something people do on social media that makes you instantly unfollow them.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Constant political rants", "points": 34, "synonyms": ["politics", "political", "rants", "arguing", "opinions", "preaching"]},
+      {"text": "Selling MLM/Scam products", "points": 22, "synonyms": ["mlm", "pyramid scheme", "selling", "spam", "promo", "crypto", "ads"]},
+      {"text": "Posting way too much/Selfies", "points": 16, "synonyms": ["posting too much", "selfies", "spamming", "stories", "attention seeking", "bragging"]},
+      {"text": "Vaguebooking/Fishing for sympathy", "points": 12, "synonyms": ["vague", "drama", "complaining", "crying", "attention", "dm me", "negativity"]},
+      {"text": "Oversharing relationship/Kids", "points": 10, "synonyms": ["kids", "baby", "relationship", "pda", "couple", "tmi", "breakup"]},
+      {"text": "Fake/Staged content", "points": 6, "synonyms": ["fake", "filters", "cringe", "pranks", "influencer", "gym selfies"]}
+    ]
+  },
+  {
+    "question": "Name a reason someone leaves a text message on 'Read.'",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Forgot to reply/Got distracted", "points": 36, "synonyms": ["forgot", "distracted", "replied in my head", "adhd", "later"]},
+      {"text": "Busy/At work/Driving", "points": 24, "synonyms": ["busy", "work", "driving", "meeting", "no time"]},
+      {"text": "Don't want to talk/Ignoring you", "points": 18, "synonyms": ["ignoring", "mad", "annoyed", "dont like you", "ghosting", "avoiding"]},
+      {"text": "Didn't know how to respond", "points": 10, "synonyms": ["nothing to say", "awkward", "end of conversation", "dry text", "thumbs up"]},
+      {"text": "Opened it by accident", "points": 7, "synonyms": ["accident", "pocket", "clicked it", "curious"]},
+      {"text": "Too tired/Low social battery", "points": 5, "synonyms": ["tired", "lazy", "social battery", "asleep", "drained"]}
+    ]
+  },
+  {
+    "question": "Name something people do on a plane that drives everyone crazy.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Take off their shoes/Socks", "points": 30, "synonyms": ["barefoot", "shoes off", "socks", "stinky feet", "feet"]},
+      {"text": "Recline their seat all the way", "points": 24, "synonyms": ["recline", "lean back", "seat back"]},
+      {"text": "Kick the back of your seat", "points": 18, "synonyms": ["kick", "kicking seat", "kids", "crying baby", "bumping"]},
+      {"text": "Play videos/Music without headphones", "points": 12, "synonyms": ["no headphones", "loud", "speaker", "talking loud", "videos", "phone"]},
+      {"text": "Hog the armrest/Middle seat", "points": 10, "synonyms": ["armrest", "manspreading", "elbow", "space", "overhead bin"]},
+      {"text": "Stand up immediately/Clap", "points": 6, "synonyms": ["stand up", "rush off", "clap", "clapping", "smelly food", "fart"]}
+    ]
+  },
+  {
+    "question": "Name a password people use way too often.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "123456", "points": 34, "synonyms": ["1234", "12345", "123456", "12345678", "numbers"]},
+      {"text": "Password", "points": 28, "synonyms": ["password", "password1", "password123"]},
+      {"text": "Their pet's name", "points": 14, "synonyms": ["pet", "dog", "cat", "dogs name"]},
+      {"text": "Their birthday/Kids' names", "points": 12, "synonyms": ["birthday", "dob", "kids", "name", "anniversary", "year"]},
+      {"text": "Qwerty", "points": 7, "synonyms": ["qwerty", "asdf", "abc123", "admin"]},
+      {"text": "Iloveyou/Sports team", "points": 5, "synonyms": ["iloveyou", "love", "sports", "team", "welcome", "letmein"]}
+    ]
+  },
+  {
+    "question": "Name something people lie about in their group chat.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "'On my way!' (Still at home)", "points": 40, "synonyms": ["omw", "on my way", "leaving now", "almost there", "5 minutes", "running late"]},
+      {"text": "Why they're canceling plans", "points": 24, "synonyms": ["canceling", "flaking", "sick", "busy", "excuse", "tired"]},
+      {"text": "Not seeing the message", "points": 14, "synonyms": ["didnt see", "missed it", "just saw this", "phone died", "muted"]},
+      {"text": "Laughing ('LOL' with a straight face)", "points": 10, "synonyms": ["lol", "lmao", "funny", "laughing", "dying"]},
+      {"text": "Being 'totally fine' after a breakup", "points": 7, "synonyms": ["fine", "over my ex", "not texting ex", "not drunk", "going to bed"]},
+      {"text": "Being down for a trip", "points": 5, "synonyms": ["trip", "vacation", "definitely going", "count me in", "money"]}
+    ]
+  },
+  {
+    "question": "Name a habit of a terrible roommate.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Never washing dishes/Messy", "points": 36, "synonyms": ["dishes", "sink", "messy", "dirty", "never cleans", "trash", "slob"]},
+      {"text": "Eating your food", "points": 22, "synonyms": ["food", "stealing food", "fridge", "groceries", "eating my stuff"]},
+      {"text": "Being loud late at night", "points": 16, "synonyms": ["loud", "noise", "music", "tv", "gaming", "parties", "yelling"]},
+      {"text": "Paying rent/Bills late", "points": 12, "synonyms": ["rent", "bills", "money", "late", "broke", "utilities"]},
+      {"text": "Always having guests/Partner over", "points": 8, "synonyms": ["guests", "boyfriend", "girlfriend", "partner", "people over", "sex"]},
+      {"text": "Hogging the bathroom/No TP", "points": 6, "synonyms": ["bathroom", "toilet paper", "hair", "thermostat", "borrowing clothes"]}
+    ]
+  },
+  {
+    "question": "Name something that immediately gives you the 'ick' in public.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Being rude to servers/Staff", "points": 32, "synonyms": ["rude", "waiter", "server", "cashier", "karen", "yelling", "bad tipper"]},
+      {"text": "Chewing loudly/Mouth open", "points": 22, "synonyms": ["chewing", "eating loud", "mouth open", "smacking", "slurping", "spitting"]},
+      {"text": "Speakerphone/FaceTime in public", "points": 18, "synonyms": ["speakerphone", "facetime", "loud phone", "tiktok loud", "music"]},
+      {"text": "Bad hygiene/Body odor", "points": 12, "synonyms": ["smell", "bo", "stinky", "dirty", "greasy", "bad breath", "picking nose"]},
+      {"text": "Too much PDA", "points": 10, "synonyms": ["pda", "making out", "kissing", "groping"]},
+      {"text": "Littering/Not returning cart", "points": 6, "synonyms": ["littering", "trash", "shopping cart", "cutting in line", "filming tiktok"]}
+    ]
+  },
+  {
+    "question": "Name a reason you might give a restaurant a 1-star review.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Terrible/Rude service", "points": 34, "synonyms": ["rude", "bad service", "waiter", "server", "slow", "ignored", "attitude"]},
+      {"text": "Hair/Bug in the food", "points": 26, "synonyms": ["hair", "bug", "roach", "fly", "dirty", "gross", "unsanitary"]},
+      {"text": "Cold/Raw/Bad food", "points": 18, "synonyms": ["cold food", "raw", "undercooked", "burnt", "bad food", "food poisoning", "gross"]},
+      {"text": "Way too long of a wait", "points": 10, "synonyms": ["wait", "slow", "hour", "reservation", "wrong order"]},
+      {"text": "Overpriced/Hidden fees", "points": 7, "synonyms": ["expensive", "overpriced", "fees", "rip off", "small portions", "bill"]},
+      {"text": "Dirty bathroom/Tables", "points": 5, "synonyms": ["dirty", "bathroom", "sticky", "smell", "loud"]}
+    ]
+  },
+  {
+    "question": "Name something people do at the gym that is super annoying.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Not wiping down equipment", "points": 30, "synonyms": ["sweat", "not wiping", "dirty", "hygiene", "clean"]},
+      {"text": "Sitting on a machine scrolling their phone", "points": 26, "synonyms": ["phone", "texting", "hogging", "camping", "sitting", "scrolling"]},
+      {"text": "Not re-racking weights", "points": 18, "synonyms": ["weights", "re-rack", "putting away", "dumbbells", "plates", "leaving weights"]},
+      {"text": "Filming themselves/Tripods", "points": 12, "synonyms": ["filming", "camera", "tripod", "tiktok", "influencer", "selfies"]},
+      {"text": "Grunting/Dropping weights loudly", "points": 8, "synonyms": ["grunting", "yelling", "dropping weights", "slamming", "loud"]},
+      {"text": "Staring/Giving unsolicited advice", "points": 6, "synonyms": ["staring", "creepy", "advice", "hitting on", "flirting", "smelling bad"]}
+    ]
+  },
+  {
+    "question": "Name a subscription people forget they are still paying for.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Streaming service (Netflix/Hulu)", "points": 38, "synonyms": ["netflix", "hulu", "disney", "hbo", "max", "paramount", "peacock", "streaming", "apple tv"]},
+      {"text": "Gym membership", "points": 26, "synonyms": ["gym", "planet fitness", "fitness", "peloton"]},
+      {"text": "Amazon Prime", "points": 14, "synonyms": ["amazon", "prime"]},
+      {"text": "Music app (Spotify/Apple)", "points": 10, "synonyms": ["spotify", "apple music", "pandora", "siriusxm", "audible"]},
+      {"text": "Free trial they forgot to cancel", "points": 7, "synonyms": ["free trial", "trial", "app", "icloud", "storage", "software"]},
+      {"text": "Meal kit/Subscription box", "points": 5, "synonyms": ["hellofresh", "box", "magazine", "newspaper", "dating app", "onlyfans"]}
+    ]
+  },
+  {
+    "question": "Name something drivers do on the highway that causes instant road rage.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Not using a turn signal", "points": 32, "synonyms": ["turn signal", "blinker", "cutting off", "merging", "swerving"]},
+      {"text": "Driving slow in the left lane", "points": 26, "synonyms": ["left lane", "slow", "fast lane", "passing lane", "hogging"]},
+      {"text": "Tailgating", "points": 18, "synonyms": ["tailgating", "riding bumper", "too close", "high beams"]},
+      {"text": "Texting/Looking at their phone", "points": 12, "synonyms": ["texting", "phone", "distracted", "swerving"]},
+      {"text": "Speeding up when you try to pass", "points": 7, "synonyms": ["speeding up", "wont let you merge", "brake checking", "weaving"]},
+      {"text": "Cutting in at the last second", "points": 5, "synonyms": ["exit", "last second", "cutting", "shoulder", "honking"]}
+    ]
+  },
+  {
+    "question": "Name an excuse people use on a Zoom or work video call.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "'Sorry, I was on mute'", "points": 34, "synonyms": ["mute", "muted", "mic", "audio", "cant hear"]},
+      {"text": "'My Wi-Fi is acting up'", "points": 26, "synonyms": ["wifi", "internet", "lagging", "frozen", "connection", "glitching"]},
+      {"text": "'My camera isn't working'", "points": 16, "synonyms": ["camera", "video", "off camera", "bandwidth"]},
+      {"text": "'I have to jump to another call'", "points": 12, "synonyms": ["another call", "hard stop", "meeting", "gotta go", "drop off"]},
+      {"text": "'Sorry, my dog/kid is loud'", "points": 7, "synonyms": ["dog", "barking", "kid", "baby", "delivery", "doorbell", "background"]},
+      {"text": "'Can you repeat that?' (Wasn't listening)", "points": 5, "synonyms": ["repeat", "missed that", "cut out", "zoned out", "multitasking"]}
+    ]
+  },
+  {
+    "question": "Name something people do at a concert that ruins it for everyone else.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Hold their phone up recording", "points": 34, "synonyms": ["phone", "recording", "filming", "blocking view", "flash", "screen"]},
+      {"text": "Talk loudly through the songs", "points": 22, "synonyms": ["talking", "chatting", "yelling", "screaming", "singing off key"]},
+      {"text": "Get way too drunk/Spill drinks", "points": 18, "synonyms": ["drunk", "spilling", "beer", "throwing up", "sloppy", "bumping"]},
+      {"text": "Push/Shove to the front", "points": 12, "synonyms": ["pushing", "shoving", "cutting", "crowding", "moshing"]},
+      {"text": "Stand/Sit on someone's shoulders", "points": 8, "synonyms": ["shoulders", "tall", "standing", "signs", "posters", "hats"]},
+      {"text": "Vaping/Smoking in your face", "points": 6, "synonyms": ["vaping", "smoking", "weed", "smoke", "bo", "smell"]}
+    ]
+  },
+  {
+    "question": "Name a reason someone might leave a bad tip—or no tip at all.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Rude/Terrible server", "points": 38, "synonyms": ["rude", "bad service", "attitude", "mean", "ignored", "slow"]},
+      {"text": "They're just cheap/Broke", "points": 24, "synonyms": ["cheap", "broke", "stingy", "no money", "bad tipper"]},
+      {"text": "Tip screen for self-service/Counter", "points": 16, "synonyms": ["ipad", "tablet", "counter", "takeout", "self service", "pickup", "tip fatigue"]},
+      {"text": "Food was wrong/Cold", "points": 10, "synonyms": ["wrong order", "cold food", "bad food", "hair", "mess up"]},
+      {"text": "Auto-gratuity already included", "points": 7, "synonyms": ["gratuity", "included", "service charge", "fee"]},
+      {"text": "They're from another country", "points": 5, "synonyms": ["tourist", "foreign", "europe", "culture", "forgot"]}
+    ]
+  },
+  {
+    "question": "Name something people complain about every time they go to the airport.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Long TSA/Security lines", "points": 34, "synonyms": ["tsa", "security", "lines", "taking off shoes", "wait"]},
+      {"text": "Flight delays/Cancellations", "points": 28, "synonyms": ["delays", "delayed", "canceled", "cancelled", "waiting", "late"]},
+      {"text": "Overpriced food and water", "points": 16, "synonyms": ["expensive", "food", "water", "drinks", "prices", "overpriced"]},
+      {"text": "Lost/Delayed luggage", "points": 10, "synonyms": ["luggage", "bags", "baggage", "lost bag", "bag fees"]},
+      {"text": "Cramped seats/No legroom", "points": 7, "synonyms": ["seats", "legroom", "small", "uncomfortable", "crowded"]},
+      {"text": "Other passengers/Parking", "points": 5, "synonyms": ["people", "rude", "parking", "traffic", "gate change", "walking"]}
+    ]
+  },
+  {
+    "question": "Name a notification on your phone that instantly stresses you out.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Bank/Low balance/Fraud alert", "points": 32, "synonyms": ["bank", "money", "overdraft", "fraud", "declined", "bill", "charge", "low balance"]},
+      {"text": "'We need to talk' text", "points": 24, "synonyms": ["we need to talk", "partner", "ex", "long text", "call me"]},
+      {"text": "Missed call from Mom/Family", "points": 16, "synonyms": ["mom", "dad", "parents", "missed call", "family", "multiple calls"]},
+      {"text": "Work email/Slack after hours", "points": 14, "synonyms": ["boss", "work", "email", "slack", "teams", "meeting"]},
+      {"text": "Low battery (10% or less)", "points": 8, "synonyms": ["battery", "low battery", "dying", "storage full"]},
+      {"text": "Flight delayed/Package missing", "points": 6, "synonyms": ["flight", "delayed", "delivery", "ring camera", "amber alert", "weather"]}
+    ]
+  },
+  {
+    "question": "Name something people do at a self-checkout that slows down the whole line.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Bring a full shopping cart", "points": 34, "synonyms": ["full cart", "too many items", "big cart", "groceries"]},
+      {"text": "Can't find the produce code/Barcode", "points": 24, "synonyms": ["produce", "barcode", "cant scan", "fruit", "veggies", "looking up"]},
+      {"text": "Wait for an employee/Age check", "points": 16, "synonyms": ["employee", "help", "alcohol", "id", "unexpected item", "bagging area", "error"]},
+      {"text": "Take forever to pay/Coupons", "points": 12, "synonyms": ["coupons", "cash", "coins", "digging", "wallet", "card declined"]},
+      {"text": "Bag everything super slowly", "points": 8, "synonyms": ["bagging", "slow", "reusable bags", "rearranging"]},
+      {"text": "Talk on their phone", "points": 6, "synonyms": ["phone", "texting", "distracted", "kids scanning", "chatting"]}
+    ]
+  },
+  {
+    "question": "Name a phrase in a work email that actually means 'I'm annoyed with you.'",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "'Per my last email'", "points": 42, "synonyms": ["per my last email", "as stated", "previous email", "already sent"]},
+      {"text": "'Just circling back/Following up'", "points": 20, "synonyms": ["circling back", "following up", "gentle reminder", "friendly reminder", "bumping"]},
+      {"text": "'Hope this helps!'", "points": 14, "synonyms": ["hope this helps", "let me know if you have questions", "clarify"]},
+      {"text": "'Moving forward...'", "points": 10, "synonyms": ["moving forward", "going forward", "in the future", "please note"]},
+      {"text": "'Regards' (instead of Best)", "points": 8, "synonyms": ["regards", "thanks", "best", "no exclamation", "sincerely"]},
+      {"text": "'Just to confirm...'", "points": 6, "synonyms": ["confirm", "ccing", "boss", "looping in", "attached again", "not sure if you saw"]}
+    ]
+  },
+  {
+    "question": "Name something people do in a movie theater that should be illegal.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Talk/Have a full conversation", "points": 34, "synonyms": ["talk", "talking", "whispering", "commentary", "yelling"]},
+      {"text": "Use their phone at full brightness", "points": 28, "synonyms": ["phone", "texting", "bright screen", "ringing", "scrolling", "calls"]},
+      {"text": "Kick the back of your chair", "points": 16, "synonyms": ["kick", "kicking", "feet", "seat"]},
+      {"text": "Bring a crying baby/Toddler", "points": 10, "synonyms": ["baby", "kids", "crying", "children"]},
+      {"text": "Chew/Crinkle wrappers loudly", "points": 7, "synonyms": ["chewing", "popcorn", "wrappers", "eating loud", "slurping"]},
+      {"text": "Take off their shoes/Sit in your seat", "points": 5, "synonyms": ["shoes off", "feet", "wrong seat", "vaping", "spoilers", "late"]}
+    ]
+  },
+  {
+    "question": "Name a reason someone might mute a group chat.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Nonstop notifications/Too active", "points": 38, "synonyms": ["too many texts", "blowing up", "nonstop", "notifications", "buzzing", "spam"]},
+      {"text": "At work/In a meeting", "points": 22, "synonyms": ["work", "meeting", "busy", "class", "studying"]},
+      {"text": "Annoying person/Drama", "points": 16, "synonyms": ["annoying", "drama", "arguing", "fighting", "toxic", "politics"]},
+      {"text": "Trying to sleep", "points": 12, "synonyms": ["sleep", "bed", "night", "nap", "late"]},
+      {"text": "Topic doesn't involve them", "points": 7, "synonyms": ["dont care", "irrelevant", "not going", "boring", "family"]},
+      {"text": "Too many memes/Liked reactions", "points": 5, "synonyms": ["memes", "gifs", "reactions", "loved an image", "android", "green bubble"]}
+    ]
+  },
+  {
+    "question": "Name something people do at a grocery store that is a major pet peeve.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Block the entire aisle with their cart", "points": 38, "synonyms": ["block aisle", "cart", "standing in the way", "middle of aisle", "chatting"]},
+      {"text": "Not return their shopping cart", "points": 22, "synonyms": ["shopping cart", "parking lot", "leave cart", "cart return"]},
+      {"text": "Walk super slowly", "points": 14, "synonyms": ["slow", "walking slow", "stopping", "cutting off"]},
+      {"text": "Leave cold items on random shelves", "points": 12, "synonyms": ["cold items", "meat", "milk", "putting back", "melting", "abandon"]},
+      {"text": "Bring 50 items to the express lane", "points": 8, "synonyms": ["express lane", "10 items", "15 items", "too many items", "cutting"]},
+      {"text": "Eat food/Touch all the produce", "points": 6, "synonyms": ["eating", "grapes", "squeezing", "touching", "coughing", "samples"]}
+    ]
+  },
+  {
+    "question": "Name an app people open without even thinking about it.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Instagram", "points": 32, "synonyms": ["instagram", "ig", "insta"]},
+      {"text": "TikTok", "points": 26, "synonyms": ["tiktok", "tik tok"]},
+      {"text": "YouTube", "points": 14, "synonyms": ["youtube", "yt"]},
+      {"text": "Messages/WhatsApp", "points": 12, "synonyms": ["messages", "texts", "imessage", "whatsapp", "snapchat"]},
+      {"text": "Facebook/X (Twitter)", "points": 10, "synonyms": ["facebook", "fb", "twitter", "x", "reddit"]},
+      {"text": "Email/Weather", "points": 6, "synonyms": ["email", "gmail", "weather", "maps", "spotify", "games"]}
+    ]
+  },
+  {
+    "question": "Name something people get way too competitive about.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Board games/Card games", "points": 34, "synonyms": ["monopoly", "uno", "spades", "board games", "cards", "poker", "game night", "family feud"]},
+      {"text": "Sports/Fantasy football", "points": 24, "synonyms": ["sports", "fantasy football", "football", "golf", "bowling", "pickleball", "cornhole"]},
+      {"text": "Video games (Mario Kart/COD)", "points": 16, "synonyms": ["video games", "mario kart", "call of duty", "fifa", "madden", "gaming"]},
+      {"text": "Driving/Merging in traffic", "points": 12, "synonyms": ["driving", "traffic", "merging", "racing", "parking"]},
+      {"text": "Who is more tired/Busy", "points": 8, "synonyms": ["tired", "sleep", "busy", "work", "stress", "suffering"]},
+      {"text": "Trivia/Wordle/Karaoke", "points": 6, "synonyms": ["trivia", "wordle", "bar trivia", "drinking games", "beer pong", "cooking"]}
+    ]
+  },
+  {
+    "question": "Name a reason someone might unfriend a family member on Facebook.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Political posts/Arguments", "points": 44, "synonyms": ["politics", "political", "trump", "biden", "arguing", "rants"]},
+      {"text": "Conspiracy theories/Fake news", "points": 18, "synonyms": ["conspiracy", "fake news", "misinformation", "crazy", "memes"]},
+      {"text": "Family drama/Feud", "points": 16, "synonyms": ["drama", "fight", "feud", "gossip", "toxic", "rude"]},
+      {"text": "Embarrassing comments on your posts", "points": 10, "synonyms": ["comments", "embarrassing", "judging", "nosy", "tmi"]},
+      {"text": "Selling MLM/Spamming", "points": 7, "synonyms": ["mlm", "selling", "spam", "game invites", "candy crush"]},
+      {"text": "Don't actually talk to them", "points": 5, "synonyms": ["dont talk", "distant", "stranger", "religious", "preachy"]}
+    ]
+  },
+  {
+    "question": "Name something people say 'I'll do it tomorrow' about every single day.",
+    "category": "Modern Life & Pet Peeves",
+    "answers": [
+      {"text": "Working out/Going to the gym", "points": 34, "synonyms": ["gym", "work out", "exercise", "diet", "run", "lose weight"]},
+      {"text": "Laundry/Folding clothes", "points": 24, "synonyms": ["laundry", "folding", "clothes", "ironing"]},
+      {"text": "Cleaning/Dishes", "points": 16, "synonyms": ["cleaning", "dishes", "vacuuming", "organizing", "chores", "car wash"]},
+      {"text": "Going to bed early", "points": 10, "synonyms": ["sleep", "bed early", "nap"]},
+      {"text": "Calling/Texting someone back", "points": 9, "synonyms": ["call back", "text back", "email", "doctor", "dentist", "appointment"]},
+      {"text": "Taxes/Bills/Studying", "points": 7, "synonyms": ["taxes", "bills", "homework", "studying", "errands", "oil change", "returns"]}
+    ]
+  },
+  {
+    "question": "Name a classic Christmas movie everyone watches every year.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Home Alone", "points": 32, "synonyms": ["home alone", "kevin"]},
+      {"text": "Elf", "points": 26, "synonyms": ["elf", "buddy", "will ferrell"]},
+      {"text": "How the Grinch Stole Christmas", "points": 16, "synonyms": ["grinch", "the grinch"]},
+      {"text": "A Christmas Story", "points": 12, "synonyms": ["christmas story", "ralphie", "bb gun"]},
+      {"text": "National Lampoon's Christmas Vacation", "points": 8, "synonyms": ["christmas vacation", "national lampoons", "griswold", "chevy chase"]},
+      {"text": "It's a Wonderful Life / Die Hard", "points": 6, "synonyms": ["wonderful life", "die hard", "polar express", "santa clause", "rudolph", "charlie brown"]}
+    ]
+  },
+  {
+    "question": "Name a gift people secretly hate receiving—and might regift.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Socks/Underwear", "points": 28, "synonyms": ["socks", "underwear", "clothes"]},
+      {"text": "Scented candle", "points": 24, "synonyms": ["candle", "candles", "wax"]},
+      {"text": "Fruitcake", "points": 18, "synonyms": ["fruitcake", "fruit cake", "bad food", "candy"]},
+      {"text": "Cheap lotion/Bath set", "points": 12, "synonyms": ["lotion", "soap", "bath set", "body wash", "perfume", "cologne", "toiletries"]},
+      {"text": "Coffee mug", "points": 10, "synonyms": ["mug", "coffee mug", "cup", "tumbler", "picture frame"]},
+      {"text": "Ugly sweater/Tie", "points": 8, "synonyms": ["sweater", "ugly sweater", "tie", "scarf", "gloves", "towel", "re-gift"]}
+    ]
+  },
+  {
+    "question": "Name something people stress out about the most during the holidays.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Spending money/Budget", "points": 34, "synonyms": ["money", "budget", "bills", "credit card", "debt", "expensive", "afford"]},
+      {"text": "Buying gifts/Shopping", "points": 24, "synonyms": ["shopping", "gifts", "presents", "crowds", "shipping", "wrapping"]},
+      {"text": "Family drama/Relatives", "points": 18, "synonyms": ["family", "relatives", "in laws", "drama", "fighting", "arguing", "politics"]},
+      {"text": "Cooking/Hosting dinner", "points": 10, "synonyms": ["cooking", "hosting", "cleaning", "food", "baking", "guests"]},
+      {"text": "Holiday travel/Traffic", "points": 8, "synonyms": ["travel", "traffic", "airports", "flights", "driving", "weather"]},
+      {"text": "Gaining weight", "points": 6, "synonyms": ["weight", "eating too much", "diet", "calories", "time", "schedule"]}
+    ]
+  },
+  {
+    "question": "Name a Christmas song that gets stuck in your head all December.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "All I Want for Christmas Is You", "points": 36, "synonyms": ["mariah carey", "all i want for christmas", "all i want"]},
+      {"text": "Jingle Bells", "points": 22, "synonyms": ["jingle bells", "jingle bell rock"]},
+      {"text": "Last Christmas", "points": 16, "synonyms": ["last christmas", "wham", "george michael"]},
+      {"text": "Rudolph the Red-Nosed Reindeer", "points": 12, "synonyms": ["rudolph", "red nosed reindeer"]},
+      {"text": "Frosty the Snowman", "points": 8, "synonyms": ["frosty", "snowman"]},
+      {"text": "Rockin' Around the Christmas Tree", "points": 6, "synonyms": ["rockin around", "silent night", "feliz navidad", "santa baby", "deck the halls", "12 days"]}
+    ]
+  },
+  {
+    "question": "Name something you're almost guaranteed to find in a Christmas stocking.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Candy/Chocolate", "points": 34, "synonyms": ["candy", "chocolate", "candy cane", "hershey", "reeses", "sweets"]},
+      {"text": "Socks", "points": 22, "synonyms": ["socks", "fuzzy socks", "underwear"]},
+      {"text": "Gift cards/Cash", "points": 16, "synonyms": ["gift card", "gift cards", "money", "cash"]},
+      {"text": "Scratch-off lottery tickets", "points": 12, "synonyms": ["lottery", "scratch offs", "lotto", "tickets"]},
+      {"text": "Chapstick/Mini toiletries", "points": 10, "synonyms": ["chapstick", "lip balm", "lotion", "toothbrush", "deodorant", "makeup", "toiletries"]},
+      {"text": "An orange/Small toys", "points": 6, "synonyms": ["orange", "tangerine", "fruit", "toys", "coal", "mini liquor", "nip", "keychain"]}
+    ]
+  },
+  {
+    "question": "Name something people do at an office holiday party that they regret the next day.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Drink way too much", "points": 40, "synonyms": ["drunk", "drink", "drinking", "open bar", "wasted", "throwing up", "puking", "hangover"]},
+      {"text": "Flirt/Hook up with a coworker", "points": 22, "synonyms": ["flirt", "hook up", "kiss", "make out", "coworker", "sex", "hit on"]},
+      {"text": "Say something stupid to the boss", "points": 16, "synonyms": ["boss", "overshare", "talk trash", "gossip", "curse", "insult", "complain", "quit"]},
+      {"text": "Embarrassing dancing/Karaoke", "points": 10, "synonyms": ["dancing", "dance", "karaoke", "singing", "falling", "table"]},
+      {"text": "Start drama/Argue", "points": 7, "synonyms": ["fight", "argue", "drama", "cry", "crying", "scene"]},
+      {"text": "Call out sick the next morning", "points": 5, "synonyms": ["call out", "skip work", "late", "photos", "videos", "steal"]}
+    ]
+  },
+  {
+    "question": "Name a classic holiday drink.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Eggnog", "points": 36, "synonyms": ["eggnog", "egg nog", "nog"]},
+      {"text": "Hot chocolate/Cocoa", "points": 26, "synonyms": ["hot chocolate", "hot cocoa", "cocoa"]},
+      {"text": "Apple cider", "points": 14, "synonyms": ["cider", "apple cider", "hot cider"]},
+      {"text": "Mulled/Spiced wine", "points": 10, "synonyms": ["wine", "mulled wine", "spiced wine", "red wine", "sangria"]},
+      {"text": "Peppermint mocha/Latte", "points": 8, "synonyms": ["peppermint mocha", "coffee", "latte", "pumpkin spice", "starbucks"]},
+      {"text": "Champagne/Coquito", "points": 6, "synonyms": ["champagne", "coquito", "hot toddy", "rum", "whiskey", "punch", "wassail"]}
+    ]
+  },
+  {
+    "question": "Name something that can go wrong when putting up Christmas decorations.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Lights are tangled/Burned out", "points": 36, "synonyms": ["lights", "tangled", "burned out", "broken lights", "bulbs", "wont turn on"]},
+      {"text": "Tree falls over", "points": 22, "synonyms": ["tree falls", "tree tips", "christmas tree", "stand", "pine needles"]},
+      {"text": "Falling off a ladder/Roof", "points": 16, "synonyms": ["fall", "ladder", "roof", "hurt", "injury", "electrocuted", "shock"]},
+      {"text": "Breaking a favorite ornament", "points": 12, "synonyms": ["ornament", "broken", "glass", "shatter", "drop"]},
+      {"text": "Pet destroys/Eats them", "points": 8, "synonyms": ["cat", "dog", "pet", "climbs tree", "chews", "knock over"]},
+      {"text": "Blowing a fuse/Circuit", "points": 6, "synonyms": ["fuse", "breaker", "power out", "fire", "short circuit", "argument", "fight"]}
+    ]
+  },
+  {
+    "question": "Name a food or treat people only seem to eat around the holidays.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "Gingerbread", "points": 30, "synonyms": ["gingerbread", "gingerbread cookies", "gingerbread house"]},
+      {"text": "Candy canes", "points": 22, "synonyms": ["candy cane", "candy canes", "peppermint", "peppermint bark"]},
+      {"text": "Fruitcake", "points": 18, "synonyms": ["fruitcake", "fruit cake", "panettone"]},
+      {"text": "Honey-baked ham/Prime rib", "points": 12, "synonyms": ["ham", "prime rib", "roast", "turkey", "stuffing", "cranberry sauce"]},
+      {"text": "Sugar cookies/Yule log", "points": 10, "synonyms": ["cookies", "christmas cookies", "sugar cookies", "yule log", "fudge"]},
+      {"text": "Pecan/Pumpkin pie", "points": 8, "synonyms": ["pie", "pumpkin pie", "pecan pie", "chestnuts", "tamales", "latkes"]}
+    ]
+  },
+  {
+    "question": "Name a lie parents tell their kids about Santa Claus.",
+    "category": "Christmas & Holidays",
+    "answers": [
+      {"text": "He's always watching (Naughty list)", "points": 34, "synonyms": ["watching", "naughty list", "nice list", "elf on the shelf", "sees you", "be good"]},
+      {"text": "You'll get coal if you're bad", "points": 24, "synonyms": ["coal", "lump of coal", "no presents", "bad"]},
+      {"text": "He comes down the chimney", "points": 16, "synonyms": ["chimney", "fireplace", "magic key"]},
+      {"text": "He eats the cookies/Reindeer eat carrots", "points": 12, "synonyms": ["cookies", "milk", "carrots", "reindeer", "eats"]},
+      {"text": "He visits every house in one night", "points": 8, "synonyms": ["one night", "flying reindeer", "sleigh", "north pole", "elves", "fast"]},
+      {"text": "Mall Santa is his 'helper'", "points": 6, "synonyms": ["mall santa", "helper", "real santa", "he made the toys", "go to sleep"]}
     ]
   }
 ];
