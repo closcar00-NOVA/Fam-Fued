@@ -1797,28 +1797,29 @@ const questionBank = [
       {"text": "Taxes/Bills/Studying", "points": 7, "synonyms": ["taxes", "bills", "homework", "studying", "errands", "oil change", "returns"]}
     ]
   },
+// === 151-175: Christmas & Holidays ===
   {
     "question": "Name a classic Christmas movie everyone watches every year.",
     "category": "Christmas & Holidays",
     "answers": [
-      {"text": "Home Alone", "points": 32, "synonyms": ["home alone", "kevin"]},
-      {"text": "Elf", "points": 26, "synonyms": ["elf", "buddy", "will ferrell"]},
-      {"text": "How the Grinch Stole Christmas", "points": 16, "synonyms": ["grinch", "the grinch"]},
-      {"text": "A Christmas Story", "points": 12, "synonyms": ["christmas story", "ralphie", "bb gun"]},
-      {"text": "National Lampoon's Christmas Vacation", "points": 8, "synonyms": ["christmas vacation", "national lampoons", "griswold", "chevy chase"]},
-      {"text": "It's a Wonderful Life / Die Hard", "points": 6, "synonyms": ["wonderful life", "die hard", "polar express", "santa clause", "rudolph", "charlie brown"]}
+      {"text": "Home Alone", "points": 32, "synonyms": ["home alone", "kevin mccallister"]},
+      {"text": "Elf", "points": 26, "synonyms": ["elf", "buddy the elf", "will ferrell"]},
+      {"text": "How the Grinch Stole Christmas", "points": 16, "synonyms": ["grinch", "the grinch", "dr seuss"]},
+      {"text": "A Christmas Story", "points": 12, "synonyms": ["christmas story", "ralphie", "bb gun", "leg lamp"]},
+      {"text": "National Lampoon's Christmas Vacation", "points": 8, "synonyms": ["christmas vacation", "national lampoons", "griswold", "clark griswold"]},
+      {"text": "It's a Wonderful Life", "points": 6, "synonyms": ["wonderful life", "george bailey", "die hard", "polar express", "rudolph"]}
     ]
   },
   {
     "question": "Name a gift people secretly hate receiving—and might regift.",
     "category": "Christmas & Holidays",
     "answers": [
-      {"text": "Socks/Underwear", "points": 28, "synonyms": ["socks", "underwear", "clothes"]},
-      {"text": "Scented candle", "points": 24, "synonyms": ["candle", "candles", "wax"]},
-      {"text": "Fruitcake", "points": 18, "synonyms": ["fruitcake", "fruit cake", "bad food", "candy"]},
-      {"text": "Cheap lotion/Bath set", "points": 12, "synonyms": ["lotion", "soap", "bath set", "body wash", "perfume", "cologne", "toiletries"]},
-      {"text": "Coffee mug", "points": 10, "synonyms": ["mug", "coffee mug", "cup", "tumbler", "picture frame"]},
-      {"text": "Ugly sweater/Tie", "points": 8, "synonyms": ["sweater", "ugly sweater", "tie", "scarf", "gloves", "towel", "re-gift"]}
+      {"text": "Socks/Underwear", "points": 28, "synonyms": ["socks", "underwear", "clothes", "boxers"]},
+      {"text": "Scented candle", "points": 24, "synonyms": ["scented candle", "candle", "candles", "wax"]},
+      {"text": "Fruitcake", "points": 18, "synonyms": ["fruitcake", "fruit cake", "holiday snack"]},
+      {"text": "Cheap lotion/Bath set", "points": 12, "synonyms": ["cheap lotion", "lotion", "soap", "bath set", "body wash", "toiletries"]},
+      {"text": "Coffee mug", "points": 10, "synonyms": ["coffee mug", "mug", "cup", "tumbler", "picture frame"]},
+      {"text": "Ugly sweater/Scarf", "points": 8, "synonyms": ["ugly sweater", "sweater", "scarf", "gloves", "tie", "regift"]}
     ]
   },
   {
@@ -2005,12 +2006,11 @@ const questionBank = [
     "question": "Name a reason someone might still have their Christmas tree up in February.",
     "category": "Christmas & Holidays",
     "answers": [
-      {"text": "Pure laziness/Procrastination", "points": 44, "synonyms": ["lazy", "laziness", "procrastinating", "too much work", "dont feel like it"]},
-      {"text": "They love the cozy lights/Vibe", "points": 22, "synonyms": ["lights", "cozy", "pretty", "vibe", "mood lighting", "cheer"]},
-      {"text": "Turned it into a Valentine's/Holiday tree", "points": 14, "synonyms": ["valentines", "mardi gras", "st patricks", "all year tree", "holiday tree"]},
-      {"text": "Too busy/Traveling", "points": 10, "synonyms": ["busy", "no time", "traveling", "work", "forgot"]},
-      {"text": "Nowhere to store it", "points": 6, "synonyms": ["storage", "no box", "basement", "attic", "heavy"]},
-      {"text": "Waiting for someone else to do it", "points": 4, "synonyms": ["spouse", "husband", "wife", "roommate", "someone else"]}
+      {"text": "Pure laziness/Procrastination", "points": 44, "synonyms": ["laziness", "lazy", "procrastinating", "too much work", "dont feel like it"]},
+      {"text": "They love the cozy lights/Vibe", "points": 24, "synonyms": ["cozy lights", "lights", "cozy", "vibe", "mood lighting", "pretty"]},
+      {"text": "Too busy/Traveling", "points": 12, "synonyms": ["too busy", "busy", "no time", "traveling", "work", "forgot"]},
+      {"text": "Nowhere to store it", "points": 10, "synonyms": ["nowhere to store", "storage", "no box", "basement", "attic", "heavy"]},
+      {"text": "Waiting for someone else to do it", "points": 10, "synonyms": ["someone else", "spouse", "husband", "wife", "roommate", "partner"]}
     ]
   },
   {
