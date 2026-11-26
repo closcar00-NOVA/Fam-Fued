@@ -1,12 +1,12 @@
 // Complete 160-question bank (1-50 Adult, 51-100 Everyday Classics, 101-125 Hypotheticals & Chaos, 126-150 Modern Life & Pet Peeves, 151-160 Christmas & Holidays)
 const questionBank = [
-  {
+{
     "question": "Name a reason someone might secretly check their partner's phone.",
     "category": "Adult",
     "answers": [
       {"text": "Suspect cheating", "points": 45, "synonyms": ["cheating", "affair", "unfaithful", "infidelity", "sneaking around", "lying", "trust issues"]},
-      {"text": "Curiosity/Snooping", "points": 20, "synonyms": ["curious", "snooping", "nosy", "bored", "just looking", "peeking"]},
-      {"text": "Looking for a password", "points": 15, "synonyms": ["password", "login", "passcode", "wifi", "account info", "code"]},
+      {"text": "Curiosity/Snooping", "points": 20, "synonyms": ["curiosity", "snooping", "nosy", "bored", "just looking", "peeking"]},
+      {"text": "Looking for a password", "points": 15, "synonyms": ["password", "login", "passcode", "wifi", "account info", "pin"]},
       {"text": "Checking messages from an ex", "points": 10, "synonyms": ["ex", "old flame", "texts from ex", "dms", "messaging ex"]},
       {"text": "To find a surprise gift", "points": 5, "synonyms": ["gift", "present", "surprise", "birthday", "amazon orders", "shopping"]},
       {"text": "Checking bank/money apps", "points": 5, "synonyms": ["money", "bank", "finances", "spending", "venmo", "cashapp", "bills"]}
@@ -19,7 +19,7 @@ const questionBank = [
       {"text": "Drink water/Gatorade", "points": 35, "synonyms": ["water", "hydrate", "gatorade", "electrolytes", "pedialyte", "liquid iv", "chug water"]},
       {"text": "Take pain meds", "points": 25, "synonyms": ["advil", "tylenol", "ibuprofen", "aspirin", "medicine", "pills", "painkillers"]},
       {"text": "Go back to sleep", "points": 20, "synonyms": ["sleep", "nap", "stay in bed", "pass out", "lay in bed", "rest"]},
-      {"text": "Eat greasy food", "points": 10, "synonyms": ["eat", "fast food", "bacon", "burger", "breakfast", "mcdonalds", "pizza", "grease"]},
+      {"text": "Eat greasy food", "points": 10, "synonyms": ["greasy food", "fast food", "bacon", "burger", "breakfast", "mcdonalds", "pizza"]},
       {"text": "Call out sick", "points": 6, "synonyms": ["skip work", "call in sick", "cancel plans", "stay home", "miss work"]},
       {"text": "Swear off drinking", "points": 4, "synonyms": ["never drink again", "quit drinking", "stop drinking", "regret", "vow"]}
     ]
@@ -28,10 +28,10 @@ const questionBank = [
     "question": "Name a place you definitely don't want your boss to catch you.",
     "category": "Adult",
     "answers": [
-      {"text": "At a bar/club", "points": 35, "synonyms": ["bar", "club", "pub", "nightclub", "drinking", "happy hour", "party"]},
+      {"text": "At a bar/club", "points": 35, "synonyms": ["bar", "club", "pub", "nightclub", "happy hour", "party"]},
       {"text": "In bed/Sleeping", "points": 25, "synonyms": ["bed", "sleeping", "napping", "asleep", "bedroom", "passed out"]},
       {"text": "Interviewing for another job", "points": 15, "synonyms": ["job interview", "interview", "competitor", "new job", "applying"]},
-      {"text": "The bathroom", "points": 12, "synonyms": ["bathroom", "restroom", "toilet", "pooping", "stall", "hiding in bathroom"]},
+      {"text": "The bathroom", "points": 12, "synonyms": ["bathroom", "restroom", "toilet", "stall", "hiding in bathroom"]},
       {"text": "A strip club", "points": 8, "synonyms": ["strip club", "gentlemens club", "adult club", "strippers"]},
       {"text": "Stealing office supplies", "points": 5, "synonyms": ["stealing", "supply closet", "taking supplies", "theft"]}
     ]
@@ -40,12 +40,12 @@ const questionBank = [
     "question": "Name something a person might fake.",
     "category": "Adult",
     "answers": [
-      {"text": "An orgasm", "points": 40, "synonyms": ["orgasm", "climax", "finishing", "cumming", "pleasure", "sex"]},
+      {"text": "An orgasm", "points": 40, "synonyms": ["orgasm", "climax", "finishing", "cumming", "fake orgasm"]},
       {"text": "Being sick", "points": 30, "synonyms": ["sick", "illness", "fever", "headache", "calling out", "flu", "cough"]},
       {"text": "A smile/Being happy", "points": 15, "synonyms": ["smile", "happiness", "laugh", "mood", "being okay", "joy"]},
       {"text": "Liking a gift", "points": 8, "synonyms": ["gift", "present", "liking food", "compliment", "excitement"]},
       {"text": "Listening/Interest", "points": 4, "synonyms": ["listening", "paying attention", "caring", "interest", "liking someone"]},
-      {"text": "Confidence", "points": 3, "synonyms": ["confident", "bravery", "knowing what they're doing", "wealth", "rich"]}
+      {"text": "Confidence", "points": 3, "synonyms": ["confident", "bravery", "knowing what they're doing", "wealth"]}
     ]
   },
   {
@@ -54,7 +54,7 @@ const questionBank = [
     "answers": [
       {"text": "You owe them money", "points": 35, "synonyms": ["owe money", "debt", "borrowed money", "unpaid", "cash"]},
       {"text": "They talk too much", "points": 25, "synonyms": ["annoying", "talkative", "chatty", "boring", "long conversation", "stuck talking"]},
-      {"text": "You look like a mess", "points": 15, "synonyms": ["look bad", "pajamas", "no makeup", "sweatpants", "rough", "ugly", "messy"]},
+      {"text": "You look like a mess", "points": 15, "synonyms": ["look bad", "pajamas", "no makeup", "sweatpants", "rough", "messy"]},
       {"text": "They are an ex", "points": 12, "synonyms": ["ex", "ex girlfriend", "ex boyfriend", "old flame", "hookup", "awkward"]},
       {"text": "You're in a hurry", "points": 8, "synonyms": ["busy", "rushing", "late", "no time", "in a rush"]},
       {"text": "You just don't like them", "points": 5, "synonyms": ["hate them", "dislike", "beef", "drama", "enemy", "not friends"]}
@@ -100,10 +100,10 @@ const questionBank = [
     "question": "Name a common regret after a wild night out.",
     "category": "Adult",
     "answers": [
-      {"text": "Drinking too much/Hangover", "points": 40, "synonyms": ["drinking", "too much alcohol", "hangover", "shots", "getting wasted", "blacking out"]},
-      {"text": "Spending too much money", "points": 25, "synonyms": ["money", "tab", "expensive", "broke", "bank account", "buying rounds"]},
-      {"text": "Hooking up with someone", "points": 15, "synonyms": ["hookup", "one night stand", "sleeping with someone", "sex", "making out", "going home with someone"]},
-      {"text": "Texting an ex", "points": 10, "synonyms": ["texting ex", "drunk texting", "calling ex", "drunk dial", "messaging"]},
+      {"text": "Drinking too much/Hangover", "points": 40, "synonyms": ["too much alcohol", "hangover", "shots", "getting wasted", "blacking out"]},
+      {"text": "Spending too much money", "points": 25, "synonyms": ["tab", "expensive", "broke", "bank account", "buying rounds"]},
+      {"text": "Hooking up with someone", "points": 15, "synonyms": ["hookup", "one night stand", "sleeping with someone", "making out", "going home with someone"]},
+      {"text": "Texting an ex", "points": 10, "synonyms": ["texting ex", "drunk texting", "calling ex", "drunk dial", "messaging ex"]},
       {"text": "Posting embarrassing photos", "points": 7, "synonyms": ["social media", "posting", "instagram", "snapchat", "stories", "photos", "videos"]},
       {"text": "Losing phone/wallet", "points": 3, "synonyms": ["lost phone", "lost wallet", "lost keys", "losing stuff", "missing purse"]}
     ]
@@ -125,8 +125,8 @@ const questionBank = [
     "category": "Adult",
     "answers": [
       {"text": "Condoms", "points": 35, "synonyms": ["condoms", "protection", "trojans", "rubbers", "plan b", "lube"]},
-      {"text": "Beer/Alcohol", "points": 25, "synonyms": ["beer", "alcohol", "booze", "liquor", "wine", "seltzer", "drinks"]},
-      {"text": "Junk food/Snacks", "points": 20, "synonyms": ["snacks", "chips", "candy", "munchies", "food", "ice cream", "hot dog", "pizza"]},
+      {"text": "Beer/Alcohol", "points": 25, "synonyms": ["beer", "alcohol", "booze", "liquor", "wine", "seltzer"]},
+      {"text": "Junk food/Snacks", "points": 20, "synonyms": ["snacks", "chips", "candy", "munchies", "ice cream", "hot dog", "pizza"]},
       {"text": "Cigarettes/Vapes", "points": 10, "synonyms": ["cigarettes", "smokes", "vape", "lighter", "rolling papers", "blunts", "cigs"]},
       {"text": "Pain medicine", "points": 6, "synonyms": ["advil", "tylenol", "tums", "medicine", "pain reliever", "pepto"]},
       {"text": "Energy drinks", "points": 4, "synonyms": ["red bull", "monster", "coffee", "caffeine", "water", "gatorade", "soda"]}
@@ -137,7 +137,7 @@ const questionBank = [
     "category": "Adult",
     "answers": [
       {"text": "Fighting", "points": 45, "synonyms": ["fight", "brawl", "punching", "arguing", "starting trouble", "violence"]},
-      {"text": "Being too drunk", "points": 25, "synonyms": ["drunk", "wasted", "passed out", "sloppy", "falling over", "intoxicated"]},
+      {"text": "Being too drunk", "points": 25, "synonyms": ["too drunk", "wasted", "passed out", "sloppy", "falling over", "intoxicated"]},
       {"text": "Throwing up", "points": 15, "synonyms": ["puking", "vomiting", "barfing", "getting sick", "puke"]},
       {"text": "Disrespecting the bartender", "points": 8, "synonyms": ["rude", "yelling", "harassing", "groping", "annoying staff", "bouncer"]},
       {"text": "Not paying the tab", "points": 4, "synonyms": ["dine and dash", "no money", "declined card", "stealing", "skipping tab"]},
@@ -196,12 +196,12 @@ const questionBank = [
     "question": "Name a topic you should avoid bringing up at Thanksgiving dinner.",
     "category": "Adult",
     "answers": [
-      {"text": "Politics", "points": 55, "synonyms": ["politics", "president", "election", "government", "voting", "trump", "biden"]},
+      {"text": "Politics", "points": 55, "synonyms": ["politics", "president", "election", "government", "voting"]},
       {"text": "Religion", "points": 20, "synonyms": ["religion", "church", "god", "faith", "atheism"]},
       {"text": "Money/Debt", "points": 10, "synonyms": ["money", "salary", "debt", "finances", "will", "inheritance", "loans"]},
       {"text": "Exes/Divorce", "points": 8, "synonyms": ["ex", "divorce", "dating", "marriage", "single", "babies", "kids"]},
       {"text": "Family drama", "points": 5, "synonyms": ["drama", "secrets", "gossip", "past fights", "arrests", "jail"]},
-      {"text": "Weight/Diet", "points": 2, "synonyms": ["weight", "fat", "diet", "looks", "appearance", "sex"]}
+      {"text": "Weight/Diet", "points": 2, "synonyms": ["weight", "fat", "diet", "looks", "appearance"]}
     ]
   },
   {
@@ -211,7 +211,7 @@ const questionBank = [
       {"text": "What did they say?", "points": 35, "synonyms": ["what did they say", "huh", "what happened", "didnt hear", "repeat that"]},
       {"text": "I have to pee", "points": 25, "synonyms": ["pee", "bathroom", "restroom", "hold my seat", "brb"]},
       {"text": "Who is that?", "points": 20, "synonyms": ["who is that", "actor", "where do i know them from", "is that"]},
-      {"text": "Pass the popcorn", "points": 10, "synonyms": ["popcorn", "candy", "snacks", "drink", "soda", "food"]},
+      {"text": "Pass the popcorn", "points": 10, "synonyms": ["popcorn", "candy", "snacks", "drink", "soda"]},
       {"text": "This movie sucks", "points": 6, "synonyms": ["boring", "bad movie", "sucks", "lets leave", "long"]},
       {"text": "I love you", "points": 4, "synonyms": ["love you", "kiss me", "sweet nothings", "dirty talk", "horny"]}
     ]
@@ -225,7 +225,7 @@ const questionBank = [
       {"text": "Shave", "points": 15, "synonyms": ["shave", "shaving", "trim", "brush teeth"]},
       {"text": "Cry", "points": 8, "synonyms": ["cry", "crying", "sob", "break down"]},
       {"text": "Think/Argue in your head", "points": 7, "synonyms": ["think", "daydream", "argue", "zone out", "relax", "stand there"]},
-      {"text": "Masturbate", "points": 5, "synonyms": ["masturbate", "touch yourself", "jerk off", "sex", "pleasure"]}
+      {"text": "Masturbate", "points": 5, "synonyms": ["masturbate", "touch yourself", "jerk off", "pleasure"]}
     ]
   },
   {
@@ -244,8 +244,8 @@ const questionBank = [
     "question": "Name something people hide when guests come over.",
     "category": "Adult",
     "answers": [
-      {"text": "Mess/Clutter", "points": 40, "synonyms": ["mess", "clutter", "junk", "trash", "dishes", "mail", "stuff"]},
-      {"text": "Dirty laundry", "points": 25, "synonyms": ["laundry", "dirty clothes", "underwear", "hamper", "clothes"]},
+      {"text": "Mess/Clutter", "points": 40, "synonyms": ["mess", "clutter", "junk", "trash", "dishes", "mail"]},
+      {"text": "Dirty laundry", "points": 25, "synonyms": ["laundry", "dirty clothes", "underwear", "hamper"]},
       {"text": "Valuables/Money", "points": 15, "synonyms": ["money", "cash", "jewelry", "valuables", "wallet", "expensive"]},
       {"text": "Sex toys", "points": 10, "synonyms": ["sex toys", "vibrator", "dildo", "lube", "condoms", "adult items"]},
       {"text": "Medications", "points": 6, "synonyms": ["pills", "medicine", "prescriptions", "rx", "drugs"]},
@@ -304,8 +304,8 @@ const questionBank = [
     "question": "Name something you might delete from your search history before letting someone use your phone.",
     "category": "Adult",
     "answers": [
-      {"text": "Porn/Adult sites", "points": 45, "synonyms": ["porn", "pornhub", "xxx", "nsfw", "adult", "sex", "onlyfans", "videos"]},
-      {"text": "Embarrassing medical symptoms", "points": 20, "synonyms": ["medical", "webmd", "symptoms", "rash", "std", "sti", "health", "doctor", "sick"]},
+      {"text": "Porn/Adult sites", "points": 45, "synonyms": ["porn", "pornhub", "xxx", "nsfw", "adult", "onlyfans", "adult sites"]},
+      {"text": "Embarrassing medical symptoms", "points": 20, "synonyms": ["medical", "webmd", "symptoms", "rash", "std", "sti", "health", "doctor"]},
       {"text": "Ex's social media", "points": 15, "synonyms": ["ex", "stalking ex", "instagram", "facebook", "old flame", "ex girlfriend", "ex boyfriend"]},
       {"text": "Stupid/Basic questions", "points": 10, "synonyms": ["dumb questions", "stupid", "spelling", "how to", "embarrassing questions", "math"]},
       {"text": "Surprise gift ideas", "points": 6, "synonyms": ["gift", "present", "surprise", "ring", "birthday", "shopping"]},
@@ -316,23 +316,23 @@ const questionBank = [
     "question": "Name a reason someone might walk out of a bedroom looking disappointed.",
     "category": "Adult",
     "answers": [
-      {"text": "Bad sex", "points": 42, "synonyms": ["sex", "bad in bed", "finished too fast", "whiskey dick", "didnt finish", "no orgasm", "small"]},
-      {"text": "Partner fell asleep", "points": 22, "synonyms": ["asleep", "sleeping", "passed out", "tired", "snoring", "rejected", "not in the mood"]},
-      {"text": "Outfit doesn't fit", "points": 16, "synonyms": ["clothes", "outfit", "too tight", "gained weight", "jeans", "dress", "nothing to wear"]},
-      {"text": "Couldn't find what they needed", "points": 12, "synonyms": ["lost", "missing", "cant find", "keys", "phone", "wallet", "charger"]},
-      {"text": "Had an argument", "points": 8, "synonyms": ["fight", "arguing", "mad", "upset", "breakup", "crying"]}
+      {"text": "Bad sex", "points": 42, "synonyms": ["bad sex", "bad in bed", "finished too fast", "whiskey dick", "didnt finish", "no orgasm", "lame"]},
+      {"text": "Partner fell asleep", "points": 24, "synonyms": ["fell asleep", "asleep", "sleeping", "passed out", "tired", "snoring"]},
+      {"text": "Rejected/Not in the mood", "points": 16, "synonyms": ["rejected", "not in the mood", "headache", "turned down", "said no"]},
+      {"text": "Outfit didn't fit/Look right", "points": 10, "synonyms": ["outfit", "clothes", "too tight", "lingerie", "dress", "nothing to wear"]},
+      {"text": "Had an argument", "points": 8, "synonyms": ["argument", "fight", "arguing", "mad", "upset", "crying"]}
     ]
   },
   {
     "question": "Name something you might find under a hotel bed that you wish you hadn't.",
     "category": "Adult",
     "answers": [
-      {"text": "Used condom", "points": 38, "synonyms": ["condom", "rubber", "wrapper", "protection", "used"]},
-      {"text": "Dirty underwear", "points": 24, "synonyms": ["underwear", "panties", "boxers", "bra", "thong", "socks", "clothes"]},
-      {"text": "Old food/Trash", "points": 15, "synonyms": ["food", "trash", "garbage", "pizza", "mold", "wrappers", "bottles"]},
-      {"text": "Sex toy", "points": 11, "synonyms": ["vibrator", "dildo", "lube", "handcuffs", "toy", "adult toy"]},
+      {"text": "Used condom", "points": 38, "synonyms": ["condom", "rubber", "wrapper", "protection", "used condom"]},
+      {"text": "Dirty underwear", "points": 24, "synonyms": ["dirty underwear", "panties", "boxers", "bra", "thong", "socks", "clothes"]},
+      {"text": "Old food/Trash", "points": 15, "synonyms": ["old food", "trash", "garbage", "pizza", "mold", "wrappers", "bottles"]},
+      {"text": "Sex toy", "points": 11, "synonyms": ["vibrator", "dildo", "sex toy", "lube", "handcuffs", "adult toy"]},
       {"text": "Drugs/Paraphernalia", "points": 7, "synonyms": ["drugs", "weed", "pills", "needle", "syringe", "pipe", "cocaine"]},
-      {"text": "Dead bug/Mouse", "points": 5, "synonyms": ["bug", "roach", "cockroach", "mouse", "rat", "bed bugs", "spider", "dead animal"]}
+      {"text": "Dead bug/Mouse", "points": 5, "synonyms": ["bug", "roach", "cockroach", "mouse", "rat", "bed bugs", "spider"]}
     ]
   },
   {
@@ -351,12 +351,12 @@ const questionBank = [
     "question": "Name something people lie about to their doctor.",
     "category": "Adult",
     "answers": [
-      {"text": "How much they drink", "points": 35, "synonyms": ["drinking", "alcohol", "beer", "wine", "liquor", "booze"]},
-      {"text": "Their weight", "points": 20, "synonyms": ["weight", "pounds", "heavy", "scale"]},
+      {"text": "How much they drink", "points": 35, "synonyms": ["how much they drink", "drinking", "alcohol", "beer", "wine", "liquor", "booze"]},
+      {"text": "Their weight", "points": 20, "synonyms": ["weight", "pounds", "heavy", "scale", "how much they weigh"]},
       {"text": "Exercise habits", "points": 15, "synonyms": ["exercise", "working out", "gym", "running", "active", "fitness"]},
       {"text": "Smoking/Drug use", "points": 12, "synonyms": ["smoking", "vaping", "weed", "drugs", "cigarettes", "marijuana"]},
-      {"text": "Their diet", "points": 10, "synonyms": ["diet", "eating", "food", "junk food", "fast food", "vegetables", "sugar"]},
-      {"text": "Number of sexual partners", "points": 8, "synonyms": ["sex", "partners", "body count", "unprotected", "flossing", "taking meds"]}
+      {"text": "Their diet", "points": 10, "synonyms": ["diet", "eating", "junk food", "fast food", "vegetables", "sugar"]},
+      {"text": "Number of sexual partners", "points": 8, "synonyms": ["sexual partners", "body count", "unprotected sex", "sex life"]}
     ]
   },
   {
@@ -378,21 +378,21 @@ const questionBank = [
       {"text": "Pick their nose", "points": 40, "synonyms": ["pick nose", "boogers", "nose"]},
       {"text": "Sing at the top of their lungs", "points": 25, "synonyms": ["sing", "singing", "jamming", "dancing", "concert", "rap"]},
       {"text": "Curse/Yell at drivers", "points": 14, "synonyms": ["curse", "swear", "yell", "road rage", "middle finger", "flip off", "scream"]},
-      {"text": "Change clothes/Adjust bra", "points": 10, "synonyms": ["change", "undress", "adjust bra", "fix underwear", "scratch", "makeup"]},
+      {"text": "Adjust clothes/Put on makeup", "points": 10, "synonyms": ["adjust bra", "fix underwear", "makeup", "lip gloss", "hair", "mirror"]},
       {"text": "Talk to themselves", "points": 6, "synonyms": ["talk to self", "cry", "argue", "rehearse", "practice"]},
-      {"text": "Eat messy food", "points": 5, "synonyms": ["eat", "eating", "fast food", "burger", "tacos", "fart", "smoke"]}
+      {"text": "Eat messy food", "points": 5, "synonyms": ["messy food", "fast food", "burger", "tacos", "snacks"]}
     ]
   },
   {
     "question": "Name an item you would be embarrassed for airport security to pull out of your bag.",
     "category": "Adult",
     "answers": [
-      {"text": "Sex toy/Vibrator", "points": 46, "synonyms": ["vibrator", "dildo", "sex toy", "adult toy", "toy", "butt plug"]},
-      {"text": "Dirty underwear", "points": 20, "synonyms": ["underwear", "panties", "boxers", "lingerie", "thong", "dirty clothes", "laundry"]},
+      {"text": "Sex toy/Vibrator", "points": 46, "synonyms": ["vibrator", "dildo", "sex toy", "adult toy", "butt plug"]},
+      {"text": "Dirty underwear", "points": 20, "synonyms": ["dirty underwear", "panties", "boxers", "lingerie", "thong", "laundry"]},
       {"text": "Condoms/Lube", "points": 14, "synonyms": ["condoms", "lube", "lubricant", "protection", "massage oil"]},
       {"text": "Weed/Drugs", "points": 10, "synonyms": ["weed", "edibles", "drugs", "vape", "bong", "pipe", "marijuana"]},
       {"text": "Embarrassing medication", "points": 6, "synonyms": ["viagra", "pills", "cream", "laxatives", "medication", "tampons", "diapers"]},
-      {"text": "Handcuffs", "points": 4, "synonyms": ["handcuffs", "whip", "bdsm", "rope", "fur", "porn", "magazine"]}
+      {"text": "Handcuffs", "points": 4, "synonyms": ["handcuffs", "whip", "bdsm", "rope", "kink gear"]}
     ]
   },
   {
@@ -416,43 +416,43 @@ const questionBank = [
       {"text": "Hide in the bathroom", "points": 16, "synonyms": ["bathroom", "pooping", "restroom", "stall", "hiding"]},
       {"text": "Apply for other jobs", "points": 12, "synonyms": ["job search", "applying", "linkedin", "indeed", "resume", "interviews"]},
       {"text": "Gossip with coworkers", "points": 8, "synonyms": ["gossip", "chatting", "talking", "slack", "teams", "hanging out"]},
-      {"text": "Take a nap", "points": 5, "synonyms": ["sleep", "nap", "doze off", "games", "play games", "eat"]}
+      {"text": "Take a nap", "points": 5, "synonyms": ["sleep", "nap", "doze off", "games", "play games"]}
     ]
   },
   {
     "question": "Name a sign that your neighbor is having a wild night.",
     "category": "Adult",
     "answers": [
-      {"text": "Loud music", "points": 35, "synonyms": ["music", "bass", "party", "shouting", "yelling", "screaming", "noise"]},
-      {"text": "Loud moaning/Bed banging", "points": 30, "synonyms": ["sex", "moaning", "bed banging", "headboard", "screaming", "creaking", "walls shaking"]},
+      {"text": "Loud music", "points": 35, "synonyms": ["loud music", "bass", "party", "shouting", "yelling", "screaming", "noise"]},
+      {"text": "Loud moaning/Bed banging", "points": 30, "synonyms": ["moaning", "bed banging", "headboard", "screaming", "creaking", "walls shaking"]},
       {"text": "Police showing up", "points": 15, "synonyms": ["cops", "police", "sirens", "ambulance", "flashing lights", "arrest"]},
       {"text": "Lots of cars parked outside", "points": 10, "synonyms": ["cars", "ubers", "people", "crowd", "guests", "parking"]},
-      {"text": "Smell of weed", "points": 6, "synonyms": ["weed", "smoke", "pot", "marijuana", "smell", "vomit", "puke"]},
-      {"text": "Breaking glass", "points": 4, "synonyms": ["glass", "bottles", "fighting", "arguing", "throwing things", "trash"]}
+      {"text": "Smell of weed", "points": 6, "synonyms": ["smell of weed", "weed smoke", "pot", "marijuana", "smell"]},
+      {"text": "Breaking glass", "points": 4, "synonyms": ["breaking glass", "bottles", "fighting", "arguing", "throwing things"]}
     ]
   },
   {
     "question": "Name something you definitely shouldn't say to a cop who just pulled you over.",
     "category": "Adult",
     "answers": [
-      {"text": "Do you know who I am?", "points": 30, "synonyms": ["who i am", "famous", "important", "my dad", "lawyer"]},
-      {"text": "I'm not even drunk", "points": 26, "synonyms": ["drunk", "had a few", "two beers", "drinking", "high", "weed", "sober"]},
+      {"text": "Do you know who I am?", "points": 30, "synonyms": ["do you know who i am", "who i am", "famous", "important", "my dad", "lawyer"]},
+      {"text": "I'm not even drunk", "points": 26, "synonyms": ["not even drunk", "had a few", "two beers", "high", "weed", "sober"]},
       {"text": "Don't you have real criminals to catch?", "points": 18, "synonyms": ["real criminals", "nothing better to do", "donuts", "quota", "waste of time"]},
-      {"text": "I pay your salary", "points": 12, "synonyms": ["taxes", "pay your salary", "my taxes", "work for me"]},
-      {"text": "What seems to be the officer, problem?", "points": 8, "synonyms": ["officer problem", "pig", "curse", "fuck", "shut up", "rude"]},
-      {"text": "Don't check the trunk", "points": 6, "synonyms": ["trunk", "drugs", "gun", "weapon", "warrant", "stolen", "speeding"]}
+      {"text": "I pay your salary", "points": 12, "synonyms": ["pay your salary", "taxes", "my taxes", "work for me"]},
+      {"text": "What seems to be the officer, problem?", "points": 8, "synonyms": ["officer problem", "pig", "curse", "shut up", "rude"]},
+      {"text": "Don't check the trunk", "points": 6, "synonyms": ["dont check the trunk", "trunk", "drugs", "gun", "weapon", "warrant", "stolen"]}
     ]
   },
   {
     "question": "Name a reason a couple might get into a fight on vacation.",
     "category": "Adult",
     "answers": [
-      {"text": "Spending too much money", "points": 30, "synonyms": ["money", "budget", "expensive", "spending", "cost", "bills"]},
-      {"text": "Getting lost/Directions", "points": 24, "synonyms": ["lost", "directions", "gps", "driving", "map", "navigation", "traffic"]},
-      {"text": "Running late/Missing a flight", "points": 18, "synonyms": ["late", "flight", "airport", "packing", "forgot passport", "schedule", "rushing"]},
-      {"text": "Drinking too much", "points": 12, "synonyms": ["drunk", "drinking", "alcohol", "hangover", "partying"]},
-      {"text": "Deciding where to eat", "points": 10, "synonyms": ["food", "hungry", "hangry", "restaurant", "dinner", "itinerary", "plans"]},
-      {"text": "Checking out someone else", "points": 6, "synonyms": ["flirting", "looking", "jealousy", "cheating", "taking photos", "phone"]}
+      {"text": "Spending too much money", "points": 30, "synonyms": ["spending too much", "budget", "expensive", "spending", "cost", "bills"]},
+      {"text": "Getting lost/Directions", "points": 24, "synonyms": ["getting lost", "lost", "directions", "gps", "driving", "map", "navigation", "traffic"]},
+      {"text": "Running late/Missing a flight", "points": 18, "synonyms": ["running late", "late", "flight", "airport", "packing", "forgot passport", "schedule"]},
+      {"text": "Drinking too much", "points": 12, "synonyms": ["drinking too much", "drunk", "alcohol", "hangover", "partying"]},
+      {"text": "Deciding where to eat", "points": 10, "synonyms": ["where to eat", "hungry", "hangry", "restaurant", "dinner", "itinerary", "plans"]},
+      {"text": "Checking out someone else", "points": 6, "synonyms": ["checking out someone else", "flirting", "looking", "jealousy", "taking photos"]}
     ]
   },
   {
@@ -460,11 +460,11 @@ const questionBank = [
     "category": "Adult",
     "answers": [
       {"text": "Toothbrush", "points": 30, "synonyms": ["toothbrush", "toothpaste", "mouthwash", "mints"]},
-      {"text": "Extra underwear", "points": 25, "synonyms": ["underwear", "panties", "boxers", "lingerie", "clean underwear"]},
+      {"text": "Extra underwear", "points": 25, "synonyms": ["extra underwear", "underwear", "panties", "boxers", "lingerie", "clean underwear"]},
       {"text": "Deodorant/Makeup", "points": 18, "synonyms": ["deodorant", "makeup", "perfume", "cologne", "face wash", "skincare", "toiletries"]},
       {"text": "Condoms", "points": 14, "synonyms": ["condoms", "protection", "lube", "birth control", "plan b"]},
-      {"text": "Phone charger", "points": 8, "synonyms": ["charger", "cord", "battery pack", "cable"]},
-      {"text": "Change of clothes", "points": 5, "synonyms": ["clothes", "shirt", "pajamas", "leggings", "hairbrush", "contacts", "meds"]}
+      {"text": "Phone charger", "points": 8, "synonyms": ["phone charger", "charger", "cord", "battery pack", "cable"]},
+      {"text": "Change of clothes", "points": 5, "synonyms": ["change of clothes", "clothes", "shirt", "pajamas", "leggings", "hairbrush", "contacts"]}
     ]
   },
   {
@@ -472,31 +472,31 @@ const questionBank = [
     "category": "Adult",
     "answers": [
       {"text": "Trashy reality TV", "points": 35, "synonyms": ["reality tv", "bachelor", "kardashians", "love island", "housewives", "trash tv", "drama"]},
-      {"text": "Fast food/Junk food", "points": 24, "synonyms": ["fast food", "mcdonalds", "taco bell", "junk food", "ice cream", "candy", "chocolate", "eating"]},
-      {"text": "Cheesy pop music", "points": 15, "synonyms": ["pop music", "boy bands", "taylor swift", "nickelback", "cheesy music", "singing"]},
+      {"text": "Fast food/Junk food", "points": 24, "synonyms": ["fast food", "mcdonalds", "taco bell", "junk food", "ice cream", "candy", "chocolate"]},
+      {"text": "Cheesy pop music", "points": 15, "synonyms": ["pop music", "boy bands", "cheesy music", "singing"]},
       {"text": "Stalking people online", "points": 12, "synonyms": ["stalking", "gossip", "snooping", "social media", "lurking", "tiktok"]},
-      {"text": "Popping pimples", "points": 8, "synonyms": ["pimples", "zits", "popping", "picking", "dr pimple popper"]},
-      {"text": "Spicy romance novels", "points": 6, "synonyms": ["romance", "smut", "erotica", "fanfiction", "porn", "rom coms"]}
+      {"text": "Popping pimples", "points": 8, "synonyms": ["popping pimples", "pimples", "zits", "popping", "dr pimple popper"]},
+      {"text": "Spicy romance novels", "points": 6, "synonyms": ["romance novels", "smut", "erotica", "fanfiction", "rom coms"]}
     ]
   },
   {
     "question": "Name something you would panic about accidentally sending to the wrong person.",
     "category": "Adult",
     "answers": [
-      {"text": "Nude photo", "points": 42, "synonyms": ["nude", "nudes", "naked", "dick pic", "sexy photo", "boobs", "explicit", "picture"]},
+      {"text": "Nude photo", "points": 42, "synonyms": ["nude", "nudes", "naked", "dick pic", "sexy photo", "explicit", "nude photo"]},
       {"text": "Talking trash about them", "points": 30, "synonyms": ["gossip", "trash talk", "screenshot", "talking bad", "complaining", "insult", "mean text"]},
       {"text": "A drunk text", "points": 14, "synonyms": ["drunk text", "flirty text", "sexting", "dirty text", "booty call"]},
       {"text": "I love you", "points": 8, "synonyms": ["i love you", "love you", "crush", "confession", "secret"]},
-      {"text": "Bank/Password info", "points": 6, "synonyms": ["money", "venmo", "zelle", "password", "ssn", "credit card", "bank"]}
+      {"text": "Bank/Password info", "points": 6, "synonyms": ["venmo", "zelle", "password", "ssn", "credit card", "bank info"]}
     ]
   },
   {
     "question": "Name a reason someone might sneak out of a house at 5 AM.",
     "category": "Adult",
     "answers": [
-      {"text": "Regrettable one-night stand", "points": 45, "synonyms": ["one night stand", "hookup", "walk of shame", "regret", "bad sex", "ugly", "tinder"]},
+      {"text": "Regrettable one-night stand", "points": 45, "synonyms": ["one night stand", "hookup", "walk of shame", "regret", "bad hookup", "tinder"]},
       {"text": "Having an affair", "points": 25, "synonyms": ["cheating", "affair", "married", "spouse coming home", "side piece", "secret"]},
-      {"text": "Going to work early", "points": 14, "synonyms": ["work", "job", "early shift", "flight", "gym", "running"]},
+      {"text": "Going to work early", "points": 14, "synonyms": ["work early", "early shift", "flight", "gym", "running"]},
       {"text": "Avoiding roommates/parents", "points": 10, "synonyms": ["parents", "roommates", "kids", "awkward", "dont want to talk", "curfew"]},
       {"text": "They stole something", "points": 6, "synonyms": ["stole", "robbery", "burglar", "theft", "broke something"]}
     ]
@@ -505,24 +505,24 @@ const questionBank = [
     "question": "Name a sound you never want to hear coming from the bathroom stall next to you.",
     "category": "Adult",
     "answers": [
-      {"text": "Explosive farting/Diarrhea", "points": 40, "synonyms": ["fart", "farting", "diarrhea", "poop", "plop", "splash", "explosion", "gas"]},
-      {"text": "Vomiting", "points": 24, "synonyms": ["puking", "throwing up", "barfing", "gagging", "retching", "vomit"]},
-      {"text": "Someone talking on the phone", "points": 14, "synonyms": ["phone", "talking", "facetime", "zoom", "speakerphone", "video", "camera"]},
-      {"text": "Moaning/Sex sounds", "points": 10, "synonyms": ["moaning", "sex", "grunting", "groaning", "masturbating", "heavy breathing"]},
-      {"text": "Crying", "points": 7, "synonyms": ["crying", "sobbing", "yelling", "praying", "screaming", "oh god"]},
-      {"text": "Asking for toilet paper", "points": 5, "synonyms": ["toilet paper", "tp", "no paper", "spare a square", "help"]}
+      {"text": "Loud farting", "points": 28, "synonyms": ["fart", "farting", "toot", "gas", "passing gas"]},
+      {"text": "Diarrhea/Plops", "points": 20, "synonyms": ["diarrhea", "poop", "plop", "splash", "explosion"]},
+      {"text": "Vomiting", "points": 22, "synonyms": ["puking", "throwing up", "barfing", "gagging", "retching", "vomit"]},
+      {"text": "Moaning/Grunting", "points": 12, "synonyms": ["moaning", "grunting", "groaning", "heavy breathing", "strain"]},
+      {"text": "Crying/Sobbing", "points": 10, "synonyms": ["crying", "sobbing", "yelling", "screaming", "oh god"]},
+      {"text": "Someone on a phone call", "points": 10, "synonyms": ["phone", "talking on phone", "facetime", "speakerphone", "video call"]}
     ]
   },
   {
     "question": "Name something that instantly ruins the mood in the bedroom.",
     "category": "Adult",
     "answers": [
-      {"text": "Phone ringing/Texting", "points": 28, "synonyms": ["phone", "ringing", "texting", "alarm", "notification", "call", "mom calling"]},
-      {"text": "Kid or pet walking in", "points": 24, "synonyms": ["kids", "baby", "crying", "dog", "cat", "pet", "roommate", "parents", "knocking"]},
-      {"text": "Farting", "points": 20, "synonyms": ["fart", "gas", "burp", "queef", "smell", "stink"]},
-      {"text": "Bad breath/Body odor", "points": 12, "synonyms": ["bad breath", "bo", "stinky", "sweat", "hygiene", "smell"]},
-      {"text": "Saying the wrong name", "points": 10, "synonyms": ["wrong name", "ex", "talking about work", "arguing", "weird comment"]},
-      {"text": "Getting a leg cramp", "points": 6, "synonyms": ["cramp", "charley horse", "injury", "headache", "falling asleep", "too drunk"]}
+      {"text": "Phone ringing/Texting", "points": 28, "synonyms": ["phone ringing", "texting", "alarm", "notification", "phone call", "mom calling"]},
+      {"text": "Kid or pet walking in", "points": 24, "synonyms": ["kids", "baby crying", "dog", "cat", "pet", "roommate", "parents", "knocking"]},
+      {"text": "Farting", "points": 20, "synonyms": ["fart", "farting", "gas", "burp", "queef", "smell"]},
+      {"text": "Bad breath/Body odor", "points": 12, "synonyms": ["bad breath", "bo", "stinky", "sweat", "hygiene", "body odor"]},
+      {"text": "Saying the wrong name", "points": 10, "synonyms": ["wrong name", "ex name", "talking about work", "arguing", "weird comment"]},
+      {"text": "Getting a leg cramp", "points": 6, "synonyms": ["leg cramp", "charley horse", "cramp", "injury", "headache", "falling asleep"]}
     ]
   },
   {
@@ -534,7 +534,7 @@ const questionBank = [
       {"text": "Upcoming wedding/Reunion", "points": 15, "synonyms": ["wedding", "reunion", "vacation", "beach", "summer", "trip", "event"]},
       {"text": "New Year's resolution", "points": 10, "synonyms": ["new year", "resolution", "health", "self improvement", "confidence"]},
       {"text": "Doctor's warning", "points": 6, "synonyms": ["doctor", "health scare", "gained weight", "clothes dont fit", "midlife crisis"]},
-      {"text": "New job", "points": 4, "synonyms": ["job", "promotion", "interview", "raise", "rich", "money"]}
+      {"text": "New job", "points": 4, "synonyms": ["job", "promotion", "interview", "raise", "rich"]}
     ]
   },
   {
@@ -553,11 +553,11 @@ const questionBank = [
     "question": "Name a classic lie people tell when calling in sick to work.",
     "category": "Adult",
     "answers": [
-      {"text": "Food poisoning/Stomach bug", "points": 35, "synonyms": ["food poisoning", "stomach", "diarrhea", "throwing up", "puking", "nausea", "upset stomach"]},
+      {"text": "Food poisoning/Stomach bug", "points": 35, "synonyms": ["food poisoning", "stomach bug", "diarrhea", "throwing up", "puking", "nausea", "upset stomach"]},
       {"text": "Migraine/Headache", "points": 24, "synonyms": ["migraine", "headache", "dizzy", "hungover"]},
-      {"text": "Family emergency", "points": 16, "synonyms": ["emergency", "family", "grandma died", "funeral", "sick kid", "pet"]},
+      {"text": "Family emergency", "points": 16, "synonyms": ["family emergency", "emergency", "grandma died", "funeral", "sick kid", "pet"]},
       {"text": "Fever/Flu", "points": 12, "synonyms": ["fever", "flu", "covid", "cold", "cough", "sore throat", "contagious"]},
-      {"text": "Car trouble", "points": 8, "synonyms": ["car", "flat tire", "battery", "accident", "traffic", "locked out"]},
+      {"text": "Car trouble", "points": 8, "synonyms": ["car trouble", "flat tire", "battery", "accident", "traffic", "locked out"]},
       {"text": "Doctor's appointment", "points": 5, "synonyms": ["doctor", "dentist", "appointment", "plumber", "delivery"]}
     ]
   },
@@ -565,34 +565,34 @@ const questionBank = [
     "question": "Name something on a dating app profile that is an instant red flag.",
     "category": "Adult",
     "answers": [
-      {"text": "Holding a dead fish", "points": 28, "synonyms": ["fish", "fishing", "hunting", "dead animal", "deer"]},
-      {"text": "Only group photos", "points": 20, "synonyms": ["group photos", "friends", "cant tell who", "sunglasses", "filters", "snapchat"]},
-      {"text": "Shirtless bathroom selfies", "points": 18, "synonyms": ["shirtless", "mirror selfie", "gym selfie", "abs", "bathroom", "flexing"]},
-      {"text": "Bashing their ex/No drama", "points": 15, "synonyms": ["no drama", "ex", "negative", "angry", "bitter", "fluent in sarcasm", "requirements"]},
-      {"text": "Empty bio", "points": 10, "synonyms": ["no bio", "empty", "blank", "just ask", "instagram handle", "venmo", "cashapp"]},
-      {"text": "Married/Looking for a third", "points": 9, "synonyms": ["married", "enm", "poly", "couple", "threesome", "open relationship", "kids", "height"]}
+      {"text": "Holding a dead fish", "points": 28, "synonyms": ["dead fish", "fishing", "hunting", "dead animal", "deer"]},
+      {"text": "Only group photos", "points": 20, "synonyms": ["group photos", "friends", "cant tell who", "sunglasses", "heavy filters"]},
+      {"text": "Shirtless bathroom selfies", "points": 18, "synonyms": ["shirtless", "mirror selfie", "gym selfie", "abs", "bathroom selfie", "flexing"]},
+      {"text": "Bashing their ex/No drama", "points": 15, "synonyms": ["no drama", "bashing ex", "negative", "angry", "bitter", "fluent in sarcasm"]},
+      {"text": "Empty bio", "points": 10, "synonyms": ["empty bio", "no bio", "blank bio", "instagram handle", "venmo", "cashapp"]},
+      {"text": "Married/Looking for a third", "points": 9, "synonyms": ["married", "enm", "poly", "couple", "threesome", "open relationship"]}
     ]
   },
   {
     "question": "Name something people do right after a bad breakup.",
     "category": "Adult",
     "answers": [
-      {"text": "Drink/Go out partying", "points": 28, "synonyms": ["drink", "alcohol", "bar", "club", "party", "wine", "get drunk"]},
-      {"text": "Eat ice cream/Junk food", "points": 22, "synonyms": ["eat", "ice cream", "pizza", "chocolate", "junk food", "comfort food", "binge"]},
-      {"text": "Rebound hookup", "points": 18, "synonyms": ["rebound", "hookup", "sex", "tinder", "dating apps", "sleep around", "one night stand"]},
-      {"text": "Change their hair/Look", "points": 12, "synonyms": ["haircut", "bangs", "dye hair", "new hair", "tattoo", "piercing", "shopping", "makeover"]},
+      {"text": "Drink/Go out partying", "points": 28, "synonyms": ["get drunk", "alcohol", "bar", "club", "party", "wine", "partying"]},
+      {"text": "Eat ice cream/Junk food", "points": 22, "synonyms": ["ice cream", "pizza", "chocolate", "junk food", "comfort food", "binge eating"]},
+      {"text": "Rebound hookup", "points": 18, "synonyms": ["rebound", "hookup", "tinder", "dating apps", "sleep around", "one night stand"]},
+      {"text": "Change their hair/Look", "points": 12, "synonyms": ["haircut", "bangs", "dye hair", "new hair", "tattoo", "piercing", "makeover"]},
       {"text": "Cry to sad music", "points": 10, "synonyms": ["cry", "sad music", "bed", "depressed", "vent", "call friends"]},
       {"text": "Hit the gym", "points": 6, "synonyms": ["gym", "work out", "exercise", "revenge body"]},
-      {"text": "Stalk their ex online", "points": 4, "synonyms": ["stalk", "block", "delete photos", "drunk text", "burn stuff"]}
+      {"text": "Stalk their ex online", "points": 4, "synonyms": ["stalk ex", "block ex", "delete photos", "drunk text", "burn stuff"]}
     ]
   },
   {
     "question": "Name a reason you might pretend your phone battery died.",
     "category": "Adult",
     "answers": [
-      {"text": "Avoiding a clingy date/ex", "points": 35, "synonyms": ["ex", "date", "annoying person", "ignoring someone", "dont want to talk", "clingy", "ghosting"]},
+      {"text": "Avoiding a clingy date/ex", "points": 35, "synonyms": ["ex", "clingy date", "annoying person", "ignoring someone", "dont want to talk", "ghosting"]},
       {"text": "Ignoring your boss/work", "points": 25, "synonyms": ["boss", "work", "coworker", "weekend", "day off", "shift"]},
-      {"text": "Late/Flaking on plans", "points": 18, "synonyms": ["late", "flaking", "bail", "cancel", "staying home", "lazy", "asleep"]},
+      {"text": "Late/Flaking on plans", "points": 18, "synonyms": ["late", "flaking", "bail", "cancel", "staying home", "asleep"]},
       {"text": "Didn't want to talk to parents", "points": 12, "synonyms": ["mom", "dad", "parents", "family", "partner", "spouse"]},
       {"text": "Out somewhere you shouldn't be", "points": 10, "synonyms": ["cheating", "sneaking out", "bar", "partying", "hiding", "location", "trouble"]}
     ]
