@@ -1,4 +1,4 @@
-// Complete 160-question bank (1-50 Adult, 51-100 Everyday Classics, 101-125 Hypotheticals & Chaos, 126-150 Modern Life & Pet Peeves, 151-160 Christmas & Holidays)
+// Complete 175-question bank (1-50 Adult, 51-100 Everyday Classics, 101-125 Hypotheticals & Chaos, 126-150 Modern Life & Pet Peeves, 151-175 Christmas & Holidays)
 const questionBank = [
 {
     "question": "Name a reason someone might secretly check their partner's phone.",
@@ -501,16 +501,16 @@ const questionBank = [
       {"text": "They stole something", "points": 6, "synonyms": ["stole", "robbery", "burglar", "theft", "broke something"]}
     ]
   },
-  {
+{
     "question": "Name a sound you never want to hear coming from the bathroom stall next to you.",
     "category": "Adult",
     "answers": [
       {"text": "Loud farting", "points": 28, "synonyms": ["fart", "farting", "toot", "gas", "passing gas"]},
-      {"text": "Diarrhea/Plops", "points": 20, "synonyms": ["diarrhea", "poop", "plop", "splash", "explosion"]},
       {"text": "Vomiting", "points": 22, "synonyms": ["puking", "throwing up", "barfing", "gagging", "retching", "vomit"]},
+      {"text": "Diarrhea/Plops", "points": 20, "synonyms": ["diarrhea", "poop", "plop", "splash", "explosion"]},
       {"text": "Moaning/Grunting", "points": 12, "synonyms": ["moaning", "grunting", "groaning", "heavy breathing", "strain"]},
       {"text": "Crying/Sobbing", "points": 10, "synonyms": ["crying", "sobbing", "yelling", "screaming", "oh god"]},
-      {"text": "Someone on a phone call", "points": 10, "synonyms": ["phone", "talking on phone", "facetime", "speakerphone", "video call"]}
+      {"text": "Someone on a phone call", "points": 8, "synonyms": ["phone", "talking on phone", "facetime", "speakerphone", "video call"]}
     ]
   },
   {
