@@ -395,13 +395,17 @@
     }
 
     .question-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
       font-size: 19px;
       font-weight: 700;
       line-height: 1.38;
       letter-spacing: 0.05em;
       text-align: center;
       margin-bottom: 12px;
-      padding: 12px 22px;
+      padding: 10px 22px 12px 22px;
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -409,6 +413,39 @@
       border-radius: 12px;
       box-shadow: var(--neon-white-glow), 0 10px 24px rgba(0, 0, 0, 0.6);
       width: 100%;
+    }
+
+    /* CATEGORY BADGE ON BOARD & TV SCREEN */
+    .question-category-pill {
+      display: none;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-gold);
+      background: rgba(254, 209, 65, 0.14);
+      border: 1px solid rgba(254, 209, 65, 0.65);
+      padding: 3px 12px;
+      border-radius: 20px;
+      line-height: 1.2;
+    }
+
+    .question-category-pill.show { display: inline-block; }
+
+    body.tv-mode .question-display {
+      font-size: 24px;
+      padding: 14px 26px 16px 26px;
+      gap: 8px;
+    }
+
+    body.tv-mode .question-category-pill {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      padding: 5px 18px;
+      background: linear-gradient(180deg, rgba(254, 209, 65, 0.26) 0%, rgba(255, 174, 0, 0.16) 100%);
+      border: 1.5px solid var(--accent-gold);
+      box-shadow: 0 0 14px rgba(254, 209, 65, 0.4);
+      color: #fff3c4;
     }
 
     /* CLASSIC FAMILY FEUD BOARD HOUSING */
@@ -1656,8 +1693,8 @@
   <!-- Start Screen Overlay -->
   <div class="start-screen" id="startScreen">
     <h1 class="start-title">Family Feud</h1>
-    <p class="start-subtitle">
-      100 Shuffled Questions &bull; Solo Arcade or Live Host Mode
+    <p class="start-subtitle" id="startSubtitle">
+      Shuffled Questions &bull; Solo Arcade or Live Host Mode
     </p>
 
     <div class="setup-panel">
@@ -1696,7 +1733,7 @@
           <button class="opt-btn selected" data-val="10" onclick="setRoundLength(10, this)">10</button>
           <button class="opt-btn" data-val="25" onclick="setRoundLength(25, this)">25</button>
           <button class="opt-btn" data-val="50" onclick="setRoundLength(50, this)">50</button>
-          <button class="opt-btn" data-val="100" onclick="setRoundLength(100, this)">All (100)</button>
+          <button class="opt-btn" id="allRoundsBtn" data-val="100" onclick="setRoundLength(parseInt(this.dataset.val, 10), this)">All</button>
         </div>
       </div>
 
@@ -1749,9 +1786,12 @@
 
   <!-- Main Game Area (Centered in Solo/TV, 3-Column Grid in Host Mode) -->
   <div class="game-container">
-    <!-- Left Column: Question + 8-Slot Board -->
+    <!-- Left Column: Category + Question + 8-Slot Board -->
     <div class="board-column">
-      <div class="question-display" id="questionText">Ready to Play...</div>
+      <div class="question-display">
+        <span class="question-category-pill" id="questionCategoryPill"></span>
+        <div id="questionText">Ready to Play...</div>
+      </div>
       
       <div class="board-frame">
         <div class="board" id="board"></div>
@@ -1834,7 +1874,7 @@
     </div>
   </div>
 
-  <!-- External 100-Question Bank -->
+  <!-- External Question Bank -->
   <script src="questions.js"></script>
 
   <script>
@@ -1905,7 +1945,30 @@
       return (q && q.category && String(q.category).trim()) ? String(q.category).trim() : 'General';
     }
 
+    function updateBoardCategoryBadge(catName) {
+      const pill = document.getElementById('questionCategoryPill');
+      if (!pill) return;
+      if (catName) {
+        pill.innerText = catName;
+        pill.classList.add('show');
+      } else {
+        pill.innerText = '';
+        pill.classList.remove('show');
+      }
+    }
+
     function initCategories() {
+      const totalQ = questionBank.length;
+      const subtitleEl = document.getElementById('startSubtitle');
+      if (subtitleEl) {
+        subtitleEl.innerHTML = `${totalQ} Shuffled Questions &bull; Solo Arcade or Live Host Mode`;
+      }
+      const allBtn = document.getElementById('allRoundsBtn');
+      if (allBtn) {
+        allBtn.dataset.val = totalQ;
+        allBtn.innerText = `All (${totalQ})`;
+      }
+
       const counts = new Map();
       questionBank.forEach(q => {
         const cat = getQuestionCategory(q);
@@ -2195,6 +2258,7 @@
       }
 
       const qData = questionBank[activeQuestionIndices[currentIndex]];
+      updateBoardCategoryBadge(getQuestionCategory(qData));
       document.getElementById('questionText').innerText = qData.question;
       document.getElementById('roundText').innerText = `ROUND ${currentIndex + 1} / ${activeQuestionIndices.length}`;
       roundActive = true;
@@ -2290,6 +2354,7 @@
       syncChannel.postMessage({
         type: 'SYNC_STATE',
         payload: {
+          category: qObj ? getQuestionCategory(qObj) : '',
           question: qObj ? qObj.question : '',
           roundNum: currentIndex + 1,
           totalRounds: activeQuestionIndices.length,
@@ -2359,6 +2424,7 @@
       document.getElementById('activeTeamName').innerText = activeTeam ? activeTeam.name : '';
 
       document.getElementById('roundText').innerText = `ROUND ${state.roundNum} / ${state.totalRounds}`;
+      updateBoardCategoryBadge(state.category || '');
       document.getElementById('questionText').innerText = state.question;
       document.getElementById('roundBankText').innerText = state.roundBank;
 
@@ -2902,6 +2968,7 @@
 
     function loadQuestion(index) {
       const qData = questionBank[activeQuestionIndices[index]];
+      updateBoardCategoryBadge(getQuestionCategory(qData));
       document.getElementById('questionText').innerText = qData.question;
       document.getElementById('roundText').innerText = `ROUND ${index + 1} / ${activeQuestionIndices.length}`;
       
