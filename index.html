@@ -299,8 +299,24 @@
       padding: 6px 22px;
       text-align: center;
       box-shadow: 0 0 20px rgba(255, 174, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.25);
-      min-width: 140px;
+      min-width: 150px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
     }
+
+    .round-bank-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 26px rgba(254, 209, 65, 0.75), inset 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .round-bank-box.boosted {
+      border-color: #6ee787;
+      box-shadow: 0 0 24px rgba(110, 231, 135, 0.65), inset 0 0 12px rgba(255, 255, 255, 0.28);
+    }
+
+    body.tv-mode .round-bank-box { cursor: default; }
+    body.tv-mode .round-bank-box:hover { transform: none; }
 
     .round-bank-label {
       font-size: 10px;
@@ -309,6 +325,10 @@
       letter-spacing: 0.16em;
       color: var(--accent-gold);
       margin-bottom: 1px;
+    }
+
+    .round-bank-box.boosted .round-bank-label {
+      color: #6ee787;
     }
 
     .round-bank-value {
@@ -395,6 +415,7 @@
     }
 
     .question-display {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -405,7 +426,7 @@
       letter-spacing: 0.05em;
       text-align: center;
       margin-bottom: 12px;
-      padding: 10px 22px 12px 22px;
+      padding: 10px 44px 12px 44px;
       background: var(--glass-bg-strong);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -413,6 +434,39 @@
       border-radius: 12px;
       box-shadow: var(--neon-white-glow), 0 10px 24px rgba(0, 0, 0, 0.6);
       width: 100%;
+    }
+
+    /* QUICK QUESTION SWAP BUTTON (HOST ONLY) */
+    .swap-question-btn {
+      display: none;
+      position: absolute;
+      top: 9px;
+      right: 10px;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #cbd5e1;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      padding: 0;
+    }
+
+    body.host-layout:not(.tv-mode) .swap-question-btn {
+      display: inline-flex;
+    }
+
+    .swap-question-btn:hover {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
+      transform: rotate(90deg);
     }
 
     /* CATEGORY BADGE ON BOARD & TV SCREEN */
@@ -1499,7 +1553,7 @@
 
     .delete-save-btn:hover { background: var(--strike-red); color: #fff; }
 
-    /* STRIKE OVERLAY */
+    /* STRIKE / STEAL OVERLAY */
     .strike-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -1519,9 +1573,16 @@
       font-size: 260px;
       color: var(--strike-red);
       font-weight: 900;
+      text-align: center;
       text-shadow: 0 0 45px rgba(230, 0, 38, 0.8), 0 0 12px #000;
       transform: scale(0.5);
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .strike-mark.steal-mode {
+      color: var(--accent-gold);
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 45px rgba(254, 209, 65, 0.85), 0 0 16px #000;
     }
 
     .strike-overlay.show .strike-mark { transform: scale(1); }
@@ -1633,7 +1694,8 @@
     body.tv-mode .player-console,
     body.tv-mode .host-dashboard,
     body.tv-mode .next-btn,
-    body.tv-mode .game-over-actions {
+    body.tv-mode .game-over-actions,
+    body.tv-mode .swap-question-btn {
       display: none !important;
     }
 
@@ -1775,10 +1837,10 @@
     </div>
   </div>
 
-  <!-- Host Mode Round Bank + Team Scorecards -->
+  <!-- Host Mode Round Bank (Click to Cycle 1X / 2X / 3X) + Team Scorecards -->
   <div class="host-scoreboard-bar" id="hostScoreboardBar">
-    <div class="round-bank-box">
-      <div class="round-bank-label">Round Bank</div>
+    <div class="round-bank-box" id="roundBankBox" onclick="cycleRoundMultiplier()" title="Click to cycle 1X / 2X / 3X Round Multiplier">
+      <div class="round-bank-label" id="roundBankLabel">Round Bank</div>
       <div class="round-bank-value" id="roundBankText">0</div>
     </div>
     <div class="player-scorecards" id="playerScorecards"></div>
@@ -1789,6 +1851,7 @@
     <!-- Left Column: Category + Question + 8-Slot Board -->
     <div class="board-column">
       <div class="question-display">
+        <button class="swap-question-btn" onclick="swapCurrentQuestion()" title="Swap for a different unused question">&#8635;</button>
         <span class="question-category-pill" id="questionCategoryPill"></span>
         <div id="questionText">Ready to Play...</div>
       </div>
@@ -1849,7 +1912,7 @@
     </div>
   </div>
 
-  <!-- Strike / Time's Up Animation -->
+  <!-- Strike / Time's Up / Steal Animation -->
   <div class="strike-overlay" id="strikeOverlay">
     <div class="strike-mark" id="strikeMark">X</div>
   </div>
@@ -1919,6 +1982,8 @@
     let rosterNames = ['Team 1', 'Team 2'];
     let players = [];
     let activePlayerIndex = 0;
+    let rawRoundBank = 0;
+    let roundMultiplier = 1; // 1, 2, or 3
     let roundBank = 0;
 
     // Round State
@@ -2142,6 +2207,8 @@
         totalScore,
         players,
         activePlayerIndex,
+        rawRoundBank,
+        roundMultiplier,
         roundBank,
         currentStrikes,
         revealedTiles,
@@ -2241,7 +2308,9 @@
       totalScore = save.totalScore || 0;
       players = save.players ? save.players.map(p => ({ ...p })) : [];
       activePlayerIndex = save.activePlayerIndex || 0;
+      roundMultiplier = save.roundMultiplier || 1;
       roundBank = save.roundBank || 0;
+      rawRoundBank = save.rawRoundBank !== undefined ? save.rawRoundBank : Math.round(roundBank / roundMultiplier);
       currentStrikes = save.currentStrikes || 0;
       revealedTiles = save.revealedTiles || 0;
       timeLeft = save.timeLeft !== undefined ? save.timeLeft : selectedRoundTime;
@@ -2362,6 +2431,7 @@
           isLowTime: selectedRoundTime > 0 && timeLeft <= 10 && timeLeft > 0,
           strikes: currentStrikes,
           roundBank: roundBank,
+          roundMultiplier: roundMultiplier,
           players: players,
           activePlayerIndex: activePlayerIndex,
           answers: currentAnswers.map(a => ({
@@ -2398,8 +2468,12 @@
           const strikeMark = document.getElementById('strikeMark');
           strikeMark.innerText = msg.text;
           strikeMark.style.fontSize = msg.fontSize;
+          strikeMark.classList.toggle('steal-mode', !!msg.isSteal);
           overlay.classList.add('show');
-          setTimeout(() => overlay.classList.remove('show'), msg.duration || 1200);
+          setTimeout(() => {
+            overlay.classList.remove('show');
+            strikeMark.classList.remove('steal-mode');
+          }, msg.duration || 1200);
         }
       }
     };
@@ -2427,6 +2501,14 @@
       updateBoardCategoryBadge(state.category || '');
       document.getElementById('questionText').innerText = state.question;
       document.getElementById('roundBankText').innerText = state.roundBank;
+
+      const mult = state.roundMultiplier || 1;
+      const bankBox = document.getElementById('roundBankBox');
+      const bankLabel = document.getElementById('roundBankLabel');
+      if (bankBox && bankLabel) {
+        bankLabel.innerText = mult > 1 ? `Round Bank • ${mult}X` : 'Round Bank';
+        bankBox.classList.toggle('boosted', mult > 1);
+      }
 
       for (let i = 1; i <= 3; i++) {
         const x = document.getElementById(`strike-${i}`);
@@ -2793,6 +2875,8 @@
           score: 0
         }));
         activePlayerIndex = 0;
+        rawRoundBank = 0;
+        roundMultiplier = 1;
         roundBank = 0;
         applyModeLayout();
         renderScorecards();
@@ -2833,8 +2917,25 @@
       updateRoundBankUI();
     }
 
+    function cycleRoundMultiplier() {
+      if (isTVView || gameMode !== 'host') return;
+      roundMultiplier = roundMultiplier === 1 ? 2 : (roundMultiplier === 2 ? 3 : 1);
+      roundBank = rawRoundBank * roundMultiplier;
+      playTickSound();
+      updateRoundBankUI();
+      broadcastState();
+      saveCurrentGame();
+    }
+
     function updateRoundBankUI() {
       document.getElementById('roundBankText').innerText = roundBank;
+      const bankBox = document.getElementById('roundBankBox');
+      const bankLabel = document.getElementById('roundBankLabel');
+      if (bankBox && bankLabel) {
+        bankLabel.innerText = roundMultiplier > 1 ? `Round Bank • ${roundMultiplier}X` : 'Round Bank';
+        bankBox.classList.toggle('boosted', roundMultiplier > 1);
+      }
+
       const awardBtn = document.getElementById('awardBankBtn');
       if (awardBtn && players[activePlayerIndex]) {
         awardBtn.innerHTML = `Award Bank (${roundBank}) &rarr; ${players[activePlayerIndex].name}`;
@@ -2845,11 +2946,34 @@
     function awardRoundBank() {
       if (gameMode !== 'host' || roundBank <= 0 || !players[activePlayerIndex]) return;
       players[activePlayerIndex].score += roundBank;
+      rawRoundBank = 0;
       roundBank = 0;
       playAwardSound();
       renderScorecards();
       broadcastState();
       saveCurrentGame();
+    }
+
+    function swapCurrentQuestion() {
+      if (isTVView || gameMode !== 'host') return;
+      const usedSet = new Set(activeQuestionIndices);
+      const candidates = [];
+
+      questionBank.forEach((q, i) => {
+        if (!usedSet.has(i) && (selectedCategories.size === 0 || selectedCategories.has(getQuestionCategory(q)))) {
+          candidates.push(i);
+        }
+      });
+
+      if (candidates.length === 0) {
+        alert('No unused questions left in your selected categories.');
+        return;
+      }
+
+      const replacementIdx = candidates[Math.floor(Math.random() * candidates.length)];
+      activeQuestionIndices[currentIndex] = replacementIdx;
+      playTickSound();
+      loadQuestion(currentIndex);
     }
 
     function renderHostCheatsheet() {
@@ -2952,7 +3076,8 @@
       }
 
       if (customPoints > 0) {
-        roundBank += customPoints;
+        rawRoundBank += customPoints;
+        roundBank = rawRoundBank * roundMultiplier;
         updateRoundBankUI();
       }
 
@@ -2974,6 +3099,8 @@
       
       currentStrikes = 0;
       revealedTiles = 0;
+      rawRoundBank = 0;
+      roundMultiplier = 1;
       roundBank = 0;
       roundActive = true;
       isAnimatingStrike = false;
@@ -3072,12 +3199,13 @@
       
       const overlay = document.getElementById('strikeOverlay');
       const strikeMark = document.getElementById('strikeMark');
+      strikeMark.classList.remove('steal-mode');
       strikeMark.innerText = 'TIME!';
       strikeMark.style.fontSize = '160px';
       overlay.classList.add('show');
 
       if (gameMode === 'host') {
-        syncChannel.postMessage({ type: 'STRIKE_ANIM', text: 'TIME!', fontSize: '160px', duration: 1600 });
+        syncChannel.postMessage({ type: 'STRIKE_ANIM', text: 'TIME!', fontSize: '160px', duration: 1600, isSteal: false });
       }
       
       setTimeout(() => {
@@ -3181,15 +3309,32 @@
       const xText = 'X'.repeat(currentStrikes);
       const overlay = document.getElementById('strikeOverlay');
       const strikeMark = document.getElementById('strikeMark');
+      strikeMark.classList.remove('steal-mode');
       strikeMark.innerText = xText;
       strikeMark.style.fontSize = '260px';
       overlay.classList.add('show');
 
-      syncChannel.postMessage({ type: 'STRIKE_ANIM', text: xText, fontSize: '260px', duration: 1200 });
+      syncChannel.postMessage({ type: 'STRIKE_ANIM', text: xText, fontSize: '260px', duration: 1200, isSteal: false });
 
       setTimeout(() => {
         overlay.classList.remove('show');
-        isAnimatingStrike = false;
+        if (currentStrikes === 3) {
+          setTimeout(() => {
+            strikeMark.classList.add('steal-mode');
+            strikeMark.innerText = 'STEAL CHANCE!';
+            strikeMark.style.fontSize = '88px';
+            overlay.classList.add('show');
+            syncChannel.postMessage({ type: 'STRIKE_ANIM', text: 'STEAL CHANCE!', fontSize: '88px', duration: 1500, isSteal: true });
+
+            setTimeout(() => {
+              overlay.classList.remove('show');
+              strikeMark.classList.remove('steal-mode');
+              isAnimatingStrike = false;
+            }, 1500);
+          }, 180);
+        } else {
+          isAnimatingStrike = false;
+        }
       }, 1200);
     }
 
@@ -3236,7 +3381,8 @@
             document.getElementById('scoreText').innerText = totalScore;
             updateHighScore(totalScore);
           } else {
-            roundBank += points;
+            rawRoundBank += points;
+            roundBank = rawRoundBank * roundMultiplier;
             updateRoundBankUI();
           }
         }
@@ -3258,6 +3404,7 @@
 
       const overlay = document.getElementById('strikeOverlay');
       const strikeMark = document.getElementById('strikeMark');
+      strikeMark.classList.remove('steal-mode');
       strikeMark.innerText = 'X'.repeat(currentStrikes);
       strikeMark.style.fontSize = '260px';
       overlay.classList.add('show');
