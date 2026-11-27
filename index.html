@@ -1573,7 +1573,7 @@
 
     .delete-save-btn:hover { background: var(--strike-red); color: #fff; }
 
-    /* STRIKE / STEAL OVERLAY */
+    /* STRIKE / STEAL / WINNER OVERLAY */
     .strike-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -1602,6 +1602,8 @@
     .strike-mark.steal-mode {
       color: var(--accent-gold);
       letter-spacing: 0.12em;
+      line-height: 1.15;
+      padding: 0 28px;
       text-shadow: 0 0 45px rgba(254, 209, 65, 0.85), 0 0 16px #000;
     }
 
@@ -1939,7 +1941,7 @@
     </div>
   </div>
 
-  <!-- Strike / Time's Up / Steal Animation -->
+  <!-- Strike / Time's Up / Steal / Winner Animation -->
   <div class="strike-overlay" id="strikeOverlay">
     <div class="strike-mark" id="strikeMark">X</div>
   </div>
@@ -2516,6 +2518,35 @@
         const el = document.getElementById(`mult-${m}`);
         if (el) el.classList.toggle('active', m === mult);
       });
+    }
+
+    function flashStealWinnerOverlay(teamName, delayMs = 0) {
+      if (!teamName) return;
+      isAnimatingStrike = true;
+      const winText = `${teamName.toUpperCase()} WINS!`;
+
+      setTimeout(() => {
+        const overlay = document.getElementById('strikeOverlay');
+        const strikeMark = document.getElementById('strikeMark');
+        strikeMark.classList.add('steal-mode');
+        strikeMark.innerText = winText;
+        strikeMark.style.fontSize = '88px';
+        overlay.classList.add('show');
+
+        syncChannel.postMessage({
+          type: 'STRIKE_ANIM',
+          text: winText,
+          fontSize: '88px',
+          duration: 1600,
+          isSteal: true
+        });
+
+        setTimeout(() => {
+          overlay.classList.remove('show');
+          strikeMark.classList.remove('steal-mode');
+          isAnimatingStrike = false;
+        }, 1600);
+      }, delayMs);
     }
 
     function renderTVState(state) {
@@ -3107,7 +3138,8 @@
         }
       }
 
-      if (isStealChance) {
+      const wonSteal = isStealChance;
+      if (wonSteal) {
         isStealChance = false;
         stealOriginTeamIndex = null;
       }
@@ -3122,6 +3154,10 @@
       renderHostCheatsheet();
       broadcastState();
       saveCurrentGame();
+
+      if (wonSteal && players[activePlayerIndex]) {
+        flashStealWinnerOverlay(players[activePlayerIndex].name, 650);
+      }
 
       textInput.value = '';
       ptsInput.value = '10';
@@ -3340,7 +3376,7 @@
       if (isAnimatingStrike) return;
       isAnimatingStrike = true;
 
-      // Steal Chance: 1 missed guess snaps highlight back to original team
+      // Steal Chance: 1 missed guess snaps highlight back to original team & announces winner
       if (isStealChance) {
         playWrongSound();
         const overlay = document.getElementById('strikeOverlay');
@@ -3361,9 +3397,15 @@
         broadcastState();
         saveCurrentGame();
 
+        const winnerName = players[activePlayerIndex] ? players[activePlayerIndex].name : '';
+
         setTimeout(() => {
           overlay.classList.remove('show');
-          isAnimatingStrike = false;
+          if (winnerName) {
+            flashStealWinnerOverlay(winnerName, 180);
+          } else {
+            isAnimatingStrike = false;
+          }
         }, 1200);
         return;
       }
@@ -3426,6 +3468,8 @@
 
     function revealAllHost() {
       roundActive = false;
+      isStealChance = false;
+      stealOriginTeamIndex = null;
       clearInterval(roundTimer);
       let delayStep = 0;
       currentAnswers.forEach((ans, i) => {
@@ -3454,8 +3498,9 @@
         currentAnswers[index].revealed = true;
         revealedTiles++;
 
-        // Successful steal stays highlighted on the stealing team
-        if (gameMode === 'host' && isStealChance) {
+        // Successful steal stays highlighted on the stealing team & announces winner
+        const wonSteal = gameMode === 'host' && isStealChance;
+        if (wonSteal) {
           isStealChance = false;
           stealOriginTeamIndex = null;
         }
@@ -3475,6 +3520,9 @@
         if (gameMode === 'host') {
           renderHostCheatsheet();
           broadcastState();
+          if (wonSteal && players[activePlayerIndex]) {
+            flashStealWinnerOverlay(players[activePlayerIndex].name, 650);
+          }
         }
         saveCurrentGame();
       }
