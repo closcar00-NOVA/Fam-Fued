@@ -597,12 +597,13 @@ const questionBank = [
       {"text": "Out somewhere you shouldn't be", "points": 10, "synonyms": ["cheating", "sneaking out", "bar", "partying", "hiding", "location", "trouble"]}
     ]
   },
+ // === 51-100: Everyday Classics ===
   {
     "question": "Name something people always forget to pack for a trip.",
     "category": "Everyday Classics",
     "answers": [
       {"text": "Toothbrush/Toothpaste", "points": 32, "synonyms": ["toothbrush", "toothpaste", "dental", "floss"]},
-      {"text": "Phone charger", "points": 26, "synonyms": ["charger", "cord", "cable", "power bank", "plug"]},
+      {"text": "Phone charger", "points": 26, "synonyms": ["phone charger", "charger", "cord", "cable", "power bank", "plug"]},
       {"text": "Underwear/Socks", "points": 16, "synonyms": ["underwear", "socks", "panties", "boxers", "undies"]},
       {"text": "Deodorant/Toiletries", "points": 12, "synonyms": ["deodorant", "shampoo", "razor", "lotion", "soap", "toiletries"]},
       {"text": "Medications", "points": 8, "synonyms": ["meds", "pills", "prescriptions", "vitamins", "medicine"]},
@@ -626,7 +627,7 @@ const questionBank = [
     "category": "Everyday Classics",
     "answers": [
       {"text": "Folding/Putting away laundry", "points": 35, "synonyms": ["laundry", "folding clothes", "washing clothes", "ironing"]},
-      {"text": "Washing dishes", "points": 25, "synonyms": ["dishes", "dishwasher", "pots and pans", "kitchen"]},
+      {"text": "Washing dishes", "points": 25, "synonyms": ["dishes", "dishwasher", "pots and pans", "washing dishes"]},
       {"text": "Cleaning the bathroom", "points": 18, "synonyms": ["bathroom", "toilet", "shower", "tub", "scrubbing"]},
       {"text": "Vacuuming/Mopping", "points": 10, "synonyms": ["vacuum", "mop", "sweep", "floors", "dusting"]},
       {"text": "Taking out the trash", "points": 7, "synonyms": ["trash", "garbage", "recycling", "bins"]},
@@ -642,16 +643,16 @@ const questionBank = [
       {"text": "TV remote", "points": 18, "synonyms": ["remote", "clicker", "controller", "tv remote"]},
       {"text": "Glasses/Sunglasses", "points": 10, "synonyms": ["glasses", "reading glasses", "sunglasses", "specs"]},
       {"text": "Wallet/Purse", "points": 6, "synonyms": ["wallet", "purse", "bag", "credit card", "id"]},
-      {"text": "Lip balm/Chapstick", "points": 4, "synonyms": ["chapstick", "lip balm", "airpods", "headphones", "hair tie"]}
+      {"text": "Lip balm/Chapstick", "points": 4, "synonyms": ["chapstick", "lip balm", "lip gloss"]}
     ]
   },
   {
     "question": "Name a reason someone might be late for work.",
     "category": "Everyday Classics",
     "answers": [
-      {"text": "Heavy traffic", "points": 38, "synonyms": ["traffic", "accident", "jam", "construction", "commute"]},
+      {"text": "Heavy traffic", "points": 38, "synonyms": ["traffic", "accident", "traffic jam", "construction", "commute"]},
       {"text": "Overslept/Alarm didn't go off", "points": 28, "synonyms": ["overslept", "alarm", "slept in", "snooze", "woke up late"]},
-      {"text": "Car trouble", "points": 14, "synonyms": ["car", "flat tire", "battery", "gas", "breakdown"]},
+      {"text": "Car trouble", "points": 14, "synonyms": ["car trouble", "flat tire", "dead battery", "out of gas", "breakdown"]},
       {"text": "Getting kids ready", "points": 9, "synonyms": ["kids", "school", "daycare", "drop off", "children"]},
       {"text": "Bad weather", "points": 6, "synonyms": ["weather", "snow", "rain", "ice", "storm"]},
       {"text": "Stopped for coffee/breakfast", "points": 5, "synonyms": ["coffee", "starbucks", "dunkin", "breakfast", "drive thru"]}
@@ -663,9 +664,9 @@ const questionBank = [
     "answers": [
       {"text": "Look at their phone", "points": 46, "synonyms": ["phone", "text", "scroll", "check phone", "email"]},
       {"text": "Stare at the floor numbers", "points": 28, "synonyms": ["numbers", "buttons", "light", "ceiling", "watch numbers"]},
-      {"text": "Look at the floor/Shoes", "points": 12, "synonyms": ["floor", "shoes", "down", "feet", "ground"]},
+      {"text": "Look at the floor/Shoes", "points": 12, "synonyms": ["floor", "shoes", "look down", "feet", "ground"]},
       {"text": "Face the doors silently", "points": 8, "synonyms": ["stare at door", "look straight", "doors", "wall"]},
-      {"text": "Check their watch", "points": 4, "synonyms": ["watch", "time", "wrist"]},
+      {"text": "Check their watch", "points": 4, "synonyms": ["watch", "check time", "wrist"]},
       {"text": "Look in the mirror", "points": 2, "synonyms": ["mirror", "fix hair", "check reflection"]}
     ]
   },
@@ -675,10 +676,10 @@ const questionBank = [
     "answers": [
       {"text": "Pepperoni", "points": 45, "synonyms": ["pepperoni", "pep"]},
       {"text": "Extra cheese", "points": 20, "synonyms": ["cheese", "mozzarella", "parmesan"]},
-      {"text": "Sausage", "points": 14, "synonyms": ["sausage", "italian sausage", "meat"]},
+      {"text": "Sausage", "points": 14, "synonyms": ["sausage", "italian sausage"]},
       {"text": "Mushrooms", "points": 10, "synonyms": ["mushrooms", "shrooms"]},
-      {"text": "Onions/Peppers", "points": 6, "synonyms": ["onions", "peppers", "green peppers", "veggies", "bell peppers"]},
-      {"text": "Bacon/Ham", "points": 5, "synonyms": ["bacon", "ham", "pineapple", "olives", "basil"]}
+      {"text": "Onions/Peppers", "points": 6, "synonyms": ["onions", "peppers", "green peppers", "bell peppers", "veggies"]},
+      {"text": "Bacon/Ham", "points": 5, "synonyms": ["bacon", "ham", "canadian bacon", "pineapple"]}
     ]
   },
   {
@@ -689,8 +690,8 @@ const questionBank = [
       {"text": "Bananas", "points": 22, "synonyms": ["bananas", "banana"]},
       {"text": "Bread", "points": 16, "synonyms": ["bread", "bagels", "buns", "rolls", "loaf"]},
       {"text": "Milk", "points": 12, "synonyms": ["milk", "dairy", "cream", "yogurt"]},
-      {"text": "Berries/Fruit", "points": 10, "synonyms": ["strawberries", "berries", "blueberries", "raspberries", "fruit", "avocados"]},
-      {"text": "Fresh herbs/Cilantro", "points": 6, "synonyms": ["cilantro", "herbs", "parsley", "basil", "produce", "veggies"]}
+      {"text": "Berries/Fruit", "points": 10, "synonyms": ["strawberries", "berries", "blueberries", "raspberries", "fruit"]},
+      {"text": "Fresh herbs/Cilantro", "points": 6, "synonyms": ["cilantro", "herbs", "parsley", "basil", "avocados"]}
     ]
   },
   {
@@ -713,8 +714,8 @@ const questionBank = [
       {"text": "Watch TV", "points": 22, "synonyms": ["tv", "netflix", "movie", "show", "television"]},
       {"text": "Toss and turn", "points": 15, "synonyms": ["toss and turn", "flip pillow", "overthink", "stare at ceiling", "count sheep"]},
       {"text": "Read a book", "points": 10, "synonyms": ["read", "book", "kindle", "magazine"]},
-      {"text": "Get a snack/Drink", "points": 8, "synonyms": ["eat", "snack", "water", "tea", "warm milk", "kitchen"]},
-      {"text": "Take melatonin/Sleep aid", "points": 7, "synonyms": ["melatonin", "medicine", "nyquil", "zzzquil", "pills", "music", "podcast"]}
+      {"text": "Get a snack/Drink", "points": 8, "synonyms": ["snack", "water", "tea", "warm milk", "kitchen"]},
+      {"text": "Take melatonin/Sleep aid", "points": 7, "synonyms": ["melatonin", "medicine", "nyquil", "zzzquil", "pills", "sleep aid"]}
     ]
   },
   {
@@ -722,23 +723,23 @@ const questionBank = [
     "category": "Everyday Classics",
     "answers": [
       {"text": "Heavy rain/Thunderstorm", "points": 38, "synonyms": ["rain", "storm", "thunderstorm", "pouring", "downpour", "lightning"]},
-      {"text": "Snowstorm/Blizzard", "points": 30, "synonyms": ["snow", "blizzard", "snowstorm", "freezing", "ice", "sleet"]},
+      {"text": "Snowstorm/Blizzard", "points": 30, "synonyms": ["snow", "blizzard", "snowstorm", "ice", "sleet"]},
       {"text": "Extreme heat/Humidity", "points": 14, "synonyms": ["hot", "heat", "heatwave", "humid", "humidity", "scorching"]},
       {"text": "Hurricane/Tornado", "points": 10, "synonyms": ["hurricane", "tornado", "cyclone", "typhoon", "high winds"]},
       {"text": "Freezing cold", "points": 5, "synonyms": ["cold", "freezing", "chilly", "wind chill", "frost"]},
-      {"text": "Hail", "points": 3, "synonyms": ["hail", "fog", "wind", "windy"]}
+      {"text": "Hail", "points": 3, "synonyms": ["hail", "fog", "windy"]}
     ]
   },
   {
     "question": "Name something you might find at the bottom of a purse or backpack.",
     "category": "Everyday Classics",
     "answers": [
-      {"text": "Loose change/Coins", "points": 30, "synonyms": ["coins", "change", "pennies", "money", "quarters"]},
+      {"text": "Loose change/Coins", "points": 30, "synonyms": ["coins", "change", "pennies", "quarters", "loose change"]},
       {"text": "Old receipts", "points": 24, "synonyms": ["receipts", "paper", "trash", "wrappers", "tissues"]},
       {"text": "Gum/Mints", "points": 16, "synonyms": ["gum", "mints", "candy", "crumbs", "snacks"]},
       {"text": "Pens/Pencils", "points": 12, "synonyms": ["pen", "pencil", "marker", "chapstick", "lip gloss"]},
       {"text": "Hair ties/Bobby pins", "points": 10, "synonyms": ["hair tie", "scrunchie", "bobby pin", "comb", "brush"]},
-      {"text": "Keys/Earbuds", "points": 8, "synonyms": ["keys", "airpods", "headphones", "charger", "sunglasses"]}
+      {"text": "Keys/Earbuds", "points": 8, "synonyms": ["keys", "airpods", "headphones", "earbuds", "charger", "sunglasses"]}
     ]
   },
   {
@@ -747,9 +748,9 @@ const questionBank = [
     "answers": [
       {"text": "Delivery driver/Mailman", "points": 34, "synonyms": ["mailman", "amazon", "ups", "fedex", "delivery", "doorbell", "knock"]},
       {"text": "Squirrel/Animal outside", "points": 26, "synonyms": ["squirrel", "bird", "cat", "deer", "rabbit", "animal", "other dog"]},
-      {"text": "Heard a noise/Car door", "points": 18, "synonyms": ["noise", "sound", "car", "neighbor", "wind", "thunder"]},
+      {"text": "Heard a noise/Car door", "points": 18, "synonyms": ["noise", "sound", "car door", "neighbor", "wind", "thunder"]},
       {"text": "Ghosts/Spirits", "points": 10, "synonyms": ["ghost", "ghosts", "spirit", "haunted", "shadow"]},
-      {"text": "Wants attention/Food", "points": 7, "synonyms": ["attention", "hungry", "food", "treat", "play", "bored"]},
+      {"text": "Wants attention/Food", "points": 7, "synonyms": ["attention", "hungry", "treat", "play", "bored"]},
       {"text": "Saw their own reflection", "points": 5, "synonyms": ["reflection", "mirror", "window", "leaf", "bug"]}
     ]
   },
@@ -759,10 +760,10 @@ const questionBank = [
     "answers": [
       {"text": "Check their phone", "points": 36, "synonyms": ["phone", "texts", "social media", "alarm", "scroll", "check time"]},
       {"text": "Use the bathroom", "points": 26, "synonyms": ["pee", "bathroom", "toilet", "restroom"]},
-      {"text": "Make/Drink coffee", "points": 16, "synonyms": ["coffee", "tea", "caffeine", "water", "drink"]},
+      {"text": "Make/Drink coffee", "points": 16, "synonyms": ["coffee", "tea", "caffeine", "water"]},
       {"text": "Brush their teeth", "points": 10, "synonyms": ["brush teeth", "wash face", "shower"]},
       {"text": "Hit snooze", "points": 7, "synonyms": ["snooze", "go back to sleep", "stretch", "yawn"]},
-      {"text": "Let the dog out/Feed pets", "points": 5, "synonyms": ["dog", "pet", "cat", "feed", "make bed"]}
+      {"text": "Let the dog out/Feed pets", "points": 5, "synonyms": ["dog", "pet", "cat", "feed pets", "make bed"]}
     ]
   },
   {
@@ -773,7 +774,7 @@ const questionBank = [
       {"text": "Nachos", "points": 22, "synonyms": ["nachos", "chips and cheese"]},
       {"text": "Soft pretzel", "points": 14, "synonyms": ["pretzel", "pretzel bites"]},
       {"text": "Hot dog", "points": 10, "synonyms": ["hot dog", "corndog", "pizza"]},
-      {"text": "Soda/ICEE", "points": 8, "synonyms": ["soda", "slushie", "icee", "drink", "coke"]},
+      {"text": "Soda/ICEE", "points": 8, "synonyms": ["soda", "slushie", "icee", "coke"]},
       {"text": "Ice cream/Dippin' Dots", "points": 6, "synonyms": ["ice cream", "dippin dots", "chicken tenders", "fries"]}
     ]
   },
@@ -781,19 +782,19 @@ const questionBank = [
     "question": "Name something that always seems to break right when you need it most.",
     "category": "Everyday Classics",
     "answers": [
-      {"text": "Car", "points": 32, "synonyms": ["car", "vehicle", "truck", "battery", "tire"]},
+      {"text": "Car", "points": 32, "synonyms": ["car", "vehicle", "truck", "car battery", "tire"]},
       {"text": "Phone/Charger", "points": 24, "synonyms": ["phone", "charger", "screen", "laptop", "computer"]},
       {"text": "Printer", "points": 18, "synonyms": ["printer", "ink", "copier", "wifi", "internet"]},
       {"text": "Air conditioning/Heater", "points": 12, "synonyms": ["ac", "air conditioner", "heat", "furnace", "hvac"]},
-      {"text": "Zipper/Shoelace", "points": 8, "synonyms": ["zipper", "shoelace", "button", "heel", "clothes"]},
-      {"text": "Coffee maker/Appliance", "points": 6, "synonyms": ["coffee maker", "fridge", "washer", "dishwasher", "umbrella"]}
+      {"text": "Zipper/Shoelace", "points": 8, "synonyms": ["zipper", "shoelace", "button", "heel"]},
+      {"text": "Coffee maker/Appliance", "points": 6, "synonyms": ["coffee maker", "fridge", "washer", "dishwasher", "microwave"]}
     ]
   },
   {
     "question": "Name a reason you might honk your car horn.",
     "category": "Everyday Classics",
     "answers": [
-      {"text": "Green light/Not moving", "points": 42, "synonyms": ["green light", "texting", "not going", "stopped", "red light", "pay attention"]},
+      {"text": "Green light/Not moving", "points": 42, "synonyms": ["green light", "texting", "not going", "stopped", "pay attention"]},
       {"text": "Someone cut you off", "points": 28, "synonyms": ["cut off", "merging", "swerving", "bad driver", "almost hit"]},
       {"text": "Saying hello/Goodbye", "points": 12, "synonyms": ["hi", "hello", "goodbye", "wave", "friend", "arrived", "outside"]},
       {"text": "Pedestrian/Animal in road", "points": 8, "synonyms": ["deer", "animal", "person", "pedestrian", "crossing"]},
@@ -805,12 +806,12 @@ const questionBank = [
     "question": "Name something people collect.",
     "category": "Everyday Classics",
     "answers": [
-      {"text": "Coins/Currency", "points": 28, "synonyms": ["coins", "money", "quarters", "pennies", "bills"]},
+      {"text": "Coins/Currency", "points": 28, "synonyms": ["coins", "quarters", "pennies", "bills", "currency"]},
       {"text": "Trading cards/Sports cards", "points": 24, "synonyms": ["cards", "baseball cards", "pokemon", "sports cards", "trading cards"]},
       {"text": "Shoes/Sneakers", "points": 18, "synonyms": ["shoes", "sneakers", "jordans", "kicks"]},
       {"text": "Stamps", "points": 12, "synonyms": ["stamps", "postage"]},
       {"text": "Vinyl records/Books", "points": 10, "synonyms": ["records", "vinyl", "books", "comics", "comic books"]},
-      {"text": "Magnets/Souvenirs", "points": 8, "synonyms": ["magnets", "shot glasses", "souvenirs", "funko pops", "watches", "toys"]}
+      {"text": "Magnets/Souvenirs", "points": 8, "synonyms": ["magnets", "shot glasses", "souvenirs", "funko pops", "watches"]}
     ]
   },
   {
@@ -858,7 +859,7 @@ const questionBank = [
       {"text": "Stove/Oven is off", "points": 16, "synonyms": ["stove", "oven", "appliances", "iron", "curling iron"]},
       {"text": "Lights are off", "points": 10, "synonyms": ["lights", "tv", "thermostat", "ac"]},
       {"text": "The weather", "points": 8, "synonyms": ["weather", "forecast", "rain", "temperature"]},
-      {"text": "Their reflection/Outfit", "points": 6, "synonyms": ["mirror", "hair", "outfit", "teeth", "zipper", "pets"]}
+      {"text": "Their reflection/Outfit", "points": 6, "synonyms": ["mirror", "hair", "outfit", "teeth", "zipper"]}
     ]
   },
   {
@@ -866,11 +867,11 @@ const questionBank = [
     "category": "Everyday Classics",
     "answers": [
       {"text": "Monopoly", "points": 52, "synonyms": ["monopoly"]},
-      {"text": "Uno", "points": 18, "synonyms": ["uno", "cards"]},
+      {"text": "Uno", "points": 18, "synonyms": ["uno", "card game"]},
       {"text": "Scrabble", "points": 10, "synonyms": ["scrabble", "words"]},
       {"text": "Sorry!/Trouble", "points": 8, "synonyms": ["sorry", "trouble", "parcheesi"]},
       {"text": "Risk", "points": 7, "synonyms": ["risk", "catan", "settlers of catan"]},
-      {"text": "Clue/Life", "points": 5, "synonyms": ["clue", "life", "pictionary", "taboo", "spades"]}
+      {"text": "Clue/Life", "points": 5, "synonyms": ["clue", "life", "pictionary", "taboo"]}
     ]
   },
   {
@@ -878,11 +879,11 @@ const questionBank = [
     "category": "Everyday Classics",
     "answers": [
       {"text": "Grill/Smoker", "points": 34, "synonyms": ["grill", "bbq", "smoker", "charcoal", "propane"]},
-      {"text": "Burgers/Hot dogs", "points": 26, "synonyms": ["burgers", "hot dogs", "ribs", "chicken", "steaks", "food"]},
+      {"text": "Burgers/Hot dogs", "points": 26, "synonyms": ["burgers", "hot dogs", "ribs", "chicken", "steaks"]},
       {"text": "Cooler of drinks/Beer", "points": 16, "synonyms": ["cooler", "beer", "drinks", "ice", "soda", "alcohol"]},
       {"text": "Lawn chairs/Picnic table", "points": 10, "synonyms": ["chairs", "table", "patio", "tent", "umbrella"]},
-      {"text": "Cornhole/Lawn games", "points": 8, "synonyms": ["cornhole", "games", "horseshoes", "pool", "music", "speaker"]},
-      {"text": "Bugs/Mosquitoes", "points": 6, "synonyms": ["bugs", "flies", "mosquitoes", "citronella", "smoke", "dogs"]}
+      {"text": "Cornhole/Lawn games", "points": 8, "synonyms": ["cornhole", "lawn games", "horseshoes", "pool", "speaker"]},
+      {"text": "Bugs/Mosquitoes", "points": 6, "synonyms": ["bugs", "flies", "mosquitoes", "citronella", "smoke"]}
     ]
   },
   {
@@ -929,7 +930,7 @@ const questionBank = [
       {"text": "Take a nap/Sleep", "points": 24, "synonyms": ["nap", "sleep", "stay in bed", "relax", "rest"]},
       {"text": "Read a book", "points": 12, "synonyms": ["read", "book", "magazine"]},
       {"text": "Play video games/Board games", "points": 10, "synonyms": ["video games", "gaming", "board games", "puzzles", "cards"]},
-      {"text": "Cook/Bake", "points": 8, "synonyms": ["cook", "bake", "soup", "meal prep", "eat"]},
+      {"text": "Cook/Bake", "points": 8, "synonyms": ["cook", "bake", "soup", "meal prep"]},
       {"text": "Clean/Do laundry", "points": 6, "synonyms": ["clean", "laundry", "chores", "organize"]}
     ]
   },
@@ -942,7 +943,7 @@ const questionBank = [
       {"text": "Spider-Man", "points": 20, "synonyms": ["spiderman", "spider-man", "peter parker"]},
       {"text": "Iron Man", "points": 10, "synonyms": ["iron man", "ironman", "tony stark"]},
       {"text": "Wonder Woman", "points": 7, "synonyms": ["wonder woman", "diana"]},
-      {"text": "Captain America/Hulk", "points": 5, "synonyms": ["captain america", "hulk", "thor", "flash", "wolverine", "deadpool"]}
+      {"text": "Captain America/Hulk", "points": 5, "synonyms": ["captain america", "hulk", "thor", "flash", "wolverine"]}
     ]
   },
   {
@@ -954,7 +955,7 @@ const questionBank = [
       {"text": "Fish tank/Aquarium", "points": 16, "synonyms": ["fish tank", "aquarium", "fish"]},
       {"text": "Kids' toys/Play area", "points": 10, "synonyms": ["toys", "kids area", "blocks", "bead maze"]},
       {"text": "Posters of teeth", "points": 8, "synonyms": ["posters", "teeth", "diagrams", "brochures", "flyers"]},
-      {"text": "Receptionist/Clipboards", "points": 6, "synonyms": ["receptionist", "front desk", "clipboard", "forms", "chairs", "hand sanitizer"]}
+      {"text": "Receptionist/Clipboards", "points": 6, "synonyms": ["receptionist", "front desk", "clipboard", "forms", "chairs"]}
     ]
   },
   {
@@ -962,11 +963,11 @@ const questionBank = [
     "category": "Everyday Classics",
     "answers": [
       {"text": "Lose weight/Exercise", "points": 44, "synonyms": ["lose weight", "gym", "work out", "exercise", "diet", "get in shape", "fitness"]},
-      {"text": "Save money/Budget", "points": 22, "synonyms": ["save money", "money", "budget", "pay off debt", "finances"]},
+      {"text": "Save money/Budget", "points": 22, "synonyms": ["save money", "budget", "pay off debt", "finances"]},
       {"text": "Eat healthier", "points": 14, "synonyms": ["eat healthy", "healthy", "cook more", "cut sugar", "drink water"]},
       {"text": "Quit smoking/Drinking", "points": 10, "synonyms": ["quit smoking", "stop drinking", "dry january", "vaping", "less alcohol"]},
       {"text": "Travel more", "points": 5, "synonyms": ["travel", "vacation", "trips"]},
-      {"text": "Read more/Learn a skill", "points": 5, "synonyms": ["read", "books", "learn", "hobby", "less screen time", "be organized"]}
+      {"text": "Read more/Learn a skill", "points": 5, "synonyms": ["read", "books", "learn", "hobby", "new skill"]}
     ]
   },
   {
@@ -1000,9 +1001,9 @@ const questionBank = [
       {"text": "Towel", "points": 32, "synonyms": ["towel", "beach towel", "blanket"]},
       {"text": "Sunscreen", "points": 26, "synonyms": ["sunscreen", "sunblock", "lotion", "spf"]},
       {"text": "Umbrella/Tent", "points": 14, "synonyms": ["umbrella", "tent", "shade", "canopy"]},
-      {"text": "Cooler/Drinks", "points": 12, "synonyms": ["cooler", "drinks", "water", "snacks", "food", "beer"]},
+      {"text": "Cooler/Drinks", "points": 12, "synonyms": ["cooler", "drinks", "water", "snacks", "beer"]},
       {"text": "Beach chair", "points": 10, "synonyms": ["chair", "chairs", "lounge chair"]},
-      {"text": "Sunglasses/Hat", "points": 6, "synonyms": ["sunglasses", "hat", "flip flops", "book", "speaker", "toys"]}
+      {"text": "Sunglasses/Hat", "points": 6, "synonyms": ["sunglasses", "hat", "flip flops", "sandals"]}
     ]
   },
   {
@@ -1010,7 +1011,7 @@ const questionBank = [
     "category": "Everyday Classics",
     "answers": [
       {"text": "Running late", "points": 42, "synonyms": ["late", "late for work", "rushing", "in a hurry", "overslept"]},
-      {"text": "Not paying attention", "points": 20, "synonyms": ["not paying attention", "distracted", "missed sign", "speed trap", "music"]},
+      {"text": "Not paying attention", "points": 20, "synonyms": ["not paying attention", "distracted", "missed sign", "speed trap"]},
       {"text": "Bathroom emergency", "points": 16, "synonyms": ["bathroom", "pee", "poop", "stomach", "restroom"]},
       {"text": "Medical/Family emergency", "points": 12, "synonyms": ["emergency", "hospital", "baby", "labor", "sick"]},
       {"text": "Showing off/New car", "points": 6, "synonyms": ["showing off", "fast car", "racing", "sports car"]},
@@ -1022,11 +1023,11 @@ const questionBank = [
     "category": "Everyday Classics",
     "answers": [
       {"text": "Dance", "points": 38, "synonyms": ["dance", "dancing", "cha cha slide", "first dance"]},
-      {"text": "Drink/Hit the open bar", "points": 26, "synonyms": ["drink", "open bar", "alcohol", "champagne", "toast", "get drunk"]},
-      {"text": "Eat dinner/Cake", "points": 18, "synonyms": ["eat", "food", "cake", "dinner", "buffet"]},
+      {"text": "Drink/Hit the open bar", "points": 26, "synonyms": ["open bar", "alcohol", "champagne", "toast", "get drunk"]},
+      {"text": "Eat dinner/Cake", "points": 18, "synonyms": ["dinner", "cake", "buffet", "eat"]},
       {"text": "Take photos", "points": 8, "synonyms": ["photos", "pictures", "photo booth", "selfies"]},
       {"text": "Give speeches/Toasts", "points": 6, "synonyms": ["speech", "toast", "best man", "cry"]},
-      {"text": "Catch the bouquet/Garter", "points": 4, "synonyms": ["bouquet", "garter", "mingle", "talk", "chat"]}
+      {"text": "Catch the bouquet/Garter", "points": 4, "synonyms": ["bouquet", "garter", "mingle", "chat"]}
     ]
   },
   {
@@ -1038,7 +1039,7 @@ const questionBank = [
       {"text": "Snakes", "points": 16, "synonyms": ["snakes", "reptiles"]},
       {"text": "Public speaking", "points": 10, "synonyms": ["public speaking", "crowds", "stage fright", "speeches"]},
       {"text": "Tight spaces/Claustrophobia", "points": 9, "synonyms": ["claustrophobia", "tight spaces", "small spaces", "elevators"]},
-      {"text": "Flying/Needles", "points": 7, "synonyms": ["flying", "airplanes", "needles", "shots", "clowns", "dark", "water", "sharks"]}
+      {"text": "Flying/Needles", "points": 7, "synonyms": ["flying", "airplanes", "needles", "shots"]}
     ]
   },
   {
@@ -1050,7 +1051,7 @@ const questionBank = [
       {"text": "Tape/Rubber bands", "points": 18, "synonyms": ["tape", "rubber bands", "paperclips", "glue", "super glue"]},
       {"text": "Random keys", "points": 12, "synonyms": ["keys", "spare keys"]},
       {"text": "Scissors/Screwdriver", "points": 10, "synonyms": ["scissors", "tools", "screwdriver", "allen wrench", "measuring tape"]},
-      {"text": "Takeout menus/Coupons", "points": 8, "synonyms": ["menus", "coupons", "receipts", "sauce packets", "cords", "chargers", "matches"]}
+      {"text": "Takeout menus/Coupons", "points": 8, "synonyms": ["menus", "coupons", "receipts", "sauce packets", "cords", "matches"]}
     ]
   },
   {
@@ -1062,7 +1063,7 @@ const questionBank = [
       {"text": "Pancakes/Waffles", "points": 18, "synonyms": ["pancakes", "waffles", "french toast"]},
       {"text": "Toast/Bagel", "points": 9, "synonyms": ["toast", "bagel", "english muffin", "bread"]},
       {"text": "Cereal/Oatmeal", "points": 6, "synonyms": ["cereal", "oatmeal", "granola"]},
-      {"text": "Hash browns/Home fries", "points": 5, "synonyms": ["hash browns", "potatoes", "home fries", "grits", "fruit"]}
+      {"text": "Hash browns/Home fries", "points": 5, "synonyms": ["hash browns", "potatoes", "home fries", "grits"]}
     ]
   },
   {
@@ -1086,7 +1087,7 @@ const questionBank = [
       {"text": "Wendy's", "points": 12, "synonyms": ["wendys"]},
       {"text": "Burger King", "points": 10, "synonyms": ["burger king", "bk"]},
       {"text": "Taco Bell", "points": 9, "synonyms": ["taco bell"]},
-      {"text": "Subway/KFC", "points": 7, "synonyms": ["subway", "kfc", "popeyes", "chipotle", "in-n-out", "five guys", "sonic"]}
+      {"text": "Subway/KFC", "points": 7, "synonyms": ["subway", "kfc", "popeyes", "chipotle"]}
     ]
   },
   {
@@ -1110,7 +1111,7 @@ const questionBank = [
       {"text": "Work/Stuck at the office", "points": 14, "synonyms": ["work", "boss", "overtime", "meeting", "deadline"]},
       {"text": "Family/Kid emergency", "points": 10, "synonyms": ["emergency", "family", "kids", "babysitter", "pet"]},
       {"text": "Bad weather", "points": 8, "synonyms": ["weather", "rain", "snow", "storm"]},
-      {"text": "Car trouble/Broke", "points": 6, "synonyms": ["car", "flat tire", "no money", "broke", "traffic", "forgot"]}
+      {"text": "Car trouble/Broke", "points": 6, "synonyms": ["car trouble", "flat tire", "no money", "broke", "traffic", "forgot"]}
     ]
   },
   {
@@ -1134,7 +1135,7 @@ const questionBank = [
       {"text": "Blueberry", "points": 14, "synonyms": ["blueberry", "blueberries", "berries"]},
       {"text": "Mango", "points": 10, "synonyms": ["mango", "mangoes"]},
       {"text": "Pineapple", "points": 7, "synonyms": ["pineapple"]},
-      {"text": "Raspberry/Peach", "points": 5, "synonyms": ["raspberry", "peach", "avocado", "apple", "orange", "acai"]}
+      {"text": "Raspberry/Peach", "points": 5, "synonyms": ["raspberry", "peach", "apple", "orange", "acai"]}
     ]
   },
   {
@@ -1158,7 +1159,7 @@ const questionBank = [
       {"text": "SpongeBob SquarePants", "points": 18, "synonyms": ["spongebob", "patrick"]},
       {"text": "Scooby-Doo", "points": 10, "synonyms": ["scooby", "scooby doo", "shaggy"]},
       {"text": "Tom and Jerry", "points": 8, "synonyms": ["tom", "jerry", "tom and jerry"]},
-      {"text": "Homer Simpson/Donald Duck", "points": 6, "synonyms": ["homer", "bart", "simpsons", "donald duck", "daffy duck", "popeye", "flintstones"]}
+      {"text": "Homer Simpson/Donald Duck", "points": 6, "synonyms": ["homer", "bart", "simpsons", "donald duck", "daffy duck", "popeye"]}
     ]
   },
   {
@@ -1182,7 +1183,7 @@ const questionBank = [
       {"text": "Scrolling on their phone", "points": 18, "synonyms": ["phone", "tiktok", "social media", "youtube", "scrolling"]},
       {"text": "Playing video games", "points": 12, "synonyms": ["video games", "gaming", "xbox", "playstation", "pc"]},
       {"text": "Working/Studying", "points": 10, "synonyms": ["work", "studying", "homework", "cramming", "night shift"]},
-      {"text": "Insomnia/Can't sleep", "points": 6, "synonyms": ["insomnia", "cant sleep", "overthinking", "stress", "baby", "crying"]}
+      {"text": "Insomnia/Can't sleep", "points": 6, "synonyms": ["insomnia", "cant sleep", "overthinking", "stress", "baby crying"]}
     ]
   },
   {
